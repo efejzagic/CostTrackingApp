@@ -16,5 +16,7 @@ namespace StorageService.Models
         public double Price { get; set; }
 
         public string Description { get; set; }
+
+        public bool retired { get; set; }
     }
 }

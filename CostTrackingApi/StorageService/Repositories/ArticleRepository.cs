@@ -34,21 +34,22 @@ namespace StorageService.Repositories
 
         public async Task<Article> Edit (Article article)
         {
-            var newArticle = await _context.Article.FindAsync(article.Id);
+            var editArticle = await _context.Article.FindAsync(article.Id);
 
-            if (newArticle == null)
+            if (editArticle == null)
             {
                 return null;
             }
 
-            newArticle.Name = article.Name;
-            newArticle.Quantity = article.Quantity;
-            newArticle.Price = article.Price;
-            newArticle.Description= article.Description;
-            
+            editArticle.Name = article.Name;
+            editArticle.Quantity = article.Quantity;
+            editArticle.Price = article.Price;
+            editArticle.Description= article.Description;
+            editArticle.retired = article.retired;
+
             await _context.SaveChangesAsync();
 
-            return newArticle;
+            return editArticle;
         }
 
         public async Task<bool> Delete(int id)
@@ -66,9 +67,20 @@ namespace StorageService.Repositories
             return true;
         }
 
-        public Task<bool> SoftDelete(int id)
+        public async Task<bool> SoftDelete(int id)
         {
-            throw new NotImplementedException();
+            var article = await GetById(id);
+
+            if (article == null)
+            {
+                return false;
+            }
+
+            article.retired = true;
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

@@ -46,5 +46,11 @@ namespace StorageService.Controllers
             return await _articleRepo.Delete(id);
         }
 
+        [HttpPut("SoftDelete")]
+        public async Task<bool> SoftDelete(int id)
+        {
+            return await _articleRepo.SoftDelete(id);
+        }
+
     }
 }
