@@ -22,10 +22,28 @@ namespace StorageService.Controllers
             return await _articleRepo.GetArticles();
         }
 
+        [HttpGet("Id")]
+        public async Task<Article> GetById(int id)
+        {
+            return await _articleRepo.GetById(id);  
+        }
+
         [HttpPost]
         public async Task<Article> Create(Article article)
         {
             return await _articleRepo.Create(article);
+        }
+
+        [HttpPut("Edit")]
+        public async Task<Article> Edit (Article article)
+        {
+            return await _articleRepo.Edit(article);
+        }
+
+        [HttpDelete("Delete")]
+        public async Task<bool> Delete(int id)
+        {
+            return await _articleRepo.Delete(id);
         }
 
     }
