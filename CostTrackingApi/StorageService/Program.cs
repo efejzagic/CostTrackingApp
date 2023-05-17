@@ -1,5 +1,9 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Serilog.Events;
+using Serilog;
+using Serilog.Sinks.PostgreSQL;
 using StorageService.Data;
 using StorageService.Interfaces;
 using StorageService.Profiles;
@@ -33,6 +37,23 @@ builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     cfg.AddProfile(new SupplierProfile(provider.GetService<IArticleRepository>()));
 
 }).CreateMapper());
+
+
+//serilog
+
+
+Log.Logger = new LoggerConfiguration()
+.MinimumLevel.Information()
+.WriteTo.PostgreSQL(
+               connectionString: builder.Configuration.GetConnectionString("StorageConnection"),
+               tableName: "Logs",
+               needAutoCreateTable: true
+           ).MinimumLevel.Warning()
+           .CreateLogger();
+builder.Services.AddLogging(loggingBuilder =>
+        loggingBuilder.AddSerilog(dispose: true));
+
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

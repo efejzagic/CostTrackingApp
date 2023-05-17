@@ -8,10 +8,11 @@ namespace StorageService.Repositories
     public class ArticleRepository : IArticleRepository
     {
         private readonly StorageDbContext _context;
-
-        public ArticleRepository(StorageDbContext context)
+        private readonly ILogger<ArticleRepository> _logger;
+        public ArticleRepository(StorageDbContext context, ILogger<ArticleRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<Article> Create(Article article)
@@ -23,6 +24,7 @@ namespace StorageService.Repositories
 
         public async Task<IEnumerable<Article>> GetArticles()
         {
+            _logger.LogInformation("Get All Articles Repo started");
             return await _context.Article.ToListAsync();
 
         }

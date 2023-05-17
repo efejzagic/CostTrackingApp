@@ -45,3 +45,7 @@ D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Humanizer.dll
 D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Serilog.dll
+D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll
+D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Serilog.Sinks.PostgreSQL.dll
+D:\CostTrackingApp\CostTrackingApi\StorageService\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
