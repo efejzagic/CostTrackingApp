@@ -82,5 +82,10 @@ namespace StorageService.Repositories
 
             return true;
         }
+
+        public async Task<IEnumerable<Article>> GetArticlesBySupplierId(int supplierId)
+        {
+            return await _context.Article.Where(a => a.SupplierId == supplierId).ToListAsync();
+        }
     }
 }

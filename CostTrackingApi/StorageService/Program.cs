@@ -23,12 +23,14 @@ builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 
 //services 
 builder.Services.AddScoped<ArticleService>();
+builder.Services.AddScoped<SupplierService>();
 
 //automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new ArticleProfile(provider.GetService<ISupplierRepository>()));
+    cfg.AddProfile(new SupplierProfile(provider.GetService<IArticleRepository>()));
 
 }).CreateMapper());
 

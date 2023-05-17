@@ -11,6 +11,7 @@ namespace StorageService.Interfaces
         Task<Article> Edit(Article article);
         Task<bool> Delete(int id);
 
-        Task<bool> SoftDelete(int id);  
+        Task<bool> SoftDelete(int id);
+        Task<IEnumerable<Article>> GetArticlesBySupplierId(int supplierId);
     }
 }
