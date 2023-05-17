@@ -11,5 +11,11 @@ namespace StorageService.Data
         }
 
         public DbSet<Article> Article { get; set; }
+        public DbSet<Supplier> Supplier{ get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+          
+        }
     }
 }

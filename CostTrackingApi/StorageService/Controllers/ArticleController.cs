@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Data;
+using StorageService.DTO;
 using StorageService.Interfaces;
 using StorageService.Models;
+using StorageService.Services;
 
 namespace StorageService.Controllers
 {
@@ -11,15 +13,19 @@ namespace StorageService.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IArticleRepository _articleRepo;
-        public ArticleController(IArticleRepository articleRepo)
+        private readonly ArticleService _articleService;
+        public ArticleController(IArticleRepository articleRepo,
+            ArticleService articleService)
         {
             _articleRepo = articleRepo;
+            _articleService = articleService;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Article>> GetArticles()
+        public async Task<IEnumerable<ArticleDTO>> GetArticles()
         {
-            return await _articleRepo.GetArticles();
+            var articles = await _articleService.GetArticles();
+            return articles;
         }
 
         [HttpGet("Id")]

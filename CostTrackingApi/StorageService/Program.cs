@@ -1,8 +1,10 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Data;
 using StorageService.Interfaces;
-using StorageService.Models;
+using StorageService.Profiles;
 using StorageService.Repositories;
+using StorageService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,21 @@ builder.Services.AddDbContext<StorageDbContext>(options =>
 
 
 builder.Services.AddControllers();
+
+
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
+builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+
+//services 
+builder.Services.AddScoped<ArticleService>();
+
+//automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new ArticleProfile(provider.GetService<ISupplierRepository>()));
+
+}).CreateMapper());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

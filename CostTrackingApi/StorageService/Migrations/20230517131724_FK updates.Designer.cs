@@ -11,8 +11,8 @@ using StorageService.Data;
 namespace StorageService.Migrations
 {
     [DbContext(typeof(StorageDbContext))]
-    [Migration("20230517122058_Article retired added")]
-    partial class Articleretiredadded
+    [Migration("20230517131724_FK updates")]
+    partial class FKupdates
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,12 +46,52 @@ namespace StorageService.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("retired")
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
                     b.ToTable("Article");
+                });
+
+            modelBuilder.Entity("StorageService.Models.Supplier", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Supplier");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StorageService.Models
 {
@@ -17,6 +18,9 @@ namespace StorageService.Models
 
         public string Description { get; set; }
 
+        [Required]
+        public int SupplierId { get; set; }
         public bool retired { get; set; }
+
     }
 }
