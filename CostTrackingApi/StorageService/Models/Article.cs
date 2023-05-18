@@ -20,7 +20,7 @@ namespace StorageService.Models
 
         [Required]
         public int SupplierId { get; set; }
-        public bool retired { get; set; }
+        public bool retired { get; set; } = false;
 
     }
 }

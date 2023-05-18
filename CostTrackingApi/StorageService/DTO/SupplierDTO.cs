@@ -17,5 +17,7 @@ namespace StorageService.DTO
 
         public ICollection<Article> Articles { get; set; }
 
+        public bool retired { get; set; } 
+
     }
 }
