@@ -1,3 +1,4 @@
+using AuthService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -9,28 +10,30 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<LoginService>();
 
 builder.Services.AddAuthentication(options =>
 {
-options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
        .AddJwtBearer(options =>
         {
-               options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/";
-               options.Audience = "your-audience";
-               options.TokenValidationParameters = new TokenValidationParameters
-               {
-                   ValidateIssuer = true,
-                   ValidateAudience = true,
-                   ValidateLifetime = true,
-                   ValidateIssuerSigningKey = true,
-                   ClockSkew = TimeSpan.Zero,
-                   ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/",
-                   ValidAudience = "your-audience",
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-signing-key"))
-               };
-           });
+            options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/";
+            options.Audience = "your-audience";
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ClockSkew = TimeSpan.Zero,
+                ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/",
+                ValidAudience = "your-audience",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-signing-key"))
+            };
+        });
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

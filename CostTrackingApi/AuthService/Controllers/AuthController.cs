@@ -5,24 +5,30 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using AuthService.Services;
 
 namespace AuthService.Controllers
 {
+
+
     [ApiController]
     [Authorize]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly LoginService _loginService;
 
-        public AuthController(IHttpContextAccessor httpContextAccessor)
+        public AuthController(IHttpContextAccessor httpContextAccessor, LoginService loginService)
         {
             _httpContextAccessor = httpContextAccessor;
+            _loginService = loginService;
         }
 
         [HttpGet]
         [Route("Id")]
-        public string SomeMethod()
+        public string GetUserId()
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             // Use the user ID or other claims as needed
@@ -56,6 +62,23 @@ namespace AuthService.Controllers
             }
 
             return null;
+        }
+
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody] LoginRequest model)
+        {
+            TokenResponse response;
+            try
+            {
+                response = await _loginService.LoginToken(model);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(response.AccessToken);
+
         }
     }
 }
