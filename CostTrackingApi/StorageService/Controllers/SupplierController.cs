@@ -21,9 +21,46 @@ namespace StorageService.Controllers
         }
 
         [HttpGet]
+        [Route("All")]
+
         public async Task<IEnumerable<SupplierDTO>> GetSuppliers()
         {
             return await _supplierService.GetSuppliers();
+        }
+
+        [HttpGet]
+        [Route("Id")]
+        public async Task<SupplierDTO> GetById(int id)
+        {
+            return await _supplierService.GetById(id);
+        }
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<SupplierDTO> Create(Supplier supplier)
+        {
+            return await _supplierService.Create(supplier);
+        }
+
+        [HttpPut]
+        [Route("Edit")]
+        public async Task<SupplierDTO> Edit(Supplier supplier)
+        {
+            return await _supplierService.Edit(supplier);
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<bool> Delete(int id)
+        {
+            return await _supplierService.Delete(id);
+        }
+
+        [HttpPut]
+        [Route("SoftDelete")]
+        public async Task<bool> SoftDelete(int id)
+        {
+            return await _supplierService.SoftDelete(id);
         }
     }
 }

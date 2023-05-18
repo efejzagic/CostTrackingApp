@@ -23,5 +23,33 @@ namespace StorageService.Services
             return _mapper.Map<IEnumerable<Supplier>, IEnumerable<SupplierDTO>>(suppliers);
         }
 
+        public async Task<SupplierDTO> GetById(int id)
+        {
+            var supplier = await _supplierRepository.GetById(id);
+            return _mapper.Map<Supplier, SupplierDTO>(supplier);
+        }
+
+        public async Task<SupplierDTO> Create(Supplier supplier)
+        {
+            var newSupplier = await _supplierRepository.Create(supplier);
+            return _mapper.Map<Supplier, SupplierDTO>(newSupplier);
+        }
+
+        public async Task<SupplierDTO> Edit(Supplier supplier)
+        {
+            var newSupplier = await _supplierRepository.Edit(supplier);
+            return _mapper.Map<Supplier, SupplierDTO>(newSupplier);
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            return await _supplierRepository.Delete(id);
+        }
+
+        public async Task<bool> SoftDelete(int id)
+        {
+            return await _supplierRepository.SoftDelete(id);
+        }
+
     }
 }
