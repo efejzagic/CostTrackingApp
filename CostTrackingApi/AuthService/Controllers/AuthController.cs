@@ -7,13 +7,14 @@ using System.Security.Claims;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
 using AuthService.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace AuthService.Controllers
 {
 
 
     [ApiController]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
@@ -34,34 +35,14 @@ namespace AuthService.Controllers
             // Use the user ID or other claims as needed
             return userId;
         }
+
         [HttpGet]
-        [Route("All")]
-        public async Task<List<User>> GetAllUsers()
+        [Route("Proba")]
+        public string Proba()
         {
-            var accessToken = _httpContextAccessor.HttpContext.GetTokenAsync("access_token").Result;
-            var requestUrl = "https://your-keycloak-server/auth/admin/realms/your-realm/users";
-
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await httpClient.GetAsync(requestUrl);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var users = JsonConvert.DeserializeObject<List<User>>(responseContent);
-                    return users;
-                }
-                else
-                {
-                    // Handle error response
-                    // For example, log the error or throw an exception
-                    // throw new Exception("Failed to retrieve users");
-                }
-            }
-
-            return null;
+            
+            // Use the user ID or other claims as needed
+            return "PROSLO";
         }
 
         [HttpPost("login")]
@@ -78,7 +59,6 @@ namespace AuthService.Controllers
                 return BadRequest(ex.Message);
             }
             return Ok(response.AccessToken);
-
         }
     }
 }

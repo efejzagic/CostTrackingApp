@@ -1,3 +1,4 @@
+using AuthService.Models;
 using AuthService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -13,70 +14,52 @@ builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<LoginService>();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-       .AddJwtBearer(options =>
-        {
-            options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/";
-            options.Audience = "your-audience";
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ClockSkew = TimeSpan.Zero,
-                ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/",
-                ValidAudience = "your-audience",
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your-signing-key"))
-            };
-        });
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+      .AddJwtBearer(options =>
+      {
+          options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app";
+          //options.Audience = "your-audience"; // The audience to validate against
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-var securityScheme = new OpenApiSecurityScheme()
-{
-    Name = "Authorization",
-    Type = SecuritySchemeType.ApiKey,
-    Scheme = "Bearer",
-    BearerFormat = "JWT",
-    In = ParameterLocation.Header,
-    Description = "JSON Web Token based security",
-};
+          // Add the token validation parameters
+          options.TokenValidationParameters = new TokenValidationParameters
+          {
+              ValidateIssuer = true,
+              ValidateAudience = false,
+              ValidateLifetime = true,
+              ValidateIssuerSigningKey = true,
+              ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
+              //ValidAudience = "your-audience",
+              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
+          };
+      });
 
-var securityReq = new OpenApiSecurityRequirement()
+builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "AuthService API", Version = "v1" });
+
+    // Add JWT authorization header
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        new OpenApiSecurityScheme
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
         {
-            Reference = new OpenApiReference
             {
-                Type = ReferenceType.SecurityScheme,
-                Id = ""
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                new string[] {}
             }
-        },
-        new string[] {}
-    }
-};
-
-
-
-var info = new OpenApiInfo()
-{
-    Version = "v1",
-    Title = "Keycloak & JWT Integration",
-    Description = "Implementing JWT Authentication",
-};
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(o =>
-{
-    o.SwaggerDoc("v1", info);
-    o.AddSecurityDefinition("Bearer", securityScheme);
-    o.AddSecurityRequirement(securityReq);
+        });
 });
 
 
@@ -87,10 +70,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+        // Add any other Swagger UI configuration as needed
+    });
 }
 
-app.UseHttpsRedirection();
+    app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
