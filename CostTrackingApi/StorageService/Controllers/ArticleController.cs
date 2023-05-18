@@ -12,12 +12,10 @@ namespace StorageService.Controllers
     [ApiController]
     public class ArticleController : ControllerBase
     {
-        private readonly IArticleRepository _articleRepo;
         private readonly ArticleService _articleService;
-        public ArticleController(IArticleRepository articleRepo,
+        public ArticleController(
             ArticleService articleService)
         {
-            _articleRepo = articleRepo;
             _articleService = articleService;
         }
 
@@ -29,33 +27,33 @@ namespace StorageService.Controllers
         }
 
         [HttpGet("Id")]
-        public async Task<Article> GetById(int id)
+        public async Task<ArticleDTO> GetById(int id)
         {
-            return await _articleRepo.GetById(id);  
+            return await _articleService.GetById(id);  
         }
 
         [HttpPost]
-        public async Task<Article> Create(Article article)
+        public async Task<ArticleDTO> Create(Article article)
         {
-            return await _articleRepo.Create(article);
+            return await _articleService.Create(article);
         }
 
         [HttpPut("Edit")]
-        public async Task<Article> Edit (Article article)
+        public async Task<ArticleDTO> Edit (Article article)
         {
-            return await _articleRepo.Edit(article);
+            return await _articleService.Edit(article);
         }
 
         [HttpDelete("Delete")]
         public async Task<bool> Delete(int id)
         {
-            return await _articleRepo.Delete(id);
+            return await _articleService.Delete(id);
         }
 
         [HttpPut("SoftDelete")]
         public async Task<bool> SoftDelete(int id)
         {
-            return await _articleRepo.SoftDelete(id);
+            return await _articleService.SoftDelete(id);
         }
 
     }

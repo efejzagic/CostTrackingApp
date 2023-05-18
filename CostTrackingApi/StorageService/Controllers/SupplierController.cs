@@ -10,13 +10,11 @@ namespace StorageService.Controllers
     [ApiController]
     public class SupplierController : ControllerBase
     {
-        private readonly ISupplierRepository _supplierRepo;
         private readonly SupplierService _supplierService;
 
-        public SupplierController(ISupplierRepository supplierRepo,
+        public SupplierController(
             SupplierService supplierService)
         {
-            _supplierRepo = supplierRepo;
             _supplierService = supplierService;
         }
 
