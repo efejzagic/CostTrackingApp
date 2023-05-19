@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StorageService.DTO.Supplier;
-using StorageService.Interfaces;
-using StorageService.Models;
 using StorageService.Services;
 
 namespace StorageService.Controllers
@@ -27,8 +25,8 @@ namespace StorageService.Controllers
         }
 
         [HttpGet]
-        [Route("Id")]
-        public async Task<SupplierDTO> GetById(int id)
+        [Route("{id}")]
+        public async Task<SupplierDTO> GetById([FromRoute] int id)
         {
             return await _supplierService.GetById(id);
         }
@@ -48,15 +46,15 @@ namespace StorageService.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
-        public async Task<bool> Delete(int id)
+        [Route("Delete/{id}")]
+        public async Task<bool> Delete([FromRoute] int id)
         {
             return await _supplierService.Delete(id);
         }
 
         [HttpPut]
-        [Route("SoftDelete")]
-        public async Task<bool> SoftDelete(int id)
+        [Route("SoftDelete/{id}")]
+        public async Task<bool> SoftDelete([FromRoute] int id)
         {
             return await _supplierService.SoftDelete(id);
         }

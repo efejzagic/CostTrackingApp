@@ -26,7 +26,7 @@ namespace StorageService.Controllers
             return articles;
         }
 
-        [HttpGet("Id")]
+        [HttpGet("{id}")]
         public async Task<ArticleDTO> GetById(int id)
         {
             return await _articleService.GetById(id);
@@ -45,14 +45,14 @@ namespace StorageService.Controllers
             return await _articleService.Edit(article);
         }
 
-        [HttpDelete("Delete")]
-        public async Task<bool> Delete(int id)
+        [HttpDelete("Delete/{id}")]
+        public async Task<bool> Delete([FromRoute]int id)
         {
             return await _articleService.Delete(id);
         }
 
-        [HttpPut("SoftDelete")]
-        public async Task<bool> SoftDelete(int id)
+        [HttpPut("SoftDelete/{id}")]
+        public async Task<bool> SoftDelete([FromRoute]int id)
         {
             return await _articleService.SoftDelete(id);
         }
