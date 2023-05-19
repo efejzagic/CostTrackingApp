@@ -30,13 +30,14 @@ namespace StorageService.Services
         }
 
         public async Task<ArticleDTO> Create(Article article)
-        {
+        {   
             var newArticle = await _articleRepo.Create(article);
             return _mapper.Map<Article, ArticleDTO>(newArticle);
         }
 
         public async Task<ArticleDTO> Edit(Article article)
         {
+            article.DateModified = DateTime.UtcNow;
             var newArticle = await _articleRepo.Edit(article);
             return _mapper.Map<Article, ArticleDTO>(newArticle);
         }

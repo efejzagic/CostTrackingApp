@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StorageService.Models
 {
-    public class Article
+    public class Article : IAuditable
     {
         [Key]
         public int Id{ get; set; }
@@ -21,6 +21,7 @@ namespace StorageService.Models
         [Required]
         public int SupplierId { get; set; }
         public bool retired { get; set; } = false;
-
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+        public DateTime? DateModified { get; set; }
     }
 }

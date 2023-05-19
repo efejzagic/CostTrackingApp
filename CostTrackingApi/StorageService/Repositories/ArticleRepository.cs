@@ -47,6 +47,7 @@ namespace StorageService.Repositories
             editArticle.Quantity = article.Quantity;
             editArticle.Price = article.Price;
             editArticle.Description= article.Description;
+            editArticle.DateModified = article.DateModified;
             editArticle.retired = article.retired;
 
             await _context.SaveChangesAsync();
