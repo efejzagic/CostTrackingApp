@@ -1,4 +1,3 @@
-using AuthService.Models;
 using AuthService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -19,7 +18,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       .AddJwtBearer(options =>
       {
           options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app";
-          //options.Audience = "your-audience"; // The audience to validate against
+          options.Audience = "cost-tracking-client"; // The audience to validate against
 
           // Add the token validation parameters
           options.TokenValidationParameters = new TokenValidationParameters
@@ -29,7 +28,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
               ValidateLifetime = true,
               ValidateIssuerSigningKey = true,
               ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
-              //ValidAudience = "your-audience",
+              ValidAudience = "cost-tracking-client",
               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
           };
       });

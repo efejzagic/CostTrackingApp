@@ -1,11 +1,18 @@
 ﻿using AuthService.Models;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace AuthService.Services
 {
     public class LoginService
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public LoginService(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
         public async Task<TokenResponse> LoginToken(LoginRequest model)
         {
             string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
@@ -64,8 +71,22 @@ namespace AuthService.Services
                 // Handle any exceptions that occurred during the login process
                 throw new Exception ($"An error occurred during login: {ex.Message}");
             }
-
         }
 
+        public async Task<KeycloakUserData> GetUserData()
+        {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var email = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+            var name = _httpContextAccessor.HttpContext.User.FindFirst(claim => claim.Type == "name")?.Value;
+
+            var userData = new KeycloakUserData
+            {
+                Id = userId, 
+                Email = email, 
+                Name = name 
+            };
+
+            return userData;
+        }
     }
 }
