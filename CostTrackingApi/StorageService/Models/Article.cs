@@ -20,6 +20,8 @@ namespace StorageService.Models
 
         [Required]
         public int SupplierId { get; set; }
+
+        public Supplier Supplier { get; set; }
         public bool retired { get; set; } = false;
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public DateTime? DateModified { get; set; }

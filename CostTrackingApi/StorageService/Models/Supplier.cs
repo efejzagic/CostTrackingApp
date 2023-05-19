@@ -19,6 +19,7 @@ namespace StorageService.Models
         public string Email { get; set; }
         [Required]
         public string Phone { get; set; }
+        public ICollection<Article> Articles { get; set; } = new List<Article>();
 
         public bool retired { get; set; } = false;
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;

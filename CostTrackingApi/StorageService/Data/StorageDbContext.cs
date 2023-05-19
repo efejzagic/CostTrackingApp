@@ -16,6 +16,18 @@ namespace StorageService.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder
+                .Entity<Supplier>()
+                .HasMany(p => p.Articles)
+                .WithOne(p => p.Supplier!)
+                .HasForeignKey(p => p.SupplierId);
+
+            modelBuilder
+              .Entity<Article>()
+              .HasOne(p => p.Supplier)
+              .WithMany(p => p.Articles)
+              .HasForeignKey(p => p.SupplierId);
+
             Seed(modelBuilder);
         }
 
