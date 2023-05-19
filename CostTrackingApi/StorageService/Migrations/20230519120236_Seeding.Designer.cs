@@ -12,8 +12,8 @@ using StorageService.Data;
 namespace StorageService.Migrations
 {
     [DbContext(typeof(StorageDbContext))]
-    [Migration("20230519074051_Supplier Dates")]
-    partial class SupplierDates
+    [Migration("20230519120236_Seeding")]
+    partial class Seeding
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,13 +61,15 @@ namespace StorageService.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SupplierId");
+
                     b.ToTable("Article");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6680),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4241),
                             Description = "Desc 1",
                             Name = "Article 1",
                             Price = 10.0,
@@ -78,7 +80,7 @@ namespace StorageService.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6690),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4249),
                             Description = "Desc 2",
                             Name = "Article 2",
                             Price = 20.0,
@@ -89,7 +91,7 @@ namespace StorageService.Migrations
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6694),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4341),
                             Description = "Desc 3",
                             Name = "Article 3",
                             Price = 30.0,
@@ -100,7 +102,7 @@ namespace StorageService.Migrations
                         new
                         {
                             Id = 4,
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6697),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4346),
                             Description = "Desc 4",
                             Name = "Article 4",
                             Price = 40.0,
@@ -111,7 +113,7 @@ namespace StorageService.Migrations
                         new
                         {
                             Id = 5,
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6700),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4349),
                             Description = "Desc 5",
                             Name = "Article 5",
                             Price = 50.0,
@@ -122,7 +124,7 @@ namespace StorageService.Migrations
                         new
                         {
                             Id = 6,
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6707),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4356),
                             Description = "Desc 6",
                             Name = "Article 6",
                             Price = 60.0,
@@ -184,7 +186,7 @@ namespace StorageService.Migrations
                             Address = "Address 1",
                             City = "City 1",
                             Country = "Country 1",
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6502),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4095),
                             Email = "email1@example.com",
                             Name = "Supplier 1",
                             Phone = "Phone 1",
@@ -196,12 +198,28 @@ namespace StorageService.Migrations
                             Address = "Address 2",
                             City = "City 2",
                             Country = "Country 2",
-                            DateCreated = new DateTime(2023, 5, 19, 7, 40, 51, 44, DateTimeKind.Utc).AddTicks(6515),
+                            DateCreated = new DateTime(2023, 5, 19, 12, 2, 36, 270, DateTimeKind.Utc).AddTicks(4151),
                             Email = "email2@example.com",
                             Name = "Supplier 2",
                             Phone = "Phone 2",
                             retired = false
                         });
+                });
+
+            modelBuilder.Entity("StorageService.Models.Article", b =>
+                {
+                    b.HasOne("StorageService.Models.Supplier", "Supplier")
+                        .WithMany("Articles")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("StorageService.Models.Supplier", b =>
+                {
+                    b.Navigation("Articles");
                 });
 #pragma warning restore 612, 618
         }

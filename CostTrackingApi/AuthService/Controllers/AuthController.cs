@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using AuthService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
+using System.Net.Http;
+using System.Text;
+using System.Xml.Linq;
 
 namespace AuthService.Controllers
 {
@@ -17,15 +19,18 @@ namespace AuthService.Controllers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly LoginService _loginService;
+        private readonly UserService _userService;
 
 
-        public AuthController(IHttpContextAccessor httpContextAccessor, LoginService loginService)
+
+        public AuthController(IHttpContextAccessor httpContextAccessor, LoginService loginService, UserService userService)
         {
             _httpContextAccessor = httpContextAccessor;
             _loginService = loginService;
+            _userService = userService;
         }
 
-        
+
 
         [HttpGet]
         [Route("Id")]
@@ -47,7 +52,7 @@ namespace AuthService.Controllers
         [Route("Proba")]
         public string Proba()
         {
-            
+
             // Use the user ID or other claims as needed
             return "PROSLO";
         }
@@ -61,11 +66,18 @@ namespace AuthService.Controllers
             {
                 response = await _loginService.LoginToken(model);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
             return Ok(response.AccessToken);
+        }
+
+        [HttpPost("CreateUser")]
+        [AllowAnonymous]
+        public async Task<Response<string>> CreateUser(CreateUserModel model)
+        {
+            return await _userService.CreateUser(model);
         }
     }
 }
