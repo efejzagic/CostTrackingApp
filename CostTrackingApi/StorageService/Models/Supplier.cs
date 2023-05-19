@@ -2,7 +2,7 @@
 
 namespace StorageService.Models
 {
-    public class Supplier
+    public class Supplier : IAuditable
     {
         [Key]
         public int Id { get; set; }
@@ -21,6 +21,7 @@ namespace StorageService.Models
         public string Phone { get; set; }
 
         public bool retired { get; set; } = false;
-        
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+        public DateTime? DateModified { get; set; }
     }
 }

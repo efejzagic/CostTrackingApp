@@ -4,7 +4,7 @@ using StorageService.Models;
 
 namespace StorageService.DTO
 {
-    public class ArticleDTO
+    public class ArticleDTO : IAuditable
     {
         public int Id { get; set; }
 
@@ -16,5 +16,7 @@ namespace StorageService.DTO
         public string Description { get; set; }
         public Supplier Supplier { get; set; }
         public bool retired { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
     }
 }

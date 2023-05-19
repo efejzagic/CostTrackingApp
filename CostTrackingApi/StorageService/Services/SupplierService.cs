@@ -37,6 +37,7 @@ namespace StorageService.Services
 
         public async Task<SupplierDTO> Edit(Supplier supplier)
         {
+            supplier.DateModified = DateTime.UtcNow;
             var newSupplier = await _supplierRepo.Edit(supplier);
             return _mapper.Map<Supplier, SupplierDTO>(newSupplier);
         }

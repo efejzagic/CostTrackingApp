@@ -16,7 +16,8 @@ namespace StorageService.DTO
         public string Phone { get; set; }
 
         public ICollection<Article> Articles { get; set; }
-
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
         public bool retired { get; set; } 
 
     }

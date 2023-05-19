@@ -47,6 +47,7 @@ namespace StorageService.Repositories
             editSupplier.Country = supplier.Country;
             editSupplier.Email = supplier.Email;
             editSupplier.Phone = supplier.Phone;
+            editSupplier.DateModified = supplier.DateModified;
             editSupplier.retired= supplier.retired;
 
             await _context.SaveChangesAsync();
