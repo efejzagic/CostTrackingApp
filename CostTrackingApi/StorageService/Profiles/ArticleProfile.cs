@@ -18,6 +18,7 @@ namespace StorageService.Profiles
                   .ForMember(d => d.Supplier, opt => opt.MapFrom(src => _supplierRepo.GetById(src.SupplierId).Result));
             CreateMap<Article, ArticleSupplierDTO>();
             CreateMap<ArticleEditDTO, Article>();
+            CreateMap<ArticleCreateDTO, Article>();
 
             //CreateMap<CreateArticleDTO, Article>();
         }

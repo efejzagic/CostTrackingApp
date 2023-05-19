@@ -35,14 +35,14 @@ namespace StorageService.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<SupplierDTO> Create(Supplier supplier)
+        public async Task<SupplierDTO> Create(SupplierCreateDTO supplier)
         {
             return await _supplierService.Create(supplier);
         }
 
         [HttpPut]
         [Route("Edit")]
-        public async Task<SupplierDTO> Edit(Supplier supplier)
+        public async Task<SupplierDTO> Edit(SupplierEditDTO supplier)
         {
             return await _supplierService.Edit(supplier);
         }

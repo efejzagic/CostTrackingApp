@@ -16,6 +16,8 @@ namespace StorageService.Profiles
 
 
             CreateMap<Supplier, SupplierArticleDTO>();
+            CreateMap<SupplierCreateDTO, Supplier>();
+            CreateMap<SupplierEditDTO, Supplier>();
 
             CreateMap<Supplier, SupplierDTO>()
                 .PreserveReferences()

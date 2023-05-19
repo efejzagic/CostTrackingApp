@@ -29,16 +29,18 @@ namespace StorageService.Services
             return _mapper.Map<Supplier, SupplierDTO>(supplier);
         }
 
-        public async Task<SupplierDTO> Create(Supplier supplier)
+        public async Task<SupplierDTO> Create(SupplierCreateDTO supplier)
         {
-            var newSupplier = await _supplierRepo.Create(supplier);
+            var mapped = _mapper.Map<Supplier>(supplier);
+            var newSupplier = await _supplierRepo.Create(mapped);
             return _mapper.Map<Supplier, SupplierDTO>(newSupplier);
         }
 
-        public async Task<SupplierDTO> Edit(Supplier supplier)
+        public async Task<SupplierDTO> Edit(SupplierEditDTO supplier)
         {
-            supplier.DateModified = DateTime.UtcNow;
-            var newSupplier = await _supplierRepo.Edit(supplier);
+            var mapped = _mapper.Map<Supplier>(supplier);
+            mapped.DateModified = DateTime.UtcNow;
+            var newSupplier = await _supplierRepo.Edit(mapped);
             return _mapper.Map<Supplier, SupplierDTO>(newSupplier);
         }
 
