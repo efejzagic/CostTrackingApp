@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StorageService.DTO;
+using StorageService.DTO.Supplier;
 using StorageService.Interfaces;
 using StorageService.Models;
 using StorageService.Services;

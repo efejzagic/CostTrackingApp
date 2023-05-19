@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Data;
-using StorageService.DTO;
+using StorageService.DTO.Article;
 using StorageService.Interfaces;
 using StorageService.Models;
 using StorageService.Services;
@@ -29,17 +29,18 @@ namespace StorageService.Controllers
         [HttpGet("Id")]
         public async Task<ArticleDTO> GetById(int id)
         {
-            return await _articleService.GetById(id);  
+            return await _articleService.GetById(id);
         }
 
-        [HttpPost]
-        public async Task<ArticleDTO> Create(Article article)
+        [HttpPost("Create")]
+        public async Task<ArticleDTO> Create(ArticleCreateDTO article)
         {
+            var newArticle = article;
             return await _articleService.Create(article);
         }
 
         [HttpPut("Edit")]
-        public async Task<ArticleDTO> Edit (Article article)
+        public async Task<ArticleDTO> Edit (ArticleEditDTO article)
         {
             return await _articleService.Edit(article);
         }

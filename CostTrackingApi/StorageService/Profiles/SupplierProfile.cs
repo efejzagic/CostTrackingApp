@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using StorageService.DTO;
+using StorageService.DTO.Supplier;
 using StorageService.Interfaces;
 using StorageService.Models;
 
@@ -13,7 +14,11 @@ namespace StorageService.Profiles
         {
             _articleRepo = articleRepo;
 
-            CreateMap<Supplier,SupplierDTO>()
+
+            CreateMap<Supplier, SupplierArticleDTO>();
+
+            CreateMap<Supplier, SupplierDTO>()
+                .PreserveReferences()
                 .ForMember(d => d.Articles, opt => opt.MapFrom(src => _articleRepo.GetArticlesBySupplierId(src.Id).Result));
 
         }
