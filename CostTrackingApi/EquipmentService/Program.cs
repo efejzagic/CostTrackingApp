@@ -1,3 +1,5 @@
+using EquipmentService.Interfaces;
+using EquipmentService.Repositories;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Data;
 
@@ -10,6 +12,8 @@ builder.Services.AddDbContext<EquipmentDbContext>(options =>
 
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IMachineryRepository, MachineryRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
