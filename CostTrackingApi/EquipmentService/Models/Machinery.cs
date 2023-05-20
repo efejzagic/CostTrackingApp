@@ -1,16 +1,24 @@
-﻿namespace EquipmentService.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EquipmentService.Models
 {
     public class Machinery
     {
-
-        public int Id { get; set; } 
+        [Key]
+        [Required]
+        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
+        [Required]
         public DateOnly ProductionYear { get; set; }
-
-        public Status Status { get; set; }
+        [Required]
+        public MachineryStatus MachineryStatus { get; set; }
+        [Required]
         public string Location { get; set; }
+
+        public bool retired { get; set; }
 
     }
 }
