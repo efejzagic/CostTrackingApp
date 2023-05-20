@@ -17,15 +17,18 @@ builder.Services.AddDbContext<EquipmentDbContext>(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IMachineryRepository, MachineryRepository>();
+builder.Services.AddScoped<IToolRepository, ToolRepository>();
+
+
 
 builder.Services.AddScoped<MachineryService>();
-
+builder.Services.AddScoped<ToolService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MachineryProfile());
-
+    cfg.AddProfile(new ToolProfile());
 }).CreateMapper());
 
 
