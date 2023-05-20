@@ -4,9 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using AuthService.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Net.Http;
-using System.Text;
-using System.Xml.Linq;
 
 namespace AuthService.Controllers
 {
@@ -78,6 +75,12 @@ namespace AuthService.Controllers
         public async Task<Response<string>> CreateUser(CreateUserModel model)
         {
             return await _userService.CreateUser(model);
+        }
+        [HttpPut("EditUser")]
+        [AllowAnonymous]
+        public async Task<Response<string>> EditUser(CreateUserModel model)
+        {
+            return await _userService.EditUser(model);
         }
     }
 }
