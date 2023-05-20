@@ -22,6 +22,12 @@ namespace StorageService.Services
             return _mapper.Map<IEnumerable<Article>, IEnumerable<ArticleDTO>>(articles);
 
         }
+        public async Task<IEnumerable<ArticleDTO>> GetArticlesBySupplierId(int supplierId)
+        {
+            var articles = await _articleRepo.GetArticlesBySupplierId(supplierId);
+            return _mapper.Map<IEnumerable<Article>, IEnumerable<ArticleDTO>>(articles);
+
+        }
 
         public async Task<ArticleDTO> GetById(int id)
         {
