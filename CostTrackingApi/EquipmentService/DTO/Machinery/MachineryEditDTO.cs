@@ -1,18 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EquipmentService.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace EquipmentService.Models
+namespace EquipmentService.DTO.Machinery
 {
-    public class Machinery
+    public class MachineryEditDTO
     {
         [Key]
-        
+        [Required]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
         [Required]
-        public DateOnly ProductionYear { get; set; }
+        public DateTime ProductionYear { get; set; }
         [Required]
         public MachineryStatus MachineryStatus { get; set; }
         [Required]

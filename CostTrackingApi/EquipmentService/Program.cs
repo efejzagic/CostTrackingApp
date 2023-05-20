@@ -1,5 +1,8 @@
+using AutoMapper;
 using EquipmentService.Interfaces;
+using EquipmentService.Profiles;
 using EquipmentService.Repositories;
+using EquipmentService.Services;
 using Microsoft.EntityFrameworkCore;
 using StorageService.Data;
 
@@ -14,6 +17,18 @@ builder.Services.AddDbContext<EquipmentDbContext>(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IMachineryRepository, MachineryRepository>();
+
+builder.Services.AddScoped<MachineryService>();
+
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new MachineryProfile());
+
+}).CreateMapper());
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
