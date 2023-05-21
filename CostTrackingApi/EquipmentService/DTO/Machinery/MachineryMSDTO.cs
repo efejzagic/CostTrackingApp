@@ -10,7 +10,6 @@ namespace EquipmentService.DTO.Machinery
         public string Description { get; set; }
         public DateOnly ProductionYear { get; set; }
         public MachineryStatus MachineryStatus { get; set; }
-       
         public string Location { get; set; }
         public bool retired { get; set; }
     }

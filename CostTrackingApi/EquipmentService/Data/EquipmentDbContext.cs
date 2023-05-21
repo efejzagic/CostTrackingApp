@@ -13,6 +13,7 @@ namespace StorageService.Data
         public DbSet<Machinery> Machinery { get; set; }
         public DbSet<Tool> Tool{ get; set; }
         public DbSet<MachineryServicing> MachineryServicing { get; set; }
+        public DbSet<ToolServicing> ToolServicing { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +32,18 @@ namespace StorageService.Data
               .HasOne(p => p.Machinery)
               .WithMany(p => p.ServicingHistory)
               .HasForeignKey(p => p.MachineryId);
+
+            modelBuilder
+             .Entity<Tool>()
+             .HasMany(p => p.ServicingHistory)
+             .WithOne(p => p.Tool!)
+             .HasForeignKey(p => p.ToolId);
+
+            modelBuilder
+              .Entity<ToolServicing>()
+              .HasOne(p => p.Tool)
+              .WithMany(p => p.ServicingHistory)
+              .HasForeignKey(p => p.ToolId);
 
 
 

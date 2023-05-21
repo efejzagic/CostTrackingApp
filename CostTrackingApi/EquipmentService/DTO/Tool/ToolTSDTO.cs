@@ -1,17 +1,15 @@
 ﻿using EquipmentService.DTO.MachineryServicing;
 using EquipmentService.Models;
-using System.ComponentModel.DataAnnotations;
 
-namespace EquipmentService.DTO.Tool
+namespace EquipmentService.DTO.Machinery
 {
-    public class ToolDTO
+    public class ToolTSDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public ToolStatus ToolStatus { get; set; }
         public string Location { get; set; }
-        public List<ToolServicingMDTO> ServicingHistory { get; set; }
 
         public bool retired { get; set; }
     }
