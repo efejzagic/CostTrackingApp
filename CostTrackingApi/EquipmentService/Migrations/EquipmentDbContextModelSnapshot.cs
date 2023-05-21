@@ -111,6 +111,68 @@ namespace EquipmentService.Migrations
                     b.HasIndex("MachineryId");
 
                     b.ToTable("MachineryServicing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Desc 1",
+                            MachineryId = 1,
+                            Price = 10.0,
+                            ServiceDate = new DateTime(2023, 5, 21, 19, 4, 2, 353, DateTimeKind.Utc).AddTicks(9476),
+                            Title = "Machine Service 1",
+                            retired = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Desc 2",
+                            MachineryId = 2,
+                            Price = 20.5,
+                            ServiceDate = new DateTime(2023, 5, 21, 19, 4, 2, 353, DateTimeKind.Utc).AddTicks(9479),
+                            Title = "Machine Serivce 2",
+                            retired = false
+                        });
+                });
+
+            modelBuilder.Entity("EquipmentService.Models.Maintenance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("MachineryId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("MaintenanceDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ToolId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("retired")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MachineryId");
+
+                    b.HasIndex("ToolId");
+
+                    b.ToTable("Maintenance");
                 });
 
             modelBuilder.Entity("EquipmentService.Models.Tool", b =>
@@ -197,6 +259,28 @@ namespace EquipmentService.Migrations
                     b.HasIndex("ToolId");
 
                     b.ToTable("ToolServicing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Desc 1",
+                            Price = 10.0,
+                            ServiceDate = new DateTime(2023, 5, 21, 19, 4, 2, 353, DateTimeKind.Utc).AddTicks(9497),
+                            Title = "Machine Service 1",
+                            ToolId = 1,
+                            retired = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Desc 2",
+                            Price = 20.5,
+                            ServiceDate = new DateTime(2023, 5, 21, 19, 4, 2, 353, DateTimeKind.Utc).AddTicks(9499),
+                            Title = "Machine Serivce 2",
+                            ToolId = 2,
+                            retired = false
+                        });
                 });
 
             modelBuilder.Entity("EquipmentService.Models.MachineryServicing", b =>
@@ -208,6 +292,17 @@ namespace EquipmentService.Migrations
                         .IsRequired();
 
                     b.Navigation("Machinery");
+                });
+
+            modelBuilder.Entity("EquipmentService.Models.Maintenance", b =>
+                {
+                    b.HasOne("EquipmentService.Models.Machinery", null)
+                        .WithMany("MaintenanceHistory")
+                        .HasForeignKey("MachineryId");
+
+                    b.HasOne("EquipmentService.Models.Tool", null)
+                        .WithMany("MaintenanceHistory")
+                        .HasForeignKey("ToolId");
                 });
 
             modelBuilder.Entity("EquipmentService.Models.ToolServicing", b =>
@@ -223,11 +318,15 @@ namespace EquipmentService.Migrations
 
             modelBuilder.Entity("EquipmentService.Models.Machinery", b =>
                 {
+                    b.Navigation("MaintenanceHistory");
+
                     b.Navigation("ServicingHistory");
                 });
 
             modelBuilder.Entity("EquipmentService.Models.Tool", b =>
                 {
+                    b.Navigation("MaintenanceHistory");
+
                     b.Navigation("ServicingHistory");
                 });
 #pragma warning restore 612, 618

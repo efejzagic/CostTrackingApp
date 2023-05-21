@@ -12,8 +12,8 @@ using StorageService.Data;
 namespace EquipmentService.Migrations
 {
     [DbContext(typeof(EquipmentDbContext))]
-    [Migration("20230521083353_MachineryServicing")]
-    partial class MachineryServicing
+    [Migration("20230521183507_Seed data")]
+    partial class Seeddata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,6 +114,28 @@ namespace EquipmentService.Migrations
                     b.HasIndex("MachineryId");
 
                     b.ToTable("MachineryServicing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Desc 1",
+                            MachineryId = 1,
+                            Price = 10.0,
+                            ServiceDate = new DateTime(2023, 5, 21, 18, 35, 7, 495, DateTimeKind.Utc).AddTicks(2596),
+                            Title = "Machine Service 1",
+                            retired = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Desc 2",
+                            MachineryId = 2,
+                            Price = 20.5,
+                            ServiceDate = new DateTime(2023, 5, 21, 18, 35, 7, 495, DateTimeKind.Utc).AddTicks(2599),
+                            Title = "Machine Serivce 2",
+                            retired = false
+                        });
                 });
 
             modelBuilder.Entity("EquipmentService.Models.Tool", b =>
@@ -167,6 +189,63 @@ namespace EquipmentService.Migrations
                         });
                 });
 
+            modelBuilder.Entity("EquipmentService.Models.ToolServicing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime>("ServiceDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ToolId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("retired")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ToolId");
+
+                    b.ToTable("ToolServicing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Desc 1",
+                            Price = 10.0,
+                            ServiceDate = new DateTime(2023, 5, 21, 18, 35, 7, 495, DateTimeKind.Utc).AddTicks(2618),
+                            Title = "Machine Service 1",
+                            ToolId = 1,
+                            retired = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Desc 2",
+                            Price = 20.5,
+                            ServiceDate = new DateTime(2023, 5, 21, 18, 35, 7, 495, DateTimeKind.Utc).AddTicks(2621),
+                            Title = "Machine Serivce 2",
+                            ToolId = 2,
+                            retired = false
+                        });
+                });
+
             modelBuilder.Entity("EquipmentService.Models.MachineryServicing", b =>
                 {
                     b.HasOne("EquipmentService.Models.Machinery", "Machinery")
@@ -178,7 +257,23 @@ namespace EquipmentService.Migrations
                     b.Navigation("Machinery");
                 });
 
+            modelBuilder.Entity("EquipmentService.Models.ToolServicing", b =>
+                {
+                    b.HasOne("EquipmentService.Models.Tool", "Tool")
+                        .WithMany("ServicingHistory")
+                        .HasForeignKey("ToolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tool");
+                });
+
             modelBuilder.Entity("EquipmentService.Models.Machinery", b =>
+                {
+                    b.Navigation("ServicingHistory");
+                });
+
+            modelBuilder.Entity("EquipmentService.Models.Tool", b =>
                 {
                     b.Navigation("ServicingHistory");
                 });

@@ -14,6 +14,7 @@ namespace StorageService.Data
         public DbSet<Tool> Tool{ get; set; }
         public DbSet<MachineryServicing> MachineryServicing { get; set; }
         public DbSet<ToolServicing> ToolServicing { get; set; }
+        public DbSet<Maintenance> Maintenance { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +27,8 @@ namespace StorageService.Data
               .HasMany(p => p.ServicingHistory)
               .WithOne(p => p.Machinery!)
               .HasForeignKey(p => p.MachineryId);
+
+
 
             modelBuilder
               .Entity<MachineryServicing>()
@@ -45,7 +48,7 @@ namespace StorageService.Data
               .WithMany(p => p.ServicingHistory)
               .HasForeignKey(p => p.ToolId);
 
-
+         
 
             Seed(modelBuilder);
         }
@@ -74,6 +77,28 @@ namespace StorageService.Data
                 };
 
             builder.Entity<Tool>().HasData(tools);
+
+
+            var machineryServicing = new List<MachineryServicing>()
+                {
+                    new MachineryServicing() { Id=1, Title = "Machine Service 1", Description = "Desc 1",Price = 10.0, MachineryId = 1, ServiceDate = DateTime.UtcNow, retired = false},
+                    new MachineryServicing() { Id=2, Title = "Machine Serivce 2", Description = "Desc 2", Price = 20.5, MachineryId = 2, ServiceDate = DateTime.UtcNow, retired = false},
+
+                };
+
+            builder.Entity<MachineryServicing>().HasData(machineryServicing);
+
+            var toolServicing = new List<ToolServicing>()
+                {
+                    new ToolServicing() { Id=1, Title = "Machine Service 1", Description = "Desc 1",Price = 10.0, ToolId = 1, ServiceDate = DateTime.UtcNow, retired = false},
+                    new ToolServicing() { Id=2, Title = "Machine Serivce 2", Description = "Desc 2", Price = 20.5, ToolId = 2, ServiceDate = DateTime.UtcNow, retired = false},
+
+                };
+
+            builder.Entity<ToolServicing>().HasData(toolServicing);
+
+
+
         }
     }
 }

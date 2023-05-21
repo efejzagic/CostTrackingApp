@@ -12,6 +12,7 @@ namespace EquipmentService.DTO.Tool
         public ToolStatus ToolStatus { get; set; }
         public string Location { get; set; }
         public List<ToolServicingMDTO> ServicingHistory { get; set; }
+        public List<Models.Maintenance> MaintenanceHistory { get; set; }
 
         public bool retired { get; set; }
     }

@@ -15,6 +15,8 @@ namespace EquipmentService.Models
         [Required]
         public string Location { get; set; }
         public ICollection<ToolServicing> ServicingHistory { get; set; } = new List<ToolServicing>();
+        public ICollection<Maintenance> MaintenanceHistory { get; set; } = new List<Maintenance>();
+
 
         public bool retired { get; set; }
     }

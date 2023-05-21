@@ -1,5 +1,4 @@
 ﻿using EquipmentService.DTO.Machinery;
-using System.ComponentModel.DataAnnotations;
 
 namespace EquipmentService.DTO.MachineryServicing
 {
