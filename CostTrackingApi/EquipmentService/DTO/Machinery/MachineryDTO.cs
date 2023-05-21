@@ -1,4 +1,5 @@
-﻿using EquipmentService.Models;
+﻿using EquipmentService.DTO.MachineryServicing;
+using EquipmentService.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace EquipmentService.DTO.Machinery
@@ -10,6 +11,8 @@ namespace EquipmentService.DTO.Machinery
         public string Description { get; set; }
         public DateOnly ProductionYear { get; set; }
         public MachineryStatus MachineryStatus { get; set; }
+
+        public List<MachineryServicingMDTO> ServicingHistory { get; set; }
         public string Location { get; set; }
         public bool retired { get; set; }
     }

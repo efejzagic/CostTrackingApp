@@ -18,17 +18,20 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IMachineryRepository, MachineryRepository>();
 builder.Services.AddScoped<IToolRepository, ToolRepository>();
+builder.Services.AddScoped<IMachineryServicingRepository, MachineryServicingRepository>();
 
 
 
 builder.Services.AddScoped<MachineryService>();
 builder.Services.AddScoped<ToolService>();
+builder.Services.AddScoped<MachineryServicingService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new MachineryProfile());
+    cfg.AddProfile(new MachineryProfile(provider.GetService<IMachineryServicingRepository>()));
     cfg.AddProfile(new ToolProfile());
+    cfg.AddProfile(new MachineryServicingProfile(provider.GetService<IMachineryRepository>()));
 }).CreateMapper());
 
 

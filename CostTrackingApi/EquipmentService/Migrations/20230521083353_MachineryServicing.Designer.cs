@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using StorageService.Data;
@@ -11,9 +12,11 @@ using StorageService.Data;
 namespace EquipmentService.Migrations
 {
     [DbContext(typeof(EquipmentDbContext))]
-    partial class EquipmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230521083353_MachineryServicing")]
+    partial class MachineryServicing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

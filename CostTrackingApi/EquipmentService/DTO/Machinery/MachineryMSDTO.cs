@@ -1,25 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EquipmentService.DTO.MachineryServicing;
+using EquipmentService.Models;
 
-namespace EquipmentService.Models
+namespace EquipmentService.DTO.Machinery
 {
-    public class Machinery
+    public class MachineryMSDTO
     {
-        [Key]
-        
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
-
         public string Description { get; set; }
-        [Required]
         public DateOnly ProductionYear { get; set; }
-        [Required]
         public MachineryStatus MachineryStatus { get; set; }
-        [Required]
+       
         public string Location { get; set; }
-
-        public ICollection<MachineryServicing> ServicingHistory { get; set; } = new List<MachineryServicing>();
         public bool retired { get; set; }
-
     }
 }
