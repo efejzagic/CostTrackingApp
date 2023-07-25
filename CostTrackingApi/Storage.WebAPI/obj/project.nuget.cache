@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "qXDiTH3WcJgedgz6LhE3QtPYgXpA5UJ+aGWxarmJy3uZgZLxEFFI0y9JNezPSYM2q0bLF4IaOmzd70W8jqv6yQ==",
+  "success": true,
+  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.WebAPI\\Storage.WebAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
