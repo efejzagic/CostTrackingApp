@@ -1,0 +1,15 @@
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\Equipment.Application.deps.json
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\Equipment.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\Equipment.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\Equipment.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\Equipment.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.csproj.CopyComplete
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\refint\Equipment.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\ref\Equipment.Application.dll

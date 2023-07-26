@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Infrastructure.Persistance.deps.json
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Infrastructure.Persistance.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\refint\Storage.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\ref\Storage.Infrastructure.Persistance.dll

@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\Auth.Application.deps.json
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\Auth.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\Auth.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\refint\Auth.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\ref\Auth.Application.dll
