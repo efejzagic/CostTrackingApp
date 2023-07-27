@@ -1,4 +1,4 @@
-﻿using Equipment.Application.DTOs.MachineryServicing;
+﻿using Equipment.Application.DTOs.MachineryService;
 using Equipment.Domain.Entities;
 
 namespace Equipment.Application.DTOs.Tool

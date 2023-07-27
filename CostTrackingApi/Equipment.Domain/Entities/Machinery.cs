@@ -19,7 +19,7 @@ namespace Equipment.Domain.Entities
         [Required]
         public string Location { get; set; }
 
-        public ICollection<MachineryServicing> ServicingHistory { get; set; } = new List<MachineryServicing>();
+        public ICollection<MachineryService> ServicingHistory { get; set; } = new List<MachineryService>();
         public ICollection<Maintenance> MaintenanceHistory { get; set; } = new List<Maintenance>();
 
         public bool retired { get; set; }

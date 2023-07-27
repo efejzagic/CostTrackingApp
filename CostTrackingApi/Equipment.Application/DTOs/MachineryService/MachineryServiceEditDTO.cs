@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Equipment.Application.DTOs.MachineryServicing
+namespace Equipment.Application.DTOs.MachineryService
 {
-    public class MachineryServicingEditDTO
+    public class MachineryServiceEditDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }

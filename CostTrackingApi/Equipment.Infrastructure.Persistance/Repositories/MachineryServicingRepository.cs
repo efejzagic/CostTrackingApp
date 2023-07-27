@@ -13,7 +13,7 @@ namespace EquipmentService.Repositories
             _context = context;
         }
 
-        public async Task<MachineryServicing> Create(MachineryServicing entity)
+        public async Task<MachineryService> Create(MachineryService entity)
         {
             _context.MachineryServicing.Add(entity);
             await _context.SaveChangesAsync();
@@ -32,7 +32,7 @@ namespace EquipmentService.Repositories
             return true;
         }
 
-        public async Task<MachineryServicing> Edit(MachineryServicing entity)
+        public async Task<MachineryService> Edit(MachineryService entity)
         {
             var editEntity = await GetById(entity.Id);
 
@@ -53,22 +53,22 @@ namespace EquipmentService.Repositories
             return editEntity;
         }
 
-        public async Task<IEnumerable<MachineryServicing>> GetAll()
+        public async Task<IEnumerable<MachineryService>> GetAll()
         {
             return await _context.MachineryServicing.ToListAsync();
         }
 
-        public async Task<MachineryServicing> GetById(int id)
+        public async Task<MachineryService> GetById(int id)
         {
             return await _context.MachineryServicing.FirstOrDefaultAsync(ms => ms.Id == id);
         }
 
-        public async Task<MachineryServicing> GetByTitle(string title)
+        public async Task<MachineryService> GetByTitle(string title)
         {
             return await _context.MachineryServicing.FirstOrDefaultAsync(ms => ms.Title == title);
         }
 
-        public async Task<MachineryServicing> GetByServiceDate(DateTime serviceDate)
+        public async Task<MachineryService> GetByServiceDate(DateTime serviceDate)
         {
             return await _context.MachineryServicing.FirstOrDefaultAsync(ms => DateOnly.FromDateTime(ms.ServiceDate) == 
                                                                                     DateOnly.FromDateTime(serviceDate));
@@ -87,7 +87,7 @@ namespace EquipmentService.Repositories
 
         }
 
-        public async Task<IEnumerable<MachineryServicing>> GetServicingByMachineryId(int machineryId)
+        public async Task<IEnumerable<MachineryService>> GetServicingByMachineryId(int machineryId)
         {
             return await _context.MachineryServicing.Where(ms => ms.MachineryId == machineryId).ToListAsync();
         }

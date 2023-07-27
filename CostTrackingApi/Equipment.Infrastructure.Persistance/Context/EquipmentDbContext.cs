@@ -12,7 +12,7 @@ namespace Equipment.Infrastructure.Persistance.Context
 
         public DbSet<Machinery> Machinery { get; set; }
         public DbSet<Tool> Tool { get; set; }
-        public DbSet<MachineryServicing> MachineryServicing { get; set; }
+        public DbSet<MachineryService> MachineryServicing { get; set; }
         public DbSet<ToolServicing> ToolServicing { get; set; }
         public DbSet<Maintenance> Maintenance { get; set; }
 
@@ -31,7 +31,7 @@ namespace Equipment.Infrastructure.Persistance.Context
 
 
             modelBuilder
-              .Entity<MachineryServicing>()
+              .Entity<MachineryService>()
               .HasOne(p => p.Machinery)
               .WithMany(p => p.ServicingHistory)
               .HasForeignKey(p => p.MachineryId);
@@ -92,14 +92,14 @@ namespace Equipment.Infrastructure.Persistance.Context
             builder.Entity<Tool>().HasData(tools);
 
 
-            var machineryServicing = new List<MachineryServicing>()
+            var machineryServicing = new List<MachineryService>()
                 {
-                    new MachineryServicing() { Id=1, Title = "Machine Service 1", Description = "Desc 1",Price = 10.0, MachineryId = 1, ServiceDate = DateTime.UtcNow, retired = false},
-                    new MachineryServicing() { Id=2, Title = "Machine Serivce 2", Description = "Desc 2", Price = 20.5, MachineryId = 2, ServiceDate = DateTime.UtcNow, retired = false},
+                    new MachineryService() { Id=1, Title = "Machine Service 1", Description = "Desc 1",Price = 10.0, MachineryId = 1, ServiceDate = DateTime.UtcNow, retired = false},
+                    new MachineryService() { Id=2, Title = "Machine Serivce 2", Description = "Desc 2", Price = 20.5, MachineryId = 2, ServiceDate = DateTime.UtcNow, retired = false},
 
                 };
 
-            builder.Entity<MachineryServicing>().HasData(machineryServicing);
+            builder.Entity<MachineryService>().HasData(machineryServicing);
 
             var toolServicing = new List<ToolServicing>()
                 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Equipment.Application.DTOs.MachineryServicing;
+using Equipment.Application.DTOs.MachineryService;
 using Equipment.Application.Interfaces;
 using Equipment.Domain.Entities;
 using Equipment.Application.DTOs.ToolServicing;

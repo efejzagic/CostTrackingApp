@@ -49,7 +49,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MachineryServicing",
+                name: "MachineryService",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -145,7 +145,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "MachineryServicing",
+                table: "MachineryService",
                 columns: new[] { "Id", "Description", "MachineryId", "Price", "ServiceDate", "Title", "retired" },
                 values: new object[,]
                 {
@@ -164,7 +164,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_MachineryServicing_MachineryId",
-                table: "MachineryServicing",
+                table: "MachineryService",
                 column: "MachineryId");
 
             migrationBuilder.CreateIndex(
@@ -187,7 +187,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MachineryServicing");
+                name: "MachineryService");
 
             migrationBuilder.DropTable(
                 name: "Maintenance");

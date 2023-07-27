@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Equipment.Application.Parameters.Machinery;
-using Equipment.Application.DTOs.MachineryServicing;
+using Equipment.Application.DTOs.MachineryService;
 
 namespace Equipment.Application.Features.Machinery.Queries
 {
@@ -21,7 +21,7 @@ namespace Equipment.Application.Features.Machinery.Queries
         public int PageSize { get; set; }
         public IKey Key { get; set; }
 
-        public List<MachineryServicingMDTO> ServicingHistory { get; set; }
+        public List<MachineryServiceMDTO> ServicingHistory { get; set; }
 
     }
     public class GetAllMachineryQueryHandler: IRequestHandler<GetAllMachineryQuery, PagedResponse<IEnumerable<MachineryDTO>>>

@@ -1,9 +1,6 @@
-﻿using Equipment.Application.DTOs.Machinery;
-using System.ComponentModel.DataAnnotations;
-
-namespace Equipment.Application.DTOs.MachineryServicing
+﻿namespace Equipment.Application.DTOs.MachineryService
 {
-    public class MachineryServicingDTO
+    public class MachineryServiceMDTO
     {
         public int Id { get; set; }
 
@@ -14,11 +11,9 @@ namespace Equipment.Application.DTOs.MachineryServicing
         public double Price { get; set; }
         public int MachineryId { get; set; }
 
-        public MachineryMSDTO Machinery { get; set; }
 
         public DateTime ServiceDate { get; set; }
 
         public bool retired { get; set; }
-
     }
 }

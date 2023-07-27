@@ -1,25 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Equipment.Application.DTOs.Machinery;
+using Equipment.Application.Parameters;
+using System.ComponentModel.DataAnnotations;
 
-namespace Equipment.Domain.Entities
+namespace Equipment.Application.DTOs.MachineryService
 {
-    public class MachineryServicing
+    public class MachineryServiceDTO : RequestParameter
     {
-        [Key]
-        [Required]
         public int Id { get; set; }
 
-        [Required]
         public string Title { get; set; }
 
         public string Description { get; set; }
 
-        [Required]
         public double Price { get; set; }
-
-        [Required]
         public int MachineryId { get; set; }
 
-        public virtual Machinery Machinery { get; set; }
+        public MachineryMSDTO Machinery { get; set; }
 
         public DateTime ServiceDate { get; set; }
 

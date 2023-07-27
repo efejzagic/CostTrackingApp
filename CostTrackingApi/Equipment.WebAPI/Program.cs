@@ -71,7 +71,7 @@ builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new MachineryProfile(provider.GetService<IMachineryServicingRepository>()));
 
-    cfg.AddProfile(new MachineryServicingProfile(provider.GetService<IMachineryRepository>()));
+    cfg.AddProfile(new MachineryServiceProfile(provider.GetService<IMachineryRepository>()));
     cfg.AddProfile(new MaintenanceProfile());
     cfg.AddProfile(new ToolProfile(provider.GetService<IToolServicingRepository>()));
     cfg.AddProfile(new ToolServicingProfile(provider.GetService<IToolRepository>()));
