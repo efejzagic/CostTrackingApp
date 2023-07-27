@@ -103,7 +103,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ToolServicing",
+                name: "ToolService",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -154,7 +154,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "ToolServicing",
+                table: "ToolService",
                 columns: new[] { "Id", "Description", "Price", "ServiceDate", "Title", "ToolId", "retired" },
                 values: new object[,]
                 {
@@ -179,7 +179,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_ToolServicing_ToolId",
-                table: "ToolServicing",
+                table: "ToolService",
                 column: "ToolId");
         }
 
@@ -193,7 +193,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 name: "Maintenance");
 
             migrationBuilder.DropTable(
-                name: "ToolServicing");
+                name: "ToolService");
 
             migrationBuilder.DropTable(
                 name: "Machinery");

@@ -14,7 +14,7 @@ namespace Equipment.Domain.Entities
         public ToolStatus ToolStatus { get; set; }
         [Required]
         public string Location { get; set; }
-        public ICollection<ToolServicing> ServicingHistory { get; set; } = new List<ToolServicing>();
+        public ICollection<ToolService> ServicingHistory { get; set; } = new List<ToolService>();
         public ICollection<Maintenance> MaintenanceHistory { get; set; } = new List<Maintenance>();
 
 

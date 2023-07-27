@@ -1,6 +1,6 @@
-﻿namespace Equipment.Application.DTOs.ToolServicing
+﻿namespace Equipment.Application.DTOs.ToolService
 {
-    public class ToolServicingMDTO
+    public class ToolServiceMDTO
     {
         public int Id { get; set; }
 

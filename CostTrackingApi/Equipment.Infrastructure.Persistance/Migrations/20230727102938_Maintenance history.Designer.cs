@@ -224,7 +224,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Equipment.Domain.Entities.ToolServicing", b =>
+            modelBuilder.Entity("Equipment.Domain.Entities.ToolService", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -256,7 +256,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
 
                     b.HasIndex("ToolId");
 
-                    b.ToTable("ToolServicing");
+                    b.ToTable("ToolService");
 
                     b.HasData(
                         new
@@ -307,7 +307,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                     b.Navigation("Machinery");
                 });
 
-            modelBuilder.Entity("Equipment.Domain.Entities.ToolServicing", b =>
+            modelBuilder.Entity("Equipment.Domain.Entities.ToolService", b =>
                 {
                     b.HasOne("Equipment.Domain.Entities.Tool", "Tool")
                         .WithMany("ServicingHistory")

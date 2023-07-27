@@ -2,7 +2,7 @@
 
 namespace Equipment.Domain.Entities
 {
-    public class ToolServicing
+    public class ToolService
     {
         [Key]
         [Required]

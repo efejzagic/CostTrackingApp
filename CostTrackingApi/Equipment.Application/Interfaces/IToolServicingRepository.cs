@@ -4,17 +4,18 @@ namespace Equipment.Application.Interfaces
 {
     public interface IToolServicingRepository
     {
-        Task<IEnumerable<ToolServicing>> GetAll();
+        Task<IEnumerable<ToolService>> GetAll();
 
-        Task<ToolServicing> GetById(int id);
+        Task<ToolService> GetById(int id);
 
-        Task<ToolServicing> GetByTitle(string name);
-        Task<ToolServicing> GetByServiceDate(DateTime serviceDate);
+        Task<ToolService> GetByTitle(string name);
+        Task<ToolService> GetByServiceDate(DateTime serviceDate);
 
-        Task<ToolServicing> Create(ToolServicing entity);
-        Task<ToolServicing> Edit(ToolServicing entity);
+        Task<ToolService> Create(ToolService entity);
+        Task<ToolService> Edit(ToolService entity);
         Task<bool> Delete(int id);
         Task<bool> SoftDelete(int id);
-        Task<IEnumerable<ToolServicing>> GetServicingByToolId(int id);
+        Task<IEnumerable<ToolService>> GetServicingByToolId(int id);
+        Task<ToolService> GetByName(string name);
     }
 }

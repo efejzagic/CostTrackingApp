@@ -13,7 +13,7 @@ namespace Equipment.Infrastructure.Persistance.Context
         public DbSet<Machinery> Machinery { get; set; }
         public DbSet<Tool> Tool { get; set; }
         public DbSet<MachineryService> MachineryServicing { get; set; }
-        public DbSet<ToolServicing> ToolServicing { get; set; }
+        public DbSet<ToolService> ToolServicing { get; set; }
         public DbSet<Maintenance> Maintenance { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace Equipment.Infrastructure.Persistance.Context
              .HasForeignKey(p => p.ToolId);
 
             modelBuilder
-              .Entity<ToolServicing>()
+              .Entity<ToolService>()
               .HasOne(p => p.Tool)
               .WithMany(p => p.ServicingHistory)
               .HasForeignKey(p => p.ToolId);
@@ -101,14 +101,14 @@ namespace Equipment.Infrastructure.Persistance.Context
 
             builder.Entity<MachineryService>().HasData(machineryServicing);
 
-            var toolServicing = new List<ToolServicing>()
+            var toolServicing = new List<ToolService>()
                 {
-                    new ToolServicing() { Id=1, Title = "Tool Service 1", Description = "Desc 1",Price = 3.0, ToolId = 1, ServiceDate = DateTime.UtcNow, retired = false},
-                    new ToolServicing() { Id=2, Title = "Tool Serivce 2", Description = "Desc 2", Price = 12.5, ToolId = 2, ServiceDate = DateTime.UtcNow, retired = false},
+                    new ToolService() { Id=1, Title = "Tool Service 1", Description = "Desc 1",Price = 3.0, ToolId = 1, ServiceDate = DateTime.UtcNow, retired = false},
+                    new ToolService() { Id=2, Title = "Tool Serivce 2", Description = "Desc 2", Price = 12.5, ToolId = 2, ServiceDate = DateTime.UtcNow, retired = false},
 
                 };
 
-            builder.Entity<ToolServicing>().HasData(toolServicing);
+            builder.Entity<ToolService>().HasData(toolServicing);
 
 
 

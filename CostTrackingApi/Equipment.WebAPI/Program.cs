@@ -74,7 +74,7 @@ builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
     cfg.AddProfile(new MachineryServiceProfile(provider.GetService<IMachineryRepository>()));
     cfg.AddProfile(new MaintenanceProfile());
     cfg.AddProfile(new ToolProfile(provider.GetService<IToolServicingRepository>()));
-    cfg.AddProfile(new ToolServicingProfile(provider.GetService<IToolRepository>()));
+    cfg.AddProfile(new ToolServiceProfile(provider.GetService<IToolRepository>()));
 }).CreateMapper());
 
 builder.Services.AddMediatR(typeof(Equipment.Application.MediatorClass).Assembly);

@@ -19,9 +19,9 @@ namespace Equipment.Application.Features.MachineryService.Queries
     }
     public class GetMachineryServiceByNameQueryHandler : IRequestHandler<GetMachineryServiceByNameQuery, Response<MachineryServiceDTO>>
     {
-        private readonly IMachineryRepository _repository;
+        private readonly IMachineryServicingRepository _repository;
         private readonly IMapper _mapper;
-        public GetMachineryServiceByNameQueryHandler(IMachineryRepository repository, IMapper mapper)
+        public GetMachineryServiceByNameQueryHandler(IMachineryServicingRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

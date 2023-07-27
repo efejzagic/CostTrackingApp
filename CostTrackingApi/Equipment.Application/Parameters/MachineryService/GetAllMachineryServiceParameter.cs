@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Equipment.Application.Parameters.Machinery
+namespace Equipment.Application.Parameters.MachineryService
 {
     public class GetAllMachineryServiceParameter : RequestParameter
     {

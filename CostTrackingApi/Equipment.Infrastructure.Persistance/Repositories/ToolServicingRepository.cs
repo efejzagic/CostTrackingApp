@@ -13,7 +13,7 @@ namespace EquipmentService.Repositories
             _context = context;
         }
 
-        public async Task<ToolServicing> Create(ToolServicing entity)
+        public async Task<ToolService> Create(ToolService entity)
         {
             _context.ToolServicing.Add(entity);
             await _context.SaveChangesAsync();
@@ -32,7 +32,7 @@ namespace EquipmentService.Repositories
             return true;
         }
 
-        public async Task<ToolServicing> Edit(ToolServicing entity)
+        public async Task<ToolService> Edit(ToolService entity)
         {
             var editEntity = await GetById(entity.Id);
 
@@ -53,22 +53,22 @@ namespace EquipmentService.Repositories
             return editEntity;
         }
 
-        public async Task<IEnumerable<ToolServicing>> GetAll()
+        public async Task<IEnumerable<ToolService>> GetAll()
         {
             return await _context.ToolServicing.ToListAsync();
         }
 
-        public async Task<ToolServicing> GetById(int id)
+        public async Task<ToolService> GetById(int id)
         {
             return await _context.ToolServicing.FirstOrDefaultAsync(ms => ms.Id == id);
         }
 
-        public async Task<ToolServicing> GetByTitle(string title)
+        public async Task<ToolService> GetByTitle(string title)
         {
             return await _context.ToolServicing.FirstOrDefaultAsync(ms => ms.Title == title);
         }
 
-        public async Task<ToolServicing> GetByServiceDate(DateTime serviceDate)
+        public async Task<ToolService> GetByServiceDate(DateTime serviceDate)
         {
             return await _context.ToolServicing.FirstOrDefaultAsync(ms => DateOnly.FromDateTime(ms.ServiceDate) == 
                                                                                     DateOnly.FromDateTime(serviceDate));
@@ -87,9 +87,14 @@ namespace EquipmentService.Repositories
 
         }
 
-        public async Task<IEnumerable<ToolServicing>> GetServicingByToolId(int toolId)
+        public async Task<IEnumerable<ToolService>> GetServicingByToolId(int toolId)
         {
             return await _context.ToolServicing.Where(ms => ms.ToolId == toolId).ToListAsync();
+        }
+
+        public async Task<ToolService> GetByName(string name)
+        {
+            return await _context.ToolServicing.FirstOrDefaultAsync(ts => ts.Title == name);
         }
     }
 }

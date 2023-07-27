@@ -96,5 +96,10 @@ namespace EquipmentService.Repositories
         {
             return await _context.Maintenance.Where(m => m.MachineryId == machineryId).ToListAsync();
         }
+
+        public async Task<MachineryService> GetByName(string name)
+        {
+            return await _context.MachineryServicing.FirstOrDefaultAsync(ms => ms.Title == name);
+        }
     }
 }

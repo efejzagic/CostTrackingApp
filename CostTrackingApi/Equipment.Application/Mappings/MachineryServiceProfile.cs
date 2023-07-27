@@ -5,6 +5,7 @@ using Equipment.Application.Features.MachineryService.Commands;
 using Equipment.Application.Features.MachineryService.Queries;
 using Equipment.Application.Interfaces;
 using Equipment.Application.Parameters.Machinery;
+using Equipment.Application.Parameters.MachineryService;
 using Equipment.Domain.Entities;
 
 namespace EquipmentService.Profiles

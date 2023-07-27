@@ -23,6 +23,9 @@ namespace Equipment.Infrastructure.Persistance.Repositories
             return content;
         }
 
+
+
+
         public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
         {
             return await _dbContext
@@ -82,5 +85,7 @@ namespace Equipment.Infrastructure.Persistance.Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
+
+       
     }
 }

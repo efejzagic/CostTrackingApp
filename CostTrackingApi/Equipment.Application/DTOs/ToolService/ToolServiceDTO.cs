@@ -1,8 +1,9 @@
 ﻿using Equipment.Application.DTOs.Tool;
+using Equipment.Application.Parameters;
 
-namespace Equipment.Application.DTOs.ToolServicing
+namespace Equipment.Application.DTOs.ToolService
 {
-    public class ToolServicingDTO
+    public class ToolServiceDTO : RequestParameter
     {
         public int Id { get; set; }
 
