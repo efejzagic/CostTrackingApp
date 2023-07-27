@@ -1,8 +1,8 @@
 ﻿
 using AutoMapper;
-using Equipment.Application.Features.Machinery.Queries;
 using Storage.Application.DTOs.Article;
 using Storage.Application.Features.Article.Commands;
+using Storage.Application.Features.Article.Queries;
 using Storage.Application.Interfaces;
 using Storage.Domain.Entities;
 

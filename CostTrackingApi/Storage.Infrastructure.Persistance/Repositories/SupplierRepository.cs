@@ -85,5 +85,10 @@ namespace Storage.Infrastructure.Persistance.Repositories
 
             return true;
         }
+
+        public async Task<Supplier> GetByName(string name)
+        {
+            return await _context.Supplier.FirstOrDefaultAsync(s => s.Name == name);
+        }
     }
 }

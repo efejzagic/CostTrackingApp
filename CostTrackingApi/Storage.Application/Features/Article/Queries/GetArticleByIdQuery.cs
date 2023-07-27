@@ -9,17 +9,17 @@ using AutoMapper;
 using Storage.Application.Interfaces;
 using Storage.Application.Wrappers;
 
-namespace Equipment.Application.Features.Machinery.Queries
+namespace Storage.Application.Features.Article.Queries
 {
     public class GetArticleByIdQuery : IRequest<Response<ArticleDTO>>
     {
         public int Id { get; set; }
     }
-    public class GetArticleByIdQueryHandler: IRequestHandler<GetArticleByIdQuery, Response<ArticleDTO>>
+    public class GetArticleByIdQueryHandler : IRequestHandler<GetArticleByIdQuery, Response<ArticleDTO>>
     {
-        private readonly IGenericRepositoryAsync<Storage.Domain.Entities.Article> _repository;
+        private readonly IGenericRepositoryAsync<Domain.Entities.Article> _repository;
         private readonly IMapper _mapper;
-        public GetArticleByIdQueryHandler(IGenericRepositoryAsync<Storage.Domain.Entities.Article> repository, IMapper mapper)
+        public GetArticleByIdQueryHandler(IGenericRepositoryAsync<Domain.Entities.Article> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

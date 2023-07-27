@@ -1,9 +1,10 @@
-﻿using Storage.Application.DTOs.Article;
+﻿using Equipment.Application.Parameters;
+using Storage.Application.DTOs.Article;
 using System.ComponentModel.DataAnnotations;
 
 namespace Storage.Application.DTOs.Supplier
 {
-    public class SupplierDTO
+    public class SupplierDTO : RequestParameter
     {
 
         public int Id { get; set; }

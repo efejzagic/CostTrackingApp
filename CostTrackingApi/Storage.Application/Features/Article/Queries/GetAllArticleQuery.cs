@@ -10,7 +10,7 @@ using Storage.Application.Wrappers;
 using Storage.Application.DTOs.Article;
 using Storage.Application.Interfaces;
 
-namespace Equipment.Application.Features.Machinery.Queries
+namespace Storage.Application.Features.Article.Queries
 {
     public class GetAllArticleQuery : IRequest<PagedResponse<IEnumerable<ArticleDTO>>>
     {
@@ -23,9 +23,9 @@ namespace Equipment.Application.Features.Machinery.Queries
     }
     public class GetAllArticleQueryHandler : IRequestHandler<GetAllArticleQuery, PagedResponse<IEnumerable<ArticleDTO>>>
     {
-        private readonly IGenericRepositoryAsync<Storage.Domain.Entities.Article> _repository;
+        private readonly IGenericRepositoryAsync<Domain.Entities.Article> _repository;
         private readonly IMapper _mapper;
-        public GetAllArticleQueryHandler(IGenericRepositoryAsync<Storage.Domain.Entities.Article> repository, IMapper mapper)
+        public GetAllArticleQueryHandler(IGenericRepositoryAsync<Domain.Entities.Article> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

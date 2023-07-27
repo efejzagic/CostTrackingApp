@@ -6,12 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Equipment.Application.Features.Machinery.Queries;
 using Storage.Application.Wrappers;
 using Storage.Application.Interfaces;
 using Storage.Application.DTOs.Article;
 
-namespace Equipment.Application.Features.Machinery.Queries
+namespace Storage.Application.Features.Article.Queries
 {
     public class GetArticleByNameQuery : IRequest<Response<ArticleDTO>>
     {
