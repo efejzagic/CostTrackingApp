@@ -16,11 +16,17 @@ namespace Equipment.WebAPI.Controllers
             return Ok(await Mediator.Send(new GetAllMachineryQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get(string id)
-        //{
-        //    return Ok(await Mediator.Send(new GetEnviromentByIdQuery { Id = id }));
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            return Ok(await Mediator.Send(new GetMachineryByIdQuery { Id = id }));
+        }
+
+        [HttpGet("name/{name}")]
+        public async Task<IActionResult> Get(string name)
+        {
+            return Ok(await Mediator.Send(new GetMachineryByNameQuery { Name = name}));
+        }
 
         //[HttpGet("{id}/history")]
         //public async Task<IActionResult> GetHistory(string id)

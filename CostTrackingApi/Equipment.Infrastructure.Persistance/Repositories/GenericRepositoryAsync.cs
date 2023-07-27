@@ -15,10 +15,11 @@ namespace Equipment.Infrastructure.Persistance.Repositories
             _dbContext = dbContext;
         }
 
-        public virtual async Task<T> GetByIdAsync(string id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
             var content = await _dbContext.Set<T>().FindAsync(id);
-            _dbContext.Entry(content).State = EntityState.Detached;
+            if(content!=null)
+                _dbContext.Entry(content).State = EntityState.Detached;
             return content;
         }
 

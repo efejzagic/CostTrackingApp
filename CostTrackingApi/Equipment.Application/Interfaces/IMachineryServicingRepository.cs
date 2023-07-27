@@ -16,5 +16,6 @@ namespace Equipment.Application.Interfaces
         Task<bool> Delete(int id);
         Task<bool> SoftDelete(int id);
         Task<IEnumerable<MachineryServicing>> GetServicingByMachineryId(int id);
+        Task<IEnumerable<Maintenance>> GetMaintenanceByMachineryId(int id);
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
 using Equipment.Application.Mappings;
 using EquipmentService.Profiles;
+using Equipment.Infrastructure.Persistance.Repositories;
+using EquipmentService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +57,13 @@ builder.Services.AddPersistence(builder.Configuration);
 //        new HeaderApiVersionReader("X-Version"),
 //        new MediaTypeApiVersionReader("ver"));
 //});
+
+builder.Services.AddScoped<IMachineryRepository, MachineryRepository>();
+builder.Services.AddScoped<IMachineryServicingRepository, MachineryServicingRepository>();
+builder.Services.AddScoped<IMaintenanceRepository, MaintenanceRepository>();
+builder.Services.AddScoped<IToolRepository, ToolRepository>();
+builder.Services.AddScoped<IToolServicingRepository, ToolServicingRepository>();
+
 
 builder.Services.AddAutoMapper(typeof(Equipment.Application.MediatorClass)); // Register AutoMapper
 

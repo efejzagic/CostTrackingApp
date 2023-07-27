@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Equipment.Infrastructure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class test : Migration
+    public partial class Maintenancehistory : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -80,10 +80,10 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
+                    MachineryId = table.Column<int>(type: "integer", nullable: false),
                     Price = table.Column<double>(type: "double precision", nullable: false),
                     MaintenanceDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     retired = table.Column<bool>(type: "boolean", nullable: false),
-                    MachineryId = table.Column<int>(type: "integer", nullable: true),
                     ToolId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -93,7 +93,8 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                         name: "FK_Maintenance_Machinery_MachineryId",
                         column: x => x.MachineryId,
                         principalTable: "Machinery",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Maintenance_Tool_ToolId",
                         column: x => x.ToolId,
@@ -148,8 +149,8 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 columns: new[] { "Id", "Description", "MachineryId", "Price", "ServiceDate", "Title", "retired" },
                 values: new object[,]
                 {
-                    { 1, "Desc 1", 1, 10.0, new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7509), "Machine Service 1", false },
-                    { 2, "Desc 2", 2, 20.5, new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7513), "Machine Serivce 2", false }
+                    { 1, "Desc 1", 1, 10.0, new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1342), "Machine Service 1", false },
+                    { 2, "Desc 2", 2, 20.5, new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1344), "Machine Serivce 2", false }
                 });
 
             migrationBuilder.InsertData(
@@ -157,8 +158,8 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                 columns: new[] { "Id", "Description", "Price", "ServiceDate", "Title", "ToolId", "retired" },
                 values: new object[,]
                 {
-                    { 1, "Desc 1", 10.0, new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7534), "Machine Service 1", 1, false },
-                    { 2, "Desc 2", 20.5, new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7538), "Machine Serivce 2", 2, false }
+                    { 1, "Desc 1", 10.0, new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1362), "Machine Service 1", 1, false },
+                    { 2, "Desc 2", 20.5, new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1365), "Machine Serivce 2", 2, false }
                 });
 
             migrationBuilder.CreateIndex(

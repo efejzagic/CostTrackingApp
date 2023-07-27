@@ -10,6 +10,11 @@ namespace Equipment.Domain.Entities
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
+
+        [Required]
+        public int MachineryId { get; set; }
+
+        public virtual Machinery Machinery { get; set; }
         [Required]
         public double Price { get; set; }
         public DateTime MaintenanceDate { get; set; }   

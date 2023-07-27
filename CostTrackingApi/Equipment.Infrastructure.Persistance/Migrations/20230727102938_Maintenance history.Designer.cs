@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Equipment.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(EquipmentDbContext))]
-    [Migration("20230725213720_test")]
-    partial class test
+    [Migration("20230727102938_Maintenance history")]
+    partial class Maintenancehistory
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -117,7 +117,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                             Description = "Desc 1",
                             MachineryId = 1,
                             Price = 10.0,
-                            ServiceDate = new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7509),
+                            ServiceDate = new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1342),
                             Title = "Machine Service 1",
                             retired = false
                         },
@@ -127,7 +127,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                             Description = "Desc 2",
                             MachineryId = 2,
                             Price = 20.5,
-                            ServiceDate = new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7513),
+                            ServiceDate = new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1344),
                             Title = "Machine Serivce 2",
                             retired = false
                         });
@@ -145,7 +145,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("MachineryId")
+                    b.Property<int>("MachineryId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("MaintenanceDate")
@@ -264,7 +264,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                             Id = 1,
                             Description = "Desc 1",
                             Price = 10.0,
-                            ServiceDate = new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7534),
+                            ServiceDate = new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1362),
                             Title = "Machine Service 1",
                             ToolId = 1,
                             retired = false
@@ -274,7 +274,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                             Id = 2,
                             Description = "Desc 2",
                             Price = 20.5,
-                            ServiceDate = new DateTime(2023, 7, 25, 21, 37, 20, 84, DateTimeKind.Utc).AddTicks(7538),
+                            ServiceDate = new DateTime(2023, 7, 27, 10, 29, 38, 392, DateTimeKind.Utc).AddTicks(1365),
                             Title = "Machine Serivce 2",
                             ToolId = 2,
                             retired = false
@@ -294,13 +294,17 @@ namespace Equipment.Infrastructure.Persistance.Migrations
 
             modelBuilder.Entity("Equipment.Domain.Entities.Maintenance", b =>
                 {
-                    b.HasOne("Equipment.Domain.Entities.Machinery", null)
+                    b.HasOne("Equipment.Domain.Entities.Machinery", "Machinery")
                         .WithMany("MaintenanceHistory")
-                        .HasForeignKey("MachineryId");
+                        .HasForeignKey("MachineryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Equipment.Domain.Entities.Tool", null)
                         .WithMany("MaintenanceHistory")
                         .HasForeignKey("ToolId");
+
+                    b.Navigation("Machinery");
                 });
 
             modelBuilder.Entity("Equipment.Domain.Entities.ToolServicing", b =>

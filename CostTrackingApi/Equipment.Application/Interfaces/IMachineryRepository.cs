@@ -13,7 +13,5 @@ namespace Equipment.Application.Interfaces
 
         Task<Machinery> Edit(Machinery machinery);
         Task<bool> Delete(int id);
-        Task<bool> SoftDelete(int id);
-
-    }
+        Task<bool> SoftDelete(int id);    }
 }

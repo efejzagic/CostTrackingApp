@@ -1,10 +1,11 @@
 ﻿using Equipment.Application.DTOs.MachineryServicing;
+using Equipment.Application.Parameters;
 using Equipment.Domain.Entities;
 
 
 namespace Equipment.Application.DTOs.Machinery
 {
-    public class MachineryDTO
+    public class MachineryDTO : RequestParameter
     {
         public int Id { get; set; }
         public string Name { get; set; }

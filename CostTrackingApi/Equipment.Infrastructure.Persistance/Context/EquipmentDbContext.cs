@@ -49,6 +49,19 @@ namespace Equipment.Infrastructure.Persistance.Context
               .HasForeignKey(p => p.ToolId);
 
 
+            modelBuilder
+           .Entity<Machinery>()
+           .HasMany(p => p.MaintenanceHistory)
+           .WithOne(p => p.Machinery!)
+           .HasForeignKey(p => p.MachineryId);
+
+
+
+            modelBuilder
+              .Entity<Maintenance>()
+              .HasOne(p => p.Machinery)
+              .WithMany(p => p.MaintenanceHistory)
+              .HasForeignKey(p => p.MachineryId);
 
             Seed(modelBuilder);
         }
