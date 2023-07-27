@@ -10,3 +10,6 @@ D:\CostTrackingApp\CostTrackingApi\Storage.Application\obj\Debug\net7.0\Storage.
 D:\CostTrackingApp\CostTrackingApi\Storage.Application\obj\Debug\net7.0\refint\Storage.Application.dll
 D:\CostTrackingApp\CostTrackingApi\Storage.Application\obj\Debug\net7.0\Storage.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Storage.Application\obj\Debug\net7.0\ref\Storage.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Application\bin\Debug\net7.0\Storage.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Application\bin\Debug\net7.0\Storage.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Application\obj\Debug\net7.0\Storage.Application.csproj.CopyComplete

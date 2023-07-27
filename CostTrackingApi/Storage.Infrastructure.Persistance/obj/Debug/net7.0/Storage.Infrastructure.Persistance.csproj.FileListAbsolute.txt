@@ -10,3 +10,8 @@ D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\
 D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\refint\Storage.Infrastructure.Persistance.dll
 D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.pdb
 D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\ref\Storage.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\Storage.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\Storage.Infrastructure.Persistance.csproj.CopyComplete
