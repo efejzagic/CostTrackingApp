@@ -24,11 +24,11 @@ namespace Equipment.Application.Features.Machinery.Queries
         public List<MachineryServicingMDTO> ServicingHistory { get; set; }
 
     }
-    public class GetAllEnviromentsQueryHandler : IRequestHandler<GetAllMachineryQuery, PagedResponse<IEnumerable<MachineryDTO>>>
+    public class GetAllMachineryQueryHandler: IRequestHandler<GetAllMachineryQuery, PagedResponse<IEnumerable<MachineryDTO>>>
     {
         private readonly IGenericRepositoryAsync<Equipment.Domain.Entities.Machinery> _repository;
         private readonly IMapper _mapper;
-        public GetAllEnviromentsQueryHandler(IGenericRepositoryAsync<Equipment.Domain.Entities.Machinery> repository, IMapper mapper)
+        public GetAllMachineryQueryHandler(IGenericRepositoryAsync<Equipment.Domain.Entities.Machinery> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

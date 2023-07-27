@@ -1,31 +1,32 @@
-﻿using Equipment.Application.Features.Machinery.Commands;
-using Equipment.Application.Features.Machinery.Queries;
-using Equipment.Application.Parameters.Machinery;
+﻿using Equipment.Application.Features.Tool.Queries;
+using Equipment.Application.Features.Tool.Commands;
+using Equipment.Application.Parameters.Tool;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Controllers;
+using Equipment.Application.Features.Tool.Commands;
 
 namespace Equipment.WebAPI.Controllers
 {
     //[ApiVersion("1.0")]
-    public class MachineryController : BaseApiController
+    public class ToolController : BaseApiController
     {
         [HttpGet]
         //[MapToApiVersion("1.0")]
-        public async Task<IActionResult> Get([FromQuery] GetAllMachineryParameter filter)
+        public async Task<IActionResult> Get([FromQuery] GetAllToolParameter filter)
         {
-            return Ok(await Mediator.Send(new GetAllMachineryQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
+            return Ok(await Mediator.Send(new GetAllToolQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            return Ok(await Mediator.Send(new GetMachineryByIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetToolByIdQuery { Id = id }));
         }
 
         [HttpGet("name/{name}")]
         public async Task<IActionResult> Get(string name)
         {
-            return Ok(await Mediator.Send(new GetMachineryByNameQuery { Name = name}));
+            return Ok(await Mediator.Send(new GetToolByNameQuery { Name = name}));
         }
 
         //[HttpGet("{id}/history")]
@@ -35,7 +36,7 @@ namespace Equipment.WebAPI.Controllers
         //}
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateMachineryCommand command)
+        public async Task<IActionResult> Post(CreateToolCommand command)
         {
             if (!ModelState.IsValid)
             {
@@ -47,7 +48,7 @@ namespace Equipment.WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(UpdateMachineryCommand command)
+        public async Task<IActionResult> Put(UpdateToolCommand command)
         {
             var enviroment = await Mediator.Send(command);
             return Ok(enviroment);
@@ -56,7 +57,7 @@ namespace Equipment.WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var enviroment = await Mediator.Send(new DeleteMachineryCommand { Id = id });
+            var enviroment = await Mediator.Send(new DeleteToolCommand { Id = id });
             return Ok(enviroment);
         }
 

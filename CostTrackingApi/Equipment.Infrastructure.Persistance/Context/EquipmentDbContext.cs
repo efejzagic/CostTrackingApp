@@ -103,8 +103,8 @@ namespace Equipment.Infrastructure.Persistance.Context
 
             var toolServicing = new List<ToolServicing>()
                 {
-                    new ToolServicing() { Id=1, Title = "Machine Service 1", Description = "Desc 1",Price = 10.0, ToolId = 1, ServiceDate = DateTime.UtcNow, retired = false},
-                    new ToolServicing() { Id=2, Title = "Machine Serivce 2", Description = "Desc 2", Price = 20.5, ToolId = 2, ServiceDate = DateTime.UtcNow, retired = false},
+                    new ToolServicing() { Id=1, Title = "Tool Service 1", Description = "Desc 1",Price = 3.0, ToolId = 1, ServiceDate = DateTime.UtcNow, retired = false},
+                    new ToolServicing() { Id=2, Title = "Tool Serivce 2", Description = "Desc 2", Price = 12.5, ToolId = 2, ServiceDate = DateTime.UtcNow, retired = false},
 
                 };
 

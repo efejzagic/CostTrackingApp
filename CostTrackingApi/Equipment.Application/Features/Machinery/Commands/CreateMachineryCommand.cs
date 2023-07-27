@@ -5,12 +5,13 @@ using Equipment.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Equipment.Application.DTOs.Machinery;
 
 namespace Equipment.Application.Features.Machinery.Commands
 {
     public partial class CreateMachineryCommand : IRequest<Response<string>>
     {
-        public string InternalEnviroment { get; set; }
+        public MachineryCreateDTO Value { get; set; }
 
     }
     public class CreateMachineryCommandHandler : IRequestHandler<CreateMachineryCommand, Response<string>>
@@ -25,7 +26,7 @@ namespace Equipment.Application.Features.Machinery.Commands
 
         public async Task<Response<string>> Handle(CreateMachineryCommand request, CancellationToken cancellationToken)
         {
-            var enviroment = _mapper.Map<Equipment.Domain.Entities.Machinery> (request);
+            var enviroment = _mapper.Map<Equipment.Domain.Entities.Machinery>(request.Value);
             await _Repository.AddAsync(enviroment);
             return new Response<string>(enviroment.Id.ToString());
         }

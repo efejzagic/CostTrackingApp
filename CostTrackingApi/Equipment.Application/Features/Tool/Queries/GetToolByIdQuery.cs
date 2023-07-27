@@ -10,30 +10,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Equipment.Application.DTOs.Tool;
 
-namespace Equipment.Application.Features.Machinery.Queries
+namespace Equipment.Application.Features.Tool.Queries
 {
-    public class GetMachineryByIdQuery : IRequest<Response<MachineryDTO>>
+    public class GetToolByIdQuery : IRequest<Response<ToolDTO>>
     {
         public int Id { get; set; }
     }
-    public class GetMachineryByIdQueryHandler: IRequestHandler<GetMachineryByIdQuery, Response<MachineryDTO>>
+    public class GetToolByIdQueryHandler : IRequestHandler<GetToolByIdQuery, Response<ToolDTO>>
     {
-        private readonly IGenericRepositoryAsync<Equipment.Domain.Entities.Machinery> _repository;
+        private readonly IGenericRepositoryAsync<Equipment.Domain.Entities.Tool> _repository;
         private readonly IMapper _mapper;
-        public GetMachineryByIdQueryHandler(IGenericRepositoryAsync<Equipment.Domain.Entities.Machinery> repository, IMapper mapper)
+        public GetToolByIdQueryHandler(IGenericRepositoryAsync<Equipment.Domain.Entities.Tool> repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        public async Task<Response<MachineryDTO>> Handle(GetMachineryByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Response<ToolDTO>> Handle(GetToolByIdQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<MachineryDTO>(request);
+            var validFilter = _mapper.Map<ToolDTO>(request);
             var enviroment = await _repository.GetByIdAsync(request.Id);
             if (enviroment == null)
             {
-                return new Response<MachineryDTO>()
+                return new Response<ToolDTO>()
                 {
                     Succeeded = false,
                     Message = $"No machine found in db with id = {request.Id}",
@@ -41,8 +42,8 @@ namespace Equipment.Application.Features.Machinery.Queries
 
                 };
             }
-            var enviromentViewModel = _mapper.Map<MachineryDTO>(enviroment);
-            return new Response<MachineryDTO>(enviromentViewModel);
+            var enviromentViewModel = _mapper.Map<ToolDTO>(enviroment);
+            return new Response<ToolDTO>(enviromentViewModel);
         }
     }
 }

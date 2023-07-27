@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Equipment.Application.DTOs.Machinery;
+using Equipment.Application.Features.Machinery.Commands;
 using Equipment.Application.Features.Machinery.Queries;
 using Equipment.Application.Interfaces;
 using Equipment.Application.Parameters.Machinery;
@@ -34,6 +35,11 @@ namespace Equipment.Application.Mappings
             CreateMap<GetMachineryByIdQuery, MachineryDTO>();
 
             CreateMap<GetMachineryByNameQuery, MachineryDTO>();
+            CreateMap<CreateMachineryCommand, MachineryCreateDTO>();
+
+            CreateMap<CreateMachineryCommand, Machinery>();
+            CreateMap<DeleteMachineryCommand, Machinery>();
+            CreateMap<UpdateMachineryCommand, Machinery>();
 
         }
 
