@@ -10,3 +10,6 @@ D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Applic
 D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\refint\Auth.Application.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\ref\Auth.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\Auth.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\Auth.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Application.csproj.CopyComplete
