@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Storage.Application.DTOs.Supplier;
-using Storage.Application.Features.Article.Commands;
-using Storage.Application.Features.Article.Queries;
 using Storage.Application.Features.Supplier.Commands;
 using Storage.Application.Features.Supplier.Queries;
 using Storage.Application.Interfaces;

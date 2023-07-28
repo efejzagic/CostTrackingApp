@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3c3S5500MCt4KBWw01EFK1mgBfn3wwS694SDJYBBveQ=",
+  "Source": "ConstructionSite.WebAPI",
+  "BasePath": "_content/ConstructionSite.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
