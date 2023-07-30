@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "ConstructionSite.Infrastructure.Persistance/1.0.0": {
+        "runtime": {
+          "ConstructionSite.Infrastructure.Persistance.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConstructionSite.Infrastructure.Persistance/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

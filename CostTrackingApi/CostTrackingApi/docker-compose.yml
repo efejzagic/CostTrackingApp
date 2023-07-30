@@ -1,0 +1,34 @@
+version: '3.4'
+
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  equipmentservice:
+    container_name: equipment-service
+    image: ${DOCKER_REGISTRY-}equipmentservice
+    build:
+      context: .
+      dockerfile: EquipmentService/Dockerfile
+    environment:
+      - ConnectionStrings__EquipmentConnection=User ID=postgres;Password=password;Server=127.0.0.1;Port=5432;Database=equipmentdb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=https://+:443
+    ports:
+      - 7001:443
+    networks:
+      - dev
+
+  storageservice:
+    image: ${DOCKER_REGISTRY-}storageservice
+    build:
+      context: .
+      dockerfile: StorageService/Dockerfile
+    environment:
+      - ConnectionStrings__StorageConnection=User ID=postgres;Password=password;Server=127.0.0.1;Port=5432;Database=storagedb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=https://+:443
+    ports:
+      - 7002:443
+    networks:
+      - dev

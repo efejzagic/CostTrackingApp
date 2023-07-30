@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\bin\Debug\net7.0\ConstructionSite.Application.deps.json
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\bin\Debug\net7.0\ConstructionSite.Application.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\bin\Debug\net7.0\ConstructionSite.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\refint\ConstructionSite.Application.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ref\ConstructionSite.Application.dll
