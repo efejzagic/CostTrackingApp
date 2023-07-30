@@ -104,7 +104,7 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
             modelBuilder.Entity("ConstructionSite.Domain.Entities.Employee", b =>
                 {
                     b.HasOne("ConstructionSite.Domain.Entities.ConstructionSite", "ConstructionSite")
-                        .WithMany("Zaposlenici")
+                        .WithMany("Employees")
                         .HasForeignKey("ConstructionSiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -114,7 +114,7 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.ConstructionSite", b =>
                 {
-                    b.Navigation("Zaposlenici");
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

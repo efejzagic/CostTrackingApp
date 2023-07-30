@@ -14,6 +14,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using ConstructionSite.Application.Mappings;
+using ConstructionSite.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +61,8 @@ builder.Services.AddPersistence(builder.Configuration);
 
 //builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 //builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+builder.Services.AddScoped<IGenericRepositoryAsync<Employee>, GenericRepositoryAsync<Employee>>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 
 builder.Services.AddAutoMapper(typeof(ConstructionSite.Application.MediatorClass)); // Register AutoMapper
@@ -67,7 +70,12 @@ builder.Services.AddAutoMapper(typeof(ConstructionSite.Application.MediatorClass
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     //cfg.AddProfile(new ArticleProfile(provider.GetService<ISupplierRepository>()));
-    cfg.AddProfile(new ConstructionSiteProfile());
+
+    
+    cfg.AddProfile(new ConstructionSiteProfile(provider.GetService<IEmployeeRepository>()));
+    var constructionRepo = provider.GetService<IGenericRepositoryAsync<ConstructionSite.Domain.Entities.ConstructionSite>>();
+
+    cfg.AddProfile(new EmployeeProfile(constructionRepo));
     //cfg.AddProfile(new SupplierProfile(provider.GetService<IArticleRepository>()));
 }).CreateMapper());
 
