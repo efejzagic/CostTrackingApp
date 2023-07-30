@@ -1,4 +1,5 @@
-﻿using ConstructionSite.Application.Features.ConstructionSite.Queries;
+﻿using ConstructionSite.Application.Features.ConstructionSite.Commands;
+using ConstructionSite.Application.Features.ConstructionSite.Queries;
 using ConstructionSite.Application.Parameters.ConstructionSite;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,31 +34,31 @@ namespace ConstructionSite.WebAPI.Controllers
         ////    return Ok(await Mediator.Send(new GetEnviromentByIdWithHistoryQuery { Id = id }));
         ////}
 
-        //[HttpPost]
-        //public async Task<IActionResult> Post(CreateArticleCommand command)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return StatusCode(StatusCodes.Status400BadRequest, ModelState);
-        //    }
-        //    //var enviroment = await Mediator.Send(command);
-        //    var enviroment = await Mediator.Send(command);
-        //    return Ok(enviroment);
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateConstructionSiteCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ModelState);
+            }
+            //var enviroment = await Mediator.Send(command);
+            var enviroment = await Mediator.Send(command);
+            return Ok(enviroment);
+        }
 
-        //[HttpPut]
-        //public async Task<IActionResult> Put(UpdateArticleCommand command)
-        //{
-        //    var enviroment = await Mediator.Send(command);
-        //    return Ok(enviroment);
-        //}
+        [HttpPut]
+        public async Task<IActionResult> Put(UpdateConstructionSiteCommand command)
+        {
+            var enviroment = await Mediator.Send(command);
+            return Ok(enviroment);
+        }
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    var enviroment = await Mediator.Send(new DeleteArticleCommand { Id = id });
-        //    return Ok(enviroment);
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var enviroment = await Mediator.Send(new DeleteConstructionSiteCommand { Id = id });
+            return Ok(enviroment);
+        }
 
     }
 }
