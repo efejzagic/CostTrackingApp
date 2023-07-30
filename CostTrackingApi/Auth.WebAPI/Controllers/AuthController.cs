@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Auth.WebAPI.Services;
 using Auth.Domain.Entities;
 using Auth.Application.Features.Auth.Queries;
+using Auth.Application.Features.Auth.Commands;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -58,18 +59,18 @@ namespace Auth.WebAPI.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginRequest model)
+        public async Task<Application.Wrappers.Response<TokenResponse>> Login([FromBody] LoginToken command)
         {
-            TokenResponse response;
-            try
-            {
-                response = await _loginService.LoginToken(model);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            return Ok(response.AccessToken);
+            //try
+            //{
+                //response = await _loginService.LoginToken(model);
+                return await Mediator.Send(command);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
+            //return Ok(response.AccessToken);
         }
 
         [HttpPost("CreateUser")]

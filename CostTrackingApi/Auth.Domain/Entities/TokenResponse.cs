@@ -26,5 +26,7 @@ namespace Auth.Domain.Entities
         public string SessionState { get; set; }
 
         public string Scope { get; set; }
+
+
     }
 }
