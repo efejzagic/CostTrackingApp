@@ -16,18 +16,6 @@ namespace Auth.WebAPI.Controllers
     [Route("api/[controller]")]
     public class AuthController : BaseApiController
     {
-        private readonly LoginService _loginService;
-        private readonly UserService _userService;
-
-
-
-        public AuthController(LoginService loginService, UserService userService)
-        {
-            _loginService = loginService;
-            _userService = userService;
-        }
-
-
 
         [HttpGet]
         [Route("Id")]
