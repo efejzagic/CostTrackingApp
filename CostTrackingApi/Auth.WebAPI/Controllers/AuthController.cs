@@ -59,7 +59,7 @@ namespace Auth.WebAPI.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<Application.Wrappers.Response<TokenResponse>> Login([FromBody] LoginToken command)
+        public async Task<Application.Wrappers.Response<TokenResponse>> Login([FromBody] LoginTokenCommand command)
         {
             //try
             //{
@@ -75,15 +75,20 @@ namespace Auth.WebAPI.Controllers
 
         [HttpPost("CreateUser")]
         [AllowAnonymous]
-        public async Task<Response<string>> CreateUser(CreateUserModel model)
+        public async Task<IActionResult> CreateUser(CreateUserCommand command)
         {
-            return await _userService.CreateUser(model);
+            //return await _userService.CreateUser(model);
+            var response = await Mediator.Send(command);
+            return Ok(response);
         }
+
         [HttpPut("EditUser")]
         [AllowAnonymous]
-        public async Task<Response<string>> EditUser(CreateUserModel model)
+        public async Task<IActionResult> EditUser(EditUserCommand command)
         {
-            return await _userService.EditUser(model);
+            //return await _userService.EditUser(model);
+            var response = await Mediator.Send(command);
+            return Ok(response);
         }
     }
 }

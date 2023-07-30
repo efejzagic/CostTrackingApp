@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace Auth.Application.Features.Auth.Commands
 {
-    public partial class LoginToken : IRequest<Wrappers.Response<TokenResponse>>
+    public partial class LoginTokenCommand : IRequest<Wrappers.Response<TokenResponse>>
     {
         public LoginRequest Model { get; set; }
     }
-    public class LoginRequestHandler : IRequestHandler<LoginToken, Wrappers.Response<TokenResponse>>
+    public class LoginRequestCommandHandler : IRequestHandler<LoginTokenCommand, Wrappers.Response<TokenResponse>>
     {
-        public LoginRequestHandler()
+        public LoginRequestCommandHandler()
         {
         }
 
-        public async Task<Wrappers.Response<TokenResponse>> Handle(LoginToken request, CancellationToken cancellationToken)
+        public async Task<Wrappers.Response<TokenResponse>> Handle(LoginTokenCommand request, CancellationToken cancellationToken)
         {
             string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
             string realm = "cost-tracking-app";
