@@ -84,7 +84,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<EquipmentDbContext>();
-    db.Database.Migrate();
+    //db.Database.Migrate();
 }
 #endregion
 #region Swagger

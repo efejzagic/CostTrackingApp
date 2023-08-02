@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\bin\Debug\net7.0\Finance.Application.deps.json
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\bin\Debug\net7.0\Finance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\bin\Debug\net7.0\Finance.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\refint\Finance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\ref\Finance.Application.dll

@@ -1,0 +1,49 @@
+version: '3.4'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  storage.webapi:
+    image: ${DOCKER_REGISTRY-}storagewebapi
+    depends_on:
+      - "storage-db"
+    container_name: storage-service
+    ports:
+      - "7009:80" 
+    build:
+      context: .
+      dockerfile: Storage.WebAPI/Dockerfile
+    environment:
+      - ConnectionStrings__StorageConnection=User ID=postgres;Password=password;Server=storage-db;Port=5432;Database=stgdb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - dev
+  storage-db:
+    image: postgres:latest
+    container_name: storage-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password  
+      - POSTGRES_DB=stgdb
+    ports: 
+      - "5433:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/data
+    networks:
+      - dev
+
+  equipment.webapi:
+    image: ${DOCKER_REGISTRY-}equipmentwebapi
+    build:
+      context: .
+      dockerfile: Equipment.WebAPI/Dockerfile
+
+
+volumes:
+  app_data:
+
+
+

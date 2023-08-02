@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\bin\Debug\net7.0\Finance.Domain.deps.json
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\bin\Debug\net7.0\Finance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\bin\Debug\net7.0\Finance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\refint\Finance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\Finance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.Domain\obj\Debug\net7.0\ref\Finance.Domain.dll
