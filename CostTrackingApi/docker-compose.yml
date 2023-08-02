@@ -31,15 +31,40 @@ services:
       - "5433:5432"
     restart: always
     volumes:
-      - app_data:/var/lib/postgresql/data
+      - app_data:/var/lib/postgresql/st_data
     networks:
       - dev
 
   equipment.webapi:
     image: ${DOCKER_REGISTRY-}equipmentwebapi
+    depends_on:
+      - "equipment-db"
+    container_name: equipment-service
+    ports:
+      - "7019:80" 
     build:
       context: .
       dockerfile: Equipment.WebAPI/Dockerfile
+    environment:
+      - ConnectionStrings__EquipmentConnection=User ID=postgres;Password=password;Server=equipment-db;Port=5432;Database=eqdb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - dev
+
+  equipment-db:
+    image: postgres:latest
+    container_name: equipment-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password  
+      - POSTGRES_DB=eqdb
+    ports: 
+      - "5434:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/eq_data
+    networks:
+      - dev
 
 
 volumes:

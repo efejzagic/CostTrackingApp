@@ -3,7 +3,6 @@ version: '3.4'
 services:
   equipment.webapi:
     image: equipmentwebapi:dev
-    container_name: Equipment.WebAPI
     build:
       target: base
       labels:
