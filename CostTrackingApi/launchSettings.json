@@ -7,7 +7,8 @@
         "storageservice": "StartDebugging",
         "storage.webapi": "StartDebugging",
         "equipment.webapi": "StartDebugging",
-        "constructionsite.webapi": "StartDebugging"
+        "constructionsite.webapi": "StartDebugging",
+        "apigateway": "StartDebugging"
       }
     }
   }

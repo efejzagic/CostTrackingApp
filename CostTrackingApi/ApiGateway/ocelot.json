@@ -1,0 +1,32 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v/Article",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Article"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl" :  "http://localhost:800"
+  }
+
+}

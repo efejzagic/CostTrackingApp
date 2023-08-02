@@ -1,8 +1,11 @@
 version: '3.4'
 
 networks:
-  dev:
+  backend:
     driver: bridge
+  frontend:
+    driver: bridge
+
 
 services:
   storage.webapi:
@@ -10,8 +13,6 @@ services:
     depends_on:
       - "storage-db"
     container_name: storage-service
-    ports:
-      - "7009:80" 
     build:
       context: .
       dockerfile: Storage.WebAPI/Dockerfile
@@ -19,7 +20,7 @@ services:
       - ConnectionStrings__StorageConnection=User ID=postgres;Password=password;Server=storage-db;Port=5432;Database=stgdb;IntegratedSecurity=true;Pooling=true;
       - ASPNETCORE_URLS=http://+:80
     networks:
-      - dev
+      - backend
   storage-db:
     image: postgres:latest
     container_name: storage-db
@@ -33,15 +34,13 @@ services:
     volumes:
       - app_data:/var/lib/postgresql/st_data
     networks:
-      - dev
+      - backend
 
   equipment.webapi:
     image: ${DOCKER_REGISTRY-}equipmentwebapi
     depends_on:
       - "equipment-db"
     container_name: equipment-service
-    ports:
-      - "7019:80" 
     build:
       context: .
       dockerfile: Equipment.WebAPI/Dockerfile
@@ -49,7 +48,7 @@ services:
       - ConnectionStrings__EquipmentConnection=User ID=postgres;Password=password;Server=equipment-db;Port=5432;Database=eqdb;IntegratedSecurity=true;Pooling=true;
       - ASPNETCORE_URLS=http://+:80
     networks:
-      - dev
+      - backend
 
   equipment-db:
     image: postgres:latest
@@ -64,17 +63,52 @@ services:
     volumes:
       - app_data:/var/lib/postgresql/eq_data
     networks:
-      - dev
+      - backend
 
 
   constructionsite.webapi:
-    image: ${DOCKER_REGISTRY-}constructionsitewebapi
+    image: ${DOCKER_REGISTRY-}constructionsite
+    depends_on:
+      - "constructionsite-db"
+    container_name: constructionsite-service
     build:
       context: .
       dockerfile: ConstructionSite.WebAPI/Dockerfile
+    environment:
+      - ConnectionStrings__ConstructionSiteConnection=User ID=postgres;Password=password;Server=constructionsite-db;Port=5432;Database=csdb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - backend
+
+  constructionsite-db:
+    image: postgres:latest
+    container_name: constructionsite-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password  
+      - POSTGRES_DB=csdb
+    ports: 
+      - "5435:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/cs_data
+    networks:
+      - backend
+
+  apigateway:
+    container_name: api-gateway
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    ports:
+      - 8001:80
+    networks:
+      - backend
 
 volumes:
   app_data:
+
 
 
 

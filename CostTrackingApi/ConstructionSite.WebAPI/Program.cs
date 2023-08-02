@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using ConstructionSite.Application.Mappings;
 using ConstructionSite.Domain.Entities;
+using ConstructionSite.WebAPI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,11 +84,15 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Med
 #endregion
 var app = builder.Build();
 #region ApplyMigration
-using (var scope = app.Services.CreateScope())
+RetryHelper.RetryConnection(() =>
 {
-    var db = scope.ServiceProvider.GetRequiredService<ConstructionSiteDbContext>();
-    db.Database.Migrate();
-}
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ConstructionSiteDbContext>();
+        db.Database.Migrate();
+    }
+});
 #endregion
 #region Swagger
 // Enable middleware to serve generated Swagger as a JSON endpoint.
