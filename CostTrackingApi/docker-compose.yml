@@ -67,8 +67,15 @@ services:
       - dev
 
 
+  constructionsite.webapi:
+    image: ${DOCKER_REGISTRY-}constructionsitewebapi
+    build:
+      context: .
+      dockerfile: ConstructionSite.WebAPI/Dockerfile
+
 volumes:
   app_data:
+
 
 
 

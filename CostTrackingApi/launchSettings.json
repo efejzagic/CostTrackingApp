@@ -6,7 +6,8 @@
       "serviceActions": {
         "storageservice": "StartDebugging",
         "storage.webapi": "StartDebugging",
-        "equipment.webapi": "StartDebugging"
+        "equipment.webapi": "StartDebugging",
+        "constructionsite.webapi": "StartDebugging"
       }
     }
   }
