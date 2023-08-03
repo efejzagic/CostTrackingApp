@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\bin\Debug\net7.0\Storage.Domain.deps.json
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\bin\Debug\net7.0\Storage.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\bin\Debug\net7.0\Storage.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\refint\Storage.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\ref\Storage.Domain.dll

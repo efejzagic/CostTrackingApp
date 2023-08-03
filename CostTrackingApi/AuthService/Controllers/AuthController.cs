@@ -34,7 +34,6 @@ namespace AuthService.Controllers
         public string GetUserId()
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            // Use the user ID or other claims as needed
             return userId;
         }
 

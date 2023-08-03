@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "b8m+wWnkTYSRCznQVM6BahLNDDnykqVK9KleoT5g3Gizqpj6Hcvdq4Ww3Tjy/BCJOymydaGMGxpPyimoj+Pdhg==",
+  "dgSpecHash": "6pTtwloReGtzUlSwq70isfKcWW7LBSjx8rKTZZvauvlhWOfCMoQvsg7QzRVqi+NaXSNeFdwSZMTQcN3xZnqfrw==",
   "success": true,
   "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\StorageService\\StorageService.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
