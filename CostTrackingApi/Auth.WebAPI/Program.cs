@@ -1,5 +1,6 @@
 using Auth.Application;
 using Auth.WebAPI.Services;
+using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -64,6 +65,7 @@ builder.Services.AddSwaggerGen(c =>
         });
 });
 
+builder.Services.AddSingleton<JwtTokenHandler>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(MediatorClass).GetTypeInfo().Assembly));
 

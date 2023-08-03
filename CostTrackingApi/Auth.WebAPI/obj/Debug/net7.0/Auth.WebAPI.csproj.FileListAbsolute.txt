@@ -49,3 +49,6 @@ D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\MediatR.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\MediatR.Contracts.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb

@@ -6,6 +6,8 @@ using Auth.WebAPI.Services;
 using Auth.Domain.Entities;
 using Auth.Application.Features.Auth.Queries;
 using Auth.Application.Features.Auth.Commands;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -16,6 +18,20 @@ namespace Auth.WebAPI.Controllers
     [Route("api/[controller]")]
     public class AuthController : BaseApiController
     {
+
+        private readonly UserService _userService;
+
+        public AuthController(UserService userService)
+        {
+            _userService = userService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var response = _userService.GetAllUsers();
+            return Ok(response);
+        }
 
         [HttpGet]
         [Route("Id")]

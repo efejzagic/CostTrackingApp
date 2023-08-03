@@ -56,3 +56,13 @@ D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Storage.Infra
 D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Storage.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Storage.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Storage.Infrastructure.Persistance.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
