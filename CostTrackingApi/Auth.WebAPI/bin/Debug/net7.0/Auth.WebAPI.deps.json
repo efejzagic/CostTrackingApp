@@ -319,9 +319,11 @@
       },
       "JwtAuthenticationManager/1.0.0": {
         "dependencies": {
+          "Auth.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.9",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "Microsoft.IdentityModel.Tokens": "6.32.1",
+          "Newtonsoft.Json": "13.0.3",
           "System.IdentityModel.Tokens.Jwt": "6.32.1"
         },
         "runtime": {

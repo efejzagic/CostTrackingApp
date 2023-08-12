@@ -91,6 +91,10 @@ namespace Auth.WebAPI.Services
             var content = new FormUrlEncodedContent(new Dictionary<string, string>
         {
             { "grant_type", "client_credentials" },
+             { "client_id", keycloakConfig.ClientId },
+            { "client_secret", keycloakConfig.ClientSecret },
+                { "scope", "openid" } // Add the openid scope here
+
         });
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", clientIdAndSecret);

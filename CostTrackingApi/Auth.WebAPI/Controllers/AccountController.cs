@@ -17,13 +17,29 @@ namespace Auth.WebAPI.Controllers
         }
 
 
-        [HttpPost] 
-        public ActionResult<AuthenticationResponse?> Authenticate([FromBody] AuthenticationRequest request)
+        //[HttpPost] 
+        //public async Task<ActionResult<AuthenticationResponse?>> Authenticate([FromBody] AuthenticationRequest request)
+        //{
+        //    var response = await _jwtTokenHandler.GenerateJwtToken3(request);
+        //    if (response == null) return Unauthorized();
+        //    return response;
+        //}
+
+        //[HttpGet]
+        //[Route("Roles")]
+        //public async Task<IEnumerable<string>> GetRoles (string accesToken)
+        //{
+        //    return await _jwtTokenHandler.GetRolesFromKeycloak(accesToken);
+        //}
+
+
+        [HttpPost]
+        [Route("test")]
+        public async Task<ActionResult<string?>> Authenticate2([FromBody] AuthenticationRequest request)
         {
-            var response = _jwtTokenHandler.GenerateJwtToken(request);
+            var response = await _jwtTokenHandler.GenerateTokenWithRolesAsync(request);
             if (response == null) return Unauthorized();
             return response;
         }
-        
     }
 }

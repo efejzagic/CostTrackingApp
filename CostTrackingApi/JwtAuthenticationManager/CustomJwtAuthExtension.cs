@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -14,20 +15,27 @@ namespace JwtAuthenticationManager
 
         public static void AddCustomJwtAuthentication(this IServiceCollection services)
         {
-            services.AddAuthentication(o =>
+            services.AddAuthentication(/*o =>
             {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(o =>
+                
+            }*/
+                JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
             {
-                o.RequireHttpsMetadata = false;
-                o.SaveToken = true;
+                o.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app";
+                o.Audience = "cost-tracking-client";
+                //o.RequireHttpsMetadata = false;
+                //o.SaveToken = true;
                 o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                 {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = false,
+                    ValidateIssuer = false, //inace true
                     ValidateAudience = false,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(JwtTokenHandler.JWT_SECURITY_KEY)),
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
+                    ValidAudience = "cost-tracking-client",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
                 };
             });
         }

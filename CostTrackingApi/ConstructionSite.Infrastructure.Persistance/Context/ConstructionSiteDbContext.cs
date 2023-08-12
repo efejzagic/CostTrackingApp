@@ -36,48 +36,22 @@ namespace ConstructionSite.Infrastructure.Persistance.Context
 
         public static void Seed(ModelBuilder builder)
         {
-            ////Seed Suppliers
-            //var machinery = new List<Machinery>()
-            //    {
-            //        new Machinery() { Id=1, Name = "Machinery 1", Description= "Description 1", ProductionYear = DateOnly.FromDateTime(DateTime.Now),
-            //            MachineryStatus = MachineryStatus.IDLE, Location = "Loc 1", retired = false },
-            //        new Machinery() { Id=2, Name = "Machinery 2", Description= "Description 2", ProductionYear = DateOnly.FromDateTime(DateTime.Now),
-            //            MachineryStatus = MachineryStatus.WORKING, Location = "Loc 2", retired = false },
-            //    };
+            //Seed ConstructionSite
+            var constructionSite = new List<Domain.Entities.ConstructionSite>()
+            {
+                new Domain.Entities.ConstructionSite() { Id = 1, Title = "Construction Site 1", Description="Description 1" , Address = "Address 1", City = "City 1", Country = "Country 1"},
+                new Domain.Entities.ConstructionSite() { Id = 2, Title = "Construction Site 2", Description="Description 2" , Address = "Address 2", City = "City 2", Country = "Country 2"}
+            };
+            builder.Entity<Domain.Entities.ConstructionSite>().HasData(constructionSite);
 
-            //builder.Entity<Machinery>().HasData(machinery);
+            //Seed employees
 
-            //// Seed Articles
-
-            //var tools = new List<Tool>()
-            //    {
-            //        new Tool() { Id=1, Title = "Tool 1", Description = "Desc 1", Location = "Loc 1", ToolStatus = ToolStatus.FUNCTIONAL , retired = false},
-            //        new Tool() { Id=2, Title = "Tool 2", Description = "Desc 2", Location = "Loc 2", ToolStatus = ToolStatus.IN_USE, retired = false},
-
-            //    };
-
-            //builder.Entity<Tool>().HasData(tools);
-
-
-            //var machineryServicing = new List<MachineryService>()
-            //    {
-            //        new MachineryService() { Id=1, Title = "Machine Service 1", Description = "Desc 1",Price = 10.0, MachineryId = 1, ServiceDate = DateTime.UtcNow, retired = false},
-            //        new MachineryService() { Id=2, Title = "Machine Serivce 2", Description = "Desc 2", Price = 20.5, MachineryId = 2, ServiceDate = DateTime.UtcNow, retired = false},
-
-            //    };
-
-            //builder.Entity<MachineryService>().HasData(machineryServicing);
-
-            //var toolServicing = new List<ToolService>()
-            //    {
-            //        new ToolService() { Id=1, Title = "Tool Service 1", Description = "Desc 1",Price = 3.0, ToolId = 1, ServiceDate = DateTime.UtcNow, retired = false},
-            //        new ToolService() { Id=2, Title = "Tool Serivce 2", Description = "Desc 2", Price = 12.5, ToolId = 2, ServiceDate = DateTime.UtcNow, retired = false},
-
-            //    };
-
-            //builder.Entity<ToolService>().HasData(toolServicing);
-
-
+            var employees = new List<Employee>()
+            {
+                new Employee() {Id = 1, Name = "User", Surname="One", Address = "Address 1", City = "City 1", Country = "Country 1", ConstructionSiteId = 1, HourlyRate = 15.5, HoursOfWork = 8, Salary= 2700},
+                new Employee() {Id = 2, Name = "Test", Surname="Two", Address = "Address 2", City = "City 2", Country = "Country 2", ConstructionSiteId = 2, HourlyRate = 12.5, HoursOfWork = 7, Salary= 1920.5}
+            };
+            builder.Entity<Employee>().HasData(employees);
 
         }
     }

@@ -25,6 +25,66 @@
       "DownstreamPathTemplate": "/api/v/Article"
     },
     {
+      "UpstreamPathTemplate": "/api/v/Article/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Article/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Article/name/{name}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Article/name/{name}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Supplier",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Supplier"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Supplier/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Supplier/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Supplier/name/{name}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Supplier/name/{name}"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/ConstructionSite",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",
@@ -35,7 +95,72 @@
         }
       ],
       "DownstreamPathTemplate": "/api/v/ConstructionSite"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite/title/{title}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite/title/{title}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Employee",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Employee"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Employee/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Employee/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Employee/name/{name}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Employee/name/{name}"
     }
+
+
+
+
   ],
   "GlobalConfiguration": {
     "BaseUrl" :  "http://localhost:800"

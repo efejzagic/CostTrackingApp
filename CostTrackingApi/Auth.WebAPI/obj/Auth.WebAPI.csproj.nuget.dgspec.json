@@ -333,7 +333,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
+                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -357,6 +361,10 @@
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
               "version": "[6.32.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

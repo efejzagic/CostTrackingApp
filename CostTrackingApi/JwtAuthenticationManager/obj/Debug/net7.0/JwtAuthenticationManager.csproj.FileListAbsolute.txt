@@ -10,3 +10,6 @@ D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\Jwt
 D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\refint\JwtAuthenticationManager.dll
 D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.pdb
 D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\ref\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\Auth.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\Auth.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.csproj.CopyComplete
