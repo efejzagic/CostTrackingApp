@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "N8MTFjbSC8EdqYbi/CGxjOW1NZMcj2kuY19HBrNDGpDcLV8s7FzT3hYh6kZFI0Hv6XYPB7PfzaVlnXWh2i2/tA==",
+  "dgSpecHash": "YcQfbvC0GwmERmhgp6QGGaZ6Bf+19QlRNj5Xzw+iRgwGPiWpQhn3mk7Zl30tdBtOcv9Jac8muwzQg+3Z3wCLfQ==",
   "success": true,
   "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Equipment.WebAPI\\Equipment.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",

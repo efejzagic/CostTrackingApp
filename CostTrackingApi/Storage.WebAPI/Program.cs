@@ -8,20 +8,14 @@ using Storage.Infrastructure.Persistance.Repositories;
 using Storage.Application;
 using Storage.Infrastructure.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
-
-
-using Storage.Infrastructure.Persistance.Context;
 using Storage.Infrastructure.Persistance.IoC;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 using MediatR;
-using Storage.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
 using Storage.Application.Mappings;
+using Storage.WebAPI.Settings;
+using JwtAuthenticationManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +30,9 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+
+builder.Services.AddCustomJwtAuthentication();
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
 {
@@ -51,6 +48,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 #endregion
+
+
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
 //builder.Services.AddApplication();
@@ -82,11 +81,15 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Med
 #endregion
 var app = builder.Build();
 #region ApplyMigration
-using (var scope = app.Services.CreateScope())
+RetryHelper.RetryConnection(() =>
 {
-    var db = scope.ServiceProvider.GetRequiredService<StorageDbContext>();
-    db.Database.Migrate();
-}
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<StorageDbContext>();
+        db.Database.Migrate();
+    }
+});
 #endregion
 #region Swagger
 // Enable middleware to serve generated Swagger as a JSON endpoint.

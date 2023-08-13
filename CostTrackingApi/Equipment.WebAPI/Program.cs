@@ -14,6 +14,7 @@ using Equipment.Application.Mappings;
 using EquipmentService.Profiles;
 using Equipment.Infrastructure.Persistance.Repositories;
 using EquipmentService.Repositories;
+using Equipment.WebAPI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,11 +82,15 @@ builder.Services.AddMediatR(typeof(Equipment.Application.MediatorClass).Assembly
 #endregion
 var app = builder.Build();
 #region ApplyMigration
-using (var scope = app.Services.CreateScope())
+RetryHelper.RetryConnection(() =>
 {
-    var db = scope.ServiceProvider.GetRequiredService<EquipmentDbContext>();
-    db.Database.Migrate();
-}
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<EquipmentDbContext>();
+        db.Database.Migrate();
+    }
+});
 #endregion
 #region Swagger
 // Enable middleware to serve generated Swagger as a JSON endpoint.

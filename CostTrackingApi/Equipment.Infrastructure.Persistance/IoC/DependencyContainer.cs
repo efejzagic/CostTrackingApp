@@ -40,7 +40,7 @@ namespace Equipment.Infrastructure.Persistance.IoC
         {
             services.AddDbContext<EquipmentDbContext>(options =>
              options.UseNpgsql(
-                 configuration.GetConnectionString("DbConnection")
+                 configuration.GetConnectionString("EquipmentConnection")
              ),
              ServiceLifetime.Transient // Assuming you want to use a new instance of DbContext for each request
          );

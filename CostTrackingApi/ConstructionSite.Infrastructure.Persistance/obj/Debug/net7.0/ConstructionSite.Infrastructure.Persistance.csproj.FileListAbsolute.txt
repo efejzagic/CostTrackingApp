@@ -10,3 +10,8 @@ D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\o
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\obj\Debug\net7.0\refint\ConstructionSite.Infrastructure.Persistance.dll
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\obj\Debug\net7.0\ConstructionSite.Infrastructure.Persistance.pdb
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\obj\Debug\net7.0\ref\ConstructionSite.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\bin\Debug\net7.0\ConstructionSite.Application.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\bin\Debug\net7.0\ConstructionSite.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\bin\Debug\net7.0\ConstructionSite.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\bin\Debug\net7.0\ConstructionSite.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Infrastructure.Persistance\obj\Debug\net7.0\ConstructionSite.Infrastructure.Persistance.csproj.CopyComplete

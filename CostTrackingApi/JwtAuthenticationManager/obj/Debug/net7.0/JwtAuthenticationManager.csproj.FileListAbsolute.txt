@@ -1,0 +1,15 @@
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\JwtAuthenticationManager.deps.json
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\refint\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\ref\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\Auth.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\bin\Debug\net7.0\Auth.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\JwtAuthenticationManager\obj\Debug\net7.0\JwtAuthenticationManager.csproj.CopyComplete
