@@ -8,50 +8,51 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const EditSupplierPage = () => {
+const EditEmployeePage = () => {
     const { id } = useParams();
 
 
   const [formData, setFormData] = useState({
     Id: id,
     Name: '',
+    Surname: '',
     Address: '',
     City: '',
     Country: '',
-    Email: '',
-    Phone: '',
+    ConstructionSiteId: '',
+    HourlyRate: '',
+    HoursOfWork: '',
+    Salary: '',
   });
 
   useEffect(() => {
-    const fetchSupplierData = async () => {
+    const fetchEmployeeData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8001/api/v/Supplier/${id}`);
-            const apiSupplierData = response.data.data; 
-            const mappedSupplierData = {
-                Name: apiSupplierData.name,
-                Address: apiSupplierData.address,
-                City: apiSupplierData.city,
-                Country: apiSupplierData.country,
-                Email: apiSupplierData.email,
-                Phone: apiSupplierData.phone
+            const response = await axios.get(`http://localhost:8001/api/v/Employee/${id}`);
+            const apiEmployeeData = response.data.data; 
+            const mapperEmployeeData = {
+                Name: apiEmployeeData.name,
+                Surname: apiEmployeeData.surname,
+                Address: apiEmployeeData.address,
+                City: apiEmployeeData.city,
+                Country: apiEmployeeData.country,
+                ConstructionSiteId: apiEmployeeData.constructionSiteId,
+                HourlyRate: apiEmployeeData.hourlyRate,
+                HoursOfWork: apiEmployeeData.hoursOfWork,
+                Salary: apiEmployeeData.salary,
             };
             setFormData((prevFormData) => ({
                 ...prevFormData,
-                ...mappedSupplierData,
+                ...mapperEmployeeData,
             }));
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
-    fetchSupplierData();
+    fetchEmployeeData();
 }, [id]);
 
-
-  const [validationErrors, setValidationErrors] = useState({
-    Email: false,
-    Phone: false,
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -61,31 +62,13 @@ const EditSupplierPage = () => {
     }));
   };
 
-  const handleEmailChange = (event) => {
-    const email = event.target.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      Email: !emailRegex.test(email),
-    }));
-    handleInputChange(event);
-  };
-
-  const handlePhoneChange = (event) => {
-    const phone = event.target.value;
-    const phoneRegex = /^\d{9}$/;
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      Phone: !phoneRegex.test(phone),
-    }));
-    handleInputChange(event);
-  };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     try {
-      const response = await axios.put('http://localhost:8001/api/v/Supplier', {
+      const response = await axios.put('http://localhost:8001/api/v/Employee', {
         Value: formData
       });
       
@@ -97,7 +80,7 @@ const EditSupplierPage = () => {
       } else {
         console.log('PUT request failed');
         console.log('Response data:', response.data);
-        toast.error("Fail");
+        toast.error("Fail t");
         // Handle the failure scenario
       }
     } catch (error) {
@@ -114,16 +97,25 @@ const EditSupplierPage = () => {
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
-        Edit Supplier
+        Edit Employee
       </Typography>
       <Paper elevation={3} style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit}>
-          <TextField
+        <TextField
             label="Name"
             name="Name"
             fullWidth
             required
             value={formData.Name}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+             <TextField
+            label="Surname"
+            name="Surname"
+            fullWidth
+            required
+            value={formData.Surname}
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
@@ -154,27 +146,41 @@ const EditSupplierPage = () => {
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
-          <TextField
-            label="Email"
-            name="Email"
-            type="email"
+
+        <TextField
+            label="ConstructionSiteId"
+            name="ConstructionSiteId"
             fullWidth
             required
-            value={formData.Email}
-            onChange={handleEmailChange}
-            error={validationErrors.Email}
-            helperText={validationErrors.Email ? 'Invalid email format' : ''}
+            value={formData.ConstructionSiteId}
+            onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
-          <TextField
-            label="Phone"
-            name="Phone"
+                  <TextField
+            label="HourlyRate"
+            name="HourlyRate"
             fullWidth
             required
-            value={formData.Phone}
-            onChange={handlePhoneChange}
-            error={validationErrors.Phone}
-            helperText={validationErrors.Phone ? 'Invalid phone format (10 digits)' : ''}
+            value={formData.HourlyRate}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+                  <TextField
+            label="HoursOfWork"
+            name="HoursOfWork"
+            fullWidth
+            required
+            value={formData.HoursOfWork}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+                  <TextField
+            label="Salary"
+            name="Salary"
+            fullWidth
+            required
+            value={formData.Salary}
+            onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
           <Button type="submit" variant="contained" color="primary">
@@ -182,11 +188,10 @@ const EditSupplierPage = () => {
           </Button>
         </form>
       </Paper>
-      <Button>   <Link to={`/supplier`}>Back to Supplier Data</Link> </Button>
-
+      <Button>   <Link to={`/employee`}>Back to Employee Data</Link> </Button>
     </Container>
     </>
   );
 };
 
-export default EditSupplierPage;
+export default EditEmployeePage;

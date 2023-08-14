@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
 import Nav from '../../components/Nav/Nav';
-import GetSuppliers from '../../components/Supplier/GetSuppliers';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -18,16 +17,16 @@ const style = {
   p: 4,
 };
 
-const SupplierPage = () => {
+const CSPage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
-  const fetchSupplierData = async () => {
+  const fetchCSData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Supplier');
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -35,7 +34,7 @@ const SupplierPage = () => {
   };
 
   useEffect(() => {
-    fetchSupplierData();
+    fetchCSData();
   }, []); // Fetch data when component mounts
 
   const handleOpen = (id) => {
@@ -49,14 +48,14 @@ const SupplierPage = () => {
   };
 
   const handleCreate = () => {
-    navigate('/supplier/create');
+    navigate('/construction/create');
   };
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Supplier/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/ConstructionSite/${selectedItemId}`);
       handleClose();
-      fetchSupplierData(); // Refresh data after successful deletion
+      fetchCSData(); // Refresh data after successful deletion
     } catch (error) {
       console.error('Error deleting data:', error);
       // Handle error scenario
@@ -69,7 +68,7 @@ const SupplierPage = () => {
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
-          Supplier Data
+          Construction Site Data
         </Typography>
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
           Create New
@@ -79,28 +78,24 @@ const SupplierPage = () => {
             <TableHead>
               <TableRow>
                 <TableCell width={100}>Id</TableCell>
-                <TableCell width={200}>Name</TableCell>
+                <TableCell width={200}>Title</TableCell>
+                <TableCell width={200}>Description</TableCell>
                 <TableCell width={200}>Address</TableCell>
                 <TableCell width={200}>Country</TableCell>
-                <TableCell width={200}>Email</TableCell>
-                <TableCell width={200}>Phone</TableCell>
-                <TableCell width={200}>DateCreated</TableCell>
-              </TableRow>
+                </TableRow>
             </TableHead>
             <TableBody>
               {data.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>{item.id}</TableCell>
-                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.title}</TableCell>
+                  <TableCell>{item.description}</TableCell>
                   <TableCell>{item.address} {item.city}</TableCell>
                   <TableCell>{item.country}</TableCell>
-                  <TableCell>{item.email}</TableCell>
-                  <TableCell>{item.phone}</TableCell>
-                  <TableCell>{item.dateCreated}</TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <Button variant="outlined" color="primary" size="small">
-                        <Link to={`/supplier/edit/${item.id}`}>Edit</Link>
+                        <Link to={`/construction/edit/${item.id}`}>Edit</Link>
                       </Button>
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete
@@ -122,10 +117,10 @@ const SupplierPage = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Delete Supplier
+            Delete Construction Site
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Are you sure you want to delete {data.find((item) => item.id === selectedItemId)?.name}?
+            Are you sure you want to delete {data.find((item) => item.id === selectedItemId)?.title}?
           </Typography>
           <Button onClick={handleDelete} variant="outlined" color="secondary" sx={{ mt: 2, mr: 2 }}>
             Delete
@@ -139,4 +134,4 @@ const SupplierPage = () => {
   );
 };
 
-export default SupplierPage;
+export default CSPage;

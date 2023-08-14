@@ -9,7 +9,6 @@ import LogoutButton from "../Logout/LogoutButton";
 
 
 const Nav=()=> {
-  console.log("Private route" , PrivateRoute);
   const navigate = useNavigate (); // Initialize useHistory
   const handleLogin = () => {
     // You can perform any login-related actions here if needed
@@ -22,16 +21,18 @@ const Nav=()=> {
       <CssBaseline />
       <AppBar position='relative'/>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography variant='button'> Cost Tracking App</Typography>
+          <Typography variant='button' onClick={() => navigate('/')}> Cost Tracking App</Typography>
           <ButtonGroup variant="text" aria-label="text button group">
             <div className="hover:text-gray-200">
+            <Button onClick={() => navigate('/construction')}>Construction</Button>
+            <Button onClick={() => navigate('/employee')}>Employees</Button>
+              <Button onClick={() => navigate('/supplier')}>Suppliers</Button>
             <PrivateRoute elseContent={<Button    type="button"
                      className="text-blue-800"
                      onClick={handleLogin}>Login</Button>}>
         {/* This content will only be displayed if the user is logged in */}
         <Typography variant="button">Hi {localStorage.getItem('username')}</Typography>
-        <LogoutButton  type="button"
-                     className="text-blue-800"></LogoutButton>
+        <LogoutButton  ></LogoutButton>
       </PrivateRoute>
       
                 

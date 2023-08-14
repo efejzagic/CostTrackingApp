@@ -7,20 +7,15 @@ import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 
 
-const CreatePage = () => {
+const CreateCSPage = () => {
   const [formData, setFormData] = useState({
-    Name: '',
+    Title: '',
+    Description: '',
     Address: '',
     City: '',
     Country: '',
-    Email: '',
-    Phone: '',
   });
 
-  const [validationErrors, setValidationErrors] = useState({
-    Email: false,
-    Phone: false,
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,31 +25,13 @@ const CreatePage = () => {
     }));
   };
 
-  const handleEmailChange = (event) => {
-    const email = event.target.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      Email: !emailRegex.test(email),
-    }));
-    handleInputChange(event);
-  };
 
-  const handlePhoneChange = (event) => {
-    const phone = event.target.value;
-    const phoneRegex = /^\d{9}$/;
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      Phone: !phoneRegex.test(phone),
-    }));
-    handleInputChange(event);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:8001/api/v/Supplier', {
+      const response = await axios.post('http://localhost:8001/api/v/ConstructionSite', {
         Value: formData
       });
       
@@ -87,11 +64,20 @@ const CreatePage = () => {
       <Paper elevation={3} style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Name"
-            name="Name"
+            label="Title"
+            name="Title"
             fullWidth
             required
-            value={formData.Name}
+            value={formData.Title}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+             <TextField
+            label="Description"
+            name="Description"
+            fullWidth
+            required
+            value={formData.Description}
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
@@ -122,29 +108,6 @@ const CreatePage = () => {
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
-          <TextField
-            label="Email"
-            name="Email"
-            type="email"
-            fullWidth
-            required
-            value={formData.Email}
-            onChange={handleEmailChange}
-            error={validationErrors.Email}
-            helperText={validationErrors.Email ? 'Invalid email format' : ''}
-            style={{ marginBottom: '1rem' }}
-          />
-          <TextField
-            label="Phone"
-            name="Phone"
-            fullWidth
-            required
-            value={formData.Phone}
-            onChange={handlePhoneChange}
-            error={validationErrors.Phone}
-            helperText={validationErrors.Phone ? 'Invalid phone format (10 digits)' : ''}
-            style={{ marginBottom: '1rem' }}
-          />
           <Button type="submit" variant="contained" color="primary">
             Create
           </Button>
@@ -152,11 +115,11 @@ const CreatePage = () => {
 
        
       </Paper>
-      <Button>   <Link to={`/supplier`}>Back to Suppliers Data</Link> </Button>
+      <Button>   <Link to={`/construction`}>Back to Construction Data</Link> </Button>
     </Container>
     
     </>
   );
 };
 
-export default CreatePage;
+export default CreateCSPage;

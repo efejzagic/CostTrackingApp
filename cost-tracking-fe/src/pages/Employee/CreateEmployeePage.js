@@ -4,54 +4,22 @@ import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import Nav from '../../components/Nav/Nav';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const EditSupplierPage = () => {
-    const { id } = useParams();
 
-
+const CreateEmployeePage = () => {
   const [formData, setFormData] = useState({
-    Id: id,
     Name: '',
+    Surname: '',
     Address: '',
     City: '',
     Country: '',
-    Email: '',
-    Phone: '',
+    ConstructionSiteId: '',
+    HourlyRate: '',
+    HoursOfWork: '',
+    Salary: '',
   });
 
-  useEffect(() => {
-    const fetchSupplierData = async () => {
-        try {
-            const response = await axios.get(`http://localhost:8001/api/v/Supplier/${id}`);
-            const apiSupplierData = response.data.data; 
-            const mappedSupplierData = {
-                Name: apiSupplierData.name,
-                Address: apiSupplierData.address,
-                City: apiSupplierData.city,
-                Country: apiSupplierData.country,
-                Email: apiSupplierData.email,
-                Phone: apiSupplierData.phone
-            };
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                ...mappedSupplierData,
-            }));
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    fetchSupplierData();
-}, [id]);
-
-
-  const [validationErrors, setValidationErrors] = useState({
-    Email: false,
-    Phone: false,
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -61,41 +29,23 @@ const EditSupplierPage = () => {
     }));
   };
 
-  const handleEmailChange = (event) => {
-    const email = event.target.value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      Email: !emailRegex.test(email),
-    }));
-    handleInputChange(event);
-  };
 
-  const handlePhoneChange = (event) => {
-    const phone = event.target.value;
-    const phoneRegex = /^\d{9}$/;
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      Phone: !phoneRegex.test(phone),
-    }));
-    handleInputChange(event);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
   
     try {
-      const response = await axios.put('http://localhost:8001/api/v/Supplier', {
+      const response = await axios.post('http://localhost:8001/api/v/Employee', {
         Value: formData
       });
       
       if (response.status === 200) {
-        console.log('PUT request successful');
+        console.log('POST request successful');
         console.log('Response data:', response.data);
         // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
-        console.log('PUT request failed');
+        console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
         // Handle the failure scenario
@@ -106,7 +56,6 @@ const EditSupplierPage = () => {
       // Handle the error scenario
     }
   };
-  
   return (
 
     <>
@@ -114,7 +63,7 @@ const EditSupplierPage = () => {
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
-        Edit Supplier
+        New Employee
       </Typography>
       <Paper elevation={3} style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit}>
@@ -124,6 +73,15 @@ const EditSupplierPage = () => {
             fullWidth
             required
             value={formData.Name}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+             <TextField
+            label="Surname"
+            name="Surname"
+            fullWidth
+            required
+            value={formData.Surname}
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
@@ -154,39 +112,55 @@ const EditSupplierPage = () => {
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
-          <TextField
-            label="Email"
-            name="Email"
-            type="email"
+
+        <TextField
+            label="ConstructionSiteId"
+            name="ConstructionSiteId"
             fullWidth
             required
-            value={formData.Email}
-            onChange={handleEmailChange}
-            error={validationErrors.Email}
-            helperText={validationErrors.Email ? 'Invalid email format' : ''}
+            value={formData.ConstructionSiteId}
+            onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
-          <TextField
-            label="Phone"
-            name="Phone"
+                  <TextField
+            label="HourlyRate"
+            name="HourlyRate"
             fullWidth
             required
-            value={formData.Phone}
-            onChange={handlePhoneChange}
-            error={validationErrors.Phone}
-            helperText={validationErrors.Phone ? 'Invalid phone format (10 digits)' : ''}
+            value={formData.HourlyRate}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+                  <TextField
+            label="HoursOfWork"
+            name="HoursOfWork"
+            fullWidth
+            required
+            value={formData.HoursOfWork}
+            onChange={handleInputChange}
+            style={{ marginBottom: '1rem' }}
+          />
+                  <TextField
+            label="Salary"
+            name="Salary"
+            fullWidth
+            required
+            value={formData.Salary}
+            onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
           <Button type="submit" variant="contained" color="primary">
-            Edit
+            Create
           </Button>
         </form>
-      </Paper>
-      <Button>   <Link to={`/supplier`}>Back to Supplier Data</Link> </Button>
 
+       
+      </Paper>
+      <Button>   <Link to={`/employee`}>Back to Employee Data</Link> </Button>
     </Container>
+    
     </>
   );
 };
 
-export default EditSupplierPage;
+export default CreateEmployeePage;
