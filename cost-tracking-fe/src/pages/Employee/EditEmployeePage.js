@@ -7,6 +7,7 @@ import Nav from '../../components/Nav/Nav';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const EditEmployeePage = () => {
     const { id } = useParams();
@@ -89,7 +90,22 @@ const EditEmployeePage = () => {
       // Handle the error scenario
     }
   };
-  
+  const [constructionSites, setConstructionSites] = useState([]); // To store fetched Construction Site data
+
+  const fetchConstructionSites = async () => {
+    try {
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
+      console.log("Construction Sites: " , response.data.data );
+      setConstructionSites(response.data.data);
+    } catch (error) {
+      console.error('Error fetching Construction Sites:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchConstructionSites();
+  }, []); // Fetch
+
   return (
 
     <>
@@ -147,15 +163,26 @@ const EditEmployeePage = () => {
             style={{ marginBottom: '1rem' }}
           />
 
-        <TextField
-            label="ConstructionSiteId"
-            name="ConstructionSiteId"
-            fullWidth
-            required
-            value={formData.ConstructionSiteId}
-            onChange={handleInputChange}
-            style={{ marginBottom: '1rem' }}
-          />
+<FormControl fullWidth style={{ marginBottom: '1rem' }}>
+  <InputLabel id="construction-site-label">Construction Site</InputLabel>
+  <Select
+    labelId="construction-site-label"
+    id="ConstructionSiteId"
+    name="ConstructionSiteId"
+    value={formData.ConstructionSiteId}
+    onChange={handleInputChange}
+    required
+    MenuProps={{
+      style: { maxHeight: '400px' } // Adjust the maxHeight as needed
+    }}
+  >
+    {constructionSites.map(site => (
+      <MenuItem key={site.id} value={site.id}>
+        {site.title}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
                   <TextField
             label="HourlyRate"
             name="HourlyRate"

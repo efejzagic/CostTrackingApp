@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
+import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 
 const CreateEmployeePage = () => {
@@ -20,7 +21,21 @@ const CreateEmployeePage = () => {
     Salary: '',
   });
 
+  const [constructionSites, setConstructionSites] = useState([]); // To store fetched Construction Site data
 
+  const fetchConstructionSites = async () => {
+    try {
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
+      console.log("Construction Sites: " , response.data.data );
+      setConstructionSites(response.data.data);
+    } catch (error) {
+      console.error('Error fetching Construction Sites:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchConstructionSites();
+  }, []); // Fetch
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -113,7 +128,7 @@ const CreateEmployeePage = () => {
             style={{ marginBottom: '1rem' }}
           />
 
-        <TextField
+        {/* <TextField
             label="ConstructionSiteId"
             name="ConstructionSiteId"
             fullWidth
@@ -121,7 +136,28 @@ const CreateEmployeePage = () => {
             value={formData.ConstructionSiteId}
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
-          />
+          /> */}
+   <FormControl fullWidth style={{ marginBottom: '1rem' }}>
+  <InputLabel id="construction-site-label">Construction Site</InputLabel>
+  <Select
+    labelId="construction-site-label"
+    id="ConstructionSiteId"
+    name="ConstructionSiteId"
+    value={formData.ConstructionSiteId}
+    onChange={handleInputChange}
+    required
+    MenuProps={{
+      style: { maxHeight: '400px' } // Adjust the maxHeight as needed
+    }}
+  >
+    {constructionSites.map(site => (
+      <MenuItem key={site.id} value={site.id}>
+        {site.title}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
+
                   <TextField
             label="HourlyRate"
             name="HourlyRate"
