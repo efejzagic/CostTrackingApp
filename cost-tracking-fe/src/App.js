@@ -6,6 +6,10 @@ import SecuredPage from "./pages/Securedpage";
 import PrivateRoute from "./helpers/PrivateRoute";
 import LoginPage from "./pages/LoginPage"
 import { ToastContainer } from 'react-toastify';
+import AdminUsers from './pages/AdminUsers'
+import SupplierPage from "./pages/Supplier/SupplierPage";
+import CreateSupplierPage from "./pages/Supplier/CreateSupplierPage";
+import EditSupplierPage from "./pages/Supplier/EditSupplierPage";
 
 function App() {
  return (
@@ -13,7 +17,11 @@ function App() {
        <BrowserRouter>
          <Routes>
            <Route exact path="/" element={<WelcomePage />} />
-           <Route exact path="/test" element={<LoginPage />} />
+           <Route exact path="/login" element={<LoginPage />} />
+           <Route exact path="/users" element={<AdminUsers />} />
+           <Route exact path="/supplier" element={<SupplierPage />} />
+           <Route exact path="/supplier/create" element={<CreateSupplierPage/>} />
+           <Route exact path="/supplier/edit/:id" element={<EditSupplierPage/>} />
            <Route
              path="/secured"
              element={

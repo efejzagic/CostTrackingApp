@@ -6,22 +6,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
+import GetSuppliers from '../components/Supplier/GetSuppliers'
 
 function Homepage() {
-
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    // Fetch data using Axios when the component mounts
-    axios.get('http://localhost:8001/api/v/Supplier')
-      .then(response => {
-        setData(response.data.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        toast.error("Error fetching data");
-      });
-  }, []);
+  const data = GetSuppliers();
+ 
   return (
     <>
       <Nav/>
