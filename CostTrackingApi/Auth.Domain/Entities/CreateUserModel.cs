@@ -8,6 +8,8 @@
         public string surname { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public string accessToken { get; set; }
+        //public string RoleId { get; set; }
+
+        //public string accessToken { get; set; }
     }
 }

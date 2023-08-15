@@ -27,6 +27,7 @@
 
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Values;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,8 +36,18 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddEnvironmentVariables();
 
 builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddCors(options =>
+{
+    var frontendURL = "http://localhost:3000";
 
+    options.AddDefaultPolicy(builder =>
+    {
+        // builder.WithOrigins(frontendURL!).AllowAnyMethod().AllowAnyHeader();
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 var app = builder.Build();
+app.UseCors();
 
 await app.UseOcelot();
 app.Run();

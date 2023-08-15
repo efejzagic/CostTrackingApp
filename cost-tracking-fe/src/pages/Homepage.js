@@ -1,59 +1,64 @@
 import * as React from 'react';
 import '../App.css';
-import { Typography, Paper,  AppBar,Table,TableHead, TableRow, TableBody, TableCell, TableContainer, TablePagination, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
 import Nav from '../components/Nav/Nav'
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-import GetSuppliers from '../components/Supplier/GetSuppliers'
+import MediaCard from '../components/Cards/MediaCard';
+import '../components/Cards/CardGrid.css'
+import { Container, Typography } from '@mui/material';
+import { Icon } from '@mui/material';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import PaidIcon from '@mui/icons-material/Paid';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+
 
 function Homepage() {
-  const data = GetSuppliers();
- 
+
   return (
     <>
       <Nav/>
-        <main>
-          <div>
-            <Container maxWidth='sm'>
-              <Typography variant='h3' align='center' color='textPrimary' gutterBottom>
-                Supplier Table
-              </Typography>
-              <Typography variant='h6' align='center' color='textSecondary' gutterBottom>
-                Axios fetch test for Supplier API
-              </Typography>
-              <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 500 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Id </TableCell>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Phone</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">{row.phone}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-   
-            </Container>
-          </div>
-        </main>
+      <main>
+      <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
+        <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
+          Homepage admin
+        </Typography>
+        </Container>
+      <div className="card-grid " style={{ marginTop: '4rem'}}>
+      <MediaCard
+        title="Create new users"
+        media={<Icon component={PersonAddIcon} fontSize="large" />}
+        text="Lorem ipsum dolor sit amet."
+        route='/users'
+      />
+  <MediaCard
+        title="Create new Invoice"
+        media={<Icon component={ReceiptIcon} fontSize="large" />}
+        text="Lorem ipsum dolor sit amet."
+        route='/construction'
+      />
+       <MediaCard
+        title="Create new expense"
+        media={<Icon component={PaidIcon} fontSize="large" />}
+        text="Lorem ipsum dolor sit amet."
+        route='/construction/create'
+      />
+       <MediaCard
+        title="Transactions"
+        media={<Icon component={CurrencyExchangeIcon} fontSize="large" />}
+        text="Lorem ipsum dolor sit amet."
+        route='/construction/create'
+      />
+       <MediaCard
+        title="Finance"
+        media={<Icon component={AccountBalanceWalletIcon} fontSize="large" />}
+        text="Lorem ipsum dolor sit amet."
+        route='/construction/create'
+      />
+      
+      </div>
+
+      </main>
     </>
   );
 }

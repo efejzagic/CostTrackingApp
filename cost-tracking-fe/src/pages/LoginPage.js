@@ -4,7 +4,7 @@ import { Container, Paper, Typography } from '@mui/material';
 import { useNavigate  } from 'react-router-dom'; // Import useHistory from React Router
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-
+import axios from 'axios';
 
 const styles = {
   container: {
@@ -41,26 +41,36 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8001/api/v/Account/test', {
-        method: 'POST',
+
+      // const response = await fetch('http://localhost:8001/api/Auth/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ username, password }),
+      // });
+
+      const response = await axios.post('http://localhost:8001/api/Auth/login', {
+        model: { username, password },
+      }, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
       });
 
-      if (response.ok) {
+
+      if (response.status === 200) {
         
         console.log("Response: ", response)
-        const data = await response.json();
-        console.log("Data: " , data);
-        localStorage.setItem('accessToken', data.jwtToken);
-        localStorage.setItem('username', data.username)
+        const data = response.data;
+        console.log("Data: " , data.data);
+        localStorage.setItem('accessToken', data.data.accessToken);
+        localStorage.setItem('username', data.data.username)
         toast.success('Login succesfull');
         navigate('/'); // Save token in local storage
       } else {
         console.error('Login failed');
-        toast.error('Error - Login failed'); // Display the toast alert
+        toast.error(' - Login failed'); // Display the toast alert
 
       }
     } catch (error) {

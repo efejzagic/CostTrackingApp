@@ -12,5 +12,7 @@ namespace JwtAuthenticationManager.Models
         public string JwtToken { get; set; }    
         public int ExpiresIn { get; set; }  
 
+        public List<string> Roles { get; set; }
+
     }
 }

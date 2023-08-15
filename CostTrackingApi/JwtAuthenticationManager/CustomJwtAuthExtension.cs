@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using JwtAuthenticationManager;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 namespace JwtAuthenticationManager
 {
     public static  class CustomJwtAuthExtension
@@ -38,6 +40,7 @@ namespace JwtAuthenticationManager
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
                 };
             });
+
         }
     }
 }

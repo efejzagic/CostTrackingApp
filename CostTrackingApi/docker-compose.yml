@@ -2,9 +2,8 @@ version: '3.4'
 
 networks:
   backend:
-    driver: bridge
   frontend:
-    driver: bridge
+
 
 
 services:
@@ -105,6 +104,7 @@ services:
       - 8001:80
     networks:
       - backend
+      - frontend
 
   auth.webapi:
     container_name: auth-service
@@ -112,8 +112,26 @@ services:
     build:
       context: .
       dockerfile: Auth.WebAPI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:80
     networks: 
       - backend
+
+  react-app:
+    container_name: react-frontend
+    image: ${DOCKER_REGISTRY-}reactservice
+    build:
+      context: D:\CostTrackingApp\cost-tracking-fe
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    networks: 
+      - frontend
+
 
 volumes:
   app_data:

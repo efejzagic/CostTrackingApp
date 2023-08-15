@@ -14,7 +14,7 @@ const Nav=()=> {
     // You can perform any login-related actions here if needed
   
     // After handling login logic, navigate to the "/test" route
-    navigate('/test');
+    navigate('/login');
     };
   return (
     <>

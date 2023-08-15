@@ -1,16 +1,77 @@
 {
+
   "Routes": [
     {
-      "UpstreamPathTemplate": "/api/Account",
+      "UpstreamPathTemplate": "/api/v/Account/all-users",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Account/all-users"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/login",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "auth-service",
+          "Host": "auth.webapi",
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/Account"
+      "DownstreamPathTemplate": "/api/Auth/login"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/CreateUser",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/CreateUser"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/roles",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/roles"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Account/invalidate-token",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Account/invalidate-token"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Account",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Account"
     },
     {
       "UpstreamPathTemplate": "/api/v/Article",
@@ -159,11 +220,17 @@
     }
 
 
-
-
   ],
   "GlobalConfiguration": {
-    "BaseUrl" :  "http://localhost:800"
+    "BaseUrl": "http://localhost:800",
+    "CorsPolicy": {
+      "allow-all": {
+        "AllowedOrigins": [ "http://localhost:3000" ],
+        "AllowedMethods": [ "GET", "POST", "PUT", "DELETE" ],
+        "AllowAnyHeader": true,
+        "AllowCredentials": true
+      }
+    }
   }
 
 }

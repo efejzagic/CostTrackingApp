@@ -14,6 +14,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Auth.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace JwtAuthenticationManager
 {
@@ -21,17 +23,20 @@ namespace JwtAuthenticationManager
     {
         public const string JWT_SECURITY_KEY = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN";
         public const int JWT_TOKEN_VALIDITY_MINS = 20;
-        private readonly List<UserAccount> _userAccounts;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public JwtTokenHandler()
+        public JwtTokenHandler(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
         {
-          
+            _httpClientFactory = httpClientFactory;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
         private static HttpClient _httpClient = new HttpClient();
 
 
-        public async Task<string> GenerateTokenWithRolesAsync(AuthenticationRequest request)
+        public async Task<AuthenticationResponse> GenerateTokenWithRolesAsync(AuthenticationRequest request)
         {
             string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
             string realm = "cost-tracking-app";
@@ -89,8 +94,17 @@ namespace JwtAuthenticationManager
                     };
 
                     var token = tokenHandler.CreateToken(tokenDescriptor);
-                    return tokenHandler.WriteToken(token);
+                    var responseToken =  tokenHandler.WriteToken(token);
 
+                    var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
+
+                    return new AuthenticationResponse()
+                    {
+                        Username = request.Username,
+                        JwtToken = responseToken,
+                        ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.Now).TotalSeconds,
+                        Roles = roles
+                    };
 
                 }
                 else
@@ -105,45 +119,122 @@ namespace JwtAuthenticationManager
             return null;
         }
 
-       
-        public AuthenticationResponse? GenerateJwtToken (AuthenticationRequest request)
+        private string GetTokenFromHeader()
         {
-            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
-                return null;
-            //validation
-            var userAccount = _userAccounts.Where(u => u.Username == request.Username && u.Password == request.Password).FirstOrDefault();
-            if(userAccount == null) return null;
+            var context = _httpContextAccessor.HttpContext;
 
-            var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
-            var tokenKey = Encoding.ASCII.GetBytes(JWT_SECURITY_KEY);
-            var claimsIdentity = new ClaimsIdentity(new List<Claim>
+            if (context != null)
             {
-                new Claim(JwtRegisteredClaimNames.Name, request.Username),
-                new Claim(ClaimTypes.Role, userAccount.Role)
-            });
-
-            var signingCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(tokenKey),
-                SecurityAlgorithms.HmacSha256Signature);
-            var securityTokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = claimsIdentity,
-                Expires = tokenExpiryTimeStamp,
-                SigningCredentials = signingCredentials
-            };
-
-            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-            var token = jwtSecurityTokenHandler.WriteToken(securityToken);
-
-            return new AuthenticationResponse
-            {
-                Username = userAccount.Username,
-                ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.Now).TotalSeconds,
-                JwtToken = token
-            };
-
+                var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+                // Your logic here
+                return token;
+            }
+            return null;
         }
+
+        public async Task<List<KeycloakUser>> GetAllUsers ()
+        {
+
+            var accessToken = GetTokenFromHeader();
+            if (accessToken == null || accessToken=="null" || accessToken.IsNullOrEmpty()) return null;
+
+            var httpClient = _httpClientFactory.CreateClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var response = await httpClient.GetAsync("https://lemur-5.cloud-iam.com/auth/admin/realms/cost-tracking-app/users");
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            // Process the responseBody to extract user data
+            try
+            {
+                // Deserialize the response JSON into a list of user objects
+                var users = JsonConvert.DeserializeObject<List<KeycloakUser>>(responseBody);
+
+                // Do something with the list of users
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error processing response: {ex.Message}");
+            }
+        }
+
+
+
+       public async Task<bool> Logout (string accessToken)
+        {
+            string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
+            string realm = "cost-tracking-app";
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Construct the logout URL
+                    string logoutUrl = $"{keycloakUrl}/realms/{realm}/protocol/openid-connect/logout?id_token_hint={accessToken}";
+
+                    // Make the request to the Keycloak logout endpoint
+                    HttpResponseMessage response = await client.PostAsync(logoutUrl, null);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("Token invalidated successfully.");
+                        // Clear the locally stored token(s)
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Token invalidation failed.");
+                        // Handle the failure scenario
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    // Handle the exception
+                }
+            }
+            return false;
+        }
+
+        //public AuthenticationResponse? GenerateJwtToken (AuthenticationRequest request)
+        //{
+        //    if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+        //        return null;
+        //    //validation
+        //    var userAccount = _userAccounts.Where(u => u.Username == request.Username && u.Password == request.Password).FirstOrDefault();
+        //    if(userAccount == null) return null;
+
+        //    var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
+        //    var tokenKey = Encoding.ASCII.GetBytes(JWT_SECURITY_KEY);
+        //    var claimsIdentity = new ClaimsIdentity(new List<Claim>
+        //    {
+        //        new Claim(JwtRegisteredClaimNames.Name, request.Username),
+        //        new Claim(ClaimTypes.Role, userAccount.Role)
+        //    });
+
+        //    var signingCredentials = new SigningCredentials(
+        //        new SymmetricSecurityKey(tokenKey),
+        //        SecurityAlgorithms.HmacSha256Signature);
+        //    var securityTokenDescriptor = new SecurityTokenDescriptor
+        //    {
+        //        Subject = claimsIdentity,
+        //        Expires = tokenExpiryTimeStamp,
+        //        SigningCredentials = signingCredentials
+        //    };
+
+        //    var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+        //    var securityToken = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
+        //    var token = jwtSecurityTokenHandler.WriteToken(securityToken);
+
+        //    return new AuthenticationResponse
+        //    {
+        //        Username = userAccount.Username,
+        //        ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.Now).TotalSeconds,
+        //        JwtToken = token
+        //    };
+
+        //}
 
 
     }

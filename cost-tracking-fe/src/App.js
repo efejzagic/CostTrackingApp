@@ -16,15 +16,19 @@ import EditCSPage from "./pages/ConstructionSite/EditCSPage";
 import EmployeePage from "./pages/Employee/EmployeePage";
 import CreateEmployeePage from "./pages/Employee/CreateEmployeePage";
 import EditEmployeePage from "./pages/Employee/EditEmployeePage";
+import UsersPage from "./pages/User/UsersPage";
+import CreateUserPage from "./pages/User/CreateUserPage";
 
 function App() {
+
  return (
    <div>
        <BrowserRouter>
          <Routes>
            <Route exact path="/" element={<WelcomePage />} />
            <Route exact path="/login" element={<LoginPage />} />
-           <Route exact path="/users" element={<AdminUsers />} />
+           <Route exact path="/users" element={<UsersPage />} />
+           <Route exact path="/users/create" element={<CreateUserPage />} />
            <Route exact path="/supplier" element={<SupplierPage />} />
            <Route exact path="/supplier/create" element={<CreateSupplierPage/>} />
            <Route exact path="/supplier/edit/:id" element={<EditSupplierPage/>} />
