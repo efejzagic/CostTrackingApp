@@ -18,15 +18,19 @@ import CreateEmployeePage from "./pages/Employee/CreateEmployeePage";
 import EditEmployeePage from "./pages/Employee/EditEmployeePage";
 import UsersPage from "./pages/User/UsersPage";
 import CreateUserPage from "./pages/User/CreateUserPage";
+import CSEmployeesPage from "./pages/ConstructionSite/CSEmployees";
 
 function App() {
 
  return (
    <div>
+    
        <BrowserRouter>
-         <Routes>
-           <Route exact path="/" element={<WelcomePage />} />
-           <Route exact path="/login" element={<LoginPage />} />
+       <Nav/>
+        <Routes>
+          
+           <Route path="/" element={<WelcomePage />} />
+           <Route exact path="/login" element={<LoginPage />} />  
            <Route exact path="/users" element={<UsersPage />} />
            <Route exact path="/users/create" element={<CreateUserPage />} />
            <Route exact path="/supplier" element={<SupplierPage />} />
@@ -35,7 +39,7 @@ function App() {
            <Route exact path="/construction" element={<CSPage />} />
            <Route exact path="/construction/create" element={<CreateCSPage/>} />
            <Route exact path="/construction/edit/:id" element={<EditCSPage/>} />
-
+           <Route exact path="/construction/:id/employees" element={<CSEmployeesPage/>} />
            <Route exact path="/employee" element={<EmployeePage />} />
            <Route exact path="/employee/create" element={<CreateEmployeePage/>} />
            <Route exact path="/employee/edit/:id" element={<EditEmployeePage/>} />
@@ -47,6 +51,7 @@ function App() {
                </PrivateRoute>
              }
            />
+           
          </Routes>
        </BrowserRouter>
        <ToastContainer />

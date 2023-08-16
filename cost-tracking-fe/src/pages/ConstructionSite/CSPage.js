@@ -64,7 +64,7 @@ const CSPage = () => {
 
   return (
     <>
-      <Nav />
+      
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
@@ -94,6 +94,9 @@ const CSPage = () => {
                   <TableCell>{item.country}</TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <Button variant="outlined" color="primary" size="small">
+                        <Link to={`/construction/${item.id}/employees`}>Employees</Link>
+                      </Button>
                       <Button variant="outlined" color="primary" size="small">
                         <Link to={`/construction/edit/${item.id}`}>Edit</Link>
                       </Button>

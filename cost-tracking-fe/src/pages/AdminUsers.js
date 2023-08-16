@@ -11,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 export default function AdminUsersPage() {
   return (
     <>
-    <Nav/>
+    
     <Typography variant='h4' align='center' color='textPrimary' gutterBottom> Admin Users Page</Typography>
     <Typography variant='body2' align='center' color='textPrimary' gutterBottom>Sve akcije koje su vezane za korisnike sistema sa strane admina</Typography>
     

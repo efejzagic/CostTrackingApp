@@ -6,6 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+
+
+
 const styles = {
   container: {
     display: 'flex',
@@ -34,7 +37,7 @@ const styles = {
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const navigate = useNavigate ();
@@ -66,7 +69,9 @@ function Login() {
         console.log("Data: " , data.data);
         localStorage.setItem('accessToken', data.data.accessToken);
         localStorage.setItem('username', data.data.username)
+        setIsLoading(true);
         toast.success('Login succesfull');
+
         navigate('/'); // Save token in local storage
       } else {
         console.error('Login failed');
@@ -81,9 +86,12 @@ function Login() {
   };
 
   return (
-   
+
+    
     <Container style={styles.container}>
+
     <Paper elevation={3} style={styles.paper}>
+      
       <Typography variant="h4">Login</Typography>
       <form style={styles.form}>
         <TextField

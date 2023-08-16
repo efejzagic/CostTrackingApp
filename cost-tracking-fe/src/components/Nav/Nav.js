@@ -31,7 +31,7 @@ const Nav=()=> {
                      className="text-blue-800"
                      onClick={handleLogin}>Login</Button>}>
         {/* This content will only be displayed if the user is logged in */}
-        <Typography variant="button">Hi {localStorage.getItem('username')}</Typography>
+        <Typography variant="button">Hi</Typography>
         <LogoutButton  ></LogoutButton>
       </PrivateRoute>
       

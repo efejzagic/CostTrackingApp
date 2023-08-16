@@ -146,6 +146,18 @@
       "DownstreamPathTemplate": "/api/v/Supplier/name/{name}"
     },
     {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite/test",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite/test"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/ConstructionSite",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",

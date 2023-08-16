@@ -62,9 +62,11 @@ const EmployeePage = () => {
     }
   };
 
+
+ 
   return (
     <>
-      <Nav />
+      
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
@@ -96,12 +98,13 @@ const EmployeePage = () => {
                   <TableCell>{item.surname}</TableCell>
                   <TableCell>{item.address} {item.city}</TableCell>
                   <TableCell>{item.country}</TableCell>
-                  <TableCell>{item.constructionSiteId}</TableCell>
+                  <TableCell>{item.constructionSite.title}</TableCell>
                   <TableCell>{item.hourlyRate}</TableCell>
                   <TableCell>{item.hoursOfWork}</TableCell>
                   <TableCell>{item.salary}</TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      
                       <Button variant="outlined" color="primary" size="small">
                         <Link to={`/employee/edit/${item.id}`}>Edit</Link>
                       </Button>

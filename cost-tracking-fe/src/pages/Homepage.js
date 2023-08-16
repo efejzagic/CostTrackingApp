@@ -1,6 +1,5 @@
 import * as React from 'react';
 import '../App.css';
-import Nav from '../components/Nav/Nav'
 import 'react-toastify/dist/ReactToastify.css';
 import MediaCard from '../components/Cards/MediaCard';
 import '../components/Cards/CardGrid.css'
@@ -17,7 +16,7 @@ function Homepage() {
 
   return (
     <>
-      <Nav/>
+      
       <main>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>

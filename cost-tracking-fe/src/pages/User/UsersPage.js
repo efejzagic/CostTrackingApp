@@ -6,7 +6,7 @@ function UsersPage() {
   return (
 
     <>
-    <Nav/>
+    
       <UserTable />
       </>
   );
