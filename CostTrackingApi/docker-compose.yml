@@ -106,6 +106,36 @@ services:
       - backend
       - frontend
 
+
+  maintenance.webapi:
+    image: ${DOCKER_REGISTRY-}maintenance
+    depends_on:
+      - "maintenance-db"
+    container_name: maintenance-service
+    build:
+      context: .
+      dockerfile: Maintenance.WebAPI/Dockerfile
+    environment:
+      - ConnectionStrings__MaintenanceConnection=User ID=postgres;Password=password;Server=maintenance-db;Port=5432;Database=mndb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - backend
+      
+  maintenance-db:
+    image: postgres:latest
+    container_name: maintenance-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password  
+      - POSTGRES_DB=mndb
+    ports: 
+      - "5436:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/mn_data
+    networks:
+      - backend
+
   auth.webapi:
     container_name: auth-service
     image: ${DOCKER_REGISTRY-}authwebapi
@@ -133,8 +163,11 @@ services:
       - frontend
 
 
+
+
 volumes:
   app_data:
+
 
 
 

@@ -74,6 +74,30 @@
       "DownstreamPathTemplate": "/api/v/Account"
     },
     {
+      "UpstreamPathTemplate": "/api/v/MaintenanceRecord",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "maintenance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/MaintenanceRecord"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/MaintenanceRecord/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "maintenance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/MaintenanceRecord/{id}"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/Article",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",

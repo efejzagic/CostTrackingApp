@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\bin\Debug\net7.0\Maintenance.Domain.deps.json
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\bin\Debug\net7.0\Maintenance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\bin\Debug\net7.0\Maintenance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\refint\Maintenance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\Maintenance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Domain\obj\Debug\net7.0\ref\Maintenance.Domain.dll

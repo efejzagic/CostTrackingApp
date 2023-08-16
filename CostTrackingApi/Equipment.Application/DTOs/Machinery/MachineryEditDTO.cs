@@ -14,8 +14,7 @@ namespace Equipment.Application.DTOs.Machinery
         public string Description { get; set; }
         [Required]
         public DateTime ProductionYear { get; set; }
-        [Required]
-        public MachineryStatus MachineryStatus { get; set; }
+
         [Required]
         public string Location { get; set; }
 

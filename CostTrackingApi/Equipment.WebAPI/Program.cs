@@ -10,11 +10,9 @@ using Equipment.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
-using Equipment.Application.Mappings;
-using EquipmentService.Profiles;
 using Equipment.Infrastructure.Persistance.Repositories;
-using EquipmentService.Repositories;
 using Equipment.WebAPI.Settings;
+using Equipment.Application.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,22 +58,16 @@ builder.Services.AddPersistence(builder.Configuration);
 //});
 
 builder.Services.AddScoped<IMachineryRepository, MachineryRepository>();
-builder.Services.AddScoped<IMachineryServicingRepository, MachineryServicingRepository>();
-builder.Services.AddScoped<IMaintenanceRepository, MaintenanceRepository>();
+
 builder.Services.AddScoped<IToolRepository, ToolRepository>();
-builder.Services.AddScoped<IToolServicingRepository, ToolServicingRepository>();
 
 
 builder.Services.AddAutoMapper(typeof(Equipment.Application.MediatorClass)); // Register AutoMapper
 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new MachineryProfile(provider.GetService<IMachineryServicingRepository>()));
-
-    cfg.AddProfile(new MachineryServiceProfile(provider.GetService<IMachineryRepository>()));
-    cfg.AddProfile(new MaintenanceProfile());
-    cfg.AddProfile(new ToolProfile(provider.GetService<IToolServicingRepository>()));
-    cfg.AddProfile(new ToolServiceProfile(provider.GetService<IToolRepository>()));
+    cfg.AddProfile(new MachineryProfile());
+    cfg.AddProfile(new ToolProfile());
 }).CreateMapper());
 
 builder.Services.AddMediatR(typeof(Equipment.Application.MediatorClass).Assembly);
