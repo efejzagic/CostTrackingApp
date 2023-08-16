@@ -97,6 +97,55 @@
       ],
       "DownstreamPathTemplate": "/api/v/MaintenanceRecord/{id}"
     },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Invoice",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Invoice"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Invoice/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Invoice/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Expense",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Expense"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Expense/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Expense/{id}"
+    },
     {
       "UpstreamPathTemplate": "/api/v/Article",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
