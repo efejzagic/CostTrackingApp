@@ -125,3 +125,14 @@ D:\CostTrackingApp\CostTrackingApi\bin\Debug\Equipment.Infrastructure.Persistanc
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Equipment.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Equipment.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\obj\Debug\docker-compose.dcproj.CopyComplete
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.WebAPI.deps.json
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.WebAPI.runtimeconfig.json
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.WebAPI.exe
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.WebAPI.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.WebAPI.pdb
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Infrastructure.Persistance.pdb
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Domain.pdb

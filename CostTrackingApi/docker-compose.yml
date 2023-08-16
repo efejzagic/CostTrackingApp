@@ -136,6 +136,37 @@ services:
     networks:
       - backend
 
+
+  finance.webapi:
+    image: ${DOCKER_REGISTRY-}finance
+    depends_on:
+      - "finance-db"
+    container_name: finance-service
+    build:
+      context: .
+      dockerfile: Finance.WebAPI/Dockerfile
+    environment:
+      - ConnectionStrings__FinanceConnection=User ID=postgres;Password=password;Server=finance-db;Port=5432;Database=fndb;IntegratedSecurity=true;Pooling=true;
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - backend
+      
+  finance-db:
+    image: postgres:latest
+    container_name: finance-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password  
+      - POSTGRES_DB=mndb
+    ports: 
+      - "5437:5432"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/fn_data
+    networks:
+      - backend
+
+
   auth.webapi:
     container_name: auth-service
     image: ${DOCKER_REGISTRY-}authwebapi
@@ -165,8 +196,11 @@ services:
 
 
 
+
+
 volumes:
   app_data:
+
 
 
 

@@ -1,0 +1,373 @@
+name: dockercompose12009318408639964740
+services:
+  apigateway:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: ApiGateway/Dockerfile
+    container_name: api-gateway
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: apigateway
+    networks:
+      backend: null
+      frontend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "8001"
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  auth.webapi:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: Auth.WebAPI/Dockerfile
+    container_name: auth-service
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: authwebapi
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  constructionsite-db:
+    container_name: constructionsite-db
+    environment:
+      POSTGRES_DB: csdb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5435"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: app_data
+      target: /var/lib/postgresql/cs_data
+      volume: {}
+  constructionsite.webapi:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: ConstructionSite.WebAPI/Dockerfile
+    container_name: constructionsite-service
+    depends_on:
+      constructionsite-db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      ConnectionStrings__ConstructionSiteConnection: User ID=postgres;Password=password;Server=constructionsite-db;Port=5432;Database=csdb;IntegratedSecurity=true;Pooling=true;
+    image: constructionsite
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  equipment-db:
+    container_name: equipment-db
+    environment:
+      POSTGRES_DB: eqdb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5434"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: app_data
+      target: /var/lib/postgresql/eq_data
+      volume: {}
+  equipment.webapi:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: Equipment.WebAPI/Dockerfile
+    container_name: equipment-service
+    depends_on:
+      equipment-db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      ConnectionStrings__EquipmentConnection: User ID=postgres;Password=password;Server=equipment-db;Port=5432;Database=eqdb;IntegratedSecurity=true;Pooling=true;
+    image: equipmentwebapi
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  finance-db:
+    container_name: finance-db
+    environment:
+      POSTGRES_DB: mndb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5437"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: app_data
+      target: /var/lib/postgresql/fn_data
+      volume: {}
+  finance.webapi:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: Finance.WebAPI/Dockerfile
+    container_name: finance-service
+    depends_on:
+      finance-db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      ConnectionStrings__FinanceConnection: User ID=postgres;Password=password;Server=finance-db;Port=5432;Database=fndb;IntegratedSecurity=true;Pooling=true;
+    image: finance
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  maintenance-db:
+    container_name: maintenance-db
+    environment:
+      POSTGRES_DB: mndb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5436"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: app_data
+      target: /var/lib/postgresql/mn_data
+      volume: {}
+  maintenance.webapi:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: Maintenance.WebAPI/Dockerfile
+    container_name: maintenance-service
+    depends_on:
+      maintenance-db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      ConnectionStrings__MaintenanceConnection: User ID=postgres;Password=password;Server=maintenance-db;Port=5432;Database=mndb;IntegratedSecurity=true;Pooling=true;
+    image: maintenance
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  react-app:
+    build:
+      context: D:\CostTrackingApp\cost-tracking-fe
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    environment:
+      NODE_ENV: development
+    image: reactservice
+    networks:
+      frontend: null
+    ports:
+    - mode: ingress
+      target: 3000
+      published: "3000"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: D:\CostTrackingApp\CostTrackingApi
+      target: /app
+      bind:
+        create_host_path: true
+  storage-db:
+    container_name: storage-db
+    environment:
+      POSTGRES_DB: stgdb
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    image: postgres:latest
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5433"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: app_data
+      target: /var/lib/postgresql/st_data
+      volume: {}
+  storage.webapi:
+    build:
+      context: D:\CostTrackingApp\CostTrackingApi
+      dockerfile: Storage.WebAPI/Dockerfile
+    container_name: storage-service
+    depends_on:
+      storage-db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      ConnectionStrings__StorageConnection: User ID=postgres;Password=password;Server=storage-db;Port=5432;Database=stgdb;IntegratedSecurity=true;Pooling=true;
+    image: storagewebapi
+    networks:
+      backend: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\efejz\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  backend:
+    name: dockercompose12009318408639964740_backend
+  frontend:
+    name: dockercompose12009318408639964740_frontend
+volumes:
+  app_data:
+    name: dockercompose12009318408639964740_app_data
