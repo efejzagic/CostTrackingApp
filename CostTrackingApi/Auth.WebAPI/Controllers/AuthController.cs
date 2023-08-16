@@ -11,6 +11,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using MediatR;
 using System.Data;
+using System.Runtime.InteropServices;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -45,8 +46,8 @@ namespace Auth.WebAPI.Controllers
         [Route("Id")]
         public async Task<Application.Wrappers.Response<TokenResponse>> GetUserId()
         {
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //return userId;
+            //var UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //return UserId;
 
             var userId = await Mediator.Send(new GetUserByIdQuery());
             return userId;
@@ -98,6 +99,14 @@ namespace Auth.WebAPI.Controllers
             return null;
         }
 
+
+        [HttpGet("getTest")]
+        [Authorize(Roles = "Finance")]
+
+        public IActionResult GetTest()
+        {
+            return Ok("PROSLO");
+        }
 
         [HttpGet("roles")]
         [AllowAnonymous]

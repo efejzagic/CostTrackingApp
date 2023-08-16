@@ -123,17 +123,17 @@ namespace Auth.WebAPI.Services
 
             var user = new Dictionary<string, object>
             {
-                { "username", model.username },
-                { "email", model.email},
-                { "firstName", model.name},
-                { "lastName", model.surname},
+                { "Username", model.Username },
+                { "Email", model.Email},
+                { "firstName", model.Name},
+                { "lastName", model.Surname},
                 { "enabled", true },
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
-                            { "type", "password" },
-                            { "value", model.password },
+                            { "type", "Password" },
+                            { "value", model.Password },
                             { "temporary", false }
                         }
                     }
@@ -184,17 +184,17 @@ namespace Auth.WebAPI.Services
 
             var user = new Dictionary<string, object>
             {
-                { "username", model.username },
-                { "email", model.email},
-                { "firstName", model.name},
-                { "lastName", model.surname},
+                { "Username", model.Username },
+                { "Email", model.Email},
+                { "firstName", model.Name},
+                { "lastName", model.Surname},
                 { "enabled", true },
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
-                            { "type", "password" },
-                            { "value", model.password },
+                            { "type", "Password" },
+                            { "value", model.Password },
                             { "temporary", false }
                         }
                     }

@@ -49,11 +49,11 @@ namespace JwtAuthenticationManager
 
             var tokenResponse = await _httpClient.PostAsync(tokenEndpoint, new FormUrlEncodedContent(new Dictionary<string, string>
 {
-    { "grant_type", "password" },
+    { "grant_type", "Password" },
     { "client_id", clientId },
     { "client_secret", clientSecret },
-    { "username", request.Username },
-    { "password", request.Password },
+    { "Username", request.Username },
+    { "Password", request.Password },
     { "scope", "openid" } // Add the openid scope here
 }));
 

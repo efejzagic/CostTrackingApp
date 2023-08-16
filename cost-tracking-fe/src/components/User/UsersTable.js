@@ -14,7 +14,7 @@ const UserTable = () => {
   };
 
   const handleCreate = () => {
-    navigate('/supplier/create');
+    navigate('/users/create');
   };
   useEffect(() => {
     const fetchUsers = async () => {

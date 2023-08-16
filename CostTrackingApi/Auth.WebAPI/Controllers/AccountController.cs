@@ -88,17 +88,17 @@ namespace Auth.WebAPI.Controllers
                 {
                     var keycloakBaseUrl = "https://your-keycloak-domain/auth";
                     var adminRealm = "master"; // The admin realm
-                    var adminUsername = "admin"; // The admin username
-                    var adminPassword = "admin-password"; // The admin password
+                    var adminUsername = "admin"; // The admin Username
+                    var adminPassword = "admin-Password"; // The admin Password
 
                     var tokenUrl = $"{keycloakBaseUrl}/realms/{adminRealm}/protocol/openid-connect/token";
                     var invalidateUrl = $"{keycloakBaseUrl}/admin/realms/{adminRealm}/sessions/{sessionID}/logout";
 
                     var tokenRequestContent = new FormUrlEncodedContent(new[]
                     {
-                        new KeyValuePair<string, string>("grant_type", "password"),
-                        new KeyValuePair<string, string>("username", adminUsername),
-                        new KeyValuePair<string, string>("password", adminPassword),
+                        new KeyValuePair<string, string>("grant_type", "Password"),
+                        new KeyValuePair<string, string>("Username", adminUsername),
+                        new KeyValuePair<string, string>("Password", adminPassword),
                         new KeyValuePair<string, string>("client_id", "admin-cli")
                     });
 

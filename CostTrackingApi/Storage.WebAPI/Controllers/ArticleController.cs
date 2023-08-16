@@ -25,7 +25,7 @@ namespace Storage.WebAPI.Controllers
             return Ok(await Mediator.Send(new GetArticleByIdQuery { Id = id }));
         }
 
-        [HttpGet("name/{name}")]
+        [HttpGet("Name/{Name}")]
         public async Task<IActionResult> Get(string name)
         {
             return Ok(await Mediator.Send(new GetArticleByNameQuery { Name = name }));

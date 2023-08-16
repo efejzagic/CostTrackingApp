@@ -6,11 +6,34 @@ import { toast } from 'react-toastify';
 import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import Box from '@mui/material/Box';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Chip from '@mui/material/Chip';
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 const CreateUserPage = () => {
-    const [roles, setRoles] = useState([]);
-    const [selectedRole, setSelectedRole] = useState('');
+  const [roles, setRoles] = useState([]);
+  const [selectedRoles, setSelectedRoles] = useState([]);
 
   const [formData, setFormData] = useState({
     UserId: '',
@@ -18,14 +41,62 @@ const CreateUserPage = () => {
     Name: '',
     Surname: '',
     Email: '',
-    Password: ''
-    // RoleId: ''
+    Password: '',
+    MultipleRoles: []
+    // No need to initialize MultipleRoles, it will be an empty array by default
   });
 
   const [validationErrors, setValidationErrors] = useState({
     Email: false,
     Phone: false,
   });
+
+  // const handleRoleChange = (event) => {
+  //   setSelectedRoles(event.target.value);
+  
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     MultipleRoles: event.target.value.map(role => ({ Id: role.id, Name: role.name }))
+  //   }));
+  //   console.log('MultipleRoles in handleRoleChange:', formData.MultipleRoles);
+  // };
+
+
+  // const handleRoleChange = (event) => {
+  //   const newSelectedRoles = event.target.value;
+  
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     MultipleRoles: newSelectedRoles.map(role => ({ Id: role.id, Name: role.name }))
+  //   }));
+  
+  //   setSelectedRoles(newSelectedRoles);
+  
+  //   // Log the values for debugging
+  //   console.log('Selected Roles:', newSelectedRoles);
+  //   console.log('FormData:', formData);
+  // };
+
+  const handleRoleChange = (event) => {
+    const newSelectedRoles = event.target.value;
+    
+    // Convert newSelectedRoles to the expected structure
+    const roleObjects = newSelectedRoles.map(role => ({
+      Id: role.id,
+      Name: role.name,
+      Description: role.description,
+      Composite: role.composite,
+      ClientRole: role.clientRole,
+      ContainerId: role.containerId
+    }));
+  
+    setFormData((prevData) => ({
+      ...prevData,
+      MultipleRoles: roleObjects
+    }));
+    
+    setSelectedRoles(newSelectedRoles);
+  };
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
@@ -37,25 +108,41 @@ const CreateUserPage = () => {
     handleInputChange(event);
   };
 
+  // const handleRoleChange = (selectedOptions) => {
+  //   setSelectedRoles(selectedOptions);
+  // };
 
-//   const fetchRoles = async () => {
-//     try {
-//         var token = localStorage.getItem('accessToken');
-//       const response = await axios.get('http://localhost:8001/api/Auth/roles' , {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       console.log("Roles " , response.data );
-//       setRoles(response.data);
-//     } catch (error) {
-//       console.error('Error fetching Construction Sites:', error);
-//     }
-//   };
+  // const handleSelectChange = (event, selectedOptions) => {
+  //   const {
+  //     target: { value },
+  //   } = event;
+  //   setSelectedRoles(
+  //     // On autofill we get a stringified value.
+  //     // typeof value === 'string' ? value.split(',') : value,
+  //     selectedOptions
+  //   );
+  // };
 
-//   useEffect(() => {
-//     fetchRoles();
-//   }, []); // Fetch
+
+  const fetchRoles = async () => {
+    try {
+        var token = localStorage.getItem('accessToken');
+      const response = await axios.get('http://localhost:8001/api/Auth/roles' , {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Roles " , response.data );
+      setRoles(response.data);
+    } catch (error) {
+      console.error('Error fetching Construction Sites:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRoles();
+  }, []); // Fetch
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -69,17 +156,25 @@ const CreateUserPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
+    event.preventDefault();
+  
     try {
-        var token = localStorage.getItem('accessToken');
-        const response = await axios.post('http://localhost:8001/api/Auth/CreateUser', {
-            Model: formData
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-      
-      if (response.data.status === 200 ) {
+      var token = localStorage.getItem('accessToken');
+      console.log("MUltiple roles log: " , formData.MultipleRoles);
+      const response = await axios.post(
+        'http://localhost:8001/api/Auth/CreateUser',
+        {
+          Model: formData
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json' // Set the Content-Type header
+          }
+        }
+      );
+
+      if (response.data.statusCode === 200 ) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
         // Reset the form data or navigate to another page if needed
@@ -134,6 +229,31 @@ const CreateUserPage = () => {
             onChange={handleInputChange}
             style={{ marginBottom: '1rem' }}
           />
+          <FormControl sx={{ m: 1, width: 300 }}>
+        <InputLabel id="demo-multiple-chip-label">Roles</InputLabel>
+        <Select
+          labelId="demo-multiple-chip-label"
+          id="demo-multiple-chip"
+          multiple
+          value={selectedRoles}
+          onChange={handleRoleChange}
+          input={<OutlinedInput id="select-multiple-chip" label="Roles" />}
+          renderValue={(selected) => (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+              {selected.map((value) => (
+                <Chip key={value.id} label={value.name} />
+              ))}
+            </Box>
+          )}
+          MenuProps={MenuProps}
+        >
+          {roles.map((role) => (
+            <MenuItem key={role.id} value={role}>
+              {role.name}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
  <TextField
             label="Email"
             name="Email"
@@ -159,6 +279,20 @@ const CreateUserPage = () => {
             style={{ marginBottom: '1rem' }}
           />
 
+{/* <Autocomplete
+        multiple
+        id="roles"
+        options={roles} // Replace with your actual list of roles
+        onChange={handleRoleChange}
+        getOptionLabel={option => option.label} // Replace with your label property name
+        renderInput={params => <TextField {...params} label="Roles" />}
+      /> */}
+
+ {/* <MultiSelectComponent
+        options={roles} // Replace with your actual list of roles
+        value={formData.MultipleRoles}
+        onChange={handleRoleChange}
+      /> */}
 
    {/* <FormControl fullWidth style={{ marginBottom: '1rem' }}>
   <InputLabel id="role-label">Role </InputLabel>

@@ -35,17 +35,17 @@ namespace Auth.Application.Features.Auth.Commands
 
             var user = new Dictionary<string, object>
             {
-                { "username", request.Model.username },
-                { "email", request.Model.email},
-                { "firstName", request.Model.name},
-                { "lastName", request.Model.surname},
+                { "Username", request.Model.Username },
+                { "Email", request.Model.Email},
+                { "firstName", request.Model.Name},
+                { "lastName", request.Model.Surname},
                 { "enabled", true },
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
-                            { "type", "password" },
-                            { "value", request.Model.password },
+                            { "type", "Password" },
+                            { "value", request.Model.Password },
                             { "temporary", false }
                         }
                     }
