@@ -62,7 +62,10 @@ builder.Services.AddPersistence(builder.Configuration);
 
 
 builder.Services.AddAutoMapper(typeof(MediatorClass)); // Register AutoMapper
-
+builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new InvoiceProfile(provider.GetService<IInvoiceRepository>()));
+}).CreateMapper());
 
 builder.Services.AddMediatR(typeof(MediatorClass).Assembly);
 #endregion

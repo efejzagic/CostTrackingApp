@@ -72,7 +72,7 @@ namespace Finance.Infrastructure.Persistance.Migrations
                             Amount = 325.33m,
                             ArticleId = 0,
                             ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 8, 16, 23, 5, 37, 47, DateTimeKind.Utc).AddTicks(7811),
+                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5291),
                             Description = " Expense type 1",
                             MachineryId = 0,
                             MaintenanceRecordId = 11,
@@ -86,7 +86,7 @@ namespace Finance.Infrastructure.Persistance.Migrations
                             Amount = 325.33m,
                             ArticleId = 0,
                             ConstructionSiteId = 7,
-                            Date = new DateTime(2023, 8, 16, 23, 5, 37, 47, DateTimeKind.Utc).AddTicks(7823),
+                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5300),
                             Description = " Expense type 2",
                             MachineryId = 0,
                             MaintenanceRecordId = 0,
@@ -139,8 +139,8 @@ namespace Finance.Infrastructure.Persistance.Migrations
                             Amount = 1298.92m,
                             ArticleId = 1,
                             ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 8, 16, 23, 5, 37, 47, DateTimeKind.Utc).AddTicks(7600),
-                            DueDate = new DateTime(2023, 8, 16, 23, 5, 37, 47, DateTimeKind.Utc).AddTicks(7604),
+                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5062),
+                            DueDate = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5067),
                             MachineryId = 0,
                             MaintenanceRecordId = 0,
                             ToolId = 0
@@ -151,8 +151,8 @@ namespace Finance.Infrastructure.Persistance.Migrations
                             Amount = 498.92m,
                             ArticleId = 0,
                             ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 8, 16, 23, 5, 37, 47, DateTimeKind.Utc).AddTicks(7624),
-                            DueDate = new DateTime(2023, 8, 16, 23, 5, 37, 47, DateTimeKind.Utc).AddTicks(7625),
+                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5080),
+                            DueDate = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5082),
                             MachineryId = 0,
                             MaintenanceRecordId = 12,
                             ToolId = 0
@@ -174,21 +174,60 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("InvoiceId")
+                    b.Property<int>("InvoiceId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceId");
 
-                    b.ToTable("InvoiceItem");
+                    b.ToTable("InvoiceItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 500m,
+                            Description = "Item 1",
+                            InvoiceId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 350m,
+                            Description = "Item 2",
+                            InvoiceId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Amount = 448.92m,
+                            Description = "Item 3",
+                            InvoiceId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amount = 200m,
+                            Description = "Item 2.1",
+                            InvoiceId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Amount = 298.92m,
+                            Description = "Item 2.2",
+                            InvoiceId = 2
+                        });
                 });
 
             modelBuilder.Entity("Finance.Domain.Entities.InvoiceItem", b =>
                 {
                     b.HasOne("Finance.Domain.Entities.Invoice", null)
                         .WithMany("Items")
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Finance.Domain.Entities.Invoice", b =>

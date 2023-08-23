@@ -48,6 +48,8 @@ namespace Finance.Infrastructure.Persistance.IoC
 
             #region Repositories
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
+            services.AddTransient(typeof(IInvoiceRepository), typeof(InvoiceRepository));
+
             //services.AddTransient<IEnviromentRepositoryAsync, EnviromentRepositoryAsync>();
             #endregion
         }

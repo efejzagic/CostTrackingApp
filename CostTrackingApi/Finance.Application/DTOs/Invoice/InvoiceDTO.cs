@@ -14,7 +14,7 @@ namespace Finance.Application.DTOs.Invoice
         public DateTime Date { get; set; }
         public DateTime DueDate { get; set; }
         public decimal Amount { get; set; }
-        public List<InvoiceItem> Items { get; set; }
+        public List<Domain.Entities.InvoiceItem> Items { get; set; }
 
         public int ConstructionSiteId { get; set; }
         public int MachineryId { get; set; }

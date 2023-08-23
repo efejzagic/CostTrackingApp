@@ -13,9 +13,16 @@ namespace Finance.Infrastructure.Persistance.Context
         public DbSet<Invoice> Invoice{ get; set; }
         public DbSet<Expense> Expense { get; set; }
 
+        public DbSet<InvoiceItem> InvoiceItems { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Invoice>()
+            .HasMany(i => i.Items)
+            .WithOne()
+            .HasForeignKey(ii => ii.InvoiceId);
 
             Seed(modelBuilder);
         }
@@ -33,6 +40,18 @@ namespace Finance.Infrastructure.Persistance.Context
             };
 
             builder.Entity<Invoice>().HasData(invoices);
+
+
+            var invoiceItems = new List<InvoiceItem>()
+            {
+                new InvoiceItem() {Id = 1, Amount = 500 , Description = "Item 1" , InvoiceId = 1},
+                new InvoiceItem() {Id = 2, Amount = 350 , Description = "Item 2" , InvoiceId = 1},
+                new InvoiceItem() {Id = 3, Amount = 448.92M , Description = "Item 3" , InvoiceId = 1},
+                new InvoiceItem() {Id = 4, Amount = 200 , Description = "Item 2.1" , InvoiceId = 2},
+                new InvoiceItem() {Id = 5, Amount = 298.92M , Description = "Item 2.2" , InvoiceId = 2}
+            };
+
+            builder.Entity<InvoiceItem>().HasData(invoiceItems);
 
 
             var expenses = new List<Expense>()
