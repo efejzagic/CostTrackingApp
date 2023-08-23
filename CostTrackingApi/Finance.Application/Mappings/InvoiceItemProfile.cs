@@ -15,16 +15,16 @@ namespace Finance.Application.Mappings
     {
         public InvoiceItemProfile()
         {
-            CreateMap<GetAllInvoiceItemsQuery, InvoiceItemDTO>();
-            CreateMap<GetInvoiceItemByIdQuery, InvoiceItemDTO>();
-            CreateMap<CreateInvoiceItemDTO, InvoiceItem>();
-            CreateMap<EditInvoiceItemDTO, InvoiceItem>();
-            CreateMap<DeleteInvoiceItemCommand, InvoiceItem>();
-            CreateMap<InvoiceItem, InvoiceItemDTO>();
-            CreateMap<CreateInvoiceItemDTO, InvoiceItem>();
-            CreateMap<EditInvoiceItemDTO, InvoiceItem>();
+     //       CreateMap<GetAllInvoiceItemsQuery, InvoiceItemDTO>();
+     //       CreateMap<GetInvoiceItemByIdQuery, InvoiceItemDTO>();
+     //       CreateMap<CreateInvoiceItemDTO, Domain.Entities.InvoiceItem>()
+     //.ForMember(dest => dest.Invoice, opt => opt.Ignore());
+     //       CreateMap<EditInvoiceItemDTO, Domain.Entities.InvoiceItem>()
+     //            .ForMember(dest => dest.Invoice, opt => opt.Ignore());
+     //       CreateMap<DeleteInvoiceItemCommand, Domain.Entities.InvoiceItem>();
+     //       CreateMap<Domain.Entities.InvoiceItem, InvoiceItemDTO>();
+     //       CreateMap<CreateInvoiceItemDTO, Domain.Entities.InvoiceItem>();
 
-           
         }
     }
 }

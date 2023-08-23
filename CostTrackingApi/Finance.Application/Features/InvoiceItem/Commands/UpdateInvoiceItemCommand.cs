@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Finance.Application.DTOs.Invoice;
 using Finance.Application.Interfaces;
 using Finance.Application.Wrappers;
+using Finance.Application.DTOs.InvoiceItem;
 
 namespace Finance.Application.Features.InvoiceItem.Commands
 {
     public class UpdateInvoiceItemCommand : IRequest<Response<string>>
     {
-        public EditInvoiceDTO Value { get; set; }
+        public EditInvoiceItemDTO Value { get; set; }
         public class UpdateInvoiceItemCommandHandler : IRequestHandler<UpdateInvoiceItemCommand, Response<string>>
         {
             private readonly IGenericRepositoryAsync<Domain.Entities.InvoiceItem> _Repository;

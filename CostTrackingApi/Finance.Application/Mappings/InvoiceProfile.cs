@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using Finance.Application.DTOs.Invoice;
+using Finance.Application.DTOs.InvoiceItem;
 using Finance.Application.Features.Invoice.Commands;
 using Finance.Application.Features.Invoice.Queries;
+using Finance.Application.Features.InvoiceItem.Commands;
+using Finance.Application.Features.InvoiceItem.Queries;
 using Finance.Application.Interfaces;
 using Finance.Domain.Entities;
 using System;
@@ -29,7 +32,18 @@ namespace Finance.Application.Mappings
             CreateMap<Invoice, InvoiceDTO>()
               .PreserveReferences()
               .ForMember(d => d.Items, opt => opt.MapFrom(src => _invoiceRepo.GetItemsByInvoiceId(src.Id).Result));
-            
+
+
+            CreateMap<GetAllInvoiceItemsQuery, InvoiceItemDTO>();
+            CreateMap<GetInvoiceItemByIdQuery, InvoiceItemDTO>();
+            CreateMap<CreateInvoiceItemDTO, Domain.Entities.InvoiceItem>()
+     .ForMember(dest => dest.Invoice, opt => opt.Ignore());
+            CreateMap<EditInvoiceItemDTO, Domain.Entities.InvoiceItem>()
+                 .ForMember(dest => dest.Invoice, opt => opt.Ignore());
+            CreateMap<DeleteInvoiceItemCommand, Domain.Entities.InvoiceItem>();
+            CreateMap<Domain.Entities.InvoiceItem, InvoiceItemDTO>();
+            CreateMap<CreateInvoiceItemDTO, Domain.Entities.InvoiceItem>();
+
         }
     }
 }

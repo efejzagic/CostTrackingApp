@@ -59,9 +59,10 @@ builder.Services.AddPersistence(builder.Configuration);
 //});
 
 
+builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 
 
-builder.Services.AddAutoMapper(typeof(MediatorClass)); // Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Finance.Application.MediatorClass)); // Register AutoMapper
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new InvoiceProfile(provider.GetService<IInvoiceRepository>()));

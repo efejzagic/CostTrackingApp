@@ -1,7 +1,7 @@
 ﻿using Finance.WebAPI.Controllers;
 using Finance.Application.Features.InvoiceItem.Commands;
 //using Maintenance.Application.Features.MaintenanceRecord.Queries;
-using Finance.Application.Parameters.Invoice;
+using Finance.Application.Parameters.InvoiceItem;
 using Microsoft.AspNetCore.Mvc;
 using Finance.Application.Features.InvoiceItem.Queries;
 
@@ -12,7 +12,7 @@ namespace Finance.WebAPI.Controllers
     {
         [HttpGet]
         //[MapToApiVersion("1.0")]
-        public async Task<IActionResult> Get([FromQuery] GetAllInvoiceParameter filter)
+        public async Task<IActionResult> Get([FromQuery] GetAllInvoiceItemParameter filter)
         {
             return Ok(await Mediator.Send(new GetAllInvoiceItemsQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }

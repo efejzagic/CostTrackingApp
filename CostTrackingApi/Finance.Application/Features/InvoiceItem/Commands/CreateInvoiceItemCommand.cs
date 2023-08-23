@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Finance.Application.DTOs.Invoice;
+using Finance.Application.DTOs.InvoiceItem;
 using Finance.Application.Interfaces;
 using MediatR;
 
@@ -13,7 +13,7 @@ namespace Finance.Application.Features.InvoiceItem.Commands
 {
     public class CreateInvoiceItemCommand : IRequest<Wrappers.Response<string>>
     {
-        public CreateInvoiceDTO Value { get; set; }
+        public CreateInvoiceItemDTO Value { get; set; }
     }
 
     public class CreateInvoiceItemCommandHandler : IRequestHandler<CreateInvoiceItemCommand, Wrappers.Response<string>>

@@ -4,6 +4,7 @@ using Finance.Application.Features.Invoice.Queries;
 //using Maintenance.Application.Features.MaintenanceRecord.Queries;
 using Finance.Application.Parameters.Invoice;
 using Microsoft.AspNetCore.Mvc;
+using Finance.Application.Features.InvoiceItem.Commands;
 
 namespace Finance.WebAPI.Controllers
 {
@@ -37,8 +38,18 @@ namespace Finance.WebAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ModelState);
             }
-            //var enviroment = await Mediator.Send(command);
+            
             var enviroment = await Mediator.Send(command);
+
+            //var invoiceItems = command.Value.Items;
+            //foreach (var item in  invoiceItems)
+            //{
+            //    item.InvoiceId = enviroment.Data.Id;
+            //    await Mediator.Send(new CreateInvoiceItemCommand { Value = item });
+            //}
+
+            //var invoiceItemsEnv = await Mediator.Send(new CreateInvoiceItemCommand { Value = invoiceItems });
+
             return Ok(enviroment);
         }
 
