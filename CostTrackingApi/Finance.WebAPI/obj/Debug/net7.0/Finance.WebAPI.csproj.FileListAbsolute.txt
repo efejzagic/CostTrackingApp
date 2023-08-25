@@ -98,3 +98,9 @@ D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Finance.Infra
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Finance.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Finance.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Finance.Infrastructure.Persistance.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Auth.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Auth.Domain.pdb

@@ -59,6 +59,11 @@ const EmployeePage = () => {
     } catch (error) {
       console.error('Error deleting data:', error);
       // Handle error scenario
+      if (error.response.status === 401) {
+        console.log("Unauthorized access");
+        // Redirect to unauthorized page or handle the unauthorized access scenario
+        navigate('/unauthorized');
+      }
     }
   };
 

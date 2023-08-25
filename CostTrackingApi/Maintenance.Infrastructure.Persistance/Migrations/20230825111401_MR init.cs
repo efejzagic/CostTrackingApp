@@ -20,6 +20,7 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     EquipmentId = table.Column<int>(type: "integer", nullable: false),
                     Timestamp = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
@@ -34,11 +35,11 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
 
             migrationBuilder.InsertData(
                 table: "MaintenanceRecord",
-                columns: new[] { "Id", "Description", "EquipmentId", "Price", "Status", "Technician", "Timestamp" },
+                columns: new[] { "Id", "Description", "EquipmentId", "Name", "Price", "Status", "Technician", "Timestamp" },
                 values: new object[,]
                 {
-                    { 1, "Record for machine SN2023", 1, 120.40000000000001, "Completed", "User 1", new DateTime(2023, 8, 16, 21, 21, 10, 431, DateTimeKind.Utc).AddTicks(2710) },
-                    { 2, "Record for tool SN2021", 2, 87.150000000000006, "Pending", "User 2", new DateTime(2023, 8, 16, 21, 21, 10, 431, DateTimeKind.Utc).AddTicks(2729) }
+                    { 1, "Record for machine SN2023", 1, "MR 1", 120.40000000000001, "Completed", "User 1", new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1716) },
+                    { 2, "Record for tool SN2021", 2, "MR 2", 87.150000000000006, "Pending", "User 2", new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1772) }
                 });
         }
 

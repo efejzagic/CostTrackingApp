@@ -30,6 +30,11 @@ const SupplierPage = () => {
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
+      if (error.response.status === 401) {
+        console.log("Unauthorized access");
+        // Redirect to unauthorized page or handle the unauthorized access scenario
+        navigate('/unauthorized');
+      }
     }
   };
 
@@ -98,6 +103,9 @@ const SupplierPage = () => {
                   <TableCell>{item.dateCreated}</TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <Button variant="outlined" color="primary" size="small">
+                        <Link to={`/supplier/${item.id}/articles`}>Articles</Link>
+                      </Button>
                       <Button variant="outlined" color="primary" size="small">
                         <Link to={`/supplier/edit/${item.id}`}>Edit</Link>
                       </Button>

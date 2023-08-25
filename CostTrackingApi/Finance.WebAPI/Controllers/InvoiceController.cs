@@ -5,6 +5,8 @@ using Finance.Application.Features.Invoice.Queries;
 using Finance.Application.Parameters.Invoice;
 using Microsoft.AspNetCore.Mvc;
 using Finance.Application.Features.InvoiceItem.Commands;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Finance.WebAPI.Controllers
 {
@@ -13,6 +15,7 @@ namespace Finance.WebAPI.Controllers
     {
         [HttpGet]
         //[MapToApiVersion("1.0")]
+        //[Authorize(Roles = "Finance")]
         public async Task<IActionResult> Get([FromQuery] GetAllInvoiceParameter filter)
         {
             return Ok(await Mediator.Send(new GetAllInvoicesQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));

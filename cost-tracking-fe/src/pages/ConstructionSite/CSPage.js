@@ -30,6 +30,11 @@ const CSPage = () => {
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
+      if (error.response.status === 401) {
+        console.log("Unauthorized access");
+        // Redirect to unauthorized page or handle the unauthorized access scenario
+        navigate('/unauthorized');
+      }
     }
   };
 

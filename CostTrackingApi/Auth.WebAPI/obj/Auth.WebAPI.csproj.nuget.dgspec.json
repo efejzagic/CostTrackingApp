@@ -34,6 +34,9 @@
             "projectReferences": {
               "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
                 "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
+              },
+              "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
+                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
               }
             }
           }

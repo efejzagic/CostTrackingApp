@@ -14,6 +14,7 @@ using Finance.Application.Mappings;
 using Finance.Infrastructure.Persistance.Repositories;
 using Finance.WebAPI.Settings;
 using Finance.Application;
+using JwtAuthenticationManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,9 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+builder.Services.AddCustomJwtAuthentication();
+
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
 {

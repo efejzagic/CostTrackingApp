@@ -27,8 +27,8 @@ namespace Maintenance.Infrastructure.Persistance.Context
 
             var maintenanceRecord = new List<MaintenanceRecord>()
                 {
-                    new MaintenanceRecord() { Id=1, EquipmentId = 1, Timestamp = DateTime.UtcNow, Description="Record for machine SN2023", Price = 120.40, Technician = "User 1", Status = "Completed"},
-                    new MaintenanceRecord() { Id=2, EquipmentId = 2, Timestamp = DateTime.UtcNow, Description="Record for tool SN2021", Price = 87.15, Technician = "User 2", Status = "Pending"},
+                    new MaintenanceRecord() { Id=1,Name="MR 1",  EquipmentId = 1, Timestamp = DateTime.UtcNow, Description="Record for machine SN2023", Price = 120.40, Technician = "User 1", Status = "Completed"},
+                    new MaintenanceRecord() { Id=2, Name="MR 2" , EquipmentId = 2, Timestamp = DateTime.UtcNow, Description="Record for tool SN2021", Price = 87.15, Technician = "User 2", Status = "Pending"},
 
                 };
 

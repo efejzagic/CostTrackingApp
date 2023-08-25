@@ -53,9 +53,12 @@ function Login() {
       //   body: JSON.stringify({ username, password }),
       // });
 
-      const response = await axios.post('http://localhost:8001/api/Auth/login', {
-        model: { username, password },
-      }, {
+      const response = await axios.post('http://localhost:8001/api/Auth/login', 
+        {
+          username,
+          password
+        },
+       {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -66,9 +69,9 @@ function Login() {
         
         console.log("Response: ", response)
         const data = response.data;
-        console.log("Data: " , data.data);
-        localStorage.setItem('accessToken', data.data.accessToken);
-        localStorage.setItem('username', data.data.username)
+        // console.log("Data: " , data.data);
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('username', data.username)
         setIsLoading(true);
         toast.success('Login succesfull');
 

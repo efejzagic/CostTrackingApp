@@ -26,6 +26,8 @@ const Nav=()=> {
             <div className="hover:text-gray-200">
             <Button onClick={() => navigate('/construction')}>Construction</Button>
             <Button onClick={() => navigate('/employee')}>Employees</Button>
+
+            <Button onClick={() => navigate('/article')}>Articles</Button>
               <Button onClick={() => navigate('/supplier')}>Suppliers</Button>
             <PrivateRoute elseContent={<Button    type="button"
                      className="text-blue-800"

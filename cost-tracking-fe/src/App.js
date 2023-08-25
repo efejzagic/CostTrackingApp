@@ -21,6 +21,10 @@ import CreateUserPage from "./pages/User/CreateUserPage";
 import CSEmployeesPage from "./pages/ConstructionSite/CSEmployees";
 import InvoicePage from "./pages/Invoice/InvoicePage";
 import CreateInvoicePage from "./pages/Invoice/CreateInvoicePage";
+import ArticlePage from "./pages/Article/ArticlePage";
+import CreateArticlePage from "./pages/Article/CreateArticlePage";
+import UnauthorizedPage from "./components/Unauthorized/UnauthorizedPage";
+import SupplierArticles from "./pages/Supplier/SupplierArticles";
 
 function App() {
 
@@ -30,7 +34,7 @@ function App() {
        <BrowserRouter>
        <Nav/>
         <Routes>
-          
+      
            <Route path="/" element={<WelcomePage />} />
            <Route exact path="/login" element={<LoginPage />} />  
            <Route exact path="/users" element={<UsersPage />} />
@@ -47,6 +51,10 @@ function App() {
            <Route exact path="/employee/edit/:id" element={<EditEmployeePage/>} />
            <Route exact path="/invoice" element={<InvoicePage/>} />
            <Route exact path="/invoice/create" element={<CreateInvoicePage/>} />
+           <Route exact path="/article" element={<ArticlePage/>} />
+           <Route exact path="/article/create" element={<CreateArticlePage/>} />
+           <Route exact path="/supplier/:id/articles" element={<SupplierArticles/>} />
+
            <Route
              path="/secured"
              element={
@@ -55,6 +63,8 @@ function App() {
                </PrivateRoute>
              }
            />
+              <Route path="/unauthorized" element={<UnauthorizedPage />} /> {/* Add this route */}
+
            
          </Routes>
        </BrowserRouter>

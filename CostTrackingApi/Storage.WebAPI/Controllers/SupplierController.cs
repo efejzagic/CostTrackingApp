@@ -16,6 +16,7 @@ namespace Storage.WebAPI.Controllers
 
         [HttpGet]
         //[MapToApiVersion("1.0")]
+        //[Authorize(Roles = "Storage Manager")]
         public async Task<IActionResult> Get([FromQuery] GetAllSupplierParameter filter)
         {
             return Ok(await Mediator.Send(new GetAllSupplierQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));

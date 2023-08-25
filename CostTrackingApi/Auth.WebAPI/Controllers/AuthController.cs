@@ -12,6 +12,9 @@ using Newtonsoft.Json;
 using MediatR;
 using System.Data;
 using System.Runtime.InteropServices;
+using JwtAuthenticationManager;
+using JwtAuthenticationManager.Models;
+using TokenResponse = Auth.Domain.Entities.TokenResponse;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -24,15 +27,15 @@ namespace Auth.WebAPI.Controllers
     {
 
         private readonly UserService _userService;
-        private readonly IHttpClientFactory _httpClientFactory;
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public AuthController(UserService userService, IHttpClientFactory httpClientFactory, HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        private readonly JwtTokenHandler _tokenHandler;
+        public AuthController(UserService userService, HttpClient httpClient, IHttpContextAccessor httpContextAccessor, JwtTokenHandler tokenHandler)
         {
             _userService = userService;
-            _httpClientFactory = httpClientFactory;
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
+            _tokenHandler = tokenHandler;
         }
 
         [HttpGet]
@@ -44,7 +47,7 @@ namespace Auth.WebAPI.Controllers
 
         [HttpGet]
         [Route("Id")]
-        public async Task<Application.Wrappers.Response<TokenResponse>> GetUserId()
+        public async Task<Application.Wrappers.Response<AuthenticationResponse>> GetUserId()
         {
             //var UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             //return UserId;
@@ -70,21 +73,31 @@ namespace Auth.WebAPI.Controllers
         //    return "PROSLO";
         //}
 
+        //[HttpPost("login")]
+        //[AllowAnonymous]
+        //public async Task<Application.Wrappers.Response<TokenResponse>> Login([FromBody] LoginTokenCommand command)
+        //{
+        //    //try
+        //    //{
+        //        //response = await _loginService.LoginToken(model);
+        //        return await Mediator.Send(command);
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    return BadRequest(ex.Message);
+        //    //}
+        //    //return Ok(response.AccessToken);
+        //}
+
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<Application.Wrappers.Response<TokenResponse>> Login([FromBody] LoginTokenCommand command)
+        public async Task<TokenResponse> Login(AuthenticationRequest request)
         {
-            //try
-            //{
-                //response = await _loginService.LoginToken(model);
-                return await Mediator.Send(command);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return BadRequest(ex.Message);
-            //}
-            //return Ok(response.AccessToken);
+            var response = await _tokenHandler.LoginToken(request);
+            return response;
+
         }
+
 
         private string GetTokenFromHeader()
         {
@@ -99,14 +112,6 @@ namespace Auth.WebAPI.Controllers
             return null;
         }
 
-
-        [HttpGet("getTest")]
-        [Authorize(Roles = "Finance")]
-
-        public IActionResult GetTest()
-        {
-            return Ok("PROSLO");
-        }
 
         [HttpGet("roles")]
         [AllowAnonymous]
