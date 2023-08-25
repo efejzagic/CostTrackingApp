@@ -65,6 +65,24 @@ builder.Services.AddSwaggerGen(c =>
         });
 });
 
+builder.Services.AddHttpClient();
+
+//builder.Services.AddCustomJwtAuthentication();
+
+//builder.Services.AddSwaggerGen(c =>
+//{
+//    c.SwaggerDoc("v1", new OpenApiInfo
+//    {
+//        Contact = new OpenApiContact
+//        {
+//            Name = "Emil Fejzagic",
+//            Email = "efejzagic2@etf.unsa.ba",
+//        },
+//        Version = "v1",
+//        Title = "Cost Tracking API"
+//    });
+//});
+
 builder.Services.AddSingleton<JwtTokenHandler>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(MediatorClass).GetTypeInfo().Assembly));
@@ -80,9 +98,9 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
         // Add any other Swagger UI configuration as needed
     });
+
 }
 
-    app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 

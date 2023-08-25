@@ -10,18 +10,16 @@ namespace Equipment.Application.Mappings
 {
     public class MachineryProfile : Profile
     {
-        private readonly IMachineryServicingRepository _machineryServicingRepository;
-        public MachineryProfile(IMachineryServicingRepository machineryServicingRepository)
+       
+        public MachineryProfile()
         {
-            _machineryServicingRepository = machineryServicingRepository;
+
 
             CreateMap<GetAllMachineryQuery, MachineryDTO>();
 
 
-            CreateMap<Machinery, MachineryDTO>()
-                .PreserveReferences()
-                .ForMember(d => d.ServicingHistory, opt => opt.MapFrom(src => _machineryServicingRepository.GetServicingByMachineryId(src.Id).Result))
-                .ForMember(d => d.MaintenanceHistory, opt => opt.MapFrom(src => _machineryServicingRepository.GetMaintenanceByMachineryId(src.Id).Result));
+            CreateMap<Machinery, MachineryDTO>();
+            
 
             CreateMap<MachineryCreateDTO, Machinery>()
                 .ForMember(dest => dest.ProductionYear, opt => opt.MapFrom(src => new DateOnly(src.ProductionYear.Year, src.ProductionYear.Month, src.ProductionYear.Day)));
@@ -30,7 +28,7 @@ namespace Equipment.Application.Mappings
                    .ForMember(dest => dest.ProductionYear, opt => opt.MapFrom(src => new DateOnly(src.ProductionYear.Year, src.ProductionYear.Month, src.ProductionYear.Day)));
 
 
-            CreateMap<Machinery, MachineryMSDTO>();
+     
             CreateMap<GetAllMachineryQuery, GetAllMachineryParameter>();
             CreateMap<GetMachineryByIdQuery, MachineryDTO>();
 

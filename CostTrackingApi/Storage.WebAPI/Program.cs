@@ -16,6 +16,7 @@ using AutoMapper;
 using Storage.Application.Mappings;
 using Storage.WebAPI.Settings;
 using JwtAuthenticationManager;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +49,16 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 #endregion
+builder.Services.AddCors(options =>
+{
+    var frontendURL = "http://localhost:3000";
 
+    options.AddDefaultPolicy(builder =>
+    {
+        // builder.WithOrigins(frontendURL!).AllowAnyMethod().AllowAnyHeader();
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
@@ -106,6 +116,7 @@ app.UseSwaggerUI(c =>
 // Configure the HTTP request pipeline.
 
 app.UseAuthorization();
+app.UseCors();
 
 app.MapControllers();
 //app.ApplyMigrations(builder.Configuration.)

@@ -53,6 +53,12 @@ namespace ConstructionSite.WebAPI.Controllers
             return Ok(enviroment);
         }
 
+        [HttpGet("test")]
+        public string GetTest()
+        {
+            return "Test";
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

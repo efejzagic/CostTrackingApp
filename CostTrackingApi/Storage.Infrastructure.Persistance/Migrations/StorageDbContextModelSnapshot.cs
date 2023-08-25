@@ -66,7 +66,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6322),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8604),
                             Description = "Desc 1",
                             Name = "Article 1",
                             Price = 10.0,
@@ -77,7 +77,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6327),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8612),
                             Description = "Desc 2",
                             Name = "Article 2",
                             Price = 20.0,
@@ -88,7 +88,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6330),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8614),
                             Description = "Desc 3",
                             Name = "Article 3",
                             Price = 30.0,
@@ -99,7 +99,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6332),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8637),
                             Description = "Desc 4",
                             Name = "Article 4",
                             Price = 40.0,
@@ -110,7 +110,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6333),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8638),
                             Description = "Desc 5",
                             Name = "Article 5",
                             Price = 50.0,
@@ -121,7 +121,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6337),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8642),
                             Description = "Desc 6",
                             Name = "Article 6",
                             Price = 60.0,
@@ -183,7 +183,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                             Address = "Address 1",
                             City = "City 1",
                             Country = "Country 1",
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6266),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8507),
                             Email = "email1@example.com",
                             Name = "Supplier 1",
                             Phone = "Phone 1",
@@ -195,7 +195,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                             Address = "Address 2",
                             City = "City 2",
                             Country = "Country 2",
-                            DateCreated = new DateTime(2023, 7, 27, 19, 25, 3, 197, DateTimeKind.Utc).AddTicks(6275),
+                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8515),
                             Email = "email2@example.com",
                             Name = "Supplier 2",
                             Phone = "Phone 2",

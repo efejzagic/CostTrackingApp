@@ -35,17 +35,17 @@ namespace Auth.Application.Features.Auth.Commands
 
             var user = new Dictionary<string, object>
             {
-                { "username", request.Model.username },
-                { "email", request.Model.email},
-                { "firstName", request.Model.name},
-                { "lastName", request.Model.surname},
+                { "Username", request.Model.Username },
+                { "Email", request.Model.Email},
+                { "firstName", request.Model.Name},
+                { "lastName", request.Model.Surname},
                 { "enabled", true },
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
-                            { "type", "password" },
-                            { "value", request.Model.password },
+                            { "type", "Password" },
+                            { "value", request.Model.Password },
                             { "temporary", false }
                         }
                     }
@@ -54,8 +54,10 @@ namespace Auth.Application.Features.Auth.Commands
 
             var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
-            var endpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users/{request.Model.userId}";
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", request.Model.accessToken);
+            var endpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users";
+            //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", request.Model.accessToken);
+            var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 
             var response = new Application.Wrappers.Response<string>();
             try

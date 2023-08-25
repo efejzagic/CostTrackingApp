@@ -14,14 +14,11 @@ namespace Equipment.Domain.Entities
         public string Description { get; set; }
         [NotMapped]
         public DateOnly ProductionYear { get; set; }
-        [Required]
-        public MachineryStatus MachineryStatus { get; set; }
+    
         [Required]
         public string Location { get; set; }
 
-        public ICollection<MachineryService> ServicingHistory { get; set; } = new List<MachineryService>();
-        public ICollection<Maintenance> MaintenanceHistory { get; set; } = new List<Maintenance>();
-
+    
         public bool retired { get; set; }
 
     }

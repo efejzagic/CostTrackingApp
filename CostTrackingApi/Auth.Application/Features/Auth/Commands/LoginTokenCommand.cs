@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -81,7 +82,6 @@ namespace Auth.Application.Features.Auth.Commands
                 throw new Exception($"An error occurred during login: {ex.Message}");
             }
 
-            //return new Response<string>(enviroment.Id.ToString());
         }
     }
 }

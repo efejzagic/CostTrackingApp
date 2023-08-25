@@ -33,7 +33,7 @@ namespace JwtAuthenticationManager.Models
         [JsonProperty("scope")]
         public string Scope { get; set; }
 
-        [JsonProperty("roles")]  // Change this property name if needed
+        [JsonProperty("roles")]  // Change this property Name if needed
         public List<string> Roles { get; set; }
     }
 }
