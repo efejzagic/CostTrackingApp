@@ -52,6 +52,26 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ConstructionSite");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Address 1",
+                            City = "City 1",
+                            Country = "Country 1",
+                            Description = "Description 1",
+                            Title = "Construction Site 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Address 2",
+                            City = "City 2",
+                            Country = "Country 2",
+                            Description = "Description 2",
+                            Title = "Construction Site 2"
+                        });
                 });
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.Employee", b =>
@@ -99,12 +119,40 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
                     b.HasIndex("ConstructionSiteId");
 
                     b.ToTable("Employee");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Address 1",
+                            City = "City 1",
+                            ConstructionSiteId = 1,
+                            Country = "Country 1",
+                            HourlyRate = 15.5,
+                            HoursOfWork = 8,
+                            Name = "User",
+                            Salary = 2700.0,
+                            Surname = "One"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Address 2",
+                            City = "City 2",
+                            ConstructionSiteId = 2,
+                            Country = "Country 2",
+                            HourlyRate = 12.5,
+                            HoursOfWork = 7,
+                            Name = "Test",
+                            Salary = 1920.5,
+                            Surname = "Two"
+                        });
                 });
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.Employee", b =>
                 {
                     b.HasOne("ConstructionSite.Domain.Entities.ConstructionSite", "ConstructionSite")
-                        .WithMany("Employees")
+                        .WithMany("Zaposlenici")
                         .HasForeignKey("ConstructionSiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -114,7 +162,7 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.ConstructionSite", b =>
                 {
-                    b.Navigation("Employees");
+                    b.Navigation("Zaposlenici");
                 });
 #pragma warning restore 612, 618
         }

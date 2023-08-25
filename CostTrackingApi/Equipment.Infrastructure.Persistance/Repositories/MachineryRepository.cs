@@ -46,7 +46,6 @@ namespace Equipment.Infrastructure.Persistance.Repositories
             editMachinery.Name = machinery.Name;
             editMachinery.Description = machinery.Description;
             editMachinery.ProductionYear = machinery.ProductionYear;
-            editMachinery.MachineryStatus = machinery.MachineryStatus;
             editMachinery.Location = machinery.Location;
             editMachinery.retired = machinery.retired;
 

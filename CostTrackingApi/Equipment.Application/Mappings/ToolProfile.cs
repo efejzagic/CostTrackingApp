@@ -7,23 +7,18 @@ using Equipment.Application.Features.Tool.Queries;
 using Equipment.Application.Parameters.Tool;
 
 
-namespace EquipmentService.Profiles
+namespace Equipment.Application.Mappings
 {
     public class ToolProfile : Profile
     {
-        private readonly IToolServicingRepository _toolServicingRepo;
-        public ToolProfile(IToolServicingRepository toolServicingRepo)
+        public ToolProfile()
         {
-            _toolServicingRepo = toolServicingRepo;
 
             CreateMap<GetAllToolQuery, ToolDTO>();
 
-            CreateMap<Tool, ToolDTO>()
-                .PreserveReferences()
-                .ForMember(d => d.ServicingHistory, opt => opt.MapFrom(src => _toolServicingRepo.GetServicingByToolId(src.Id).Result));
+            CreateMap<Tool, ToolDTO>();
             CreateMap<ToolCreateDTO, Tool>();
             CreateMap<ToolEditDTO, Tool>();
-            CreateMap<Tool, ToolTSDTO>();
 
             CreateMap<GetAllToolQuery, GetAllToolParameter>();
             CreateMap<GetToolByIdQuery, ToolDTO>();

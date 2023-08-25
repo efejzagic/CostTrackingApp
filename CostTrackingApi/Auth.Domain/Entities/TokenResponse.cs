@@ -27,6 +27,5 @@ namespace Auth.Domain.Entities
 
         public string Scope { get; set; }
 
-
     }
 }

@@ -1,5 +1,214 @@
 {
+
   "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/v/Account/all-users",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Account/all-users"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/login"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/CreateUser",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/CreateUser"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/roles",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/roles"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Account/invalidate-token",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Account/invalidate-token"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Account",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Account"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/MaintenanceRecord",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "maintenance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/MaintenanceRecord"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/MaintenanceRecord/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "maintenance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/MaintenanceRecord/{id}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Invoice",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Invoice"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Invoice/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Invoice/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Invoice/totalAmount",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Invoice/totalAmount"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Expense",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Expense"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Expense/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Expense/{id}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Machinery",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Machinery"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Machinery/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Machinery/{id}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Tool",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Tool"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Tool/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Tool/{id}"
+    },
+
     {
       "UpstreamPathTemplate": "/api/v/Article",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
@@ -13,6 +222,78 @@
       "DownstreamPathTemplate": "/api/v/Article"
     },
     {
+      "UpstreamPathTemplate": "/api/v/Article/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Article/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Article/name/{name}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Article/name/{name}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Supplier",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Supplier"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Supplier/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Supplier/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Supplier/name/{name}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Supplier/name/{name}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite/test",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite/test"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/ConstructionSite",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",
@@ -23,10 +304,81 @@
         }
       ],
       "DownstreamPathTemplate": "/api/v/ConstructionSite"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSite/title/{title}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSite/title/{title}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Employee",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Employee"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Employee/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Employee/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Employee/name/{name}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "constructionsite.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Employee/name/{name}"
     }
+
+
   ],
   "GlobalConfiguration": {
-    "BaseUrl" :  "http://localhost:800"
+    "BaseUrl": "http://localhost:800",
+    "CorsPolicy": {
+      "allow-all": {
+        "AllowedOrigins": [ "http://localhost:3000" ],
+        "AllowedMethods": [ "GET", "POST", "PUT", "DELETE" ],
+        "AllowAnyHeader": true,
+        "AllowCredentials": true
+      }
+    }
   }
 
 }

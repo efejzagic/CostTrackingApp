@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Equipment.Infrastructure.Persistance.Context;
 using System.Reflection.PortableExecutable;
 
-namespace EquipmentService.Repositories
+namespace Equipment.Infrastructure.Persistance.Repositories
 {
     public class ToolRepository : IToolRepository
     {
@@ -48,7 +48,6 @@ namespace EquipmentService.Repositories
 
             editTool.Title = tool.Title;
             editTool.Description = tool.Description;
-            editTool.ToolStatus= tool.ToolStatus;
             editTool.Location = tool.Location;
             editTool.retired = tool.retired;
 

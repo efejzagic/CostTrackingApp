@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Equipment.Domain\Equipment.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mappings\" />
+  </ItemGroup>
+
 </Project>

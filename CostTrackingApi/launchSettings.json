@@ -8,7 +8,10 @@
         "storage.webapi": "StartDebugging",
         "equipment.webapi": "StartDebugging",
         "constructionsite.webapi": "StartDebugging",
-        "apigateway": "StartDebugging"
+        "apigateway": "StartDebugging",
+        "auth.webapi": "StartDebugging",
+        "maintenance.webapi": "StartDebugging",
+        "finance.webapi": "StartDebugging"
       }
     }
   }

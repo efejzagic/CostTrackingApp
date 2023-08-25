@@ -33,11 +33,12 @@ namespace Auth.WebAPI.Services
                     // Prepare the request body parameters
                     var parameters = new Dictionary<string, string>
                 {
-                    { "grant_type", "password" },
+                    { "grant_type", "Password" },
                     { "client_id", clientId },
                     { "client_secret", clientSecret },
-                    { "username", model.Username },
-                    { "password", model.Password }
+                    { "Username", model.Username },
+                    { "Password", model.Password },
+                      { "scope", "openid" }
                 };
 
                     // Send the request to Keycloak token endpoint
@@ -77,7 +78,7 @@ namespace Auth.WebAPI.Services
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var email = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var name = _httpContextAccessor.HttpContext.User.FindFirst(claim => claim.Type == "name")?.Value;
+            var name = _httpContextAccessor.HttpContext.User.FindFirst(claim => claim.Type == "Name")?.Value;
 
             var userData = new KeycloakUserData
             {

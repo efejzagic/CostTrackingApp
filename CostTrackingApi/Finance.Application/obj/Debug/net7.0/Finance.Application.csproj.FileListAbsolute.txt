@@ -10,3 +10,6 @@ D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.
 D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\refint\Finance.Application.dll
 D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\ref\Finance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\bin\Debug\net7.0\Finance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\bin\Debug\net7.0\Finance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.Application\obj\Debug\net7.0\Finance.Application.csproj.CopyComplete

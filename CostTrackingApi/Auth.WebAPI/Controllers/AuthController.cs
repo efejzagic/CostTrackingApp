@@ -6,6 +6,12 @@ using Auth.WebAPI.Services;
 using Auth.Domain.Entities;
 using Auth.Application.Features.Auth.Queries;
 using Auth.Application.Features.Auth.Commands;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using Newtonsoft.Json;
+using MediatR;
+using System.Data;
+using System.Runtime.InteropServices;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -17,12 +23,31 @@ namespace Auth.WebAPI.Controllers
     public class AuthController : BaseApiController
     {
 
+        private readonly UserService _userService;
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public AuthController(UserService userService, IHttpClientFactory httpClientFactory, HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        {
+            _userService = userService;
+            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var response = _userService.GetAllUsers();
+            return Ok(response);
+        }
+
         [HttpGet]
         [Route("Id")]
         public async Task<Application.Wrappers.Response<TokenResponse>> GetUserId()
         {
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //return userId;
+            //var UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //return UserId;
 
             var userId = await Mediator.Send(new GetUserByIdQuery());
             return userId;
@@ -61,6 +86,50 @@ namespace Auth.WebAPI.Controllers
             //return Ok(response.AccessToken);
         }
 
+        private string GetTokenFromHeader()
+        {
+            var context = _httpContextAccessor.HttpContext;
+
+            if (context != null)
+            {
+                var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+                // Your logic here
+                return token;
+            }
+            return null;
+        }
+
+
+        [HttpGet("getTest")]
+        [Authorize(Roles = "Finance")]
+
+        public IActionResult GetTest()
+        {
+            return Ok("PROSLO");
+        }
+
+        [HttpGet("roles")]
+        [AllowAnonymous]
+
+        public async Task<IActionResult> GetAllRolesAsync()
+        {
+            string token = GetTokenFromHeader();
+
+            if(token==null || token.Length==0) { return Unauthorized(); }
+
+            string rolesUrl = $"https://lemur-5.cloud-iam.com/auth/admin/realms/cost-tracking-app/clients/17199bf4-657f-458d-92f5-ceb815451556/roles";
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, rolesUrl);
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            HttpResponseMessage response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            string content = await response.Content.ReadAsStringAsync();
+            List<Role> roles = JsonConvert.DeserializeObject<List<Role>>(content);
+            return Ok(roles);
+        }
+
+
         [HttpPost("CreateUser")]
         [AllowAnonymous]
         public async Task<IActionResult> CreateUser(CreateUserCommand command)
@@ -69,6 +138,8 @@ namespace Auth.WebAPI.Controllers
             var response = await Mediator.Send(command);
             return Ok(response);
         }
+
+      
 
         [HttpPut("EditUser")]
         [AllowAnonymous]

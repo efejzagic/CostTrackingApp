@@ -8,21 +8,15 @@ using Storage.Infrastructure.Persistance.Repositories;
 using Storage.Application;
 using Storage.Infrastructure.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
-
-
-using Storage.Infrastructure.Persistance.Context;
 using Storage.Infrastructure.Persistance.IoC;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 using MediatR;
-using Storage.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
 using Storage.Application.Mappings;
 using Storage.WebAPI.Settings;
+using JwtAuthenticationManager;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +31,9 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+
+builder.Services.AddCustomJwtAuthentication();
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
 {
@@ -52,6 +49,17 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 #endregion
+builder.Services.AddCors(options =>
+{
+    var frontendURL = "http://localhost:3000";
+
+    options.AddDefaultPolicy(builder =>
+    {
+        // builder.WithOrigins(frontendURL!).AllowAnyMethod().AllowAnyHeader();
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
 //builder.Services.AddApplication();
@@ -108,6 +116,7 @@ app.UseSwaggerUI(c =>
 // Configure the HTTP request pipeline.
 
 app.UseAuthorization();
+app.UseCors();
 
 app.MapControllers();
 //app.ApplyMigrations(builder.Configuration.)

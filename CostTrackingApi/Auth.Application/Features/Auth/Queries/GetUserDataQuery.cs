@@ -29,13 +29,17 @@ namespace Auth.Application.Features.Auth.Queries
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var email = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            var name = _httpContextAccessor.HttpContext.User.FindFirst(claim => claim.Type == "name")?.Value;
-
+            var name = _httpContextAccessor.HttpContext.User.FindFirst(claim => claim.Type == "Name")?.Value;
+            var roles = _httpContextAccessor.HttpContext.User.Claims
+                .Where(claim => claim.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")
+                .Select(claim => claim.Value)
+                .ToList();
             var userData = new KeycloakUserData
             {
                 Id = userId,
                 Email = email,
-                Name = name
+                Name = name, 
+                Roles = roles
             };
 
             return new Wrappers.Response<KeycloakUserData>(userData);
