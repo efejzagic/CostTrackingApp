@@ -25,72 +25,24 @@ namespace Finance.Application.Features.Invoice.Commands
     {
         private readonly IGenericRepositoryAsync<Finance.Domain.Entities.Invoice> _Repository;
         private readonly IMapper _mapper;
-        private readonly IMediator _mediator; // Add this
 
-        public CreateInvoiceCommandHandler (IGenericRepositoryAsync<Domain.Entities.Invoice> Repository, IMapper mapper, IMediator mediator)
+        public CreateInvoiceCommandHandler (IGenericRepositoryAsync<Domain.Entities.Invoice> Repository, IMapper mapper)
         {
             _Repository = Repository;
             _mapper = mapper;
-            _mediator = mediator;
         }
 
         public async Task<Wrappers.Response<InvoiceDTO>> Handle(CreateInvoiceCommand request, CancellationToken cancellationToken)
-        {
-
-
-            // Handle invoiceItemResponses as needed
-
+        { 
+            foreach(var item in request.Value.Items)
+            {
+                request.Value.Amount += item.Amount;
+            }
+            // Handle invoiceItemResponses as 
             var environment = _mapper.Map<Domain.Entities.Invoice>(request.Value);
             await _Repository.AddAsync(environment);
             var enviromentViewModel = _mapper.Map<InvoiceDTO>(environment);
             return new Wrappers.Response<InvoiceDTO>(enviromentViewModel);
-
-
-            //var invoiceEntity = new Domain.Entities.Invoice
-            //{
-            //    Date = request.Value.Date,
-            //    DueDate = request.Value.DueDate,
-            //    Amount = request.Value.Amount,
-            //    ConstructionSiteId = request.Value.ConstructionSiteId,
-            //    MachineryId = request.Value.MachineryId,
-            //    ToolId = request.Value.ToolId,
-            //    MaintenanceRecordId = request.Value.MaintenanceRecordId,
-            //    ArticleId = request.Value.ArticleId
-            //};
-
-            //// Create the invoice entity
-            //await _Repository.AddAsync(invoiceEntity);
-
-            //// Placeholder list of InvoiceItems to be populated later
-            //var invoiceItemsToCreate = new List<CreateInvoiceItemDTO>();
-
-            //// Create the DTOs for InvoiceItems and populate the placeholder list
-            //foreach (var itemDto in request.Value.Items)
-            //{
-            //    var invoiceItemEntity = new Domain.Entities.InvoiceItem
-            //    {
-            //        Description = itemDto.Description,
-            //        Amount = itemDto.Amount,
-            //        InvoiceId = invoiceEntity.Id // Assign InvoiceId
-            //    };
-
-            //    invoiceItemsToCreate.Add(new CreateInvoiceItemDTO
-            //    {
-            //        Description = itemDto.Description,
-            //        Amount = itemDto.Amount
-            //    });
-            //}
-
-            //// Dispatch CreateInvoiceItemCommands for each placeholder DTO
-            //foreach (var itemToCreate in invoiceItemsToCreate)
-            //{
-            //    var createItemCommand = new CreateInvoiceItemCommand { Value = itemToCreate };
-            //    await _mediator.Send(createItemCommand);
-            //}
-
-            //return new Wrappers.Response<string>(invoiceEntity.Id.ToString());
-
-
         }
     }
 }

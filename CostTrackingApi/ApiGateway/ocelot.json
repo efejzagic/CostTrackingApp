@@ -123,6 +123,18 @@
       "DownstreamPathTemplate": "/api/v/Invoice/{id}"
     },
     {
+      "UpstreamPathTemplate": "/api/v/Invoice/totalAmount",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Invoice/totalAmount"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/Expense",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",
@@ -146,6 +158,57 @@
       ],
       "DownstreamPathTemplate": "/api/v/Expense/{id}"
     },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Machinery",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Machinery"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Machinery/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Machinery/{id}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/v/Tool",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Tool"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Tool/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "equipment.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Tool/{id}"
+    },
+
     {
       "UpstreamPathTemplate": "/api/v/Article",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],

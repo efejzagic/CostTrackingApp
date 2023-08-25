@@ -34,7 +34,7 @@ function Homepage() {
         title="Create new Invoice"
         media={<Icon component={ReceiptIcon} fontSize="large" />}
         text="Lorem ipsum dolor sit amet."
-        route='/construction'
+        route='/invoice'
       />
        <MediaCard
         title="Create new expense"

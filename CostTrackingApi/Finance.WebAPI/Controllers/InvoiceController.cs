@@ -23,14 +23,13 @@ namespace Finance.WebAPI.Controllers
         {
             return Ok(await Mediator.Send(new GetInvoiceByIdQuery { Id = id }));
         }
+        [HttpGet("totalAmount")]
+        public async Task<IActionResult> GetTotalAmount()
+        {
+            return Ok(await Mediator.Send(new GetInvoicesAmountQuery()));
+        }
 
-        //[HttpGet("name/{name}")]
-        //public async Task<IActionResult> Get(string name)
-        //{
-        //    return Ok(await Mediator.Send(new GetMachineryByNameQuery { Name = name }));
-        //}
 
-     
         [HttpPost]
         public async Task<IActionResult> Post(CreateInvoiceCommand command)
         {
@@ -66,6 +65,9 @@ namespace Finance.WebAPI.Controllers
             var enviroment = await Mediator.Send(new DeleteInvoiceCommand { Id = id });
             return Ok(enviroment);
         }
+
+
+
 
     }
 }

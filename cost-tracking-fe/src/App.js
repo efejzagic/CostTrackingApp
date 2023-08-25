@@ -19,6 +19,8 @@ import EditEmployeePage from "./pages/Employee/EditEmployeePage";
 import UsersPage from "./pages/User/UsersPage";
 import CreateUserPage from "./pages/User/CreateUserPage";
 import CSEmployeesPage from "./pages/ConstructionSite/CSEmployees";
+import InvoicePage from "./pages/Invoice/InvoicePage";
+import CreateInvoicePage from "./pages/Invoice/CreateInvoicePage";
 
 function App() {
 
@@ -43,6 +45,8 @@ function App() {
            <Route exact path="/employee" element={<EmployeePage />} />
            <Route exact path="/employee/create" element={<CreateEmployeePage/>} />
            <Route exact path="/employee/edit/:id" element={<EditEmployeePage/>} />
+           <Route exact path="/invoice" element={<InvoicePage/>} />
+           <Route exact path="/invoice/create" element={<CreateInvoicePage/>} />
            <Route
              path="/secured"
              element={
