@@ -43,7 +43,7 @@ builder.Services.AddSwaggerGen(c =>
             Email = "efejzagic2@etf.unsa.ba",
         },
         Version = "v1",
-        Title = "Cost Tracking API"
+        Title = "Finance API"
     });
 });
 #endregion

@@ -136,3 +136,8 @@ D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.WebAPI.pdb
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Infrastructure.Persistance.pdb
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Finance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.deps.json
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.runtimeconfig.json
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.exe
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.pdb

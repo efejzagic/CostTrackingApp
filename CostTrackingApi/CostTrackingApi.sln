@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageService", "StorageService\StorageService.csproj", "{CF6B7270-E48F-4EBE-80D1-BAF5A4A452C6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService", "AuthService\AuthService.csproj", "{FF82E55A-DBA4-4DD1-8296-667367FCEBED}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipmentService", "EquipmentService\EquipmentService.csproj", "{619D7304-E8AC-40A0-8888-39AB11B9C9F4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{D207ADF3-DD8C-449C-A042-0B122C9CE2DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Equipment", "Equipment", "{4B2CB170-3314-4633-A3C0-3E0B8F237995}"
@@ -69,13 +63,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtAuthenticationManager", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maintenance", "Maintenance", "{0A65D657-BCDB-401C-9662-DCCD194C80CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintenance.Application", "Maintenance.Application\Maintenance.Application.csproj", "{808EFADE-D851-4697-90D3-684943F38C92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maintenance.Application", "Maintenance.Application\Maintenance.Application.csproj", "{808EFADE-D851-4697-90D3-684943F38C92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintenance.Domain", "Maintenance.Domain\Maintenance.Domain.csproj", "{5CE37884-7572-4885-93B2-33094FEA495C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maintenance.Domain", "Maintenance.Domain\Maintenance.Domain.csproj", "{5CE37884-7572-4885-93B2-33094FEA495C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintenance.Infrastructure.Persistance", "Maintenance.Infrastructure.Persistance\Maintenance.Infrastructure.Persistance.csproj", "{C210FDFF-77A1-4CE8-9525-C5332F8DE3A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maintenance.Infrastructure.Persistance", "Maintenance.Infrastructure.Persistance\Maintenance.Infrastructure.Persistance.csproj", "{C210FDFF-77A1-4CE8-9525-C5332F8DE3A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintenance.WebAPI", "Maintenance.WebAPI\Maintenance.WebAPI.csproj", "{AAE4AF55-DB44-4DA9-BAA9-2E0C8093B3C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maintenance.WebAPI", "Maintenance.WebAPI\Maintenance.WebAPI.csproj", "{AAE4AF55-DB44-4DA9-BAA9-2E0C8093B3C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apigateway.Combine", "Apigateway.Combine\Apigateway.Combine.csproj", "{CE8F56A7-6946-4B17-9433-1D21CBF3F7D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,18 +79,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF6B7270-E48F-4EBE-80D1-BAF5A4A452C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF6B7270-E48F-4EBE-80D1-BAF5A4A452C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF6B7270-E48F-4EBE-80D1-BAF5A4A452C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF6B7270-E48F-4EBE-80D1-BAF5A4A452C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF82E55A-DBA4-4DD1-8296-667367FCEBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF82E55A-DBA4-4DD1-8296-667367FCEBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF82E55A-DBA4-4DD1-8296-667367FCEBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF82E55A-DBA4-4DD1-8296-667367FCEBED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{619D7304-E8AC-40A0-8888-39AB11B9C9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{619D7304-E8AC-40A0-8888-39AB11B9C9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{619D7304-E8AC-40A0-8888-39AB11B9C9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{619D7304-E8AC-40A0-8888-39AB11B9C9F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02B8A031-2707-4395-8093-7DC4851197CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02B8A031-2707-4395-8093-7DC4851197CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B8A031-2707-4395-8093-7DC4851197CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -203,6 +187,10 @@ Global
 		{AAE4AF55-DB44-4DA9-BAA9-2E0C8093B3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE4AF55-DB44-4DA9-BAA9-2E0C8093B3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE4AF55-DB44-4DA9-BAA9-2E0C8093B3C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE8F56A7-6946-4B17-9433-1D21CBF3F7D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE8F56A7-6946-4B17-9433-1D21CBF3F7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE8F56A7-6946-4B17-9433-1D21CBF3F7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE8F56A7-6946-4B17-9433-1D21CBF3F7D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -234,6 +222,7 @@ Global
 		{5CE37884-7572-4885-93B2-33094FEA495C} = {0A65D657-BCDB-401C-9662-DCCD194C80CC}
 		{C210FDFF-77A1-4CE8-9525-C5332F8DE3A4} = {0A65D657-BCDB-401C-9662-DCCD194C80CC}
 		{AAE4AF55-DB44-4DA9-BAA9-2E0C8093B3C4} = {0A65D657-BCDB-401C-9662-DCCD194C80CC}
+		{CE8F56A7-6946-4B17-9433-1D21CBF3F7D1} = {746B114A-F17B-4513-B91B-2B5C4E9B38D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {200734F8-18B7-45D6-BC47-7AA912ADD5C7}

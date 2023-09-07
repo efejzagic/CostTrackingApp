@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NIYNC59gbUbSYJMtie9g77HORmc7D6QSJZdClUHpJVk=",
+  "Source": "Apigateway.Combine",
+  "BasePath": "_content/Apigateway.Combine",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

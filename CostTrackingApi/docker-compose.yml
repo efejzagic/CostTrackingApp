@@ -100,6 +100,8 @@ services:
     build:
       context: .
       dockerfile: ApiGateway/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:80
     ports:
       - 8001:80
     networks:
@@ -198,8 +200,19 @@ services:
 
 
 
+  apigateway.combine:
+    image: ${DOCKER_REGISTRY-}apigatewaycombine
+    build:
+      context: .
+      dockerfile: Apigateway.Combine/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - backend
+
 volumes:
   app_data:
+
 
 
 

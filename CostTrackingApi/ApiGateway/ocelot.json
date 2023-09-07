@@ -365,6 +365,21 @@
         }
       ],
       "DownstreamPathTemplate": "/api/v/Employee/name/{name}"
+
+    },
+
+
+    {
+      "UpstreamPathTemplate": "/api/v/Test/combined",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apigateway.combine",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Test/combined"
     }
 
 
