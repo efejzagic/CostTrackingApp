@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Storage.Application.DTOs.Article;
 using AutoMapper;
 using Storage.Application.Interfaces;
-using Storage.Application.Wrappers;
+using ResponseInfo.Entities;
 
 namespace Storage.Application.Features.Article.Queries
 {

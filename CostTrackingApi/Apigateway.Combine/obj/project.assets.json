@@ -405,6 +405,16 @@
           "bin/placeholder/ConstructionSite.Domain.dll": {}
         }
       },
+      "ResponseInfo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        }
+      },
       "Storage.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -412,6 +422,7 @@
           "AutoMapper": "12.0.1",
           "MediatR": "12.1.1",
           "Microsoft.EntityFrameworkCore": "7.0.9",
+          "ResponseInfo": "1.0.0",
           "Storage.Domain": "1.0.0"
         },
         "compile": {
@@ -1319,6 +1330,11 @@
       "type": "project",
       "path": "../ConstructionSite.Domain/ConstructionSite.Domain.csproj",
       "msbuildProject": "../ConstructionSite.Domain/ConstructionSite.Domain.csproj"
+    },
+    "ResponseInfo/1.0.0": {
+      "type": "project",
+      "path": "../../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
     },
     "Storage.Application/1.0.0": {
       "type": "project",

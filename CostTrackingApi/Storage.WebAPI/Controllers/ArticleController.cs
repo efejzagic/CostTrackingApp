@@ -12,7 +12,7 @@ namespace Storage.WebAPI.Controllers
     {
         [HttpGet]
         //[MapToApiVersion("1.0")]
-        [Authorize]
+        [Authorize (Roles ="Finance")]
         public async Task<IActionResult> Get([FromQuery] GetAllArticleParameter filter)
         {
             return Ok(await Mediator.Send(new GetAllArticleQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));

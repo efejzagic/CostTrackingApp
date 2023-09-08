@@ -10,14 +10,43 @@ import ReceiptIcon from '@mui/icons-material/Receipt';
 import PaidIcon from '@mui/icons-material/Paid';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-
+import { checkRoleInUserData } from '../components/UserData/RoleChecker';
+import { useState, useEffect } from 'react';
+import Nav from '../components/Nav/Nav';
+import useAuth from '../components/Auth/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
+  // const isLoggedIn = useAuth();
+  const navigate = useNavigate();
+
+  const [hasRole, setHasRole] = useState(false);
+  const [showMediaCard, setShowMediaCard] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      const roleName = 'Finance'; // Replace with the role you want to check
+      const result = await checkRoleInUserData(roleName);
+      setHasRole(result);
+      setShowMediaCard(result); // Set showMediaCard based on the role result
+    }
+    // if(!isLoggedIn) {
+    //   console.log("rediredct to login");
+    //   navigate('/login');
+    // }
+    fetchData();
+  }, []);
+
+
+  
 
   return (
     <>
-      
+             <Nav/>
+
       <main>
+
+
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Homepage admin
@@ -40,7 +69,7 @@ function Homepage() {
         title="Create new expense"
         media={<Icon component={PaidIcon} fontSize="large" />}
         text="Lorem ipsum dolor sit amet."
-        route='/construction/create'
+        route='/expense'
       />
        <MediaCard
         title="Transactions"
@@ -48,13 +77,15 @@ function Homepage() {
         text="Lorem ipsum dolor sit amet."
         route='/construction/create'
       />
-       <MediaCard
-        title="Finance"
-        media={<Icon component={AccountBalanceWalletIcon} fontSize="large" />}
-        text="Lorem ipsum dolor sit amet."
-        route='/construction/create'
-      />
-      
+
+      {showMediaCard && (
+        <MediaCard
+          title="Finance"
+          media={<Icon component={AccountBalanceWalletIcon} fontSize="large" />}
+          text="Lorem ipsum dolor sit amet."
+          route="/construction/create"
+        />
+      )}
       </div>
 
       </main>

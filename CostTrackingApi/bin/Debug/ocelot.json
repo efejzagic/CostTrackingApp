@@ -50,6 +50,18 @@
       "DownstreamPathTemplate": "/api/Auth/roles"
     },
     {
+      "UpstreamPathTemplate": "/api/Auth/UserData",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/UserData"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/Account/invalidate-token",
       "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",

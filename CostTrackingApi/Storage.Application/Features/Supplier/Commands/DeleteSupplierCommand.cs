@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
 using Storage.Application.Interfaces;
-using Storage.Application.Wrappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ResponseInfo.Entities;
+
 
 namespace Storage.Application.Features.Supplier.Commands
 {

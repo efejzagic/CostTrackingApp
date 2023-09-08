@@ -25,7 +25,20 @@ const ArticlePage = () => {
   const navigate = useNavigate ();
   const fetchArticleData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Article');
+      const accessToken = localStorage.getItem('accessToken');
+      if (!accessToken) {
+          // Handle the case where the access token is not found in local storage
+          console.error('Access token not found in local storage');
+          return false;
+      }
+  
+      const config = {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+  
+      const response = await axios.get('http://localhost:8001/api/v/Article', config);
 
       if (response.status === 401) {
         console.log("Unauthorized access");
@@ -77,7 +90,7 @@ const ArticlePage = () => {
  
   return (
     <>
-      
+      <Nav/>
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>

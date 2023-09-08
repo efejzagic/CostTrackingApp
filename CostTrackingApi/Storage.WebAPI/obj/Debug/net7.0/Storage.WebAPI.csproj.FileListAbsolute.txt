@@ -69,3 +69,16 @@ D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\obj\Debug\net7.0\refint\Storag
 D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\obj\Debug\net7.0\Storage.WebAPI.pdb
 D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\obj\Debug\net7.0\Storage.WebAPI.genruntimeconfig.cache
 D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\obj\Debug\net7.0\ref\Storage.WebAPI.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.AspNetCore.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Sinks.File.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PostgreSQL.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.WebAPI\bin\Debug\net7.0\ResponseInfo.pdb

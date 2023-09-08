@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Storage.Application.DTOs.Article;
 using Storage.Application.Interfaces;
-using Storage.Application.Wrappers;
+using ResponseInfo.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -253,6 +253,16 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "ResponseInfo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        }
+      },
       "Storage.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -690,6 +700,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "ResponseInfo/1.0.0": {
+      "type": "project",
+      "path": "../../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+    },
     "Storage.Domain/1.0.0": {
       "type": "project",
       "path": "../Storage.Domain/Storage.Domain.csproj",
@@ -701,6 +716,7 @@
       "AutoMapper >= 12.0.1",
       "MediatR >= 12.1.1",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
+      "ResponseInfo >= 1.0.0",
       "Storage.Domain >= 1.0.0"
     ]
   },
@@ -738,6 +754,9 @@
           "projectReferences": {
             "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj"
+            },
+            "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

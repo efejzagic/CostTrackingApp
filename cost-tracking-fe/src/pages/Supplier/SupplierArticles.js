@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import Nav from '../../components/Nav/Nav';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -73,7 +73,7 @@ const SupplierArticles = () => {
  
   return (
     <>
-    
+    <Nav/>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Articles for {data.name}

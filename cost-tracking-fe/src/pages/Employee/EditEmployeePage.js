@@ -110,7 +110,7 @@ const EditEmployeePage = () => {
 
     <>
     
-    
+    <Nav/>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         Edit Employee

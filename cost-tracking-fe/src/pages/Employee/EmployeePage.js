@@ -72,7 +72,7 @@ const EmployeePage = () => {
   return (
     <>
       
-
+      <Nav/>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Employee Data

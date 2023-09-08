@@ -70,6 +70,8 @@ builder.Services.AddAutoMapper(typeof(Finance.Application.MediatorClass)); // Re
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new InvoiceProfile(provider.GetService<IInvoiceRepository>()));
+    cfg.AddProfile(new ExpenseProfile());
+
 }).CreateMapper());
 
 builder.Services.AddMediatR(typeof(MediatorClass).Assembly);

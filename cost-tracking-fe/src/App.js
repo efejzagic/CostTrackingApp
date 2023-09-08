@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
 import WelcomePage from "./pages/Homepage";
 import SecuredPage from "./pages/Securedpage";
-import PrivateRoute from "./helpers/PrivateRoute";
 import LoginPage from "./pages/LoginPage"
 import { ToastContainer } from 'react-toastify';
 import AdminUsers from './pages/AdminUsers'
@@ -25,17 +23,26 @@ import ArticlePage from "./pages/Article/ArticlePage";
 import CreateArticlePage from "./pages/Article/CreateArticlePage";
 import UnauthorizedPage from "./components/Unauthorized/UnauthorizedPage";
 import SupplierArticles from "./pages/Supplier/SupplierArticles";
+import ExpensePage from "./pages/Expense/ExpensePage";
+import CreateExpensePage from "./pages/Expense/CreateExpensePage";
+import PrivateRoute from "./helpers/PrivateRoute";
+
 
 function App() {
 
+
+
  return (
    <div>
-    
+
        <BrowserRouter>
-       <Nav/>
+
         <Routes>
-      
-           <Route path="/" element={<WelcomePage />} />
+        <Route path="/" element={<PrivateRoute><WelcomePage /> </PrivateRoute>} />
+
+        {/* <Route path="/" element={<PrivateRoute element={<WelcomePage />} />} /> */}
+
+           {/* <Route path="/" element={<WelcomePage />} /> */}
            <Route exact path="/login" element={<LoginPage />} />  
            <Route exact path="/users" element={<UsersPage />} />
            <Route exact path="/users/create" element={<CreateUserPage />} />
@@ -51,6 +58,9 @@ function App() {
            <Route exact path="/employee/edit/:id" element={<EditEmployeePage/>} />
            <Route exact path="/invoice" element={<InvoicePage/>} />
            <Route exact path="/invoice/create" element={<CreateInvoicePage/>} />
+           <Route exact path="/expense" element={<ExpensePage/>} />
+           <Route exact path="/expense/create" element={<CreateExpensePage/>} />
+
            <Route exact path="/article" element={<ArticlePage/>} />
            <Route exact path="/article/create" element={<CreateArticlePage/>} />
            <Route exact path="/supplier/:id/articles" element={<SupplierArticles/>} />
@@ -68,6 +78,7 @@ function App() {
            
          </Routes>
        </BrowserRouter>
+
        <ToastContainer />
 
    </div>

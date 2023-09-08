@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 using JwtAuthenticationManager;
 using JwtAuthenticationManager.Models;
 using TokenResponse = Auth.Domain.Entities.TokenResponse;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -30,12 +31,16 @@ namespace Auth.WebAPI.Controllers
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly JwtTokenHandler _tokenHandler;
-        public AuthController(UserService userService, HttpClient httpClient, IHttpContextAccessor httpContextAccessor, JwtTokenHandler tokenHandler)
+        private readonly ITokenBlacklistService _tokenService;
+
+        public AuthController(UserService userService, HttpClient httpClient, IHttpContextAccessor httpContextAccessor, 
+            JwtTokenHandler tokenHandler, ITokenBlacklistService tokenService)
         {
             _userService = userService;
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
             _tokenHandler = tokenHandler;
+            _tokenService = tokenService;
         }
 
         [HttpGet]
@@ -58,11 +63,31 @@ namespace Auth.WebAPI.Controllers
 
         [HttpGet]
         [Route("UserData")]
-        public async Task<Application.Wrappers.Response<KeycloakUserData>> GetUserDataFromKeycloak()
+        public async Task<IActionResult> GetUserDataFromKeycloak()
         {
             //return Ok(_loginService.GetUserData());
-            return await Mediator.Send(new GetUserDataQuery());
+            return Ok(await Mediator.Send(new GetUserDataQuery()));
         }
+
+        //[HttpPost("logout")]
+        //public IActionResult Logout()
+        //{
+        //    // Get the token from the request (you might need to customize this)
+        //    //var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+        //    //// Invalidate the token by adding it to the blacklist
+        //    //_tokenService.AddToBlacklist(token);
+
+        //    //return Ok("Logged out successfully.");
+        //    var newSecurityKey = new SymmetricSecurityKey(Guid.NewGuid().ToByteArray());
+
+        //    // Update JWT settings with the new key
+        //    _jwtSettings.SecurityKey = newSecurityKey;
+
+        //    // Typically, you would also handle token expiration and revocation here
+
+        //    return Ok("Logged out successfully. Tokens are invalidated.");
+        //}
 
         //[HttpGet]
         //[Route("Proba")]

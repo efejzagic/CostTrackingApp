@@ -1,8 +1,10 @@
 import React from 'react';
 import { Typography, Container, Paper } from '@mui/material';
-
+import Nav from '../Nav/Nav';
 const UnauthorizedPage = () => {
   return (
+    <>
+    <Nav/>
     <Container maxWidth="sm">
       <Paper elevation={3} style={{ padding: '20px', textAlign: 'center' }}>
         <Typography variant="h4" gutterBottom>
@@ -13,6 +15,7 @@ const UnauthorizedPage = () => {
         </Typography>
       </Paper>
     </Container>
+    </>
   );
 };
 

@@ -57,7 +57,8 @@ namespace JwtAuthenticationManager
               ValidateIssuerSigningKey = true,
               ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
               ValidAudience = "cost-tracking-client",
-              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
+              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN")),
+              SaveSigninToken = true,
           };
       });
 

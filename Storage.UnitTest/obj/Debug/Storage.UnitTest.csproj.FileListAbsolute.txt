@@ -1,0 +1,15 @@
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Storage.UnitTest.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Storage.UnitTest.pdb
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\CostTrackingApp\Storage.UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\CostTrackingApp\Storage.UnitTest\obj\Debug\Storage.UnitTest.csproj.AssemblyReference.cache
+D:\CostTrackingApp\Storage.UnitTest\obj\Debug\Storage.UnitTest.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\Storage.UnitTest\obj\Debug\Storage.UnitTest.csproj.CopyComplete
+D:\CostTrackingApp\Storage.UnitTest\obj\Debug\Storage.UnitTest.dll
+D:\CostTrackingApp\Storage.UnitTest\obj\Debug\Storage.UnitTest.pdb

@@ -1,49 +1,59 @@
-import React from "react";
-import { Typography, Paper,  AppBar,Table,TableHead, TableRow, TableBody, TableCell, TableContainer, TablePagination, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@mui/material';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import PrivateRoute from '../../helpers/PrivateRoute';
-import { useNavigate  } from 'react-router-dom'; // Import useHistory from React Router
-import LogoutButton from "../Logout/LogoutButton";
+import React, { useState, useEffect } from "react";
+import { Typography, AppBar, Button, ButtonGroup, CssBaseline, Toolbar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
+const Nav = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("accessToken")));
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
 
-const Nav=()=> {
-  const navigate = useNavigate (); // Initialize useHistory
   const handleLogin = () => {
-    // You can perform any login-related actions here if needed
-  
-    // After handling login logic, navigate to the "/test" route
+    // Simulate a successful login by setting a fake access token
     navigate('/login');
-    };
+  };
+
+  const handleLogout = () => {
+    // Simulate a logout by removing the access token
+    localStorage.removeItem("accessToken");
+    setIsLoggedIn(false);
+    navigate("/login"); // Redirect to the login page after logout
+  };
+
   return (
     <>
       <CssBaseline />
-      <AppBar position='relative'/>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography variant='button' onClick={() => navigate('/')}> Cost Tracking App</Typography>
-          <ButtonGroup variant="text" aria-label="text button group">
-            <div className="hover:text-gray-200">
-            <Button onClick={() => navigate('/construction')}>Construction</Button>
-            <Button onClick={() => navigate('/employee')}>Employees</Button>
-
-            <Button onClick={() => navigate('/article')}>Articles</Button>
-              <Button onClick={() => navigate('/supplier')}>Suppliers</Button>
-            <PrivateRoute elseContent={<Button    type="button"
-                     className="text-blue-800"
-                     onClick={handleLogin}>Login</Button>}>
-        {/* This content will only be displayed if the user is logged in */}
-        <Typography variant="button">Hi</Typography>
-        <LogoutButton  ></LogoutButton>
-      </PrivateRoute>
-      
-                
-               </div>
+      <AppBar position="relative" />
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Typography variant="button" onClick={() => navigate("/")}>
+          Cost Tracking App
+        </Typography>
+        <ButtonGroup variant="text" aria-label="text button group">
+          <Button onClick={() => navigate("/construction")}>Construction</Button>
+          <Button onClick={() => navigate("/employee")}>Employees</Button>
+          <Button onClick={() => navigate("/article")}>Articles</Button>
+          <Button onClick={() => navigate("/supplier")}>Suppliers</Button>
+          {isLoggedIn ? (
+            <>
+              <Typography variant="button">Hi</Typography>
+              <Button onClick={handleLogout}>Logout</Button>
+            </>
+          ) : (
+            <Button type="button" className="text-blue-800" onClick={handleLogin}>
+              Login
+            </Button>
+          )}
         </ButtonGroup>
-        </Toolbar>
-       
+      </Toolbar>
     </>
   );
-}
+};
 
 export default Nav;

@@ -3,6 +3,8 @@ import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, 
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Nav from '../../components/Nav/Nav';
+
 
 const style = {
   position: 'absolute',
@@ -81,7 +83,7 @@ const InvoicePage = () => {
 
   return (
     <>
-      
+      <Nav/>
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
@@ -129,9 +131,7 @@ const InvoicePage = () => {
                   </TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
-                      <Button variant="outlined" color="primary" size="small">
-                        <Link to={`/invoice/edit/${item.id}`}>Edit</Link>
-                      </Button>
+                      
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete
                       </Button>

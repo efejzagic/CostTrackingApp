@@ -302,11 +302,17 @@
           "ConstructionSite.Domain.dll": {}
         }
       },
+      "ResponseInfo/1.0.0": {
+        "runtime": {
+          "ResponseInfo.dll": {}
+        }
+      },
       "Storage.Application/1.0.0": {
         "dependencies": {
           "AutoMapper": "12.0.1",
           "MediatR": "12.1.1",
           "Microsoft.EntityFrameworkCore": "7.0.9",
+          "ResponseInfo": "1.0.0",
           "Storage.Domain": "1.0.0"
         },
         "runtime": {
@@ -570,6 +576,11 @@
       "sha512": ""
     },
     "ConstructionSite.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResponseInfo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
