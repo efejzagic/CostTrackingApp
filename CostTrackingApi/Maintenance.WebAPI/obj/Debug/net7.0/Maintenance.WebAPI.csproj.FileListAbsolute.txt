@@ -104,3 +104,5 @@ D:\CostTrackingApp\CostTrackingApi\Maintenance.WebAPI\obj\Debug\net7.0\refint\Ma
 D:\CostTrackingApp\CostTrackingApi\Maintenance.WebAPI\obj\Debug\net7.0\Maintenance.WebAPI.pdb
 D:\CostTrackingApp\CostTrackingApi\Maintenance.WebAPI\obj\Debug\net7.0\Maintenance.WebAPI.genruntimeconfig.cache
 D:\CostTrackingApp\CostTrackingApi\Maintenance.WebAPI\obj\Debug\net7.0\ref\Maintenance.WebAPI.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.WebAPI\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.WebAPI\bin\Debug\net7.0\ResponseInfo.pdb

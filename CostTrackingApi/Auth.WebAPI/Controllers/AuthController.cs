@@ -52,7 +52,7 @@ namespace Auth.WebAPI.Controllers
 
         [HttpGet]
         [Route("Id")]
-        public async Task<Application.Wrappers.Response<AuthenticationResponse>> GetUserId()
+        public async Task<ResponseInfo.Entities.Response<AuthenticationResponse>> GetUserId()
         {
             //var UserId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             //return UserId;

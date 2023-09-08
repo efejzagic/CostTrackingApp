@@ -104,3 +104,5 @@ D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Auth.Domain.d
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Auth.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\ResponseInfo.pdb

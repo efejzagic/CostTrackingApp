@@ -11,12 +11,12 @@ using MediatR;
 
 namespace Maintenance.Application.Features.MaintenanceRecord.Commands
 {
-    public class CreateMaintenanceRecordCommand : IRequest<Wrappers.Response<string>>
+    public class CreateMaintenanceRecordCommand : IRequest<ResponseInfo.Entities.Response<string>>
     {
         public MaintenanceRecordCreateDTO Value { get; set; }
     }
 
-    public class CreateMaintenanceRecordCommandHandler : IRequestHandler<CreateMaintenanceRecordCommand, Wrappers.Response<string>>
+    public class CreateMaintenanceRecordCommandHandler : IRequestHandler<CreateMaintenanceRecordCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IGenericRepositoryAsync<Maintenance.Domain.Entities.MaintenanceRecord> _Repository;
         private readonly IMapper _mapper;
@@ -26,11 +26,11 @@ namespace Maintenance.Application.Features.MaintenanceRecord.Commands
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<string>> Handle(CreateMaintenanceRecordCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<string>> Handle(CreateMaintenanceRecordCommand request, CancellationToken cancellationToken)
         {
             var enviroment = _mapper.Map<Maintenance.Domain.Entities.MaintenanceRecord>(request.Value);
             await _Repository.AddAsync(enviroment);
-            return new Wrappers.Response<string>(enviroment.Id.ToString());
+            return new ResponseInfo.Entities.Response<string>(enviroment.Id.ToString());
         }
     }
 }

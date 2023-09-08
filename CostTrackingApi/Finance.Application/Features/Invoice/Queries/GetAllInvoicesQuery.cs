@@ -2,10 +2,10 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-using Finance.Application.Wrappers;
 using Finance.Application.DTOs.Invoice;
 using Finance.Application.Interfaces;
-using Finance.Application.Wrappers;
+using ResponseInfo.Entities;
+using Finance.Application.Parameters.Invoice;
 
 namespace Finance.Application.Features.Invoice.Queries
 {
@@ -29,7 +29,7 @@ namespace Finance.Application.Features.Invoice.Queries
 
         public async Task<PagedResponse<IEnumerable<InvoiceDTO>>> Handle(GetAllInvoicesQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<InvoiceDTO>(request);
+            var validFilter = _mapper.Map<GetAllInvoiceParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<InvoiceDTO>>(enviroments);
             return new PagedResponse<IEnumerable<InvoiceDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);

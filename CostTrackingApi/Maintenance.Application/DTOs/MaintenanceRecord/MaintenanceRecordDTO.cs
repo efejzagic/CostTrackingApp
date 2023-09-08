@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Maintenance.Application.DTOs.MaintenanceRecord
 {
-    public  class MaintenanceRecordDTO : RequestParameter
+    public  class MaintenanceRecordDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

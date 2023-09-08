@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Equipment.Application.DTOs.Tool
 {
-    public class ToolDTO : RequestParameter
+    public class ToolDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }

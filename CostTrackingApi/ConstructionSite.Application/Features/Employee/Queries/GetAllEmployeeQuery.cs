@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ConstructionSite.Application.DTOs.Employee;
 using ConstructionSite.Application.Interfaces;
-using ConstructionSite.Application.Wrappers;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System;
@@ -9,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ResponseInfo.Entities;
+using ConstructionSite.Application.Parameters.Employee;
 
 namespace ConstructionSite.Application.Features.Employee.Queries
 {
@@ -31,7 +32,7 @@ namespace ConstructionSite.Application.Features.Employee.Queries
 
         public async Task<PagedResponse<IEnumerable<EmployeeDTO>>> Handle(GetAllEmployeeQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<EmployeeDTO>(request);
+            var validFilter = _mapper.Map<GetAllEmployeeParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<EmployeeDTO>>(enviroments);
             return new PagedResponse<IEnumerable<EmployeeDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);

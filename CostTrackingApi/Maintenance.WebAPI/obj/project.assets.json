@@ -2723,7 +2723,8 @@
           "AutoMapper": "12.0.1",
           "Maintenance.Domain": "1.0.0",
           "MediatR": "11.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.10"
+          "Microsoft.EntityFrameworkCore": "7.0.10",
+          "ResponseInfo": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Maintenance.Application.dll": {}
@@ -2763,6 +2764,16 @@
         },
         "runtime": {
           "bin/placeholder/Maintenance.Infrastructure.Persistance.dll": {}
+        }
+      },
+      "ResponseInfo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResponseInfo.dll": {}
         }
       }
     }
@@ -8454,6 +8465,11 @@
       "type": "project",
       "path": "../Maintenance.Infrastructure.Persistance/Maintenance.Infrastructure.Persistance.csproj",
       "msbuildProject": "../Maintenance.Infrastructure.Persistance/Maintenance.Infrastructure.Persistance.csproj"
+    },
+    "ResponseInfo/1.0.0": {
+      "type": "project",
+      "path": "../../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {

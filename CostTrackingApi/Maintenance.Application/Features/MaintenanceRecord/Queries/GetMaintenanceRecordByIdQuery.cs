@@ -10,11 +10,11 @@ using Maintenance.Application.Interfaces;
 
 namespace Maintenance.Application.Features.MaintenanceRecord.Queries
 {
-    public class GetMaintenanceRecordByIdQuery : IRequest<Wrappers.Response<MaintenanceRecordDTO>>
+    public class GetMaintenanceRecordByIdQuery : IRequest<ResponseInfo.Entities.Response<MaintenanceRecordDTO>>
     {
         public int Id { get; set; }
     }
-    public class GetMaintenanceRecordByIdQueryHandler : IRequestHandler<GetMaintenanceRecordByIdQuery, Wrappers.Response<MaintenanceRecordDTO>>
+    public class GetMaintenanceRecordByIdQueryHandler : IRequestHandler<GetMaintenanceRecordByIdQuery, ResponseInfo.Entities.Response<MaintenanceRecordDTO>>
     {
         private readonly IGenericRepositoryAsync<Maintenance.Domain.Entities.MaintenanceRecord> _repository;
         private readonly IMapper _mapper;
@@ -24,13 +24,13 @@ namespace Maintenance.Application.Features.MaintenanceRecord.Queries
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<MaintenanceRecordDTO>> Handle(GetMaintenanceRecordByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<MaintenanceRecordDTO>> Handle(GetMaintenanceRecordByIdQuery request, CancellationToken cancellationToken)
         {
             var validFilter = _mapper.Map<MaintenanceRecordDTO>(request);
             var enviroment = await _repository.GetByIdAsync(request.Id);
             if (enviroment == null)
             {
-                return new  Wrappers.Response<MaintenanceRecordDTO>()
+                return new ResponseInfo.Entities.Response<MaintenanceRecordDTO>()
                 {
                     Succeeded = false,
                     Message = $"No machine found in db with id = {request.Id}",
@@ -39,7 +39,7 @@ namespace Maintenance.Application.Features.MaintenanceRecord.Queries
                 };
             }
             var enviromentViewModel = _mapper.Map<MaintenanceRecordDTO>(enviroment);
-            return new Wrappers.Response<MaintenanceRecordDTO>(enviromentViewModel);
+            return new ResponseInfo.Entities.Response<MaintenanceRecordDTO>(enviromentViewModel);
         }
     }
 }

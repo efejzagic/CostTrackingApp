@@ -1,5 +1,4 @@
-﻿using Auth.Application.Wrappers;
-using Auth.Domain.Entities;
+﻿using Auth.Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -13,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace Auth.Application.Features.Auth.Commands
 {
-    public partial class LoginTokenCommand : IRequest<Wrappers.Response<TokenResponse>>
+    public partial class LoginTokenCommand : IRequest<ResponseInfo.Entities.Response<TokenResponse>>
     {
         public LoginRequest Model { get; set; }
     }
-    public class LoginRequestCommandHandler : IRequestHandler<LoginTokenCommand, Wrappers.Response<TokenResponse>>
+    public class LoginRequestCommandHandler : IRequestHandler<LoginTokenCommand, ResponseInfo.Entities.Response<TokenResponse>>
     {
         public LoginRequestCommandHandler()
         {
         }
 
-        public async Task<Wrappers.Response<TokenResponse>> Handle(LoginTokenCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<TokenResponse>> Handle(LoginTokenCommand request, CancellationToken cancellationToken)
         {
             string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
             string realm = "cost-tracking-app";
@@ -67,7 +66,7 @@ namespace Auth.Application.Features.Auth.Commands
                         // Optionally, you can perform additional checks or validations on the JWT token
 
                         // Return the JWT token as a response
-                        return new Wrappers.Response<TokenResponse>(tokenResponse); ;
+                        return new ResponseInfo.Entities.Response<TokenResponse>(tokenResponse); ;
                     }
                     else
                     {

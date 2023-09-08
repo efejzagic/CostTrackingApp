@@ -40,6 +40,9 @@
               },
               "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj": {
                 "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj"
+              },
+              "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj": {
+                "projectPath": "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj"
               }
             }
           }
@@ -124,6 +127,9 @@
             "projectReferences": {
               "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Domain\\ConstructionSite.Domain.csproj": {
                 "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Domain\\ConstructionSite.Domain.csproj"
+              },
+              "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj": {
+                "projectPath": "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj"
               }
             }
           }

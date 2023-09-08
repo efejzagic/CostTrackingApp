@@ -2,6 +2,9 @@
 using Finance.Application.DTOs.Expense;
 using Finance.Application.Features.Expense.Commands;
 using Finance.Application.Features.Expense.Queries;
+using Finance.Application.Features.Invoice.Queries;
+using Finance.Application.Parameters.Expense;
+using Finance.Application.Parameters.Invoice;
 using Finance.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -23,6 +26,10 @@ namespace Finance.Application.Mappings
             CreateMap<Expense, ExpenseDTO>();
             CreateMap<CreateExpenseDTO, Expense>();
             CreateMap<EditExpenseDTO, Expense>();
+
+            CreateMap<Expense, GetAllExpenseParameter>();
+            CreateMap<GetAllExpensesQuery, GetAllExpenseParameter>();
+
 
         }
     }

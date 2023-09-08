@@ -1,6 +1,4 @@
 ﻿using Equipment.Application.Interfaces;
-//using Equipment.Application.Parameters.Enviroment;
-using Equipment.Application.Wrappers;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -10,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Equipment.Application.DTOs.Tool;
+using ResponseInfo.Entities;
+using Equipment.Application.Parameters.Tool;
 
 namespace Equipment.Application.Features.Tool.Queries
 {
@@ -34,7 +34,7 @@ namespace Equipment.Application.Features.Tool.Queries
 
         public async Task<PagedResponse<IEnumerable<ToolDTO>>> Handle(GetAllToolQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<ToolDTO>(request);
+            var validFilter = _mapper.Map<GetAllToolParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<ToolDTO>>(enviroments);
             return new PagedResponse<IEnumerable<ToolDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);

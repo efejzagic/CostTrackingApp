@@ -2709,7 +2709,8 @@
           "AutoMapper": "12.0.1",
           "Finance.Domain": "1.0.0",
           "MediatR": "11.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.10"
+          "Microsoft.EntityFrameworkCore": "7.0.10",
+          "ResponseInfo": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Finance.Application.dll": {}
@@ -2770,6 +2771,16 @@
         },
         "runtime": {
           "bin/placeholder/JwtAuthenticationManager.dll": {}
+        }
+      },
+      "ResponseInfo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResponseInfo.dll": {}
         }
       }
     }
@@ -8533,6 +8544,11 @@
       "type": "project",
       "path": "../JwtAuthenticationManager/JwtAuthenticationManager.csproj",
       "msbuildProject": "../JwtAuthenticationManager/JwtAuthenticationManager.csproj"
+    },
+    "ResponseInfo/1.0.0": {
+      "type": "project",
+      "path": "../../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {

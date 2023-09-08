@@ -3,6 +3,7 @@ using Storage.Application.DTOs.Supplier;
 using Storage.Application.Features.Supplier.Commands;
 using Storage.Application.Features.Supplier.Queries;
 using Storage.Application.Interfaces;
+using Storage.Application.Parameters.Supplier;
 using Storage.Domain.Entities;
 
 namespace Storage.Application.Mappings
@@ -29,6 +30,10 @@ namespace Storage.Application.Mappings
             CreateMap<GetSupplierByNameQuery, SupplierDTO>();
 
             CreateMap<DeleteSupplierCommand, Supplier>();
+
+
+            CreateMap<Supplier, GetAllSupplierParameter>();
+            CreateMap<GetAllSupplierQuery, GetAllSupplierParameter>();
         }
     }
 }

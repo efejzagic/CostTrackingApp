@@ -1,7 +1,6 @@
 ﻿using Equipment.Application.DTOs.Machinery;
 using Equipment.Application.Interfaces;
 using Equipment.Application.Parameters.Machinery;
-using Equipment.Application.Wrappers;
 using AutoMapper;
 using Equipment.Domain.Entities;
 using MediatR;
@@ -11,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Equipment.Application.Features.Machinery.Queries;
+using ResponseInfo.Entities;
 
 namespace Equipment.Application.Features.Machinery.Queries
 {

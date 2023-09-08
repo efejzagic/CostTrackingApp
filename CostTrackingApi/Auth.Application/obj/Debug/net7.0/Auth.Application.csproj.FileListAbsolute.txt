@@ -15,3 +15,5 @@ D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\Auth.Applic
 D:\CostTrackingApp\CostTrackingApi\Auth.Application\obj\Debug\net7.0\ref\Auth.Application.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\JwtAuthenticationManager.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.Application\bin\Debug\net7.0\ResponseInfo.pdb

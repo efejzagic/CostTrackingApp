@@ -38,6 +38,8 @@ namespace Equipment.Application.Mappings
             CreateMap<CreateMachineryCommand, Machinery>();
             CreateMap<DeleteMachineryCommand, Machinery>();
             CreateMap<UpdateMachineryCommand, Machinery>();
+            CreateMap<Machinery, GetAllMachineryParameter>();
+
 
         }
 

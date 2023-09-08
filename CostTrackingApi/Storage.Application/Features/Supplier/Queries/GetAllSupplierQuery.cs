@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ResponseInfo.Entities;
 using Storage.Application.Interfaces;
 using Storage.Application.DTOs.Supplier;
+using Storage.Application.Parameters.Supplier;
 
 namespace Storage.Application.Features.Supplier.Queries
 {
@@ -33,7 +34,7 @@ namespace Storage.Application.Features.Supplier.Queries
 
         public async Task<PagedResponse<IEnumerable<SupplierDTO>>> Handle(GetAllSupplierQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<SupplierDTO>(request);
+            var validFilter = _mapper.Map<GetAllSupplierParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<SupplierDTO>>(enviroments);
             return new PagedResponse<IEnumerable<SupplierDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);

@@ -71,3 +71,5 @@ D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\JwtA
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\Auth.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\Auth.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\ResponseInfo.pdb

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Finance.Application.DTOs.Invoice
 {
-    public class InvoiceDTO : RequestParameter
+    public class InvoiceDTO
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }

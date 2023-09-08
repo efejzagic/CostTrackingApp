@@ -16,12 +16,12 @@ using MediatR;
 namespace Finance.Application.Features.Invoice.Commands
 {
 
-    public class CreateInvoiceCommand : IRequest<Wrappers.Response<InvoiceDTO>>
+    public class CreateInvoiceCommand : IRequest<ResponseInfo.Entities.Response<InvoiceDTO>>
     {
         public CreateInvoiceDTO Value { get; set; }
     }
 
-    public class CreateInvoiceCommandHandler : IRequestHandler<CreateInvoiceCommand, Wrappers.Response<InvoiceDTO>>
+    public class CreateInvoiceCommandHandler : IRequestHandler<CreateInvoiceCommand, ResponseInfo.Entities.Response<InvoiceDTO>>
     {
         private readonly IGenericRepositoryAsync<Finance.Domain.Entities.Invoice> _Repository;
         private readonly IMapper _mapper;
@@ -32,7 +32,7 @@ namespace Finance.Application.Features.Invoice.Commands
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<InvoiceDTO>> Handle(CreateInvoiceCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<InvoiceDTO>> Handle(CreateInvoiceCommand request, CancellationToken cancellationToken)
         { 
             foreach(var item in request.Value.Items)
             {
@@ -42,7 +42,7 @@ namespace Finance.Application.Features.Invoice.Commands
             var environment = _mapper.Map<Domain.Entities.Invoice>(request.Value);
             await _Repository.AddAsync(environment);
             var enviromentViewModel = _mapper.Map<InvoiceDTO>(environment);
-            return new Wrappers.Response<InvoiceDTO>(enviromentViewModel);
+            return new ResponseInfo.Entities.Response<InvoiceDTO>(enviromentViewModel);
         }
     }
 }

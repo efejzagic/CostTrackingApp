@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ResponseInfo.Entities;
 using Storage.Application.DTOs.Article;
 using Storage.Application.Interfaces;
+using Storage.Application.Parameters.Article;
 
 namespace Storage.Application.Features.Article.Queries
 {
@@ -33,7 +34,7 @@ namespace Storage.Application.Features.Article.Queries
 
         public async Task<PagedResponse<IEnumerable<ArticleDTO>>> Handle(GetAllArticleQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<ArticleDTO>(request);
+            var validFilter = _mapper.Map<GetAllArticleParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<ArticleDTO>>(enviroments);
             return new PagedResponse<IEnumerable<ArticleDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);

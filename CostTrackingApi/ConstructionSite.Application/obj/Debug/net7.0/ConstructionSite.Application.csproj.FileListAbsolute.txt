@@ -13,3 +13,5 @@ D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\refint\ConstructionSite.Application.dll
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ConstructionSite.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\obj\Debug\net7.0\ref\ConstructionSite.Application.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Application\bin\Debug\net7.0\ResponseInfo.pdb

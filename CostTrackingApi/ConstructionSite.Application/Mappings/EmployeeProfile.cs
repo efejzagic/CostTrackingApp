@@ -32,6 +32,8 @@ namespace ConstructionSite.Application.Mappings
             CreateMap<GetEmployeeByNameQuery, EmployeeDTO>();
 
             CreateMap<DeleteEmployeeCommand, Employee>();
+
+            CreateMap<GetAllEmployeeQuery, GetAllEmployeeParameter>();
         }
 
     }

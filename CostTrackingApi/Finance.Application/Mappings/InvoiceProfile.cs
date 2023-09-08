@@ -6,6 +6,7 @@ using Finance.Application.Features.Invoice.Queries;
 using Finance.Application.Features.InvoiceItem.Commands;
 using Finance.Application.Features.InvoiceItem.Queries;
 using Finance.Application.Interfaces;
+using Finance.Application.Parameters.Invoice;
 using Finance.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,8 @@ namespace Finance.Application.Mappings
             CreateMap<Invoice, InvoiceDTO>()
               .PreserveReferences()
               .ForMember(d => d.Items, opt => opt.MapFrom(src => _invoiceRepo.GetItemsByInvoiceId(src.Id).Result));
+            CreateMap<Invoice, GetAllInvoiceParameter>();
+            CreateMap<GetAllInvoicesQuery, GetAllInvoiceParameter>();
 
 
             CreateMap<GetAllInvoiceItemsQuery, InvoiceItemDTO>();
@@ -43,6 +46,8 @@ namespace Finance.Application.Mappings
             CreateMap<DeleteInvoiceItemCommand, Domain.Entities.InvoiceItem>();
             CreateMap<Domain.Entities.InvoiceItem, InvoiceItemDTO>();
             CreateMap<CreateInvoiceItemDTO, Domain.Entities.InvoiceItem>();
+
+
 
         }
     }

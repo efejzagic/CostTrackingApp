@@ -29,6 +29,8 @@ namespace Equipment.Application.Mappings
             CreateMap<CreateToolCommand, Tool>();
             CreateMap<DeleteToolCommand, Tool>();
             CreateMap<UpdateToolCommand, Tool>();
+            CreateMap<Tool, GetAllToolParameter>();
+
 
 
         }

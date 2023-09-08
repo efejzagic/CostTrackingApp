@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Finance.Application.DTOs.Invoice;
 using Finance.Application.Interfaces;
-using Finance.Application.Wrappers;
+using ResponseInfo.Entities;
 
 namespace Finance.Application.Features.Invoice.Commands
 {

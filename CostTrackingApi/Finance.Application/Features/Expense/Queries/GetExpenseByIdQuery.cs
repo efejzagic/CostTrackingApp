@@ -10,11 +10,11 @@ using Finance.Application.Interfaces;
 
 namespace Finance.Application.Features.Expense.Queries
 {
-    public class GetExpenseByIdQuery : IRequest<Wrappers.Response<ExpenseDTO>>
+    public class GetExpenseByIdQuery : IRequest<ResponseInfo.Entities.Response<ExpenseDTO>>
     {
         public int Id { get; set; }
     }
-    public class GetExpenseByIdQueryHandler : IRequestHandler<GetExpenseByIdQuery, Wrappers.Response<ExpenseDTO>>
+    public class GetExpenseByIdQueryHandler : IRequestHandler<GetExpenseByIdQuery, ResponseInfo.Entities.Response<ExpenseDTO>>
     {
         private readonly IGenericRepositoryAsync<Finance.Domain.Entities.Expense> _repository;
         private readonly IMapper _mapper;
@@ -24,13 +24,13 @@ namespace Finance.Application.Features.Expense.Queries
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<ExpenseDTO>> Handle(GetExpenseByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<ExpenseDTO>> Handle(GetExpenseByIdQuery request, CancellationToken cancellationToken)
         {
             var validFilter = _mapper.Map<ExpenseDTO>(request);
             var enviroment = await _repository.GetByIdAsync(request.Id);
             if (enviroment == null)
             {
-                return new Wrappers.Response<ExpenseDTO>()
+                return new ResponseInfo.Entities.Response<ExpenseDTO>()
                 {
                     Succeeded = false,
                     Message = $"No machine found in db with id = {request.Id}",
@@ -39,7 +39,7 @@ namespace Finance.Application.Features.Expense.Queries
                 };
             }
             var enviromentViewModel = _mapper.Map<ExpenseDTO>(enviroment);
-            return new Wrappers.Response<ExpenseDTO>(enviromentViewModel);
+            return new ResponseInfo.Entities.Response<ExpenseDTO>(enviromentViewModel);
         }
     }
 }

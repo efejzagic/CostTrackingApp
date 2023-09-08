@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Finance.Application.Interfaces;
-using Finance.Application.Wrappers;
 using Finance.Application.DTOs.Expense;
+using ResponseInfo.Entities;
 
 namespace Finance.Application.Features.Expense.Commands
 {

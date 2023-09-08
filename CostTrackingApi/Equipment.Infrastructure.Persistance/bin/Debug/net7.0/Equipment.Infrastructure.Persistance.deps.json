@@ -1336,7 +1336,8 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Equipment.Domain": "1.0.0",
           "MediatR": "11.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.9"
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "ResponseInfo": "1.0.0"
         },
         "runtime": {
           "Equipment.Application.dll": {}
@@ -1345,6 +1346,11 @@
       "Equipment.Domain/1.0.0": {
         "runtime": {
           "Equipment.Domain.dll": {}
+        }
+      },
+      "ResponseInfo/1.0.0": {
+        "runtime": {
+          "ResponseInfo.dll": {}
         }
       }
     }
@@ -2292,6 +2298,11 @@
       "sha512": ""
     },
     "Equipment.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResponseInfo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

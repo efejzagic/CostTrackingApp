@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConstructionSite.Application.DTOs.Employee
 {
-    public class EmployeeDTO : RequestParameter
+    public class EmployeeDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -13,7 +13,14 @@ const PrivateRoute = ({ children, elseContent }) => {
 
     if (token) {
       try {
-        decodeJwt(token);
+        
+        const tmp = decodeJwt(token);
+        console.log(tmp);
+        if (tmp.exp * 1000 < Date.now()) {
+          setIsLoggedIn(false);
+          console.log("Session expired");
+          return false;
+        }
 
         setIsLoggedIn(true);
         console.log("loggeed in true 1 ");

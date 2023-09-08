@@ -7,14 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ResponseInfo.Entities;
 
 namespace Auth.Application.Features.Auth.Commands
 {
-    public partial class EditUserCommand : IRequest<Wrappers.Response<string>>
+    public partial class EditUserCommand : IRequest<ResponseInfo.Entities.Response<string>>
     {
         public CreateUserModel Model { get; set; }
     }
-    public class EditUserCommandHandler : IRequestHandler<EditUserCommand, Wrappers.Response<string>>
+    public class EditUserCommandHandler : IRequestHandler<EditUserCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         public EditUserCommandHandler(IHttpContextAccessor httpContextAccessor)
@@ -22,7 +23,7 @@ namespace Auth.Application.Features.Auth.Commands
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Wrappers.Response<string>> Handle(EditUserCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<string>> Handle(EditUserCommand request, CancellationToken cancellationToken)
         {
             var httpClient = new HttpClient();
             var keycloakConfig = new KeycloakConfig()
@@ -59,7 +60,7 @@ namespace Auth.Application.Features.Auth.Commands
             var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 
-            var response = new Application.Wrappers.Response<string>();
+            var response = new ResponseInfo.Entities.Response<string>();
             try
             {
                 var responseResult = await httpClient.PutAsync(endpoint, content);

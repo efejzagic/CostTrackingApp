@@ -386,7 +386,8 @@
           "AutoMapper": "12.0.1",
           "ConstructionSite.Domain": "1.0.0",
           "MediatR": "12.1.1",
-          "Microsoft.EntityFrameworkCore": "7.0.9"
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "ResponseInfo": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ConstructionSite.Application.dll": {}
@@ -1354,6 +1355,7 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.5",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.2",
       "Newtonsoft.Json >= 13.0.3",
+      "ResponseInfo >= 1.0.0",
       "Storage.Application >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -1398,6 +1400,9 @@
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj"
+            },
+            "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

@@ -1,5 +1,4 @@
 ﻿using Equipment.Application.Interfaces;
-using Equipment.Application.Wrappers;
 using AutoMapper;
 using Equipment.Domain.Entities;
 using MediatR;
@@ -9,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Equipment.Application.DTOs.Machinery;
+using ResponseInfo.Entities;
+
 
 namespace Equipment.Application.Features.Machinery.Commands
 {

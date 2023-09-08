@@ -4,7 +4,7 @@ using Equipment.Domain.Entities;
 
 namespace Equipment.Application.DTOs.Machinery
 {
-    public class MachineryDTO : RequestParameter
+    public class MachineryDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -11,12 +11,12 @@ using MediatR;
 
 namespace Finance.Application.Features.Expense.Commands
 {
-    public class CreateExpenseCommand : IRequest<Wrappers.Response<string>>
+    public class CreateExpenseCommand : IRequest<ResponseInfo.Entities.Response<string>>
     {
         public CreateExpenseDTO Value { get; set; }
     }
 
-    public class CreateExpenseCommandHandler: IRequestHandler<CreateExpenseCommand, Wrappers.Response<string>>
+    public class CreateExpenseCommandHandler: IRequestHandler<CreateExpenseCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IGenericRepositoryAsync<Finance.Domain.Entities.Expense> _Repository;
         private readonly IMapper _mapper;
@@ -26,11 +26,11 @@ namespace Finance.Application.Features.Expense.Commands
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<string>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<string>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
         {
             var enviroment = _mapper.Map<Domain.Entities.Expense>(request.Value);
             await _Repository.AddAsync(enviroment);
-            return new Wrappers.Response<string>(enviroment.Id.ToString());
+            return new ResponseInfo.Entities.Response<string>(enviroment.Id.ToString());
         }
     }
 }

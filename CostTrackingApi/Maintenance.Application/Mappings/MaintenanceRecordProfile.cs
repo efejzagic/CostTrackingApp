@@ -7,6 +7,7 @@ using AutoMapper;
 using Maintenance.Application.DTOs.MaintenanceRecord;
 using Maintenance.Application.Features.MaintenanceRecord.Commands;
 using Maintenance.Application.Features.MaintenanceRecord.Queries;
+using Maintenance.Application.Parameters.MaintenanceRecord;
 using Maintenance.Domain.Entities;
 
 namespace Maintenance.Application.Mappings
@@ -25,6 +26,9 @@ namespace Maintenance.Application.Mappings
             CreateMap<MaintenanceRecordCreateDTO, MaintenanceRecord>();
             CreateMap<MaintenanceRecordEditDTO, MaintenanceRecord>();
 
+
+            CreateMap<MaintenanceRecord, GetAllMaintenanceRecordParameter>();
+            CreateMap<GetAllMaintenanceRecordQuery, GetAllMaintenanceRecordParameter>();
 
         }
 

@@ -26,6 +26,7 @@ import SupplierArticles from "./pages/Supplier/SupplierArticles";
 import ExpensePage from "./pages/Expense/ExpensePage";
 import CreateExpensePage from "./pages/Expense/CreateExpensePage";
 import PrivateRoute from "./helpers/PrivateRoute";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
            <Route exact path="/article" element={<ArticlePage/>} />
            <Route exact path="/article/create" element={<CreateArticlePage/>} />
            <Route exact path="/supplier/:id/articles" element={<SupplierArticles/>} />
+           <Route exact path="/profile" element={<ProfilePage/>} />
 
            <Route
              path="/secured"

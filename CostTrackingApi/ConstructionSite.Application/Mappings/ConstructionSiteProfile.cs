@@ -34,6 +34,11 @@ namespace ConstructionSite.Application.Mappings
             CreateMap<GetConstructionByNameQuery, ConstructionSiteDTO>();
 
             CreateMap<DeleteConstructionSiteCommand, Domain.Entities.ConstructionSite>();
+            CreateMap<GetAllConstructionSiteQuery, GetAllConstructionSiteParameter>();
+
+            CreateMap<Domain.Entities.ConstructionSite, GetAllConstructionSiteParameter>();
+            CreateMap<List<Domain.Entities.ConstructionSite>, IEnumerable<GetAllConstructionSiteParameter>>();
+
 
         }
 

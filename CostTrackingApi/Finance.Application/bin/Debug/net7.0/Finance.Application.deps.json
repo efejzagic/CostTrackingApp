@@ -11,7 +11,8 @@
           "AutoMapper": "12.0.1",
           "Finance.Domain": "1.0.0",
           "MediatR": "11.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.10"
+          "Microsoft.EntityFrameworkCore": "7.0.10",
+          "ResponseInfo": "1.0.0"
         },
         "runtime": {
           "Finance.Application.dll": {}
@@ -163,6 +164,11 @@
         "runtime": {
           "Finance.Domain.dll": {}
         }
+      },
+      "ResponseInfo/1.0.0": {
+        "runtime": {
+          "ResponseInfo.dll": {}
+        }
       }
     }
   },
@@ -278,6 +284,11 @@
       "hashPath": "microsoft.extensions.primitives.7.0.0.nupkg.sha512"
     },
     "Finance.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResponseInfo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

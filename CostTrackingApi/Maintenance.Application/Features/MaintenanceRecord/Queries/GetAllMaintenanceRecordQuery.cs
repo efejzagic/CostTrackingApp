@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
-
-using Maintenance.Application.Wrappers;
 using Maintenance.Application.DTOs.MaintenanceRecord;
 using Maintenance.Application.Interfaces;
+using ResponseInfo.Entities;
+using Maintenance.Application.Parameters.MaintenanceRecord;
 
 namespace Maintenance.Application.Features.MaintenanceRecord.Queries
 {
@@ -27,7 +27,7 @@ namespace Maintenance.Application.Features.MaintenanceRecord.Queries
 
         public async Task<PagedResponse<IEnumerable<MaintenanceRecordDTO>>> Handle(GetAllMaintenanceRecordQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<MaintenanceRecordDTO>(request);
+            var validFilter = _mapper.Map<GetAllMaintenanceRecordParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<MaintenanceRecordDTO>>(enviroments);
             return new PagedResponse<IEnumerable<MaintenanceRecordDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);
