@@ -20,6 +20,7 @@ function Homepage() {
   // const isLoggedIn = useAuth();
   const navigate = useNavigate();
 
+  const [name, setName] = useState('');
   const [hasRole, setHasRole] = useState(false);
   const [showMediaCard, setShowMediaCard] = useState(false);
 
@@ -34,6 +35,7 @@ function Homepage() {
     //   console.log("rediredct to login");
     //   navigate('/login');
     // }
+    setName(localStorage.getItem('name'));
     fetchData();
   }, []);
 
@@ -49,7 +51,7 @@ function Homepage() {
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
-          Homepage admin
+          Hello {name}
         </Typography>
         </Container>
       <div className="card-grid " style={{ marginTop: '4rem'}}>

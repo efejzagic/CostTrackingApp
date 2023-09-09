@@ -16,6 +16,7 @@ using JwtAuthenticationManager;
 using JwtAuthenticationManager.Models;
 using TokenResponse = Auth.Domain.Entities.TokenResponse;
 using Microsoft.IdentityModel.Tokens;
+using ResponseInfo.Entities;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -49,6 +50,53 @@ namespace Auth.WebAPI.Controllers
             var response = _userService.GetAllUsers();
             return Ok(response);
         }
+        [HttpGet("GetUserById/{userId}")]
+        public async Task<IActionResult> GetUserByIdAsync(string userId)
+        {
+            var httpClient = new HttpClient();
+            var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(accessToken))
+            {
+                throw new ArgumentNullException();
+            }
+
+            // Set the Authorization header with the access token
+
+
+            // Define the Keycloak admin URL and realm
+            var keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
+            var realm = "cost-tracking-app";
+
+            // Define the endpoint to get a user by ID
+            var endpoint = $"{keycloakUrl}/admin/realms/{realm}/users/{userId}";
+
+            try
+            {
+                var response = await httpClient.GetAsync(endpoint);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    KeycloakUser user = JsonConvert.DeserializeObject<KeycloakUser>(responseString);
+
+                    //var responseJson = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(responseString);
+                    return Ok(user);
+                }
+                else
+                {
+                    // Handle error cases
+                    throw new Exception($"Failed to get user by ID. Status code: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                throw ex;
+            }
+        }
+
 
         [HttpGet]
         [Route("Id")]
@@ -179,5 +227,7 @@ namespace Auth.WebAPI.Controllers
             var response = await Mediator.Send(command);
             return Ok(response);
         }
+
+       
     }
 }

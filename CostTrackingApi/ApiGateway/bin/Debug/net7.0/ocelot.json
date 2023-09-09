@@ -38,6 +38,30 @@
       "DownstreamPathTemplate": "/api/Auth/CreateUser"
     },
     {
+      "UpstreamPathTemplate": "/api/Auth/EditUser",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/EditUser"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/GetUserById/{userId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/GetUserById/{userId}"
+    },
+    {
       "UpstreamPathTemplate": "/api/Auth/roles",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamScheme": "http",

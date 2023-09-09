@@ -21,7 +21,7 @@ const PrivateRoute = ({ children, elseContent }) => {
           console.log("Session expired");
           return false;
         }
-
+        localStorage.setItem('name', tmp.given_name);
         setIsLoggedIn(true);
         console.log("loggeed in true 1 ");
         return true;

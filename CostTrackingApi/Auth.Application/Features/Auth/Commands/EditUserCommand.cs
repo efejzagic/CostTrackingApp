@@ -36,8 +36,8 @@ namespace Auth.Application.Features.Auth.Commands
 
             var user = new Dictionary<string, object>
             {
-                { "Username", request.Model.Username },
-                { "Email", request.Model.Email},
+                { "username", request.Model.Username },
+                { "email", request.Model.Email},
                 { "firstName", request.Model.Name},
                 { "lastName", request.Model.Surname},
                 { "enabled", true },

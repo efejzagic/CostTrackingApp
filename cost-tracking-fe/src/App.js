@@ -27,6 +27,7 @@ import ExpensePage from "./pages/Expense/ExpensePage";
 import CreateExpensePage from "./pages/Expense/CreateExpensePage";
 import PrivateRoute from "./helpers/PrivateRoute";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import EditUserPage from "./pages/User/EditUserPage";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
            <Route exact path="/login" element={<LoginPage />} />  
            <Route exact path="/users" element={<UsersPage />} />
            <Route exact path="/users/create" element={<CreateUserPage />} />
+           <Route exact path="/users/edit/:id" element={<EditUserPage />} />
            <Route exact path="/supplier" element={<SupplierPage />} />
            <Route exact path="/supplier/create" element={<CreateSupplierPage/>} />
            <Route exact path="/supplier/edit/:id" element={<EditSupplierPage/>} />

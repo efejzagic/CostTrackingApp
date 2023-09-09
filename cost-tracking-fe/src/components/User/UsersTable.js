@@ -84,7 +84,7 @@ const UserTable = () => {
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <Button variant="outlined" color="primary" size="small">
-                        <Link to={`/user/edit/${item.id}`}>Edit</Link>
+                        <Link to={`/users/edit/${item.id}`}>Edit</Link>
                       </Button>
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete
