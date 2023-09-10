@@ -28,6 +28,7 @@ const SupplierPage = () => {
     try {
       const response = await axios.get('http://localhost:8001/api/v/Supplier');
       setData(response.data.data);
+      console.log("Fetched Supplier");
     } catch (error) {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
@@ -39,9 +40,13 @@ const SupplierPage = () => {
   };
 
   useEffect(() => {
+    console.log('Component mounted'); // Log when the component is mounted
     fetchSupplierData();
-  }, []); // Fetch data when component mounts
+  }, []);
 
+  // ...
+
+  console.log('Component rendered');
   const handleOpen = (id) => {
     setSelectedItemId(id);
     setOpen(true);

@@ -148,3 +148,5 @@ D:\CostTrackingApp\CostTrackingApi\bin\Debug\ResponseInfo.pdb
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Sinks.PostgreSQL.dll
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Sinks.PeriodicBatching.dll
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Sinks.Console.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\CorrelationIdLibrary.pdb

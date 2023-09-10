@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CorrelationIdLibrary.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using Storage.Application.Features.Supplier.Commands;
@@ -13,9 +14,12 @@ namespace Storage.WebAPI.Controllers
     public class SupplierController : BaseApiController
     {
         private readonly ILogger<SupplierController> _logger;
-        public SupplierController(ILogger<SupplierController> logger)
+        private readonly ICorrelationIdGenerator _correlationIdGenerator;
+
+        public SupplierController(ILogger<SupplierController> logger, ICorrelationIdGenerator correlationIdGenerator)
         {
             _logger = logger;
+            _correlationIdGenerator = correlationIdGenerator;
         }
 
         [HttpGet]
@@ -23,7 +27,7 @@ namespace Storage.WebAPI.Controllers
         //[Authorize(Roles = "Storage Manager")]
         public async Task<IActionResult> Get([FromQuery] GetAllSupplierParameter filter)
         {
-            _logger.LogWarning("Get Suppliers Call");
+            _logger.LogWarning("CorrelationId: {correlationId}" , _correlationIdGenerator.Get());
 
             return Ok(await Mediator.Send(new GetAllSupplierQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }

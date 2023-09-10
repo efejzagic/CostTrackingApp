@@ -19,6 +19,7 @@ using JwtAuthenticationManager;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
+using CorrelationIdLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +51,8 @@ var logger = new LoggerConfiguration()
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
+//correlationId
+builder.Services.AddCorrelationIdManager();
 
 builder.Services.AddCustomJwtAuthentication();
 #region Swagger
@@ -132,6 +135,8 @@ app.UseSwaggerUI(c =>
 #endregion
 
 // Configure the HTTP request pipeline.
+//correlationId
+app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 app.UseCors();

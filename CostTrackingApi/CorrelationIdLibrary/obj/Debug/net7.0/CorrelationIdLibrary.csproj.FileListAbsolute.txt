@@ -1,0 +1,12 @@
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\bin\Debug\net7.0\CorrelationIdLibrary.deps.json
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\bin\Debug\net7.0\CorrelationIdLibrary.pdb
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.csproj.AssemblyReference.cache
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.AssemblyInfoInputs.cache
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.AssemblyInfo.cs
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.csproj.CoreCompileInputs.cache
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\refint\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.pdb
+D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\ref\CorrelationIdLibrary.dll

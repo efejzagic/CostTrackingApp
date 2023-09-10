@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "mgJ9mj+ZGX9rZlJsm1A0tT4S/3lHKWQaOT3bdHO9Grpmht/OBuSinY8jOllCxyYcXqLJgCn6pd6AKXrkxzu17Q==",
+  "success": true,
+  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
