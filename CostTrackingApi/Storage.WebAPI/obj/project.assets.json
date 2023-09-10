@@ -4411,8 +4411,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     },
     "Storage.Application/1.0.0": {
       "type": "project",
@@ -4444,6 +4444,7 @@
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 7.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 7.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.2",
+      "ResponseInfo >= 1.0.0",
       "Serilog.AspNetCore >= 7.0.0",
       "Serilog.Sinks.Console >= 4.1.0",
       "Serilog.Sinks.PostgreSQL >= 2.3.0",
@@ -4487,6 +4488,9 @@
           "projectReferences": {
             "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj"

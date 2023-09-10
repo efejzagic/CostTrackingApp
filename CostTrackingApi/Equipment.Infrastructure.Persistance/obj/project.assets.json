@@ -7300,8 +7300,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {

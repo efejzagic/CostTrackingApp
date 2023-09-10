@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\Storage.Application\Storage.Application.csproj" />
     <ProjectReference Include="..\Storage.Domain\Storage.Domain.csproj" />
     <ProjectReference Include="..\Storage.Infrastructure.Persistance\Storage.Infrastructure.Persistance.csproj" />

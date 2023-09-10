@@ -702,8 +702,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     },
     "Storage.Domain/1.0.0": {
       "type": "project",
@@ -752,11 +752,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
+            },
             "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj"
-            },
-            "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj": {
-              "projectPath": "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

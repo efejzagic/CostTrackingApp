@@ -29,6 +29,7 @@
     <ProjectReference Include="..\Equipment.Application\Equipment.Application.csproj" />
     <ProjectReference Include="..\Equipment.Domain\Equipment.Domain.csproj" />
     <ProjectReference Include="..\Equipment.Infrastructure.Persistance\Equipment.Infrastructure.Persistance.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
   </ItemGroup>
 
 </Project>

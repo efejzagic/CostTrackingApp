@@ -2878,8 +2878,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2897,6 +2897,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.9",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 7.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.2",
+      "ResponseInfo >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -2943,6 +2944,9 @@
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Infrastructure.Persistance\\ConstructionSite.Infrastructure.Persistance.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Infrastructure.Persistance\\ConstructionSite.Infrastructure.Persistance.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

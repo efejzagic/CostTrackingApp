@@ -1683,8 +1683,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     },
     "Storage.Application/1.0.0": {
       "type": "project",

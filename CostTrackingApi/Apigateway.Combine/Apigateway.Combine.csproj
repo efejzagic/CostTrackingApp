@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\ConstructionSite.Application\ConstructionSite.Application.csproj" />
     <ProjectReference Include="..\ConstructionSite.Domain\ConstructionSite.Domain.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\Storage.Application\Storage.Application.csproj" />
   </ItemGroup>
 

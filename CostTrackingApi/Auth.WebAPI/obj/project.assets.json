@@ -2078,8 +2078,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2092,6 +2092,7 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.5",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.2",
+      "ResponseInfo >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -2138,6 +2139,9 @@
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

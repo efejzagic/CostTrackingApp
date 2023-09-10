@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ResponseInfo\ResponseInfo.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\Storage.Domain\Storage.Domain.csproj" />
   </ItemGroup>
 

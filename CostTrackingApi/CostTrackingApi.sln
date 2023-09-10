@@ -75,9 +75,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apigateway.Combine", "Apiga
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResponseInfo", "ResponseInfo", "{4A461B27-8C00-4AF1-B1DE-80616088DF94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseInfo", "..\ResponseInfo\ResponseInfo.csproj", "{0EC4B16D-81EC-45B6-861F-6A76588B5822}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseInfo", "ResponseInfo\ResponseInfo.csproj", "{0EC4B16D-81EC-45B6-861F-6A76588B5822}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.UnitTest", "..\Storage.UnitTest\Storage.UnitTest.csproj", "{01EFB283-1DAD-44BB-95F0-BF8373291A51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.UnitTest", "Storage.UnitTest\Storage.UnitTest.csproj", "{01EFB283-1DAD-44BB-95F0-BF8373291A51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

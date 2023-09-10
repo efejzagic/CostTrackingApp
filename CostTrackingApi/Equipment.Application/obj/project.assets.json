@@ -733,8 +733,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -782,8 +782,8 @@
             "D:\\CostTrackingApp\\CostTrackingApi\\Equipment.Domain\\Equipment.Domain.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Equipment.Domain\\Equipment.Domain.csproj"
             },
-            "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj": {
-              "projectPath": "D:\\CostTrackingApp\\ResponseInfo\\ResponseInfo.csproj"
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

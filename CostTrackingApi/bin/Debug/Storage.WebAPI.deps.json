@@ -20,6 +20,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "7.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.2",
+          "ResponseInfo": "1.0.0",
           "Serilog.AspNetCore": "7.0.0",
           "Serilog.Sinks.Console": "4.1.0",
           "Serilog.Sinks.PostgreSQL": "2.3.0",

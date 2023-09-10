@@ -3,8 +3,8 @@ using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Maintenance.Application.DTOs.MaintenanceRecord;
 using Maintenance.Application.Interfaces;
-using ResponseInfo.Entities;
 using Maintenance.Application.Parameters.MaintenanceRecord;
+using ResponseInfo.Entities;
 
 namespace Maintenance.Application.Features.MaintenanceRecord.Queries
 {

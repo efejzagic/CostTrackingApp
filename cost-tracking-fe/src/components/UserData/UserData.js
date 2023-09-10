@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const UserData = () => {
-  const [userData, setUserData] = useState({});
-  const [loading, setLoading] = useState(true);
+export const userData = async (roleName) => {
+  try {
 
-  useEffect(() => {
-    // Make an Axios GET request to fetch user data
-    axios.get('http://localhost:8001/api/Auth/UserData')
-      .then((response) => {
-        setUserData(response.data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching user data:', error);
-        setLoading(false);
-      });
-  }, []);
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+        // Handle the case where the access token is not found in local storage
+        console.error('Access token not found in local storage');
+        return false;
+    }
 
-  if (loading) {
-    return <p>Loading...</p>;
+    const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+
+    const response = await axios.get('http://localhost:8001/api/Auth/UserData', config);
+    console.log("response",response.data);
+    if(response.error) {
+        return false;
+    }
+    const userData = response.data.data;
+    console.log(userData.roles);
+   
+    return userData;
+  } catch (error) {
+    console.error('Error fetching user data:', error);
   }
-
-  return (
-    <div>
-      <h2>User Data</h2>
-      <pre>{JSON.stringify(userData, null, 2)}</pre>
-    </div>
-  );
 };
-
-export default UserData;

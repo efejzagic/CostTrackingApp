@@ -5,14 +5,15 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using MediatR;
 using Maintenance.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
 using Maintenance.Application.Mappings;
+using Maintenance.Application;
 using Maintenance.Infrastructure.Persistance.Repositories;
 using Maintenance.WebAPI.Settings;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,10 +61,12 @@ builder.Services.AddPersistence(builder.Configuration);
 
 
 
-builder.Services.AddAutoMapper(typeof(Maintenance.Application.MediatorClass)); // Register AutoMapper
+
+builder.Services.AddAutoMapper(typeof(MediatorClass)); // Register AutoMapper
+
+builder.Services.AddMediatR(typeof(MediatorClass).Assembly);
 
 
-builder.Services.AddMediatR(typeof(Maintenance.Application.MediatorClass).Assembly);
 #endregion
 var app = builder.Build();
 #region ApplyMigration

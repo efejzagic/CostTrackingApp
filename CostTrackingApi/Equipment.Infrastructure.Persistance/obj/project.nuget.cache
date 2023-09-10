@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nPH8TS1RQSh9Sqj0oeWMN4Oo7GnLw7CHmHBa6vfdtCzrhi4lE9edsTORccypjRx8viPV5eTyS/25NBvM/UbGuA==",
+  "dgSpecHash": "QGqQkTwUJkHNEQvTC5yW5+/9JxRcWn0ETw5vhoC+zVQq2wzJM4hrGKFBH4BhZput90takG848rsoRGLFVllPfw==",
   "success": true,
   "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Equipment.Infrastructure.Persistance\\Equipment.Infrastructure.Persistance.csproj",
   "expectedPackageFiles": [

@@ -20,6 +20,7 @@
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.10",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "7.0.0",
+          "ResponseInfo": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {

@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Maintenance.Application.DTOs.MaintenanceRecord;
 using Maintenance.Application.Interfaces;
+using ResponseInfo.Entities;
 
 namespace Maintenance.Application.Features.MaintenanceRecord.Commands
 {
-    public class UpdateMaintenanceRecordCommand : IRequest<ResponseInfo.Entities.Response<string>>
+    public class UpdateMaintenanceRecordCommand : IRequest<Response<string>>
     {
         public MaintenanceRecordEditDTO Value { get; set; }
-        public class UpdateMaintenanceRecordCommandHandler : IRequestHandler<UpdateMaintenanceRecordCommand, ResponseInfo.Entities.Response<string>>
+        public class UpdateMaintenanceRecordCommandHandler : IRequestHandler<UpdateMaintenanceRecordCommand, Response<string>>
         {
             private readonly IGenericRepositoryAsync<Maintenance.Domain.Entities.MaintenanceRecord> _Repository;
             private readonly IMapper _mapper;
@@ -23,11 +24,11 @@ namespace Maintenance.Application.Features.MaintenanceRecord.Commands
                 _mapper = mapper;
             }
 
-            public async Task<ResponseInfo.Entities.Response<string>> Handle(UpdateMaintenanceRecordCommand request, CancellationToken cancellationToken)
+            public async Task<Response<string>> Handle(UpdateMaintenanceRecordCommand request, CancellationToken cancellationToken)
             {
                 var enviroment = _mapper.Map<Maintenance.Domain.Entities.MaintenanceRecord>(request.Value);
                 await _Repository.UpdateAsync(enviroment);
-                return new ResponseInfo.Entities.Response<string>(enviroment.Id.ToString());
+                return new Response<string>(enviroment.Id.ToString());
             }
         }
     }

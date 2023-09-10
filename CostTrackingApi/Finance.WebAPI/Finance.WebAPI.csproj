@@ -30,6 +30,7 @@
     <ProjectReference Include="..\Finance.Domain\Finance.Domain.csproj" />
     <ProjectReference Include="..\Finance.Infrastructure.Persistance\Finance.Infrastructure.Persistance.csproj" />
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
   </ItemGroup>
 
 </Project>

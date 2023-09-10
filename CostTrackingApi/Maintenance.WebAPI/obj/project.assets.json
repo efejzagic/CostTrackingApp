@@ -8468,8 +8468,8 @@
     },
     "ResponseInfo/1.0.0": {
       "type": "project",
-      "path": "../../ResponseInfo/ResponseInfo.csproj",
-      "msbuildProject": "../../ResponseInfo/ResponseInfo.csproj"
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8486,6 +8486,7 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.10",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 7.0.0",
+      "ResponseInfo >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -8532,6 +8533,9 @@
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.Infrastructure.Persistance\\Maintenance.Infrastructure.Persistance.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.Infrastructure.Persistance\\Maintenance.Infrastructure.Persistance.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }
