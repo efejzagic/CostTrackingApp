@@ -14,6 +14,8 @@ using Maintenance.Application;
 using Maintenance.Infrastructure.Persistance.Repositories;
 using Maintenance.WebAPI.Settings;
 using MediatR;
+using Serilog.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,27 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=maintenance-db;Port=5432;Database=mndb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
 {

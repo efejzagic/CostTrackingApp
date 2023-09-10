@@ -18,6 +18,7 @@ using Storage.WebAPI.Settings;
 using JwtAuthenticationManager;
 using Microsoft.Extensions.Configuration;
 using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,9 +36,17 @@ builder.Services.AddControllers()
 
 //Serilog 
 var logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(builder.Configuration)
-    .Enrich.FromLogContext()
-    .CreateLogger();
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=storage-db;Port=5432;Database=stgdb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 

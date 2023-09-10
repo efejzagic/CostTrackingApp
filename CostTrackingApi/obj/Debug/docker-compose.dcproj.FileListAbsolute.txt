@@ -142,8 +142,9 @@ D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.exe
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.dll
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Apigateway.Combine.pdb
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.dll
-D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Settings.Configuration.dll
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Extensions.Logging.dll
-D:\CostTrackingApp\CostTrackingApi\bin\Debug\Microsoft.Extensions.DependencyModel.dll
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\ResponseInfo.dll
 D:\CostTrackingApp\CostTrackingApi\bin\Debug\ResponseInfo.pdb
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Sinks.PostgreSQL.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Sinks.PeriodicBatching.dll
+D:\CostTrackingApp\CostTrackingApi\bin\Debug\Serilog.Sinks.Console.dll

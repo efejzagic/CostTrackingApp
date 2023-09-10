@@ -20,6 +20,9 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+
+
+  
   storage-db:
     image: postgres:latest
     container_name: storage-db
@@ -212,12 +215,3 @@ services:
 
 volumes:
   app_data:
-
-
-
-
-
-
-
-
-

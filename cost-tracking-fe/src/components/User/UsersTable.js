@@ -29,10 +29,6 @@ const UserTable = () => {
         if (response.status === 200) {
             setUsers(response.data);
         }
-        else if(response.status === 401 || response.status === 403) {
-            console.log("else if");
-            navigate('/login');
-        }
         else {
             console.log("else");
             navigate('/login');

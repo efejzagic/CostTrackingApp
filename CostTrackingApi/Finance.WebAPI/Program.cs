@@ -15,6 +15,8 @@ using Finance.Infrastructure.Persistance.Repositories;
 using Finance.WebAPI.Settings;
 using Finance.Application;
 using JwtAuthenticationManager;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +33,22 @@ builder.Services.AddControllers()
                 });
 
 builder.Services.AddCustomJwtAuthentication();
+
+
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=finance-db;Port=5432;Database=fndb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
