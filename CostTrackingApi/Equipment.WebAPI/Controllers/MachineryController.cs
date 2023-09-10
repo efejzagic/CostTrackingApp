@@ -9,10 +9,18 @@ namespace Equipment.WebAPI.Controllers
     //[ApiVersion("1.0")]
     public class MachineryController : BaseApiController
     {
+
+        private readonly ILogger<MachineryController> _logger;
+        public MachineryController(ILogger<MachineryController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         //[MapToApiVersion("1.0")]
         public async Task<IActionResult> Get([FromQuery] GetAllMachineryParameter filter)
         {
+            _logger.LogInformation("Get Machinery Call");
             return Ok(await Mediator.Send(new GetAllMachineryQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 

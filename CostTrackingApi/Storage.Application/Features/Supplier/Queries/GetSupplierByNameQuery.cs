@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Storage.Application.Wrappers;
+using ResponseInfo.Entities;
 using Storage.Application.Interfaces;
 using Storage.Application.DTOs.Supplier;
 

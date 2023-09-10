@@ -261,6 +261,16 @@
         "runtime": {
           "bin/placeholder/Maintenance.Domain.dll": {}
         }
+      },
+      "ResponseInfo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        }
       }
     }
   },
@@ -693,6 +703,11 @@
       "type": "project",
       "path": "../Maintenance.Domain/Maintenance.Domain.csproj",
       "msbuildProject": "../Maintenance.Domain/Maintenance.Domain.csproj"
+    },
+    "ResponseInfo/1.0.0": {
+      "type": "project",
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -700,7 +715,8 @@
       "AutoMapper >= 12.0.1",
       "Maintenance.Domain >= 1.0.0",
       "MediatR >= 11.0.0",
-      "Microsoft.EntityFrameworkCore >= 7.0.10"
+      "Microsoft.EntityFrameworkCore >= 7.0.10",
+      "ResponseInfo >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -737,6 +753,9 @@
           "projectReferences": {
             "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.Domain\\Maintenance.Domain.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.Domain\\Maintenance.Domain.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

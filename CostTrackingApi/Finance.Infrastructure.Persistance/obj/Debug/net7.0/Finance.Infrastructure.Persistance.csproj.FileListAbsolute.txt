@@ -16,3 +16,5 @@ D:\CostTrackingApp\CostTrackingApi\Finance.Infrastructure.Persistance\bin\Debug\
 D:\CostTrackingApp\CostTrackingApi\Finance.Infrastructure.Persistance\bin\Debug\net7.0\Finance.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Finance.Infrastructure.Persistance\obj\Debug\net7.0\EFCoreSqlServerNetTopologySuite.cs
 D:\CostTrackingApp\CostTrackingApi\Finance.Infrastructure.Persistance\obj\Debug\net7.0\Finance.Infrastructure.Persistance.csproj.CopyComplete
+D:\CostTrackingApp\CostTrackingApi\Finance.Infrastructure.Persistance\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.Infrastructure.Persistance\bin\Debug\net7.0\ResponseInfo.pdb

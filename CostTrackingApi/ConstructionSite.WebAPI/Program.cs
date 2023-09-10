@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Hosting;
 using ConstructionSite.Application.Mappings;
 using ConstructionSite.Domain.Entities;
 using ConstructionSite.WebAPI.Settings;
+using Serilog.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +47,22 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 #endregion
+
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=constructionsite-db;Port=5432;Database=csdb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
 //builder.Services.AddApplication();

@@ -5,14 +5,17 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using MediatR;
 using Maintenance.Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using AutoMapper;
 using Maintenance.Application.Mappings;
+using Maintenance.Application;
 using Maintenance.Infrastructure.Persistance.Repositories;
 using Maintenance.WebAPI.Settings;
+using MediatR;
+using Serilog.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +30,27 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=maintenance-db;Port=5432;Database=mndb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
 {
@@ -38,7 +62,7 @@ builder.Services.AddSwaggerGen(c =>
             Email = "efejzagic2@etf.unsa.ba",
         },
         Version = "v1",
-        Title = "Cost Tracking API"
+        Title = "Maintenance API"
     });
 });
 #endregion
@@ -60,10 +84,12 @@ builder.Services.AddPersistence(builder.Configuration);
 
 
 
-builder.Services.AddAutoMapper(typeof(Maintenance.Application.MediatorClass)); // Register AutoMapper
+
+builder.Services.AddAutoMapper(typeof(MediatorClass)); // Register AutoMapper
+
+builder.Services.AddMediatR(typeof(MediatorClass).Assembly);
 
 
-builder.Services.AddMediatR(typeof(Maintenance.Application.MediatorClass).Assembly);
 #endregion
 var app = builder.Build();
 #region ApplyMigration

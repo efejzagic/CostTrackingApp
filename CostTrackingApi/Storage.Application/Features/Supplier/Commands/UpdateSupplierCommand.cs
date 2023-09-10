@@ -2,7 +2,7 @@
 using MediatR;
 using Storage.Application.DTOs.Supplier;
 using Storage.Application.Interfaces;
-using Storage.Application.Wrappers;
+using ResponseInfo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -16,6 +16,7 @@
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "Microsoft.EntityFrameworkCore": "7.0.9",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.2",
+          "ResponseInfo": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -295,10 +296,12 @@
       "Auth.Application/1.0.0": {
         "dependencies": {
           "Auth.Domain": "1.0.0",
+          "JwtAuthenticationManager": "1.0.0",
           "MediatR": "12.1.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.9",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
-          "Microsoft.EntityFrameworkCore": "7.0.9"
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "ResponseInfo": "1.0.0"
         },
         "runtime": {
           "Auth.Application.dll": {}
@@ -331,6 +334,11 @@
         },
         "runtime": {
           "JwtAuthenticationManager.dll": {}
+        }
+      },
+      "ResponseInfo/1.0.0": {
+        "runtime": {
+          "ResponseInfo.dll": {}
         }
       }
     }
@@ -637,6 +645,11 @@
       "sha512": ""
     },
     "JwtAuthenticationManager/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResponseInfo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

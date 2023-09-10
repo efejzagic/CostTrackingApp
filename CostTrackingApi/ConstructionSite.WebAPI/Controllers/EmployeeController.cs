@@ -1,4 +1,6 @@
-﻿using ConstructionSite.Application.Features.Employee.Commands;
+﻿using Auth.Application.Features.Auth.Commands;
+using Auth.Domain.Entities;
+using ConstructionSite.Application.Features.Employee.Commands;
 using ConstructionSite.Application.Features.Employee.Queries;
 using ConstructionSite.Application.Parameters.Employee;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +43,6 @@ namespace ConstructionSite.WebAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ModelState);
             }
-            //var enviroment = await Mediator.Send(command);
             var enviroment = await Mediator.Send(command);
             return Ok(enviroment);
         }

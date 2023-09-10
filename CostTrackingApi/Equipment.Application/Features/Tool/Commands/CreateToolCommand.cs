@@ -1,11 +1,11 @@
 ﻿using Equipment.Application.Interfaces;
-using Equipment.Application.Wrappers;
 using AutoMapper;
 using Equipment.Domain.Entities;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Equipment.Application.DTOs.Tool;
+using ResponseInfo.Entities;
 
 namespace Equipment.Application.Features.Tool.Commands
 {

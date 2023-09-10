@@ -24,11 +24,15 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.PostgreSQL" Version="2.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\Storage.Application\Storage.Application.csproj" />
     <ProjectReference Include="..\Storage.Domain\Storage.Domain.csproj" />
     <ProjectReference Include="..\Storage.Infrastructure.Persistance\Storage.Infrastructure.Persistance.csproj" />

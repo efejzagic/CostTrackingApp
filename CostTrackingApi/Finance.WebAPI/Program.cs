@@ -14,6 +14,9 @@ using Finance.Application.Mappings;
 using Finance.Infrastructure.Persistance.Repositories;
 using Finance.WebAPI.Settings;
 using Finance.Application;
+using JwtAuthenticationManager;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,25 @@ builder.Services.AddControllers()
                     // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
+
+builder.Services.AddCustomJwtAuthentication();
+
+
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=finance-db;Port=5432;Database=fndb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
 #region Swagger
 builder.Services.AddSwaggerGen(c =>
 {
@@ -39,7 +61,7 @@ builder.Services.AddSwaggerGen(c =>
             Email = "efejzagic2@etf.unsa.ba",
         },
         Version = "v1",
-        Title = "Cost Tracking API"
+        Title = "Finance API"
     });
 });
 #endregion
@@ -66,6 +88,8 @@ builder.Services.AddAutoMapper(typeof(Finance.Application.MediatorClass)); // Re
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new InvoiceProfile(provider.GetService<IInvoiceRepository>()));
+    cfg.AddProfile(new ExpenseProfile());
+
 }).CreateMapper());
 
 builder.Services.AddMediatR(typeof(MediatorClass).Assembly);

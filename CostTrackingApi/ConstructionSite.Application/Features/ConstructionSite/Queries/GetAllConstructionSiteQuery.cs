@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using ConstructionSite.Application.DTOs.ConstructionSite;
 using ConstructionSite.Application.Interfaces;
-using ConstructionSite.Application.Wrappers;
+using ConstructionSite.Application.Parameters.ConstructionSite;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ResponseInfo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace ConstructionSite.Application.Features.ConstructionSite.Queries
 
         public async Task<PagedResponse<IEnumerable<ConstructionSiteDTO>>> Handle(GetAllConstructionSiteQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<ConstructionSiteDTO>(request);
+            var validFilter = _mapper.Map<GetAllConstructionSiteParameter>(request);
             var enviroments = await _repository.GetPagedReponseAsync(validFilter.PageNumber, validFilter.PageSize);
             var enviromentsViewModel = _mapper.Map<IEnumerable<ConstructionSiteDTO>>(enviroments);
             return new PagedResponse<IEnumerable<ConstructionSiteDTO>>(enviromentsViewModel, validFilter.PageNumber, validFilter.PageSize);

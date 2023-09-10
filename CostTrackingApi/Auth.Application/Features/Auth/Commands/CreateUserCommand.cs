@@ -12,14 +12,15 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using ResponseInfo.Entities;
 
 namespace Auth.Application.Features.Auth.Commands
 {
-    public partial class CreateUserCommand : IRequest<Wrappers.Response<string>>
+    public partial class CreateUserCommand : IRequest<ResponseInfo.Entities.Response<string>>
     {
         public CreateUserModel Model { get; set; }
     }
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Wrappers.Response<string>>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         public CreateUserCommandHandler(IHttpContextAccessor httpContextAccessor)
@@ -27,7 +28,7 @@ namespace Auth.Application.Features.Auth.Commands
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Wrappers.Response<string>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<string>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var httpClient = new HttpClient();
             var keycloakConfig = new KeycloakConfig()
@@ -45,16 +46,18 @@ namespace Auth.Application.Features.Auth.Commands
                 { "firstName", request.Model.Name},
                 { "lastName", request.Model.Surname},
                 { "enabled", true },
+                { "emailVerified", false }, 
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
                             { "type", "password" },
                             { "value", request.Model.Password },
-                            { "temporary", false }
+                            { "temporary", true }
                         }
                     }
-                }
+                },
+                { "requiredActions", new string[] { "UPDATE_PASSWORD" } }
             };
 
             var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
@@ -65,7 +68,7 @@ namespace Auth.Application.Features.Auth.Commands
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
             //var responseResult = await httpClient.PostAsync(endpoint, content);
 
-            var response = new Application.Wrappers.Response<string>();
+            var response = new ResponseInfo.Entities.Response<string>();
             try
             {
                 var responseResult = await httpClient.PostAsync(endpoint, content);

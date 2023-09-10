@@ -12,14 +12,14 @@ namespace Storage.WebAPI.Controllers
     {
         [HttpGet]
         //[MapToApiVersion("1.0")]
-        [Authorize(Roles = "default-roles-cost-tracking-app")]
+        [Authorize (Roles ="Finance")]
         public async Task<IActionResult> Get([FromQuery] GetAllArticleParameter filter)
         {
             return Ok(await Mediator.Send(new GetAllArticleQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "realm-finance")]
+        //[Authorize(Roles = "Storage Manager")]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await Mediator.Send(new GetArticleByIdQuery { Id = id }));

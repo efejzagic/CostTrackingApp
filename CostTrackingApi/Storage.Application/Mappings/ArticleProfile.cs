@@ -4,6 +4,7 @@ using Storage.Application.DTOs.Article;
 using Storage.Application.Features.Article.Commands;
 using Storage.Application.Features.Article.Queries;
 using Storage.Application.Interfaces;
+using Storage.Application.Parameters.Article;
 using Storage.Domain.Entities;
 
 namespace Storage.Application.Mappings
@@ -29,6 +30,8 @@ namespace Storage.Application.Mappings
             CreateMap<DeleteArticleCommand, Article>();
 
 
+            CreateMap<Article, GetAllArticleParameter>();
+            CreateMap<GetAllArticleQuery, GetAllArticleParameter>();
 
             //CreateMap<CreateArticleDTO, Article>();
         }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Storage.Application.DTOs.Supplier
 {
-    public class SupplierDTO : RequestParameter
+    public class SupplierDTO
     {
 
         public int Id { get; set; }

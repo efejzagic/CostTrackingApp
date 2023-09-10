@@ -1,30 +1,54 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../components/Auth/AuthProvider";
+import { decodeJwt } from 'jose';
 
 const PrivateRoute = ({ children, elseContent }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const isLoggedInAuth = useAuth();
 
-  const validateAccessToken = (token) => {
-    // Implement your logic to validate the access token here
-    // Return true if valid, false otherwise
-    if (token.trim().length === 0) return false;
+  const validateAccessToken = () => {
+    const token = localStorage.getItem('accessToken'); 
 
-    return true; // Placeholder
+    if (token) {
+      try {
+        
+        const tmp = decodeJwt(token);
+        console.log(tmp);
+        if (tmp.exp * 1000 < Date.now()) {
+          setIsLoggedIn(false);
+          console.log("Session expired");
+          return false;
+        }
+        localStorage.setItem('name', tmp.given_name);
+        setIsLoggedIn(true);
+        console.log("loggeed in true 1 ");
+        return true;
+      } catch (error) {
+        setIsLoggedIn(false);
+        console.log("loggeed in false 2 ");
+      }
+    } else {
+      
+      console.log("loggeed in false"); 
+   }
+   return false;
   };
 
   useEffect(() => {
-    // Check if the access token exists in local storage
-    const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
-      // You would need to implement a function to validate the access token
-      const isValidAccessToken = validateAccessToken(accessToken);
+      const isValidAccessToken = validateAccessToken();
 
       if (isValidAccessToken) {
         setIsLoggedIn(true);
       }
-    }
+      else {
+        navigate('/login');
+      }
+    
   }, []);
 
-  return isLoggedIn ? children : elseContent; // Render children if logged in, else render elseContent
+  return isLoggedIn ? children : elseContent; 
 };
 
 export default PrivateRoute;

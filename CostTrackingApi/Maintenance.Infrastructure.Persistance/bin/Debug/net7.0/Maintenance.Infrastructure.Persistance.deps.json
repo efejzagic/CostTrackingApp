@@ -1323,7 +1323,8 @@
           "AutoMapper": "12.0.1",
           "Maintenance.Domain": "1.0.0",
           "MediatR": "11.0.0",
-          "Microsoft.EntityFrameworkCore": "7.0.10"
+          "Microsoft.EntityFrameworkCore": "7.0.10",
+          "ResponseInfo": "1.0.0"
         },
         "runtime": {
           "Maintenance.Application.dll": {}
@@ -1332,6 +1333,11 @@
       "Maintenance.Domain/1.0.0": {
         "runtime": {
           "Maintenance.Domain.dll": {}
+        }
+      },
+      "ResponseInfo/1.0.0": {
+        "runtime": {
+          "ResponseInfo.dll": {}
         }
       }
     }
@@ -2272,6 +2278,11 @@
       "sha512": ""
     },
     "Maintenance.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ResponseInfo/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

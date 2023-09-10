@@ -12,12 +12,19 @@ namespace Storage.WebAPI.Controllers
     //[ApiVersion("1.0")]
     public class SupplierController : BaseApiController
     {
-
+        private readonly ILogger<SupplierController> _logger;
+        public SupplierController(ILogger<SupplierController> logger)
+        {
+            _logger = logger;
+        }
 
         [HttpGet]
         //[MapToApiVersion("1.0")]
+        //[Authorize(Roles = "Storage Manager")]
         public async Task<IActionResult> Get([FromQuery] GetAllSupplierParameter filter)
         {
+            _logger.LogWarning("Get Suppliers Call");
+
             return Ok(await Mediator.Send(new GetAllSupplierQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 

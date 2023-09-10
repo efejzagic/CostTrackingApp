@@ -9,10 +9,10 @@ using Finance.Application.Interfaces;
 
 namespace Finance.Application.Features.Invoice.Commands
 {
-    public class DeleteInvoiceCommand : IRequest<Wrappers.Response<string>>
+    public class DeleteInvoiceCommand : IRequest<ResponseInfo.Entities.Response<string>>
     {
         public int Id { get; set; }
-        public class DeleteInvoiceCommandHandler : IRequestHandler<DeleteInvoiceCommand, Wrappers.Response<string>>
+        public class DeleteInvoiceCommandHandler : IRequestHandler<DeleteInvoiceCommand, ResponseInfo.Entities.Response<string>>
         {
             private readonly IGenericRepositoryAsync<Domain.Entities.Invoice> _Repository;
             private readonly IMapper _mapper;
@@ -22,11 +22,11 @@ namespace Finance.Application.Features.Invoice.Commands
                 _mapper = mapper;
             }
 
-            public async Task<Wrappers.Response<string>> Handle(DeleteInvoiceCommand request, CancellationToken cancellationToken)
+            public async Task<ResponseInfo.Entities.Response<string>> Handle(DeleteInvoiceCommand request, CancellationToken cancellationToken)
             {
                 var enviroment = _mapper.Map<Domain.Entities.Invoice>(request);
                 await _Repository.DeleteAsync(enviroment);
-                return new Wrappers.Response<string>(enviroment.Id.ToString());
+                return new ResponseInfo.Entities.Response<string>(enviroment.Id.ToString());
             }
         }
     }

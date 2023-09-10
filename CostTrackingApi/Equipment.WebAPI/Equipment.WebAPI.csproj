@@ -22,6 +22,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.PostgreSQL" Version="2.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -29,6 +33,7 @@
     <ProjectReference Include="..\Equipment.Application\Equipment.Application.csproj" />
     <ProjectReference Include="..\Equipment.Domain\Equipment.Domain.csproj" />
     <ProjectReference Include="..\Equipment.Infrastructure.Persistance\Equipment.Infrastructure.Persistance.csproj" />
+    <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
   </ItemGroup>
 
 </Project>

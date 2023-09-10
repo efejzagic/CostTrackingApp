@@ -9,10 +9,19 @@ namespace ConstructionSite.WebAPI.Controllers
     //[ApiVersion("1.0")]
     public class ConstructionSiteController : BaseApiController
     {
+
+        private readonly ILogger<ConstructionSiteController> _logger;
+        public ConstructionSiteController(ILogger<ConstructionSiteController> logger)
+        {
+            _logger = logger;
+        }
+
+
         [HttpGet]
         //[MapToApiVersion("1.0")]
         public async Task<IActionResult> Get([FromQuery] GetAllConstructionSiteParameter filter)
         {
+            _logger.LogInformation("Get Construction site call");
             return Ok(await Mediator.Send(new GetAllConstructionSiteQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 

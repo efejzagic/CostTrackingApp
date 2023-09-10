@@ -11,7 +11,8 @@
         "apigateway": "StartDebugging",
         "auth.webapi": "StartDebugging",
         "maintenance.webapi": "StartDebugging",
-        "finance.webapi": "StartDebugging"
+        "finance.webapi": "StartDebugging",
+        "apigateway.combine": "StartDebugging"
       }
     }
   }

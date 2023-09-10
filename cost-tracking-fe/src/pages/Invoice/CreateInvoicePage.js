@@ -13,6 +13,7 @@ import 'dayjs/plugin/utc';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
+import Nav from '../../components/Nav/Nav';
 
 var utc = require('dayjs/plugin/utc')
 
@@ -187,7 +188,7 @@ const CreateInvoicePage = () => {
   return (
 
     <>
-    
+    <Nav/>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>

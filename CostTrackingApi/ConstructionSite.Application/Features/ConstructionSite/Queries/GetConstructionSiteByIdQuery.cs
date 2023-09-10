@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using ConstructionSite.Application.DTOs.ConstructionSite;
 using ConstructionSite.Application.Interfaces;
-using ConstructionSite.Application.Wrappers;
+using ConstructionSite.Application.Parameters.ConstructionSite;
 using MediatR;
+using ResponseInfo.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,6 @@ namespace ConstructionSite.Application.Features.ConstructionSite.Queries
 
         public async Task<Response<ConstructionSiteDTO>> Handle(GetConstructionByIdQuery request, CancellationToken cancellationToken)
         {
-            var validFilter = _mapper.Map<ConstructionSiteDTO>(request);
             var enviroment = await _repository.GetByIdAsync(request.Id);
             if (enviroment == null)
             {

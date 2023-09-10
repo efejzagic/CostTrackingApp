@@ -9,10 +9,17 @@ namespace Maintenance.WebAPI.Controllers
     //[ApiVersion("1.0")]
     public class MaintenanceRecordController : BaseApiController
     {
+        private readonly ILogger<MaintenanceRecordController> _logger;
+        public MaintenanceRecordController(ILogger<MaintenanceRecordController> logger)
+        {
+            _logger = logger;
+        }
+
         [HttpGet]
         //[MapToApiVersion("1.0")]
         public async Task<IActionResult> Get([FromQuery] GetAllMaintenanceRecordParameter filter)
         {
+            _logger.LogInformation("Get Maintenance Call");
             return Ok(await Mediator.Send(new GetAllMaintenanceRecordQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 

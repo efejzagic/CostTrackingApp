@@ -37,6 +37,10 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                     b.Property<int>("EquipmentId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
@@ -61,20 +65,22 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                             Id = 1,
                             Description = "Record for machine SN2023",
                             EquipmentId = 1,
+                            Name = "MR 1",
                             Price = 120.40000000000001,
                             Status = "Completed",
                             Technician = "User 1",
-                            Timestamp = new DateTime(2023, 8, 16, 21, 21, 10, 431, DateTimeKind.Utc).AddTicks(2710)
+                            Timestamp = new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1716)
                         },
                         new
                         {
                             Id = 2,
                             Description = "Record for tool SN2021",
                             EquipmentId = 2,
+                            Name = "MR 2",
                             Price = 87.150000000000006,
                             Status = "Pending",
                             Technician = "User 2",
-                            Timestamp = new DateTime(2023, 8, 16, 21, 21, 10, 431, DateTimeKind.Utc).AddTicks(2729)
+                            Timestamp = new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1772)
                         });
                 });
 #pragma warning restore 612, 618

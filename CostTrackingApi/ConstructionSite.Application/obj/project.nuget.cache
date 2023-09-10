@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zHu69yN7yPuc5zEIBiF7BAA48WN4KzdQIf6gfjuvp+OED4uWHrvSdEzS196JXm1EUvVO7gCf4JXAoj6rALnk1w==",
+  "dgSpecHash": "r+lxtR1R6rouRXPWm+UxnzmR7sh8gZ3hWrxa4C8nY2OcNk6D2FgcQWbW9jqkZ85beQQ1wdXCWVcQTXOsjSqp4A==",
   "success": true,
   "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Application\\ConstructionSite.Application.csproj",
   "expectedPackageFiles": [

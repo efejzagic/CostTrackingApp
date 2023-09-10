@@ -13,6 +13,8 @@ using AutoMapper;
 using Equipment.Infrastructure.Persistance.Repositories;
 using Equipment.WebAPI.Settings;
 using Equipment.Application.Mappings;
+using Serilog.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,12 +40,27 @@ builder.Services.AddSwaggerGen(c =>
             Email = "efejzagic2@etf.unsa.ba",
         },
         Version = "v1",
-        Title = "Cost Tracking API"
+        Title = "Equipment API"
     });
 });
 #endregion
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
+
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=equipment-db;Port=5432;Database=eqdb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 //builder.Services.AddApplication();
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>

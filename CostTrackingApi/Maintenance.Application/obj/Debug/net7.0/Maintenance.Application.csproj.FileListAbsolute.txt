@@ -13,3 +13,5 @@ D:\CostTrackingApp\CostTrackingApi\Maintenance.Application\obj\Debug\net7.0\Main
 D:\CostTrackingApp\CostTrackingApi\Maintenance.Application\obj\Debug\net7.0\refint\Maintenance.Application.dll
 D:\CostTrackingApp\CostTrackingApi\Maintenance.Application\obj\Debug\net7.0\Maintenance.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Maintenance.Application\obj\Debug\net7.0\ref\Maintenance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Application\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Maintenance.Application\bin\Debug\net7.0\ResponseInfo.pdb

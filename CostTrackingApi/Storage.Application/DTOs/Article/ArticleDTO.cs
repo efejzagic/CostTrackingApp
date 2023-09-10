@@ -4,7 +4,7 @@ using Equipment.Application.Parameters;
 
 namespace Storage.Application.DTOs.Article
 {
-    public class ArticleDTO : RequestParameter, IAuditable
+    public class ArticleDTO : IAuditable
     {
         public int Id { get; set; }
 

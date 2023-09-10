@@ -13,3 +13,5 @@ D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipm
 D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\refint\Equipment.Application.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\Equipment.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Equipment.Application\obj\Debug\net7.0\ref\Equipment.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Application\bin\Debug\net7.0\ResponseInfo.pdb

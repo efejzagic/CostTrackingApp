@@ -17,6 +17,8 @@ using Storage.Application.Mappings;
 using Storage.WebAPI.Settings;
 using JwtAuthenticationManager;
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,22 @@ builder.Services.AddControllers()
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
 
+//Serilog 
+var logger = new LoggerConfiguration()
+ .MinimumLevel.Information()
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.Console()
+            .WriteTo.PostgreSQL(
+                connectionString: "Host=storage-db;Port=5432;Database=stgdb;Username=postgres;Password=password;",
+                tableName: "Logs",
+                needAutoCreateTable: true) // Create the table if it doesn't exist
+            .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
 
 builder.Services.AddCustomJwtAuthentication();
 #region Swagger
@@ -45,7 +63,7 @@ builder.Services.AddSwaggerGen(c =>
             Email = "efejzagic2@etf.unsa.ba",
         },
         Version = "v1",
-        Title = "Cost Tracking API"
+        Title = "Storage API"
     });
 });
 #endregion

@@ -623,10 +623,12 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Auth.Domain": "1.0.0",
+          "JwtAuthenticationManager": "1.0.0",
           "MediatR": "12.1.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.9",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
-          "Microsoft.EntityFrameworkCore": "7.0.9"
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "ResponseInfo": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Auth.Application.dll": {}
@@ -677,6 +679,16 @@
         },
         "runtime": {
           "bin/placeholder/JwtAuthenticationManager.dll": {}
+        }
+      },
+      "ResponseInfo/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ResponseInfo.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ResponseInfo.dll": {}
         }
       }
     }
@@ -2063,6 +2075,11 @@
       "type": "project",
       "path": "../JwtAuthenticationManager/JwtAuthenticationManager.csproj",
       "msbuildProject": "../JwtAuthenticationManager/JwtAuthenticationManager.csproj"
+    },
+    "ResponseInfo/1.0.0": {
+      "type": "project",
+      "path": "../ResponseInfo/ResponseInfo.csproj",
+      "msbuildProject": "../ResponseInfo/ResponseInfo.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2075,6 +2092,7 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.5",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.17.2",
+      "ResponseInfo >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -2121,6 +2139,9 @@
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             }
           }
         }

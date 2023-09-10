@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Finance.Application.Wrappers;
 using Finance.Application.Interfaces;
 using Finance.Application.DTOs.InvoiceItem;
+using ResponseInfo.Entities;
 
 namespace Finance.Application.Features.InvoiceItem.Queries
 {

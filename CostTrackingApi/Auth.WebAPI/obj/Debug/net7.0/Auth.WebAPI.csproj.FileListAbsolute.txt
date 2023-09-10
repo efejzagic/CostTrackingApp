@@ -52,3 +52,5 @@ D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\Microsoft.Entity
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\ResponseInfo.pdb

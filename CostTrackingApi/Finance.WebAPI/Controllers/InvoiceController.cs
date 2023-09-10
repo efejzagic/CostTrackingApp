@@ -5,16 +5,30 @@ using Finance.Application.Features.Invoice.Queries;
 using Finance.Application.Parameters.Invoice;
 using Microsoft.AspNetCore.Mvc;
 using Finance.Application.Features.InvoiceItem.Commands;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Finance.WebAPI.Controllers
 {
+
+
     //[ApiVersion("1.0")]
     public class InvoiceController : BaseApiController
     {
+
+        private readonly ILogger<InvoiceController> _logger;
+        public InvoiceController(ILogger<InvoiceController> logger)
+        {
+            _logger = logger;
+        }
+
+
         [HttpGet]
         //[MapToApiVersion("1.0")]
+        //[Authorize(Roles = "Finance")]
         public async Task<IActionResult> Get([FromQuery] GetAllInvoiceParameter filter)
         {
+            _logger.LogInformation("Get Invoice call");
             return Ok(await Mediator.Send(new GetAllInvoicesQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
         }
 

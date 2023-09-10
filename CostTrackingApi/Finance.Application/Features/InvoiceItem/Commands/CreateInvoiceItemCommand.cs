@@ -11,12 +11,12 @@ using MediatR;
 
 namespace Finance.Application.Features.InvoiceItem.Commands
 {
-    public class CreateInvoiceItemCommand : IRequest<Wrappers.Response<string>>
+    public class CreateInvoiceItemCommand : IRequest<ResponseInfo.Entities.Response<string>>
     {
         public CreateInvoiceItemDTO Value { get; set; }
     }
 
-    public class CreateInvoiceItemCommandHandler : IRequestHandler<CreateInvoiceItemCommand, Wrappers.Response<string>>
+    public class CreateInvoiceItemCommandHandler : IRequestHandler<CreateInvoiceItemCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IGenericRepositoryAsync<Finance.Domain.Entities.InvoiceItem> _Repository;
         private readonly IMapper _mapper;
@@ -26,11 +26,11 @@ namespace Finance.Application.Features.InvoiceItem.Commands
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<string>> Handle(CreateInvoiceItemCommand request, CancellationToken cancellationToken)
+        public async Task<ResponseInfo.Entities.Response<string>> Handle(CreateInvoiceItemCommand request, CancellationToken cancellationToken)
         {
             var enviroment = _mapper.Map<Domain.Entities.InvoiceItem>(request.Value);
             await _Repository.AddAsync(enviroment);
-            return new Wrappers.Response<string>(enviroment.Id.ToString());
+            return new ResponseInfo.Entities.Response<string>(enviroment.Id.ToString());
         }
     }
 }

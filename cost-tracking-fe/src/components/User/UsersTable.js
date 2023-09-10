@@ -29,10 +29,6 @@ const UserTable = () => {
         if (response.status === 200) {
             setUsers(response.data);
         }
-        else if(response.status === 401 || response.status === 403) {
-            console.log("else if");
-            navigate('/login');
-        }
         else {
             console.log("else");
             navigate('/login');
@@ -40,8 +36,14 @@ const UserTable = () => {
       } catch (error) {
         
         console.error('Error fetching users:', error);
-        navigate('/login');
-
+        if (error.response.status === 401) {
+          console.log("Unauthorized access");
+          // Redirect to unauthorized page or handle the unauthorized access scenario
+          navigate('/unauthorized');
+        }
+        else {
+          navigate('/login');
+        }
       }
     };
 
@@ -78,7 +80,7 @@ const UserTable = () => {
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <Button variant="outlined" color="primary" size="small">
-                        <Link to={`/user/edit/${item.id}`}>Edit</Link>
+                        <Link to={`/users/edit/${item.id}`}>Edit</Link>
                       </Button>
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete

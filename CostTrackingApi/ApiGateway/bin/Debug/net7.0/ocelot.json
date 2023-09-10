@@ -38,6 +38,30 @@
       "DownstreamPathTemplate": "/api/Auth/CreateUser"
     },
     {
+      "UpstreamPathTemplate": "/api/Auth/EditUser",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/EditUser"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/GetUserById/{userId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/GetUserById/{userId}"
+    },
+    {
       "UpstreamPathTemplate": "/api/Auth/roles",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamScheme": "http",
@@ -48,6 +72,18 @@
         }
       ],
       "DownstreamPathTemplate": "/api/Auth/roles"
+    },
+    {
+      "UpstreamPathTemplate": "/api/Auth/UserData",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/Auth/UserData"
     },
     {
       "UpstreamPathTemplate": "/api/v/Account/invalidate-token",
@@ -365,6 +401,21 @@
         }
       ],
       "DownstreamPathTemplate": "/api/v/Employee/name/{name}"
+
+    },
+
+
+    {
+      "UpstreamPathTemplate": "/api/v/Test/combined",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apigateway.combine",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Test/combined"
     }
 
 

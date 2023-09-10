@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Maintenance.Application.DTOs.MaintenanceRecord;
 using Maintenance.Application.Interfaces;
-using MediatR; 
-
+using MediatR;
+using ResponseInfo.Entities;
 
 namespace Maintenance.Application.Features.MaintenanceRecord.Commands
 {
-    public class CreateMaintenanceRecordCommand : IRequest<Wrappers.Response<string>>
+    public class CreateMaintenanceRecordCommand : IRequest<Response<string>>
     {
         public MaintenanceRecordCreateDTO Value { get; set; }
     }
 
-    public class CreateMaintenanceRecordCommandHandler : IRequestHandler<CreateMaintenanceRecordCommand, Wrappers.Response<string>>
+    public class CreateMaintenanceRecordCommandHandler : IRequestHandler<CreateMaintenanceRecordCommand, Response<string>>
     {
         private readonly IGenericRepositoryAsync<Maintenance.Domain.Entities.MaintenanceRecord> _Repository;
         private readonly IMapper _mapper;
@@ -26,11 +26,11 @@ namespace Maintenance.Application.Features.MaintenanceRecord.Commands
             _mapper = mapper;
         }
 
-        public async Task<Wrappers.Response<string>> Handle(CreateMaintenanceRecordCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(CreateMaintenanceRecordCommand request, CancellationToken cancellationToken)
         {
             var enviroment = _mapper.Map<Maintenance.Domain.Entities.MaintenanceRecord>(request.Value);
             await _Repository.AddAsync(enviroment);
-            return new Wrappers.Response<string>(enviroment.Id.ToString());
+            return new Response<string>(enviroment.Id.ToString());
         }
     }
 }

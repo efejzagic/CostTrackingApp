@@ -1,9 +1,9 @@
 ﻿
 using AutoMapper;
 using MediatR;
+using ResponseInfo.Entities;
 using Storage.Application.DTOs.Supplier;
 using Storage.Application.Interfaces;
-using Storage.Application.Wrappers;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -65,6 +65,9 @@ builder.Services.AddSwaggerGen(c =>
         });
 });
 
+builder.Services.AddMemoryCache();
+
+builder.Services.AddTransient<ITokenBlacklistService, TokenBlacklistService>();
 builder.Services.AddHttpClient();
 
 //builder.Services.AddCustomJwtAuthentication();

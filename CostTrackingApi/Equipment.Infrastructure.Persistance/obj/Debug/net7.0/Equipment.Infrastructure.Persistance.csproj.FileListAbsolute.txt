@@ -16,3 +16,5 @@ D:\CostTrackingApp\CostTrackingApi\Equipment.Infrastructure.Persistance\obj\Debu
 D:\CostTrackingApp\CostTrackingApi\Equipment.Infrastructure.Persistance\obj\Debug\net7.0\refint\Equipment.Infrastructure.Persistance.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.Infrastructure.Persistance\obj\Debug\net7.0\Equipment.Infrastructure.Persistance.pdb
 D:\CostTrackingApp\CostTrackingApi\Equipment.Infrastructure.Persistance\obj\Debug\net7.0\ref\Equipment.Infrastructure.Persistance.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Infrastructure.Persistance\bin\Debug\net7.0\ResponseInfo.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.Infrastructure.Persistance\bin\Debug\net7.0\ResponseInfo.pdb
