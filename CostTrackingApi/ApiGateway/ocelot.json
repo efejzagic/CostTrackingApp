@@ -416,6 +416,30 @@
         }
       ],
       "DownstreamPathTemplate": "/api/v/Test/combined"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSiteExpense/cs/expenses",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apigateway.combine",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSiteExpense/cs/expenses"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/ConstructionSiteExpense/cs/expenses/{csId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apigateway.combine",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/ConstructionSiteExpense/cs/expenses/{csId}"
     }
 
 

@@ -6,6 +6,8 @@ using Storage.Application.Interfaces;
 using ResponseInfo.Entities;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using CorrelationIdLibrary.Interfaces;
 
 namespace Storage.Application.Features.Article.Commands
 {
@@ -16,6 +18,7 @@ namespace Storage.Application.Features.Article.Commands
     }
     public class CreateArticleCommandHandler : IRequestHandler<CreateArticleCommand, Response<string>>
     {
+
         private readonly IGenericRepositoryAsync<Storage.Domain.Entities.Article> _Repository;
         private readonly IMapper _mapper;
         public CreateArticleCommandHandler(IGenericRepositoryAsync<Storage.Domain.Entities.Article> Repository, IMapper mapper)

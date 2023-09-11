@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Finance.Application.DTOs.Invoice;
 using Finance.Application.Interfaces;
 using Finance.Application.DTOs.InvoiceItem;
+using Finance.Application.DTOs.ExpenseItem;
 
 namespace Finance.Application.Features.InvoiceItem.Queries
 {

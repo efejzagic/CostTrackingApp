@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Maintenance.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    [Migration("20230825111401_MR init")]
-    partial class MRinit
+    [Migration("20230910235202_MR EId")]
+    partial class MREId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("EquipmentId")
+                    b.Property<int?>("MachineryId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -58,6 +58,9 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int?>("ToolId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("MaintenanceRecord");
@@ -67,23 +70,23 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                         {
                             Id = 1,
                             Description = "Record for machine SN2023",
-                            EquipmentId = 1,
+                            MachineryId = 1,
                             Name = "MR 1",
                             Price = 120.40000000000001,
                             Status = "Completed",
                             Technician = "User 1",
-                            Timestamp = new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1716)
+                            Timestamp = new DateTime(2023, 9, 10, 23, 52, 2, 390, DateTimeKind.Utc).AddTicks(9078)
                         },
                         new
                         {
                             Id = 2,
                             Description = "Record for tool SN2021",
-                            EquipmentId = 2,
                             Name = "MR 2",
                             Price = 87.150000000000006,
                             Status = "Pending",
                             Technician = "User 2",
-                            Timestamp = new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1772)
+                            Timestamp = new DateTime(2023, 9, 10, 23, 52, 2, 390, DateTimeKind.Utc).AddTicks(9098),
+                            ToolId = 2
                         });
                 });
 #pragma warning restore 612, 618

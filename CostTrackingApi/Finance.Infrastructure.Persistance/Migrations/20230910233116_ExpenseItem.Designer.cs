@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Finance.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(FinanceDbContext))]
-    [Migration("20230823084236_InvoiceItems init")]
-    partial class InvoiceItemsinit
+    [Migration("20230910233116_ExpenseItem")]
+    partial class ExpenseItem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,10 +36,10 @@ namespace Finance.Infrastructure.Persistance.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("ArticleId")
+                    b.Property<int?>("ArticleId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ConstructionSiteId")
+                    b.Property<int?>("ConstructionSiteId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Date")
@@ -49,19 +49,16 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("MachineryId")
+                    b.Property<int?>("MachineryId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MaintenanceRecordId")
+                    b.Property<int?>("MaintenanceRecordId")
                         .HasColumnType("integer");
 
                     b.Property<int>("ReferenceId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ToolId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Type")
+                    b.Property<int?>("ToolId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -72,30 +69,96 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Amount = 325.33m,
-                            ArticleId = 0,
-                            ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5291),
-                            Description = " Expense type 1",
-                            MachineryId = 0,
-                            MaintenanceRecordId = 11,
-                            ReferenceId = 188,
-                            ToolId = 0,
-                            Type = 1
+                            Amount = 1298.92m,
+                            ConstructionSiteId = 1,
+                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5460),
+                            Description = "Description 1",
+                            ReferenceId = 1112
                         },
                         new
                         {
                             Id = 2,
-                            Amount = 325.33m,
-                            ArticleId = 0,
-                            ConstructionSiteId = 7,
-                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5300),
-                            Description = " Expense type 2",
-                            MachineryId = 0,
-                            MaintenanceRecordId = 0,
-                            ReferenceId = 126,
-                            ToolId = 0,
-                            Type = 0
+                            Amount = 498.92m,
+                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5471),
+                            Description = "Description 2",
+                            ReferenceId = 132,
+                            ToolId = 2
+                        });
+                });
+
+            modelBuilder.Entity("Finance.Domain.Entities.ExpenseItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ExpenseId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpenseId");
+
+                    b.ToTable("ExpenseItems");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 112m,
+                            Description = "Expense item 1",
+                            ExpenseId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 212.8m,
+                            Description = "Expense item 2",
+                            ExpenseId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Amount = 723.2m,
+                            Description = "Expense item 3",
+                            ExpenseId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Amount = 10.5m,
+                            Description = "Expense item 4",
+                            ExpenseId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Amount = 11.12m,
+                            Description = "Expense item 5",
+                            ExpenseId = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Amount = 87.8m,
+                            Description = "Expense item 6",
+                            ExpenseId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Amount = 24.3m,
+                            Description = "Expense item 7",
+                            ExpenseId = 2
                         });
                 });
 
@@ -142,8 +205,8 @@ namespace Finance.Infrastructure.Persistance.Migrations
                             Amount = 1298.92m,
                             ArticleId = 1,
                             ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5062),
-                            DueDate = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5067),
+                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5038),
+                            DueDate = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5043),
                             MachineryId = 0,
                             MaintenanceRecordId = 0,
                             ToolId = 0
@@ -154,8 +217,8 @@ namespace Finance.Infrastructure.Persistance.Migrations
                             Amount = 498.92m,
                             ArticleId = 0,
                             ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5080),
-                            DueDate = new DateTime(2023, 8, 23, 8, 42, 35, 883, DateTimeKind.Utc).AddTicks(5082),
+                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5051),
+                            DueDate = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5052),
                             MachineryId = 0,
                             MaintenanceRecordId = 12,
                             ToolId = 0
@@ -224,6 +287,15 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Finance.Domain.Entities.ExpenseItem", b =>
+                {
+                    b.HasOne("Finance.Domain.Entities.Expense", null)
+                        .WithMany("Items")
+                        .HasForeignKey("ExpenseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Finance.Domain.Entities.InvoiceItem", b =>
                 {
                     b.HasOne("Finance.Domain.Entities.Invoice", null)
@@ -231,6 +303,11 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Finance.Domain.Entities.Expense", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("Finance.Domain.Entities.Invoice", b =>

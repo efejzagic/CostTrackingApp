@@ -3,10 +3,9 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-
+import StyledPage from '../../components/Styled/StyledPage';
 
 const CreateEmployeePage = () => {
   const [formData, setFormData] = useState({
@@ -74,7 +73,7 @@ const CreateEmployeePage = () => {
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
@@ -194,7 +193,7 @@ const CreateEmployeePage = () => {
       </Paper>
       <Button>   <Link to={`/employee`}>Back to Employee Data</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

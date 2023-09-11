@@ -15,7 +15,7 @@ import {
 import { Edit as EditIcon } from '@mui/icons-material';
 import axios from 'axios';
 import { decodeJwt } from 'jose';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const ProfilePage = () => {
   const [userDataState, setUserDataState] = useState({});
@@ -52,7 +52,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <Nav />
+    <StyledPage>
       <Grid container justifyContent="center" style={{ marginTop: '50px' }}>
       <Grid item xs={12} sm={8} md={6}>
         <Paper elevation={3} style={{ padding: '20px' }}>
@@ -104,6 +104,7 @@ const ProfilePage = () => {
 
       
       </Grid>
+      </StyledPage>
     </>
   );
 };

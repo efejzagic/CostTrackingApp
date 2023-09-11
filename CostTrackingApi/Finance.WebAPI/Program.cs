@@ -17,6 +17,7 @@ using Finance.Application;
 using JwtAuthenticationManager;
 using Serilog;
 using Serilog.Events;
+using CorrelationIdLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +68,9 @@ builder.Services.AddSwaggerGen(c =>
 #endregion
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
+
+builder.Services.AddCorrelationIdManager();
+
 //builder.Services.AddApplication();
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>
@@ -82,13 +86,14 @@ builder.Services.AddPersistence(builder.Configuration);
 
 
 builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 
 builder.Services.AddAutoMapper(typeof(Finance.Application.MediatorClass)); // Register AutoMapper
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new InvoiceProfile(provider.GetService<IInvoiceRepository>()));
-    cfg.AddProfile(new ExpenseProfile());
+    cfg.AddProfile(new ExpenseProfile(provider.GetService<IExpenseRepository>()));
 
 }).CreateMapper());
 
@@ -119,6 +124,7 @@ app.UseSwaggerUI(c =>
 #endregion
 
 // Configure the HTTP request pipeline.
+app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 

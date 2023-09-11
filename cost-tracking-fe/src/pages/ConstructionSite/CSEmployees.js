@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const style = {
   position: 'absolute',
@@ -75,7 +75,7 @@ const CSEmployeesPage = () => {
  
   return (
     <>
-    <Nav/>
+    <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Employees for {data.title}
@@ -147,6 +147,7 @@ const CSEmployeesPage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

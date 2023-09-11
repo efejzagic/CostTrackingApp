@@ -11,7 +11,8 @@ namespace Maintenance.Application.DTOs.MaintenanceRecord
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public int EquipmentId { get; set; }
+        public int? MachineryId { get; set; }
+        public int? ToolId { get; set; }
         public DateTime Timestamp { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }

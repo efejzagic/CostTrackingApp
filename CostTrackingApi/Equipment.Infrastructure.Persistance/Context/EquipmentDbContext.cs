@@ -30,9 +30,9 @@ namespace Equipment.Infrastructure.Persistance.Context
             var machinery = new List<Machinery>()
                 {
                     new Machinery() { Id=1, Name = "Machinery 1", Description= "Description 1", ProductionYear = DateOnly.FromDateTime(DateTime.Now),
-                      Location = "Loc 1", retired = false },
+                      Location = "Loc 1", ConstructionSiteId = 1 ,retired = false },
                     new Machinery() { Id=2, Name = "Machinery 2", Description= "Description 2", ProductionYear = DateOnly.FromDateTime(DateTime.Now),
-                        Location = "Loc 2", retired = false },
+                        Location = "Loc 2", ConstructionSiteId = 1 , retired = false },
                 };
 
             builder.Entity<Machinery>().HasData(machinery);
@@ -41,7 +41,7 @@ namespace Equipment.Infrastructure.Persistance.Context
 
             var tools = new List<Tool>()
                 {
-                    new Tool() { Id=1, Title = "Tool 1", Description = "Desc 1", Location = "Loc 1", retired = false},
+                    new Tool() { Id=1, Title = "Tool 1", Description = "Desc 1", Location = "Loc 1", ConstructionSiteId = 1, retired = false},
                     new Tool() { Id=2, Title = "Tool 2", Description = "Desc 2", Location = "Loc 2", retired = false},
 
                 };

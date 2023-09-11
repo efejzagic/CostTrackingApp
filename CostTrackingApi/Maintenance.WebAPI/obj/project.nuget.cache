@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eFwxN8zBKBsp/XSV6I21toEs2hYmqjVYw8eZ3qvgrNt05JpctVRyfHpgLkTmFRov4UMWwNB5GmGHegzr2ls1LA==",
+  "dgSpecHash": "JTlOUKbtl6n4Hr6ODoWqKq2EH+xxD2798NUIdasz2VrTm7Uiv0cbJNx6qFBonOdQmx/PCBpf812YBcaRLyfHDQ==",
   "success": true,
   "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.WebAPI\\Maintenance.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,8 @@
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.0.0\\mediatr.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.9\\microsoft.aspnetcore.authentication.jwtbearer.7.0.9.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.1.0\\microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

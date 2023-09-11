@@ -3,9 +3,8 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
-
+import StyledPage from '../../components/Styled/StyledPage';
 
 const CreateCSPage = () => {
   const [formData, setFormData] = useState({
@@ -55,11 +54,11 @@ const CreateCSPage = () => {
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
-        New Supplier
+        New Construction Site
       </Typography>
       <Paper elevation={3} style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit}>
@@ -117,7 +116,7 @@ const CreateCSPage = () => {
       </Paper>
       <Button>   <Link to={`/construction`}>Back to Construction Data</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

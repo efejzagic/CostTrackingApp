@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iMskMqNQfikQvlUu+kYPqv3pTk0pIDARzhxhQCj482B+F9uHKfJRGNaRQTeC6f0QVqry+IVZ2gvcdk5QKbwLRQ==",
+  "dgSpecHash": "WRa8AG01OarVRKVwBX0lTRiUKAfemmEA4NpTvHsIlXKQAbUhaOjx704J3Pc1LUn568oQpfb4BRsKDbfirrrDfw==",
   "success": true,
   "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.Infrastructure.Persistance\\Maintenance.Infrastructure.Persistance.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\efejz\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\efejz\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",

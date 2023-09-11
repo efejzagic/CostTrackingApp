@@ -3,9 +3,9 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import StyledPage from '../../components/Styled/StyledPage';
 
 
 const CreateArticlePage = () => {
@@ -70,8 +70,7 @@ const CreateArticlePage = () => {
   return (
 
     <>
-    
-    <Nav/>
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         New Article
@@ -146,7 +145,7 @@ const CreateArticlePage = () => {
       </Paper>
       <Button>   <Link to={`/article`}>Back to Articles</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

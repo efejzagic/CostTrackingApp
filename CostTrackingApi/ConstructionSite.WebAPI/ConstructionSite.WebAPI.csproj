@@ -34,6 +34,7 @@
     <ProjectReference Include="..\ConstructionSite.Application\ConstructionSite.Application.csproj" />
     <ProjectReference Include="..\ConstructionSite.Domain\ConstructionSite.Domain.csproj" />
     <ProjectReference Include="..\ConstructionSite.Infrastructure.Persistance\ConstructionSite.Infrastructure.Persistance.csproj" />
+    <ProjectReference Include="..\CorrelationIdLibrary\CorrelationIdLibrary.csproj" />
     <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
   </ItemGroup>
 

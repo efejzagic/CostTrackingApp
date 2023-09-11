@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CorrelationIdLibrary\CorrelationIdLibrary.csproj" />
     <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\Storage.Domain\Storage.Domain.csproj" />
   </ItemGroup>

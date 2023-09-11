@@ -18,6 +18,7 @@ using ConstructionSite.Domain.Entities;
 using ConstructionSite.WebAPI.Settings;
 using Serilog.Events;
 using Serilog;
+using CorrelationIdLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +63,7 @@ var logger = new LoggerConfiguration()
 
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
+builder.Services.AddCorrelationIdManager();
 
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
@@ -127,6 +129,7 @@ app.UseSwaggerUI(c =>
 // Configure the HTTP request pipeline.
 
 app.UseAuthorization();
+app.AddCorrelationIdMiddleware();
 
 app.MapControllers();
 //app.ApplyMigrations(builder.Configuration.)

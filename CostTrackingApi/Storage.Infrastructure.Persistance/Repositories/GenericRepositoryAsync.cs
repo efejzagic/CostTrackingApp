@@ -3,6 +3,7 @@ using Storage.Infrastructure.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Linq.Expressions;
+using Storage.Domain.Entities;
 
 namespace Storage.Infrastructure.Persistance.Repositories
 {
@@ -85,7 +86,6 @@ namespace Storage.Infrastructure.Persistance.Repositories
         {
             await _dbContext.SaveChangesAsync();
         }
-
 
     }
 }

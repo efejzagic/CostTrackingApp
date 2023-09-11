@@ -1443,6 +1443,20 @@
           "bin/placeholder/ConstructionSite.Infrastructure.Persistance.dll": {}
         }
       },
+      "CorrelationIdLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CorrelationIdLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CorrelationIdLibrary.dll": {}
+        }
+      },
       "JwtAuthenticationManager/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1467,6 +1481,9 @@
       "ResponseInfo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
         "compile": {
           "bin/placeholder/ResponseInfo.dll": {}
         },
@@ -4499,6 +4516,11 @@
       "path": "../ConstructionSite.Infrastructure.Persistance/ConstructionSite.Infrastructure.Persistance.csproj",
       "msbuildProject": "../ConstructionSite.Infrastructure.Persistance/ConstructionSite.Infrastructure.Persistance.csproj"
     },
+    "CorrelationIdLibrary/1.0.0": {
+      "type": "project",
+      "path": "../CorrelationIdLibrary/CorrelationIdLibrary.csproj",
+      "msbuildProject": "../CorrelationIdLibrary/CorrelationIdLibrary.csproj"
+    },
     "JwtAuthenticationManager/1.0.0": {
       "type": "project",
       "path": "../JwtAuthenticationManager/JwtAuthenticationManager.csproj",
@@ -4518,6 +4540,7 @@
       "ConstructionSite.Application >= 1.0.0",
       "ConstructionSite.Domain >= 1.0.0",
       "ConstructionSite.Infrastructure.Persistance >= 1.0.0",
+      "CorrelationIdLibrary >= 1.0.0",
       "FluentValidation.AspNetCore >= 11.3.0",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.0.0",
       "Microsoft.AspNetCore.Mvc.Versioning >= 5.1.0",
@@ -4576,6 +4599,9 @@
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Infrastructure.Persistance\\ConstructionSite.Infrastructure.Persistance.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Infrastructure.Persistance\\ConstructionSite.Infrastructure.Persistance.csproj"
+            },
+            "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj"
             },
             "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"

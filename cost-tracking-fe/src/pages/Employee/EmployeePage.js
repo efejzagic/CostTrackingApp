@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
-import Nav from '../../components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const style = {
   position: 'absolute',
@@ -71,8 +71,7 @@ const EmployeePage = () => {
  
   return (
     <>
-      
-      <Nav/>
+      <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Employee Data
@@ -146,6 +145,7 @@ const EmployeePage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

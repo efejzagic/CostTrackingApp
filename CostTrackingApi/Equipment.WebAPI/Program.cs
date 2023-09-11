@@ -15,6 +15,7 @@ using Equipment.WebAPI.Settings;
 using Equipment.Application.Mappings;
 using Serilog.Events;
 using Serilog;
+using CorrelationIdLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,7 @@ builder.Services.AddSwaggerGen(c =>
 #endregion
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddCorrelationIdManager();
 
 var logger = new LoggerConfiguration()
  .MinimumLevel.Information()
@@ -114,6 +116,7 @@ app.UseSwaggerUI(c =>
 #endregion
 
 // Configure the HTTP request pipeline.
+app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 

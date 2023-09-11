@@ -5,6 +5,8 @@ import { useNavigate  } from 'react-router-dom'; // Import useHistory from React
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import StyledPage from '../components/Styled/StyledPage';
+import StyledPageNoNav from '../components/Styled/StyledPageNoNav';
 
 
 
@@ -90,7 +92,8 @@ function Login() {
 
   return (
 
-    
+    <>
+    <StyledPageNoNav>
     <Container style={styles.container}>
 
     <Paper elevation={3} style={styles.paper}>
@@ -127,7 +130,8 @@ function Login() {
       </form>
     </Paper>
   </Container>
-
+  </StyledPageNoNav>
+  </>
   );
 }
 

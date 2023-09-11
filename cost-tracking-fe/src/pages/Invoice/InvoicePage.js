@@ -3,7 +3,7 @@ import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, 
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
 
 
 const style = {
@@ -83,7 +83,7 @@ const InvoicePage = () => {
 
   return (
     <>
-      <Nav/>
+    <StyledPage>
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
@@ -170,6 +170,7 @@ const InvoicePage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

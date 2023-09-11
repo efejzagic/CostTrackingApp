@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
-import Nav from '../../components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const style = {
   position: 'absolute',
@@ -28,7 +28,6 @@ const SupplierPage = () => {
     try {
       const response = await axios.get('http://localhost:8001/api/v/Supplier');
       setData(response.data.data);
-      console.log("Fetched Supplier");
     } catch (error) {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
@@ -40,13 +39,9 @@ const SupplierPage = () => {
   };
 
   useEffect(() => {
-    console.log('Component mounted'); // Log when the component is mounted
     fetchSupplierData();
-  }, []);
+  }, []); // Fetch data when component mounts
 
-  // ...
-
-  console.log('Component rendered');
   const handleOpen = (id) => {
     setSelectedItemId(id);
     setOpen(true);
@@ -74,8 +69,7 @@ const SupplierPage = () => {
 
   return (
     <>
-      
-      <Nav/>
+      <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Supplier Data
@@ -147,6 +141,7 @@ const SupplierPage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

@@ -12,31 +12,8 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { checkRoleInUserData } from '../components/UserData/RoleChecker';
 import { useState, useEffect } from 'react';
-import Nav from '../components/Nav/Nav';
-import useAuth from '../components/Auth/AuthProvider';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import background from '../static/img/backround_image.jpg'
-
-const StyledPage = styled.div`
-background-image: url(${background});
-background-size: cover;
-  background-position: center;
-  height: 100vh; /* Adjust the height as needed */
-  position: relative;
-
-  /* Add the light breeze blue wave effect */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, #b3e0ff 0%, #5cacee 100%);
-    opacity: 0; /* Adjust the opacity as needed */
-  }
-`;
+import StyledPage from '../components/Styled/StyledPage';
 
 function Homepage() {
   // const isLoggedIn = useAuth();
@@ -68,7 +45,6 @@ function Homepage() {
     <>
           <StyledPage>
 
-             <Nav/>
 
       <main>
 

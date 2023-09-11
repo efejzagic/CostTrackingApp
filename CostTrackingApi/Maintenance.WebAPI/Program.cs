@@ -16,6 +16,7 @@ using Maintenance.WebAPI.Settings;
 using MediatR;
 using Serilog.Events;
 using Serilog;
+using CorrelationIdLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +84,7 @@ builder.Services.AddPersistence(builder.Configuration);
 
 
 
+builder.Services.AddCorrelationIdManager();
 
 
 builder.Services.AddAutoMapper(typeof(MediatorClass)); // Register AutoMapper
@@ -116,6 +118,7 @@ app.UseSwaggerUI(c =>
 #endregion
 
 // Configure the HTTP request pipeline.
+app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 

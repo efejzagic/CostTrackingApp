@@ -3,11 +3,11 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const EditEmployeePage = () => {
     const { id } = useParams();
@@ -109,8 +109,7 @@ const EditEmployeePage = () => {
   return (
 
     <>
-    
-    <Nav/>
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         Edit Employee
@@ -217,6 +216,7 @@ const EditEmployeePage = () => {
       </Paper>
       <Button>   <Link to={`/employee`}>Back to Employee Data</Link> </Button>
     </Container>
+    </StyledPage>
     </>
   );
 };

@@ -47,3 +47,9 @@ D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Storage.A
 D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Storage.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\ResponseInfo.dll
 D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\ResponseInfo.pdb
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\CorrelationIdLibrary.pdb
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Application.dll
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Application.pdb
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Domain.pdb

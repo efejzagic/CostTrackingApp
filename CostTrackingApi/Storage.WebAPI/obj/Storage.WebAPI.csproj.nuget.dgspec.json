@@ -274,6 +274,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -322,6 +328,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj": {
+                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj"
+              },
               "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
                 "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
               },

@@ -111,3 +111,5 @@ D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sin
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sinks.File.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PostgreSQL.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.pdb

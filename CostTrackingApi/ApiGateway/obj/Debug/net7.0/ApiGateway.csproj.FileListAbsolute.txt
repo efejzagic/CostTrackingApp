@@ -57,3 +57,5 @@ D:\CostTrackingApp\CostTrackingApi\ApiGateway\bin\Debug\net7.0\ConstructionSite.
 D:\CostTrackingApp\CostTrackingApi\ApiGateway\bin\Debug\net7.0\Storage.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\ApiGateway\bin\Debug\net7.0\ResponseInfo.dll
 D:\CostTrackingApp\CostTrackingApi\ApiGateway\bin\Debug\net7.0\ResponseInfo.pdb
+D:\CostTrackingApp\CostTrackingApi\ApiGateway\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\ApiGateway\bin\Debug\net7.0\CorrelationIdLibrary.pdb

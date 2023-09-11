@@ -3,10 +3,10 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const EditCSPage = () => {
     const { id } = useParams();
@@ -85,7 +85,8 @@ const EditCSPage = () => {
   return (
 
     <>
-    <Nav/>
+
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
@@ -145,6 +146,8 @@ const EditCSPage = () => {
       </Paper>
       <Button>   <Link to={`/construction`}>Back to Construction Data</Link> </Button>
     </Container>
+
+    </StyledPage>
     </>
   );
 };

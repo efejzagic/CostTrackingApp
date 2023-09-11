@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Equipment.Infrastructure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class Equipmentinit : Migration
+    public partial class CsID : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Location = table.Column<string>(type: "text", nullable: false),
+                    ConstructionSiteId = table.Column<int>(type: "integer", nullable: true),
                     retired = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -38,6 +39,7 @@ namespace Equipment.Infrastructure.Persistance.Migrations
                     Title = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Location = table.Column<string>(type: "text", nullable: false),
+                    ConstructionSiteId = table.Column<int>(type: "integer", nullable: true),
                     retired = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -47,20 +49,20 @@ namespace Equipment.Infrastructure.Persistance.Migrations
 
             migrationBuilder.InsertData(
                 table: "Machinery",
-                columns: new[] { "Id", "Description", "Location", "Name", "retired" },
+                columns: new[] { "Id", "ConstructionSiteId", "Description", "Location", "Name", "retired" },
                 values: new object[,]
                 {
-                    { 1, "Description 1", "Loc 1", "Machinery 1", false },
-                    { 2, "Description 2", "Loc 2", "Machinery 2", false }
+                    { 1, 1, "Description 1", "Loc 1", "Machinery 1", false },
+                    { 2, 1, "Description 2", "Loc 2", "Machinery 2", false }
                 });
 
             migrationBuilder.InsertData(
                 table: "Tool",
-                columns: new[] { "Id", "Description", "Location", "Title", "retired" },
+                columns: new[] { "Id", "ConstructionSiteId", "Description", "Location", "Title", "retired" },
                 values: new object[,]
                 {
-                    { 1, "Desc 1", "Loc 1", "Tool 1", false },
-                    { 2, "Desc 2", "Loc 2", "Tool 2", false }
+                    { 1, 1, "Desc 1", "Loc 1", "Tool 1", false },
+                    { 2, null, "Desc 2", "Loc 2", "Tool 2", false }
                 });
         }
 

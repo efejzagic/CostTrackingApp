@@ -14,6 +14,7 @@
           "ConstructionSite.Application": "1.0.0",
           "ConstructionSite.Domain": "1.0.0",
           "ConstructionSite.Infrastructure.Persistance": "1.0.0",
+          "CorrelationIdLibrary": "1.0.0",
           "FluentValidation.AspNetCore": "11.3.0",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0",
@@ -799,6 +800,15 @@
           "ConstructionSite.Infrastructure.Persistance.dll": {}
         }
       },
+      "CorrelationIdLibrary/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "runtime": {
+          "CorrelationIdLibrary.dll": {}
+        }
+      },
       "JwtAuthenticationManager/1.0.0": {
         "dependencies": {
           "Auth.Domain": "1.0.0",
@@ -816,6 +826,9 @@
         }
       },
       "ResponseInfo/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
         "runtime": {
           "ResponseInfo.dll": {}
         }
@@ -1444,6 +1457,11 @@
       "sha512": ""
     },
     "ConstructionSite.Infrastructure.Persistance/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CorrelationIdLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

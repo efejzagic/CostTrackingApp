@@ -3,7 +3,7 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-
+import StyledPage from '../../components/Styled/StyledPage';
 
 
 const EditUserPage = () => {
@@ -100,6 +100,9 @@ const EditUserPage = () => {
   };
 
   return (
+
+    <>
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         Edit User
@@ -153,6 +156,8 @@ const EditUserPage = () => {
         </form>
       </Paper>
     </Container>
+    </StyledPage>
+    </>
   );
 };
 

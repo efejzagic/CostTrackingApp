@@ -28,14 +28,25 @@ import CreateExpensePage from "./pages/Expense/CreateExpensePage";
 import PrivateRoute from "./helpers/PrivateRoute";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import EditUserPage from "./pages/User/EditUserPage";
+import EditArticlePage from "./pages/Article/EditArticlePage";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ExpenseDetailsPage from "./pages/Expense/ExpenseDetailsPage";
+import CSExpensesPage from "./pages/ConstructionSite/CSExpensesPage";
+import CSExpensePageId from "./pages/ConstructionSite/CSExpensePageId";
 
 
 function App() {
 
 
-
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'Play, sans-serif',
+      fontSize: 14,
+    },
+  });
  return (
    <div>
+  <ThemeProvider  theme={theme}>
 
        <BrowserRouter>
 
@@ -53,19 +64,27 @@ function App() {
            <Route exact path="/supplier/create" element={<PrivateRoute><CreateSupplierPage/></PrivateRoute>} />
            <Route exact path="/supplier/edit/:id" element={<PrivateRoute><EditSupplierPage/></PrivateRoute>} />
            <Route exact path="/construction" element={<PrivateRoute><CSPage /></PrivateRoute>} />
+
+           <Route exact path="/construction/expenses" element={<PrivateRoute><CSExpensesPage/></PrivateRoute>} />
            <Route exact path="/construction/create" element={<PrivateRoute><CreateCSPage/></PrivateRoute>} />
            <Route exact path="/construction/edit/:id" element={<PrivateRoute><EditCSPage/></PrivateRoute>} />
            <Route exact path="/construction/:id/employees" element={<PrivateRoute><CSEmployeesPage/></PrivateRoute>} />
+           <Route exact path="/construction/:id/expenses" element={<PrivateRoute><CSExpensePageId/></PrivateRoute>} />
+
            <Route exact path="/employee" element={<PrivateRoute><EmployeePage /></PrivateRoute>} />
            <Route exact path="/employee/create" element={<PrivateRoute><CreateEmployeePage/></PrivateRoute>} />
            <Route exact path="/employee/edit/:id" element={<PrivateRoute><EditEmployeePage/></PrivateRoute>} />
            <Route exact path="/invoice" element={<PrivateRoute><InvoicePage/></PrivateRoute>} />
            <Route exact path="/invoice/create" element={<PrivateRoute><CreateInvoicePage/></PrivateRoute>} />
            <Route exact path="/expense" element={<PrivateRoute><ExpensePage/></PrivateRoute>} />
+           <Route exact path="/expense/:id" element={<PrivateRoute><ExpenseDetailsPage/></PrivateRoute>} />
+
            <Route exact path="/expense/create" element={<PrivateRoute><CreateExpensePage/></PrivateRoute>} />
 
            <Route exact path="/article" element={<PrivateRoute><ArticlePage/></PrivateRoute>} />
            <Route exact path="/article/create" element={<PrivateRoute><CreateArticlePage/></PrivateRoute>} />
+           <Route exact path="/article/edit/:id" element={<PrivateRoute><EditArticlePage/></PrivateRoute>} />
+
            <Route exact path="/supplier/:id/articles" element={<SupplierArticles/>} />
            <Route exact path="/profile" element={<PrivateRoute><ProfilePage/></PrivateRoute>} />
 
@@ -84,7 +103,7 @@ function App() {
        </BrowserRouter>
 
        <ToastContainer />
-
+  </ThemeProvider >
    </div>
  );
 }

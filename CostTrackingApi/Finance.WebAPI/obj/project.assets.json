@@ -199,6 +199,39 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
         "type": "package",
         "compile": {
@@ -2937,6 +2970,20 @@
           "bin/placeholder/Auth.Domain.dll": {}
         }
       },
+      "CorrelationIdLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CorrelationIdLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CorrelationIdLibrary.dll": {}
+        }
+      },
       "Finance.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -3011,6 +3058,9 @@
       "ResponseInfo/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0"
+        },
         "compile": {
           "bin/placeholder/ResponseInfo.dll": {}
         },
@@ -3221,6 +3271,32 @@
         "lib/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.7.0.9.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "sha512": "Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
+        "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "sha512": "ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
@@ -9053,6 +9129,11 @@
       "path": "../Auth.Domain/Auth.Domain.csproj",
       "msbuildProject": "../Auth.Domain/Auth.Domain.csproj"
     },
+    "CorrelationIdLibrary/1.0.0": {
+      "type": "project",
+      "path": "../CorrelationIdLibrary/CorrelationIdLibrary.csproj",
+      "msbuildProject": "../CorrelationIdLibrary/CorrelationIdLibrary.csproj"
+    },
     "Finance.Application/1.0.0": {
       "type": "project",
       "path": "../Finance.Application/Finance.Application.csproj",
@@ -9082,6 +9163,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
+      "CorrelationIdLibrary >= 1.0.0",
       "Finance.Application >= 1.0.0",
       "Finance.Domain >= 1.0.0",
       "Finance.Infrastructure.Persistance >= 1.0.0",
@@ -9133,6 +9215,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj": {
+              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj"
+            },
             "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj": {
               "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj"
             },

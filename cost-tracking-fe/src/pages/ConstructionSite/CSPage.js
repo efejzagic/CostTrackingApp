@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
-import Nav from '../../components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const style = {
   position: 'absolute',
@@ -69,15 +69,29 @@ const CSPage = () => {
 
   return (
     <>
-      
-      <Nav/>
+      <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Construction Site Data
         </Typography>
-        <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
-          Create New
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <div>
+              <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
+                Create New
+              </Button>
+            </div>
+            <div>
+              <Button variant="contained" color="primary" style={{ marginBottom: '1rem', marginLeft: '1rem' }}>
+                See Incomes
+              </Button>
+              <Button variant="contained" onClick={() => navigate('/construction/expenses')} color="primary" style={{ marginBottom: '1rem', marginLeft: '1rem' }}>
+                
+                See Expenses
+                
+              </Button>
+            </div>
+          </div>
+
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -101,6 +115,9 @@ const CSPage = () => {
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <Button variant="outlined" color="primary" size="small">
                         <Link to={`/construction/${item.id}/employees`}>Employees</Link>
+                      </Button>
+                      <Button variant="outlined" color="primary" size="small">
+                        <Link to={`/construction/${item.id}/expenses`}>Expenses</Link>
                       </Button>
                       <Button variant="outlined" color="primary" size="small">
                         <Link to={`/construction/edit/${item.id}`}>Edit</Link>
@@ -138,6 +155,7 @@ const CSPage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

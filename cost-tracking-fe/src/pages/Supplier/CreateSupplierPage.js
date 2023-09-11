@@ -3,9 +3,8 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
-
+import StyledPage from '../../components/Styled/StyledPage';
 
 const CreatePage = () => {
   const [formData, setFormData] = useState({
@@ -78,7 +77,7 @@ const CreatePage = () => {
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
@@ -154,7 +153,7 @@ const CreatePage = () => {
       </Paper>
       <Button>   <Link to={`/supplier`}>Back to Suppliers Data</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

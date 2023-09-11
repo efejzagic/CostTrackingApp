@@ -3,12 +3,12 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Chip from '@mui/material/Chip';
+import StyledPage from '../../components/Styled/StyledPage';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -194,7 +194,7 @@ const CreateUserPage = () => {
   return (
 
     <>
-  
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         New User
@@ -324,7 +324,7 @@ const CreateUserPage = () => {
       </Paper>
       <Button>   <Link to={`/users`}>Back to Users</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };
