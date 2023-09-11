@@ -19,8 +19,9 @@ const style = {
 };
 
 const ExpensePage = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); 
   const navigate = useNavigate();
+  const[isLoading, setIsLoading] = useState(true);
 
   const [totalAmount,setTotalAmount] = useState(0.0);
 
@@ -31,6 +32,7 @@ const ExpensePage = () => {
   const fetchExpenseData = async () => {
     try {
       const response = await axios.get('http://localhost:8001/api/v/Expense');
+      setIsLoading(false);
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -52,6 +54,7 @@ const ExpensePage = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchExpenseData();
     fetchExpenseTotalAmountData();
   }, []); // Fetch data when component mounts
@@ -92,6 +95,9 @@ const ExpensePage = () => {
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
           Create new Expense
         </Button>
+
+        {!isLoading ? (
+          <>
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -155,6 +161,12 @@ const ExpensePage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        </>
+        ) : (
+          <Typography variant="body1" gutterBottom>
+          Loading...
+        </Typography>
+        )}
       </Container>
       <Modal
         open={open}
@@ -167,7 +179,7 @@ const ExpensePage = () => {
             Delete Expense
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Are you sure you want to delete {data.find((item) => item.id === selectedItemId)?.name}?
+            Are you sure you want to delete expense with id {data.find((item) => item.id === selectedItemId)?.id}?
           </Typography>
           <Button onClick={handleDelete} variant="outlined" color="secondary" sx={{ mt: 2, mr: 2 }}>
             Delete

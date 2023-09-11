@@ -21,6 +21,9 @@ namespace Storage.Domain.Entities
         [Required]
         public int SupplierId { get; set; }
 
+        public bool OrderRequired { get; set; } = false;
+        public bool InStock { get; set; }
+
         public Supplier Supplier { get; set; }
         public bool retired { get; set; } = false;
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;

@@ -3,7 +3,8 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
-
+using Apigateway.Combine.Interfaces;
+using Apigateway.Combine.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 #endregion
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IConstructionSiteExpenseService, ConstructionSiteExpenseService>();
+
 builder.Services.AddHealthChecks();
 //builder.Services.AddApplication();
 #region API Versioning

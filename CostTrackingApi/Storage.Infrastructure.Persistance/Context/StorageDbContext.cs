@@ -13,6 +13,9 @@ namespace Storage.Infrastructure.Persistance.Context
         public DbSet<Article> Article { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
@@ -26,6 +29,12 @@ namespace Storage.Infrastructure.Persistance.Context
               .HasOne(p => p.Supplier)
               .WithMany(p => p.Articles)
               .HasForeignKey(p => p.SupplierId);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(i => i.OrderItems)
+                .WithOne()
+                .HasForeignKey(ii => ii.OrderId);
+
 
             Seed(modelBuilder);
         }
@@ -46,16 +55,34 @@ namespace Storage.Infrastructure.Persistance.Context
 
             List<Article> articles = new List<Article>()
                 {
-                    new Article() { Id=1, Name = "Article 1", Quantity = 1, Price = 10.0, Description = "Desc 1", SupplierId = 1, retired = false},
-                    new Article() { Id=2, Name = "Article 2", Quantity = 2, Price = 20.0, Description = "Desc 2", SupplierId = 1, retired = false},
-                    new Article() { Id=3, Name = "Article 3", Quantity = 3, Price = 30.0, Description = "Desc 3", SupplierId = 1, retired = false},
-                    new Article() { Id=4, Name = "Article 4", Quantity = 4, Price = 40.0, Description = "Desc 4", SupplierId = 1, retired = false},
-                    new Article() { Id=5, Name = "Article 5", Quantity = 5, Price = 50.0, Description = "Desc 5", SupplierId = 2, retired = false},
-                    new Article() { Id=6, Name = "Article 6", Quantity = 6, Price = 60.0, Description = "Desc 6", SupplierId = 2, retired = false}
+                    new Article() { Id=1, Name = "Article 1", Quantity = 1, Price = 10.0, Description = "Desc 1", InStock = true, SupplierId = 1, retired = false},
+                    new Article() { Id=2, Name = "Article 2", Quantity = 2, Price = 20.0, Description = "Desc 2", InStock = true, SupplierId = 1, retired = false},
+                    new Article() { Id=3, Name = "Article 3", Quantity = 3, Price = 30.0, Description = "Desc 3", InStock = true, SupplierId = 1, retired = false},
+                    new Article() { Id=4, Name = "Article 4", Quantity = 4, Price = 40.0, Description = "Desc 4",InStock = true, SupplierId = 1, retired = false},
+                    new Article() { Id=5, Name = "Article 5", Quantity = 5, Price = 50.0, Description = "Desc 5", InStock = false, SupplierId = 2, retired = false},
+                    new Article() { Id=6, Name = "Article 6", Quantity = 6, Price = 60.0, Description = "Desc 6", InStock = false, SupplierId = 2, retired = false}
 
                 };
 
             builder.Entity<Article>().HasData(articles);
+
+
+            List<Order> orders = new List<Order>()
+            {
+                new Order() { Id = 1, OrderDate = DateTime.UtcNow},
+                new Order() { Id = 2, OrderDate = DateTime.UtcNow}                
+            };
+
+            builder.Entity<Order>().HasData(orders);
+
+
+            List<OrderItem> orderItems = new List<OrderItem>
+            {
+                new OrderItem() {Id = 1, ArticleId = 5, Quantity = 20, PricePerItem = 20.5, OrderId = 1 },
+                new OrderItem() {Id = 2, ArticleId = 6, Quantity = 13, PricePerItem = 17.4, OrderId = 2 }
+            };
+            builder.Entity<OrderItem>().HasData(orderItems);
+
         }
     }
 }

@@ -77,6 +77,7 @@ function App() {
            <Route exact path="/invoice" element={<PrivateRoute><InvoicePage/></PrivateRoute>} />
            <Route exact path="/invoice/create" element={<PrivateRoute><CreateInvoicePage/></PrivateRoute>} />
            <Route exact path="/expense" element={<PrivateRoute><ExpensePage/></PrivateRoute>} />
+           <Route exact path="/expense/create" element={<PrivateRoute><CreateExpensePage/></PrivateRoute>} />
            <Route exact path="/expense/:id" element={<PrivateRoute><ExpenseDetailsPage/></PrivateRoute>} />
 
            <Route exact path="/expense/create" element={<PrivateRoute><CreateExpensePage/></PrivateRoute>} />

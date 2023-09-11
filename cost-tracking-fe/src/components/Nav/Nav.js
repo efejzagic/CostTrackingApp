@@ -4,6 +4,18 @@ import { useNavigate } from "react-router-dom";
 import ProfileIcon from "../../pages/Profile/ProfileIcon";
 import logo from "../../static/img/cta_logo.png"
 
+
+const buttonGroupStyle = {
+  margin: '20px', // Adjust the margin as needed
+};
+
+const buttonStyle = {
+  backgroundColor: '#007bff', // Customize the background color
+  color: '#fff', // Text color
+  '&:hover': {
+    backgroundColor: '#0056b3', // Hover color
+  },
+};
 const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("accessToken")));
   const navigate = useNavigate();
@@ -47,13 +59,37 @@ const Nav = () => {
     }}
   />
 </Typography>
-
-        <ButtonGroup variant="text" aria-label="text button group">
-          <Button onClick={() => navigate("/construction")}>Construction</Button>
-          <Button onClick={() => navigate("/employee")}>Employees</Button>
-          <Button onClick={() => navigate("/article")}>Articles</Button>
-          <Button onClick={() => navigate("/supplier")}>Suppliers</Button>
-        </ButtonGroup>
+<div style={buttonGroupStyle}>
+      <ButtonGroup
+        variant="text"
+        aria-label="text button group"
+      >
+        <Button
+          onClick={() => navigate('/construction')}
+          style={buttonStyle}
+        >
+          Construction
+        </Button>
+        <Button
+          onClick={() => navigate('/employee')}
+          style={buttonStyle}
+        >
+          Employees
+        </Button>
+        <Button
+          onClick={() => navigate('/article')}
+          style={buttonStyle}
+        >
+          Articles
+        </Button>
+        <Button
+          onClick={() => navigate('/supplier')}
+          style={buttonStyle}
+        >
+          Suppliers
+        </Button>
+      </ButtonGroup>
+    </div>
         <ProfileIcon />
       </Toolbar>
     </>

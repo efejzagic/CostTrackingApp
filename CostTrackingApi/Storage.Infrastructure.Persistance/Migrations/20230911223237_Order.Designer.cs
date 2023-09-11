@@ -12,8 +12,8 @@ using Storage.Infrastructure.Persistance.Context;
 namespace Storage.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(StorageDbContext))]
-    [Migration("20230824140603_Storage init")]
-    partial class Storageinit
+    [Migration("20230911223237_Order")]
+    partial class Order
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,9 +43,15 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("InStock")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<bool>("OrderRequired")
+                        .HasColumnType("boolean");
 
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
@@ -69,9 +75,11 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8604),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6756),
                             Description = "Desc 1",
+                            InStock = true,
                             Name = "Article 1",
+                            OrderRequired = false,
                             Price = 10.0,
                             Quantity = 1,
                             SupplierId = 1,
@@ -80,9 +88,11 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8612),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6764),
                             Description = "Desc 2",
+                            InStock = true,
                             Name = "Article 2",
+                            OrderRequired = false,
                             Price = 20.0,
                             Quantity = 2,
                             SupplierId = 1,
@@ -91,9 +101,11 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8614),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6768),
                             Description = "Desc 3",
+                            InStock = true,
                             Name = "Article 3",
+                            OrderRequired = false,
                             Price = 30.0,
                             Quantity = 3,
                             SupplierId = 1,
@@ -102,9 +114,11 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8637),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6771),
                             Description = "Desc 4",
+                            InStock = true,
                             Name = "Article 4",
+                            OrderRequired = false,
                             Price = 40.0,
                             Quantity = 4,
                             SupplierId = 1,
@@ -113,9 +127,11 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8638),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6774),
                             Description = "Desc 5",
+                            InStock = true,
                             Name = "Article 5",
+                            OrderRequired = false,
                             Price = 50.0,
                             Quantity = 5,
                             SupplierId = 2,
@@ -124,14 +140,59 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8642),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6780),
                             Description = "Desc 6",
+                            InStock = true,
                             Name = "Article 6",
+                            OrderRequired = false,
                             Price = 60.0,
                             Quantity = 6,
                             SupplierId = 2,
                             retired = false
                         });
+                });
+
+            modelBuilder.Entity("Storage.Domain.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("Storage.Domain.Entities.OrderItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("PricePerItem")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Storage.Domain.Entities.Supplier", b =>
@@ -186,7 +247,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                             Address = "Address 1",
                             City = "City 1",
                             Country = "Country 1",
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8507),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6661),
                             Email = "email1@example.com",
                             Name = "Supplier 1",
                             Phone = "Phone 1",
@@ -198,7 +259,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                             Address = "Address 2",
                             City = "City 2",
                             Country = "Country 2",
-                            DateCreated = new DateTime(2023, 8, 24, 14, 6, 3, 593, DateTimeKind.Utc).AddTicks(8515),
+                            DateCreated = new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6672),
                             Email = "email2@example.com",
                             Name = "Supplier 2",
                             Phone = "Phone 2",
@@ -215,6 +276,20 @@ namespace Storage.Infrastructure.Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("Storage.Domain.Entities.OrderItem", b =>
+                {
+                    b.HasOne("Storage.Domain.Entities.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Storage.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("Storage.Domain.Entities.Supplier", b =>

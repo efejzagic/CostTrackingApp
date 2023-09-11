@@ -19,6 +19,7 @@ namespace Storage.Infrastructure.Persistance.IoC
          );
 
             #region Repositories
+
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             //services.AddTransient<IEnviromentRepositoryAsync, EnviromentRepositoryAsync>();
             #endregion

@@ -98,6 +98,8 @@ builder.Services.AddPersistence(builder.Configuration);
 
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 
 
 builder.Services.AddAutoMapper(typeof(Storage.Application.MediatorClass)); // Register AutoMapper
@@ -106,6 +108,8 @@ builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new ArticleProfile(provider.GetService<ISupplierRepository>()));
     cfg.AddProfile(new SupplierProfile(provider.GetService<IArticleRepository>()));
+    cfg.AddProfile(new OrderProfile(provider.GetService<IOrderRepository>()));
+
 }).CreateMapper());
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(MediatorClass).GetTypeInfo().Assembly));
