@@ -33,6 +33,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ExpenseDetailsPage from "./pages/Expense/ExpenseDetailsPage";
 import CSExpensesPage from "./pages/ConstructionSite/CSExpensesPage";
 import CSExpensePageId from "./pages/ConstructionSite/CSExpensePageId";
+import BalancePage from "./pages/Balance/BalancePage";
 
 
 function App() {
@@ -88,6 +89,9 @@ function App() {
 
            <Route exact path="/supplier/:id/articles" element={<SupplierArticles/>} />
            <Route exact path="/profile" element={<PrivateRoute><ProfilePage/></PrivateRoute>} />
+
+           <Route exact path="/balance" element={<BalancePage/>} />
+
 
            <Route
              path="/secured"

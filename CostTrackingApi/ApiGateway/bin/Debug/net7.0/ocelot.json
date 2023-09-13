@@ -194,6 +194,18 @@
       ],
       "DownstreamPathTemplate": "/api/v/Expense/{id}"
     },
+    {
+      "UpstreamPathTemplate": "/api/v/Balance",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "finance.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Balance"
+    },
 
     {
       "UpstreamPathTemplate": "/api/v/Machinery",
@@ -441,6 +453,8 @@
       ],
       "DownstreamPathTemplate": "/api/v/ConstructionSiteExpense/cs/expenses/{csId}"
     }
+
+    
 
 
   ],
