@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Chip from '@mui/material/Chip';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -127,11 +128,7 @@ const CreateUserPage = () => {
   const fetchRoles = async () => {
     try {
         var token = localStorage.getItem('accessToken');
-      const response = await axios.get('http://localhost:8001/api/Auth/roles' , {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get('http://localhost:8001/api/Auth/roles' , getConfigHeader());
       console.log("Roles " , response.data );
       setRoles(response.data);
     } catch (error) {
@@ -165,13 +162,7 @@ const CreateUserPage = () => {
         'http://localhost:8001/api/Auth/CreateUser',
         {
           Model: formData
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json' // Set the Content-Type header
-          }
-        }
+        }, getConfigHeader()
       );
 
       if (response.data.statusCode === 200 ) {

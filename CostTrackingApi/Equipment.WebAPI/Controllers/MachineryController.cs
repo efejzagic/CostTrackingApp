@@ -1,12 +1,14 @@
 ﻿using Equipment.Application.Features.Machinery.Commands;
 using Equipment.Application.Features.Machinery.Queries;
 using Equipment.Application.Parameters.Machinery;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Controllers;
 
 namespace Equipment.WebAPI.Controllers
 {
     //[ApiVersion("1.0")]
+    
     public class MachineryController : BaseApiController
     {
 
@@ -18,6 +20,7 @@ namespace Equipment.WebAPI.Controllers
 
         [HttpGet]
         //[MapToApiVersion("1.0")]
+        [Authorize(Roles = "Equipment Manager,Finance")]
         public async Task<IActionResult> Get([FromQuery] GetAllMachineryParameter filter)
         {
             _logger.LogInformation("Get Machinery Call");
@@ -25,24 +28,22 @@ namespace Equipment.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Equipment Manager,Finance")]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await Mediator.Send(new GetMachineryByIdQuery { Id = id }));
         }
 
         [HttpGet("name/{name}")]
+        [Authorize(Roles = "Equipment Manager")]
         public async Task<IActionResult> Get(string name)
         {
             return Ok(await Mediator.Send(new GetMachineryByNameQuery { Name = name}));
         }
 
-        //[HttpGet("{id}/history")]
-        //public async Task<IActionResult> GetHistory(string id)
-        //{
-        //    return Ok(await Mediator.Send(new GetEnviromentByIdWithHistoryQuery { Id = id }));
-        //}
 
         [HttpPost]
+        [Authorize(Roles = "Equipment Manager")]
         public async Task<IActionResult> Post(CreateMachineryCommand command)
         {
             if (!ModelState.IsValid)
@@ -55,6 +56,7 @@ namespace Equipment.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Equipment Manager")]
         public async Task<IActionResult> Put(UpdateMachineryCommand command)
         {
             var enviroment = await Mediator.Send(command);
@@ -62,6 +64,7 @@ namespace Equipment.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Equipment Manager")]
         public async Task<IActionResult> Delete(int id)
         {
             var enviroment = await Mediator.Send(new DeleteMachineryCommand { Id = id });

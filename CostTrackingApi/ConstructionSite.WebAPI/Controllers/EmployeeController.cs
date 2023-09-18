@@ -3,12 +3,15 @@ using Auth.Domain.Entities;
 using ConstructionSite.Application.Features.Employee.Commands;
 using ConstructionSite.Application.Features.Employee.Queries;
 using ConstructionSite.Application.Parameters.Employee;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 
 namespace ConstructionSite.WebAPI.Controllers
 {
     //[ApiVersion("1.0")]
+    [Authorize(Roles = "ConstructionSite Manager")]
     public class EmployeeController : BaseApiController
     {
         [HttpGet]

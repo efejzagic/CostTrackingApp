@@ -9,6 +9,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Modal, Box } from '@mui/material';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const StyledCard = styled(Card)`
@@ -73,7 +75,7 @@ function BalancePage() {
 
   const fetchBalanceData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Balance');
+      const response = await axios.get('http://localhost:8001/api/v/Balance', getConfigHeader());
       setIsLoading(false);
       var fixedData = response.data.balance.toFixed(2);
       setBalanceData(fixedData);
@@ -85,7 +87,7 @@ function BalancePage() {
   };
   const fetchExpenseData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Expense?pageNumber=1&pageSize=5');
+      const response = await axios.get('http://localhost:8001/api/v/Expense?pageNumber=1&pageSize=5', getConfigHeader());
       setIsLoading(false);
       setData(response.data.data);
     } catch (error) {
@@ -95,7 +97,7 @@ function BalancePage() {
 
   const fetchInvoiceData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Invoice?pageNumber=1&pageSize=5');
+      const response = await axios.get('http://localhost:8001/api/v/Invoice?pageNumber=1&pageSize=5' , getConfigHeader());
       setInvoiceData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -138,7 +140,7 @@ function BalancePage() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}` , getConfigHeader());
       handleClose();
       fetchExpenseData(); // Refresh data after successful deletion
     } catch (error) {
@@ -154,6 +156,7 @@ function BalancePage() {
         <div>
           <StyledCard style={{marginTop: '50px'}}>
             <LargeText>Balance: {balanceData} BAM</LargeText>
+            <SmallText>TRN: 8023873739962112</SmallText>
             <SmallText>Expenses: {totalExpense} BAM</SmallText>
             <SmallText>Income: {totalIncome} BAM</SmallText>
           </StyledCard>
@@ -205,6 +208,9 @@ function BalancePage() {
                        {item.articleId !== 0 && item.articleId!==null && (
                       <div>ArticleId: {item.articleId}</div>
                     )}
+                      {item.orderId !== 0 && item.orderId!==null && (
+                      <div>Order Id: {item.orderId}</div>
+                    )}
                   </TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -226,9 +232,7 @@ function BalancePage() {
         </TableContainer>
         </>
         ) : (
-          <Typography variant="body1" gutterBottom>
-          Loading...
-        </Typography>
+          <LoadingCoomponent loading={isLoading}/>
         )}
         </Container>
 
@@ -276,6 +280,9 @@ function BalancePage() {
                     )}
                        {item.articleId !== 0 && item.articleId!==null && (
                       <div>ArticleId: {item.articleId}</div>
+                    )}
+                     {item.orderId !== 0 && item.orderId!==null && (
+                      <div>Order Id: {item.orderId}</div>
                     )}
                   </TableCell>
                   <TableCell>

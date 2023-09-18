@@ -34,7 +34,16 @@ import ExpenseDetailsPage from "./pages/Expense/ExpenseDetailsPage";
 import CSExpensesPage from "./pages/ConstructionSite/CSExpensesPage";
 import CSExpensePageId from "./pages/ConstructionSite/CSExpensePageId";
 import BalancePage from "./pages/Balance/BalancePage";
-
+import OrderPage from "./pages/Order/OrderPage";
+import { CartProvider } from "./pages/Cart/CartContext";
+import OrderDetailsPage from "./pages/Order/OrderDetails";
+import OrderHistoryPage from "./pages/Order/OrderHistoryPage";
+import InvoiceDetailsPage from "./pages/Invoice/InvoiceDetailsPage";
+import MaintenancePage from "./pages/Maintenance/MaintenancePage";
+import CreateMaintenancePage from "./pages/Maintenance/CreateMaintenancePage";
+import ForbiddenPage from "./components/Forbidden/ForbiddenPage";
+import MachineryPage from "./pages/Machinery/MachineryPage";
+import CreateMachineryPage from "./pages/Machinery/CreateArticlePage";
 
 function App() {
 
@@ -45,8 +54,15 @@ function App() {
       fontSize: 14,
     },
   });
+
+  
  return (
+
+
+
    <div>
+    <CartProvider>
+
   <ThemeProvider  theme={theme}>
 
        <BrowserRouter>
@@ -76,7 +92,9 @@ function App() {
            <Route exact path="/employee/create" element={<PrivateRoute><CreateEmployeePage/></PrivateRoute>} />
            <Route exact path="/employee/edit/:id" element={<PrivateRoute><EditEmployeePage/></PrivateRoute>} />
            <Route exact path="/invoice" element={<PrivateRoute><InvoicePage/></PrivateRoute>} />
+           
            <Route exact path="/invoice/create" element={<PrivateRoute><CreateInvoicePage/></PrivateRoute>} />
+           <Route exact path="/invoice/:id/details" element={<PrivateRoute><InvoiceDetailsPage/></PrivateRoute>} />
            <Route exact path="/expense" element={<PrivateRoute><ExpensePage/></PrivateRoute>} />
            <Route exact path="/expense/create" element={<PrivateRoute><CreateExpensePage/></PrivateRoute>} />
            <Route exact path="/expense/:id" element={<PrivateRoute><ExpenseDetailsPage/></PrivateRoute>} />
@@ -91,6 +109,15 @@ function App() {
            <Route exact path="/profile" element={<PrivateRoute><ProfilePage/></PrivateRoute>} />
 
            <Route exact path="/balance" element={<BalancePage/>} />
+           <Route exact path="/order" element={<OrderPage/>} />
+           <Route exact path="/order/:id/details" element={<OrderDetailsPage/>} />
+           <Route exact path="/order/history" element={<OrderHistoryPage/>} />
+
+
+           <Route exact path="/maintenance" element={<MaintenancePage/>} />
+           <Route exact path="/maintenance/create" element={<CreateMaintenancePage/>} />
+           <Route exact path="/machinery" element={<MachineryPage/>} />
+           <Route exact path="/machinery/create" element={<CreateMachineryPage/>} />
 
 
            <Route
@@ -101,7 +128,8 @@ function App() {
                </PrivateRoute>
              }
            />
-              <Route path="/unauthorized" element={<UnauthorizedPage />} /> {/* Add this route */}
+              <Route path="/unauthorized" element={<UnauthorizedPage />} /> 
+              <Route path="/forbidden" element={<ForbiddenPage />} /> 
 
            
          </Routes>
@@ -109,6 +137,7 @@ function App() {
 
        <ToastContainer />
   </ThemeProvider >
+  </CartProvider>
    </div>
  );
 }

@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Storage.Infrastructure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class Order : Migration
+    public partial class NewStorageSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,10 @@ namespace Storage.Infrastructure.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    OrderDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    OrderDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ShippingDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    OrderComplete = table.Column<bool>(type: "boolean", nullable: false),
+                    TotalAmount = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,6 +58,7 @@ namespace Storage.Infrastructure.Persistance.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ArticleId = table.Column<int>(type: "integer", nullable: false),
+                    ArticleName = table.Column<string>(type: "text", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
                     PricePerItem = table.Column<double>(type: "double precision", nullable: false),
                     OrderId = table.Column<int>(type: "integer", nullable: false)
@@ -99,12 +103,25 @@ namespace Storage.Infrastructure.Persistance.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "OrderComplete", "OrderDate", "ShippingDate", "TotalAmount" },
+                values: new object[,]
+                {
+                    { 1, false, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(7056), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0 },
+                    { 2, false, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(7060), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0 }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Supplier",
                 columns: new[] { "Id", "Address", "City", "Country", "DateCreated", "DateModified", "Email", "Name", "Phone", "retired" },
                 values: new object[,]
                 {
-                    { 1, "Address 1", "City 1", "Country 1", new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6661), null, "email1@example.com", "Supplier 1", "Phone 1", false },
-                    { 2, "Address 2", "City 2", "Country 2", new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6672), null, "email2@example.com", "Supplier 2", "Phone 2", false }
+                    { 1, "Address", "Konjic", "Bosnia and Herzegovina", new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6817), null, "bmaterial@example.com", "Building Material Supplier", "+387891010", false },
+                    { 2, "Address 2", "Sarajevo", "Bosnia and Herzegovina", new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6827), null, "wood@example.com", "Wood Supplier", "+387891011", false },
+                    { 3, "Address", "Mostar", "Bosnia and Herzegovina", new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6830), null, "insulation@example.com", "Insulation Supplier", "+387891012", false },
+                    { 4, "Address", "Bihać", "Bosnia and Herzegovina", new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6833), null, "rmaterial@example.com", "Roof Material Supplier", "+387891013", false },
+                    { 5, "Address", "Split", "Croatia", new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6835), null, "gmaterial@example.com", "Glass Material Supplier", "+385891014", false },
+                    { 6, "Address", "Novi Sad", "Serbia", new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6841), null, "ematerial@example.com", "Electrical Material Supplier", "+381891014", false }
                 });
 
             migrationBuilder.InsertData(
@@ -112,12 +129,26 @@ namespace Storage.Infrastructure.Persistance.Migrations
                 columns: new[] { "Id", "DateCreated", "DateModified", "Description", "InStock", "Name", "OrderRequired", "Price", "Quantity", "SupplierId", "retired" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6756), null, "Desc 1", true, "Article 1", false, 10.0, 1, 1, false },
-                    { 2, new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6764), null, "Desc 2", true, "Article 2", false, 20.0, 2, 1, false },
-                    { 3, new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6768), null, "Desc 3", true, "Article 3", false, 30.0, 3, 1, false },
-                    { 4, new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6771), null, "Desc 4", true, "Article 4", false, 40.0, 4, 1, false },
-                    { 5, new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6774), null, "Desc 5", true, "Article 5", false, 50.0, 5, 2, false },
-                    { 6, new DateTime(2023, 9, 11, 22, 32, 37, 178, DateTimeKind.Utc).AddTicks(6780), null, "Desc 6", true, "Article 6", false, 60.0, 6, 2, false }
+                    { 1, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6915), null, "Cement article", true, "Cement", false, 5.0, 20, 1, false },
+                    { 2, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6924), null, "Walnut flooring", true, "Parquet floor", false, 32.5, 13, 2, false },
+                    { 3, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6926), null, "Rods", true, "Iron Reinforcement", false, 30.0, 3, 1, false },
+                    { 4, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6929), null, "Roof brick red", true, "Brick", false, 2.7999999999999998, 380, 4, false },
+                    { 5, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6931), null, "Plexiglas", false, "Plexiglas", false, 74.900000000000006, 5, 5, false },
+                    { 6, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6934), null, "Electric wires 2m", false, "Electric wires", false, 2.2999999999999998, 120, 6, false },
+                    { 7, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6936), null, "Plasterboard 3x4m", false, "Plasterboard", false, 14.25, 30, 2, false },
+                    { 8, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6938), null, "Screw 8mm", false, "Screw M8", false, 0.25, 1000, 1, false },
+                    { 9, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(6940), null, "Screw 10mm", false, "Screw M10", false, 0.34999999999999998, 570, 1, false },
+                    { 10, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(7010), null, "Floor insulation", false, "Floor insulation", false, 112.55, 12, 3, false },
+                    { 11, new DateTime(2023, 9, 17, 14, 35, 24, 206, DateTimeKind.Utc).AddTicks(7013), null, "Fiber cement siding", false, "Fiber cement siding", false, 17.5, 22, 1, false }
+                });
+
+            migrationBuilder.InsertData(
+                table: "OrderItems",
+                columns: new[] { "Id", "ArticleId", "ArticleName", "OrderId", "PricePerItem", "Quantity" },
+                values: new object[,]
+                {
+                    { 1, 5, "Plexiglas", 1, 72.0, 20 },
+                    { 2, 6, "Electric wires", 2, 2.0, 100 }
                 });
 
             migrationBuilder.CreateIndex(

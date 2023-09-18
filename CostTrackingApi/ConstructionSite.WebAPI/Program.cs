@@ -19,6 +19,7 @@ using ConstructionSite.WebAPI.Settings;
 using Serilog.Events;
 using Serilog;
 using CorrelationIdLibrary.Services;
+using JwtAuthenticationManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +68,8 @@ builder.Services.AddCorrelationIdManager();
 
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddCustomJwtAuthentication();
+
 //builder.Services.AddApplication();
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>

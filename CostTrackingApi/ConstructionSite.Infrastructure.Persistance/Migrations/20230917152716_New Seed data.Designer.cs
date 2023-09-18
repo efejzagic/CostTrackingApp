@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ConstructionSite.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(ConstructionSiteDbContext))]
-    [Migration("20230730115241_cs_init")]
-    partial class cs_init
+    [Migration("20230917152716_New Seed data")]
+    partial class NewSeeddata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,6 +55,35 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ConstructionSite");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Južni logor",
+                            City = "Mostar",
+                            Country = "Bosnia and Herzegovina",
+                            Description = "",
+                            Title = "Olympic swimming pool"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Socijalno",
+                            City = "Sarajevo",
+                            Country = "Bosnia and Herzegovina",
+                            Description = "",
+                            Title = "Tram line"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Maršala Tita",
+                            City = "Konjic",
+                            Country = "Bosnia and Herzegovina",
+                            Description = "",
+                            Title = "Road paving"
+                        });
                 });
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.Employee", b =>
@@ -102,12 +131,40 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
                     b.HasIndex("ConstructionSiteId");
 
                     b.ToTable("Employee");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Address 1",
+                            City = "City 1",
+                            ConstructionSiteId = 1,
+                            Country = "Country 1",
+                            HourlyRate = 15.5,
+                            HoursOfWork = 8,
+                            Name = "User",
+                            Salary = 2700.0,
+                            Surname = "One"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Address 2",
+                            City = "City 2",
+                            ConstructionSiteId = 2,
+                            Country = "Country 2",
+                            HourlyRate = 12.5,
+                            HoursOfWork = 7,
+                            Name = "Test",
+                            Salary = 1920.5,
+                            Surname = "Two"
+                        });
                 });
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.Employee", b =>
                 {
                     b.HasOne("ConstructionSite.Domain.Entities.ConstructionSite", "ConstructionSite")
-                        .WithMany("Employees")
+                        .WithMany("Zaposlenici")
                         .HasForeignKey("ConstructionSiteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -117,7 +174,7 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
 
             modelBuilder.Entity("ConstructionSite.Domain.Entities.ConstructionSite", b =>
                 {
-                    b.Navigation("Employees");
+                    b.Navigation("Zaposlenici");
                 });
 #pragma warning restore 612, 618
         }

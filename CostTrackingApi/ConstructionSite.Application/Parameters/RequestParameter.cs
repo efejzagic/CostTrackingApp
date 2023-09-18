@@ -7,7 +7,7 @@
         public RequestParameter()
         {
             PageNumber = 1;
-            PageSize = 10;
+            PageSize = 20;
         }
         public RequestParameter(int pageNumber, int pageSize)
         {

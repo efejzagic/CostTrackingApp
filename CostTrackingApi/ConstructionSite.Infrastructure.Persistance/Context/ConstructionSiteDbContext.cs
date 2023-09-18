@@ -39,8 +39,9 @@ namespace ConstructionSite.Infrastructure.Persistance.Context
             //Seed ConstructionSite
             var constructionSite = new List<Domain.Entities.ConstructionSite>()
             {
-                new Domain.Entities.ConstructionSite() { Id = 1, Title = "Construction Site 1", Description="Description 1" , Address = "Address 1", City = "City 1", Country = "Country 1"},
-                new Domain.Entities.ConstructionSite() { Id = 2, Title = "Construction Site 2", Description="Description 2" , Address = "Address 2", City = "City 2", Country = "Country 2"}
+                new Domain.Entities.ConstructionSite() { Id = 1, Title = "Olympic swimming pool", Description="" , Address = "Južni logor", City = "Mostar", Country = "Bosnia and Herzegovina"},
+                new Domain.Entities.ConstructionSite() { Id = 2, Title = "Tram line", Description="" , Address = "Socijalno", City = "Sarajevo", Country = "Bosnia and Herzegovina"},
+                new Domain.Entities.ConstructionSite() { Id = 3, Title = "Road paving", Description="" , Address = "Maršala Tita", City = "Konjic", Country = "Bosnia and Herzegovina"}
             };
             builder.Entity<Domain.Entities.ConstructionSite>().HasData(constructionSite);
 

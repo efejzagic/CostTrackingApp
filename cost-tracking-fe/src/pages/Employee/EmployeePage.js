@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -26,7 +27,7 @@ const EmployeePage = () => {
 
   const fetchEmployeeData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Employee');
+      const response = await axios.get('http://localhost:8001/api/v/Employee' , getConfigHeader());
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -53,7 +54,7 @@ const EmployeePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}` , getConfigHeader());
       handleClose();
       fetchEmployeeData(); // Refresh data after successful deletion
     } catch (error) {

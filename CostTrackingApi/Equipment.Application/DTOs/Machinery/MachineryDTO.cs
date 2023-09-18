@@ -15,6 +15,7 @@ namespace Equipment.Application.DTOs.Machinery
 
         public int? ConstructionSiteId { get; set; }
 
+
         public bool retired { get; set; }
     }
 }

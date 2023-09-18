@@ -14,6 +14,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 var utc = require('dayjs/plugin/utc')
 
@@ -131,7 +132,7 @@ const CreateExpensePage = () => {
       console.log("form data category" , formData.Category);
     
       axios
-        .get(`http://localhost:8001/api/v/${formData.Category}`)
+        .get(`http://localhost:8001/api/v/${formData.Category}` , getConfigHeader())
         .then((response) => {
           console.log(response.data.data);
           setSubCategories(response.data.data);
@@ -164,7 +165,7 @@ const CreateExpensePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Expense', 
       {Value: data}
-      );
+      , getConfigHeader());
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const CreateEmployeePage = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const CreateEmployeePage = () => {
 
   const fetchConstructionSites = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite' , getConfigHeader());
       console.log("Construction Sites: " , response.data.data );
       setConstructionSites(response.data.data);
     } catch (error) {
@@ -51,7 +52,7 @@ const CreateEmployeePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Employee', {
         Value: formData
-      });
+      } , getConfigHeader());
       
       if (response.status === 200) {
         console.log('POST request successful');

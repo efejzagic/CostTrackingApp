@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const CreateArticlePage = () => {
@@ -21,7 +22,7 @@ const CreateArticlePage = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Supplier');
+      const response = await axios.get('http://localhost:8001/api/v/Supplier', getConfigHeader());
       console.log("Suppliers: " , response.data.data );
       setSuppliers(response.data.data);
     } catch (error) {
@@ -48,7 +49,7 @@ const CreateArticlePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Article', {
         Value: formData
-      });
+      }, getConfigHeader());
       
       if (response.status === 200) {
         console.log('POST request successful');

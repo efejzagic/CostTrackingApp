@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const style = {
@@ -31,7 +33,7 @@ const ExpensePage = () => {
 
   const fetchExpenseData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Expense');
+      const response = await axios.get('http://localhost:8001/api/v/Expense' , getConfigHeader());
       setIsLoading(false);
       setData(response.data.data);
     } catch (error) {
@@ -41,7 +43,7 @@ const ExpensePage = () => {
 
   const fetchExpenseTotalAmountData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Expense/totalAmount');
+      const response = await axios.get('http://localhost:8001/api/v/Expense/totalAmount' , getConfigHeader());
       setTotalAmount(1);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -75,7 +77,7 @@ const ExpensePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`, getConfigHeader());
       handleClose();
       fetchExpenseData(); // Refresh data after successful deletion
     } catch (error) {
@@ -119,25 +121,28 @@ const ExpensePage = () => {
                   <TableCell>{item.id}</TableCell>
                   <TableCell>{item.date}</TableCell>
                   <TableCell>{item.description} </TableCell>
-                  <TableCell>{item.amount} KM</TableCell>
+                  <TableCell>{item.amount}KM</TableCell>
                   <TableCell>{item.type}</TableCell>
                   <TableCell>{item.referenceId}</TableCell>
                   <TableCell>
                     {/* Conditional rendering */}
-                    {item.constructionSiteId !== 0 && (
+                    {item.constructionSiteId !== 0 && item.constructionSiteId!==null &&(
                       <div>ConstructionSiteId: {item.constructionSiteId}</div>
                     )}
-                    {item.machineryId !== 0 && (
+                    {item.machineryId !== 0 && item.machineryId!==null &&(
                       <div>MachineryId: {item.machineryId}</div>
                     )}
-                    {item.toolId !== 0 && (
+                    {item.toolId !== 0 && item.toolId!==null &&(
                       <div>ToolId: {item.toolId}</div>
                     )}
-                    {item.maintenanceRecordId !== 0 && (
+                    {item.maintenanceRecordId !== 0 && item.maintenanceRecordId!==null && (
                       <div>MaintenanceRecordId: {item.maintenanceRecordId}</div>
                     )}
-                       {item.articleId !== 0 && (
+                       {item.articleId !== 0 && item.articleId!==null &&(
                       <div>ArticleId: {item.articleId}</div>
+                    )}
+                    {item.orderId !== 0 && item.orderId!==null && (
+                      <div>OrderId: {item.orderId}</div>
                     )}
                   </TableCell>
                   <TableCell>
@@ -163,9 +168,7 @@ const ExpensePage = () => {
         </TableContainer>
         </>
         ) : (
-          <Typography variant="body1" gutterBottom>
-          Loading...
-        </Typography>
+          <LoadingCoomponent loading={isLoading} />
         )}
       </Container>
       <Modal

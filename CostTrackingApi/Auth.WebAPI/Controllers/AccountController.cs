@@ -52,9 +52,16 @@ namespace Auth.WebAPI.Controllers
         [HttpGet("all-users")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var response = await _jwtTokenHandler.GetAllUsers();
-            if (response == null) return Unauthorized();
-            return Ok(response);
+            try
+            {
+                var response = await _jwtTokenHandler.GetAllUsers();
+                if (response == null) return Unauthorized();
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized();
+            }
             //var accessToken = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
             //var httpClient = _httpClientFactory.CreateClient();

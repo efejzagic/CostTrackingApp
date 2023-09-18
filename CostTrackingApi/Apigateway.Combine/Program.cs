@@ -27,7 +27,11 @@ builder.Services.AddSwaggerGen(c =>
 });
 #endregion
 builder.Services.AddHttpClient();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<IConstructionSiteExpenseService, ConstructionSiteExpenseService>();
+builder.Services.AddScoped<IOrderExpenseService, OrderExpenseService>();
+
 
 builder.Services.AddHealthChecks();
 //builder.Services.AddApplication();

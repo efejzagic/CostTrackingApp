@@ -17,17 +17,17 @@ export const checkRoleInUserData = async (roleName) => {
       };
 
     const response = await axios.get('http://localhost:8001/api/Auth/UserData', config);
-    console.log("response",response.data);
+    // console.log("response",response.data);
     if(response.error) {
         return false;
     }
     const userData = response.data.data;
-    console.log(userData.roles);
+    // console.log(userData.roles);
     if (userData && userData.roles && userData.roles.includes(roleName)) {
-        console.log("If ");
+      // console.log(" If Role", roleName)
       return true;
     } else {
-        console.log("Else")
+      // console.log(" Else Role", roleName)
       return false;
     }
   } catch (error) {

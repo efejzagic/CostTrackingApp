@@ -14,85 +14,86 @@ import { checkRoleInUserData } from '../components/UserData/RoleChecker';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledPage from '../components/Styled/StyledPage';
+import {fetchUserRoles} from '../components/UserData/GetUserRoles';
 
 function Homepage() {
-  // const isLoggedIn = useAuth();
   const navigate = useNavigate();
 
   const [name, setName] = useState('');
-  const [hasRole, setHasRole] = useState(false);
+  const [roles, setRoles] = useState([]);
   const [showMediaCard, setShowMediaCard] = useState(false);
+  
+  async function CheckRole(roleName) {
+    console.log(roleName, await checkRoleInUserData(roleName));
+    return await checkRoleInUserData(roleName);
+  }
+
 
   useEffect(() => {
-    async function fetchData() {
-      const roleName = 'Finance'; // Replace with the role you want to check
-      const result = await checkRoleInUserData(roleName);
-      setHasRole(result);
-      setShowMediaCard(result); // Set showMediaCard based on the role result
+
+    async function fetchRolesData() {
+      const userRoles = await fetchUserRoles(); // Replace with your role-fetching logic
+      setRoles(userRoles);
     }
-    // if(!isLoggedIn) {
-    //   console.log("rediredct to login");
-    //   navigate('/login');
-    // }
+    fetchRolesData();
+    
     setName(localStorage.getItem('name'));
-    fetchData();
   }, []);
 
 
-  
-
   return (
     <>
-          <StyledPage>
-
-
-      <main>
-
-
-      <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
-        <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
-          Hello {name}
-        </Typography>
-        </Container>
-      <div className="card-grid " style={{ marginTop: '4rem'}}>
-      <MediaCard
-        title="Create new users"
-        media={<Icon component={PersonAddIcon} fontSize="large" />}
-        text="Lorem ipsum dolor sit amet."
-        route='/users'
-      />
-  <MediaCard
-        title="Create new Invoice"
-        media={<Icon component={ReceiptIcon} fontSize="large" />}
-        text="Lorem ipsum dolor sit amet."
-        route='/invoice'
-      />
-       <MediaCard
-        title="Create new expense"
-        media={<Icon component={PaidIcon} fontSize="large" />}
-        text="Lorem ipsum dolor sit amet."
-        route='/expense'
-      />
-       <MediaCard
-        title="Transactions"
-        media={<Icon component={CurrencyExchangeIcon} fontSize="large" />}
-        text="Lorem ipsum dolor sit amet."
-        route='/construction/create'
-      />
-
-      {showMediaCard && (
-        <MediaCard
-          title="Finance"
-          media={<Icon component={AccountBalanceWalletIcon} fontSize="large" />}
-          text="Lorem ipsum dolor sit amet."
-          route="/construction/create"
-        />
-      )}
-      </div>
-
-      </main>
+        <>
+      <StyledPage>
+        <main style={{ paddingBottom: '4rem' }}>
+          <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
+              Hello {name}
+            </Typography>
+          </Container>
+          <div className="card-grid" style={{ marginTop: '4rem' }}>
+            <MediaCard
+              title="Users"
+              media={<Icon component={PersonAddIcon} fontSize="large" />}
+              text="This section provides a list of all registered users in the system. You can view a list of users, create new user profiles, and edit existing user profiles. It's a central hub for managing user accounts within your application."
+              route='/users'
+            />
+            {roles.includes('Finance') && (
+              <MediaCard
+                title="Income"
+                media={<Icon component={ReceiptIcon} fontSize="large" />}
+                text="The Income card allows you to track and manage sources of income. You can record various types of income, such as salaries, bonuses, or other sources, and track income amounts and frequency. It helps users monitor their earnings."
+                route='/invoice'
+              />
+            )}
+            {roles.includes('Finance') && (
+              <MediaCard
+                title="Expenses"
+                media={<Icon component={PaidIcon} fontSize="large" />}
+                text="This section helps you keep track of your expenses and spending. Users can log and categorize their expenses, making it easier to budget and manage finances. It typically includes features for adding expenses, setting categories, and analyzing spending patterns."
+                route='/expense'
+              />
+            )}
+            {roles.includes('Storage Manager') && (
+              <MediaCard
+                title="Order"
+                media={<Icon component={CurrencyExchangeIcon} fontSize="large" />}
+                text="The Order card is used to manage and track orders or purchases. Users can create new orders and view order histories. It's used to handle customer orders and keep track of product sales."
+                route='/order'
+              />
+            )}
+            {roles.includes('Finance') && (
+              <MediaCard
+                title="Balance"
+                media={<Icon component={AccountBalanceWalletIcon} fontSize="large" />}
+                text="The Balance card displays the financial status and net balance of an organization. It provides a snapshot of the current financial situation, showing the total income, total expenses, and the resulting balance. This card is essential for maintaining financial health."
+                route='/balance'
+              />
+            )}
+          </div>
+        </main>
       </StyledPage>
-
+    </>
     </>
   );
 }

@@ -46,18 +46,17 @@ namespace Auth.Application.Features.Auth.Commands
                 { "firstName", request.Model.Name},
                 { "lastName", request.Model.Surname},
                 { "enabled", true },
-                { "emailVerified", false }, 
+                { "emailVerified", true }, 
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
                             { "type", "password" },
                             { "value", request.Model.Password },
-                            { "temporary", true }
+                            { "temporary", false}
                         }
                     }
                 },
-                { "requiredActions", new string[] { "UPDATE_PASSWORD" } }
             };
 
             var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");

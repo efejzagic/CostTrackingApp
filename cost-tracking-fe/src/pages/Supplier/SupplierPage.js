@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import { toast } from 'react-toastify';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -20,20 +23,25 @@ const style = {
 const SupplierPage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const fetchSupplierData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Supplier');
+      const response = await axios.get('http://localhost:8001/api/v/Supplier', getConfigHeader());
       setData(response.data.data);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
         // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
+      }
+      else {
+        toast.error("Data fetch error");
       }
     }
   };
@@ -58,7 +66,7 @@ const SupplierPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Supplier/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Supplier/${selectedItemId}`, getConfigHeader());
       handleClose();
       fetchSupplierData(); // Refresh data after successful deletion
     } catch (error) {
@@ -77,6 +85,9 @@ const SupplierPage = () => {
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
           Create New
         </Button>
+        {isLoading ? (
+          <LoadingCoomponent loading={isLoading} />
+        ) : (
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -119,6 +130,7 @@ const SupplierPage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        )}
       </Container>
       <Modal
         open={open}

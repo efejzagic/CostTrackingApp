@@ -11,11 +11,15 @@ namespace Apigateway.Combine.Services
     {
 
         private readonly HttpClient _httpClient;
-
-        public ConstructionSiteExpenseService(HttpClient httpClient)
+        private readonly IHttpContextAccessor _contextAccessor;
+        private string _accessToken = "";
+        public ConstructionSiteExpenseService(HttpClient httpClient, IHttpContextAccessor contextAccessor)
         {
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri("http://apigateway/");
+            _contextAccessor = contextAccessor;
+            _accessToken = _contextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _accessToken);
         }
 
 
@@ -51,6 +55,17 @@ namespace Apigateway.Combine.Services
 
                     return combinedData;
 
+                }
+
+                else if (responseA.StatusCode == System.Net.HttpStatusCode.Unauthorized
+                    || responseB.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedAccessException("Cannot access");
+                }
+                else if (responseA.StatusCode == System.Net.HttpStatusCode.Forbidden
+                   || responseB.StatusCode == System.Net.HttpStatusCode.Forbidden)
+                {
+                    throw new HttpRequestException("Forbidden"); // You can provide a more descriptive message
                 }
 
                 else

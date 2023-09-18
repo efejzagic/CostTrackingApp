@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -33,7 +34,7 @@ const CSEmployeesPage = () => {
         // const url = `http://localhost:8001/api/v/ConstructionSite/${id}` 
         const baseURL = 'http://localhost:8001/api/v/ConstructionSite/';
         const url = `${baseURL}${id}`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, getConfigHeader());
         console.log("data 1", response.data.data);
         setEmployees(response.data.data.employees);
         setData(response.data.data);
@@ -62,7 +63,7 @@ const CSEmployeesPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}` , getConfigHeader());
       handleClose();
       fetchEmployeeData(); // Refresh data after successful deletion
     } catch (error) {

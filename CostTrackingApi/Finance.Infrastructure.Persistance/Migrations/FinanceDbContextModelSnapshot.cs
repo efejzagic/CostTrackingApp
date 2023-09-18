@@ -52,6 +52,9 @@ namespace Finance.Infrastructure.Persistance.Migrations
                     b.Property<int?>("MaintenanceRecordId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ReferenceId")
                         .HasColumnType("integer");
 
@@ -66,20 +69,29 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Amount = 1298.92m,
+                            Amount = 1059.12m,
                             ConstructionSiteId = 1,
-                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5460),
-                            Description = "Description 1",
+                            Date = new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3710),
+                            Description = "Mostar Olymic pool expenses",
                             ReferenceId = 1112
                         },
                         new
                         {
                             Id = 2,
-                            Amount = 498.92m,
-                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5471),
-                            Description = "Description 2",
+                            Amount = 87.8m,
+                            Date = new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3716),
+                            Description = "Tool purchase",
                             ReferenceId = 132,
                             ToolId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Amount = 188.07m,
+                            Date = new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3719),
+                            Description = "Circular saw service",
+                            MaintenanceRecordId = 4,
+                            ReferenceId = 132
                         });
                 });
 
@@ -112,50 +124,57 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         {
                             Id = 1,
                             Amount = 112m,
-                            Description = "Expense item 1",
+                            Description = "Fuel for Komatsu PC200 excavator",
                             ExpenseId = 1
                         },
                         new
                         {
                             Id = 2,
                             Amount = 212.8m,
-                            Description = "Expense item 2",
+                            Description = "Fuel for Caterpillar 320d excavator",
                             ExpenseId = 1
                         },
                         new
                         {
                             Id = 3,
                             Amount = 723.2m,
-                            Description = "Expense item 3",
+                            Description = "Food",
                             ExpenseId = 1
                         },
                         new
                         {
                             Id = 4,
                             Amount = 10.5m,
-                            Description = "Expense item 4",
+                            Description = "Hydraulic fluid for Komatsu PC200 excavator",
                             ExpenseId = 1
                         },
                         new
                         {
                             Id = 5,
                             Amount = 11.12m,
-                            Description = "Expense item 5",
+                            Description = "Renting dump truck",
                             ExpenseId = 1
                         },
                         new
                         {
                             Id = 6,
                             Amount = 87.8m,
-                            Description = "Expense item 6",
+                            Description = "Mallet purchase",
                             ExpenseId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Amount = 24.3m,
-                            Description = "Expense item 7",
-                            ExpenseId = 2
+                            Amount = 87.15m,
+                            Description = "Circular Saw",
+                            ExpenseId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Amount = 100.92m,
+                            Description = "Oil",
+                            ExpenseId = 3
                         });
                 });
 
@@ -188,6 +207,9 @@ namespace Finance.Infrastructure.Persistance.Migrations
                     b.Property<int>("MaintenanceRecordId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ToolId")
                         .HasColumnType("integer");
 
@@ -200,24 +222,13 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         {
                             Id = 1,
                             Amount = 1298.92m,
-                            ArticleId = 1,
-                            ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5038),
-                            DueDate = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5043),
-                            MachineryId = 0,
-                            MaintenanceRecordId = 0,
-                            ToolId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 498.92m,
                             ArticleId = 0,
                             ConstructionSiteId = 0,
-                            Date = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5051),
-                            DueDate = new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5052),
+                            Date = new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3564),
+                            DueDate = new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3568),
                             MachineryId = 0,
-                            MaintenanceRecordId = 12,
+                            MaintenanceRecordId = 0,
+                            OrderId = 1,
                             ToolId = 0
                         });
                 });
@@ -251,36 +262,22 @@ namespace Finance.Infrastructure.Persistance.Migrations
                         {
                             Id = 1,
                             Amount = 500m,
-                            Description = "Item 1",
+                            Description = "Cement",
                             InvoiceId = 1
                         },
                         new
                         {
                             Id = 2,
                             Amount = 350m,
-                            Description = "Item 2",
+                            Description = "Parquet floor",
                             InvoiceId = 1
                         },
                         new
                         {
                             Id = 3,
                             Amount = 448.92m,
-                            Description = "Item 3",
+                            Description = "Bricks",
                             InvoiceId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Amount = 200m,
-                            Description = "Item 2.1",
-                            InvoiceId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Amount = 298.92m,
-                            Description = "Item 2.2",
-                            InvoiceId = 2
                         });
                 });
 

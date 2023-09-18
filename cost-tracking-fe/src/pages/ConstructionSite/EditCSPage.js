@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const EditCSPage = () => {
     const { id } = useParams();
@@ -24,7 +25,7 @@ const EditCSPage = () => {
   useEffect(() => {
     const fetchCSData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8001/api/v/ConstructionSite/${id}`);
+            const response = await axios.get(`http://localhost:8001/api/v/ConstructionSite/${id}` , getConfigHeader());
             const apiCSData = response.data.data; 
             const mapperCSData = {
                 Title: apiCSData.title,
@@ -62,7 +63,8 @@ const EditCSPage = () => {
     try {
       const response = await axios.put('http://localhost:8001/api/v/ConstructionSite', {
         Value: formData
-      });
+      }, 
+      getConfigHeader());
       
       if (response.status === 200) {
         console.log('PUT request successful');

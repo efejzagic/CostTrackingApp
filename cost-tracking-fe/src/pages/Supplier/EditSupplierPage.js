@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const EditSupplierPage = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ const EditSupplierPage = () => {
   useEffect(() => {
     const fetchSupplierData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8001/api/v/Supplier/${id}`);
+            const response = await axios.get(`http://localhost:8001/api/v/Supplier/${id}` , getConfigHeader());
             const apiSupplierData = response.data.data; 
             const mappedSupplierData = {
                 Name: apiSupplierData.name,
@@ -87,7 +88,7 @@ const EditSupplierPage = () => {
     try {
       const response = await axios.put('http://localhost:8001/api/v/Supplier', {
         Value: formData
-      });
+      }, getConfigHeader());
       
       if (response.status === 200) {
         console.log('PUT request successful');

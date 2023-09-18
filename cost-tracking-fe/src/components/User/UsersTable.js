@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import StyledPage from '../Styled/StyledPage';
 import Nav from '../Nav/Nav';
+import LoadingCoomponent from '../Loading/LoadingComponent';
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
 
 
@@ -27,9 +29,16 @@ const UserTable = () => {
             Authorization: `Bearer ${token}`,
           },
         });
+        setIsLoading(false);
         console.log("Response", response);
         if (response.status === 200) {
             setUsers(response.data);
+        }
+        else if(response.status === 401) {
+          navigate('/unauthorized');
+        }
+        else if(response.status === 403) {
+          navigate('/forbidden');
         }
         else {
             console.log("else");
@@ -55,6 +64,10 @@ const UserTable = () => {
   return (
    
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {isLoading ? (
+            <LoadingCoomponent loading={isLoading} />
+        ) : (
+          <>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Users
         </Typography>
@@ -96,8 +109,10 @@ const UserTable = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        </>
+        )}
       </Container>
- 
+      
   );
 };
 

@@ -16,6 +16,7 @@ using Equipment.Application.Mappings;
 using Serilog.Events;
 using Serilog;
 using CorrelationIdLibrary.Services;
+using JwtAuthenticationManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddCorrelationIdManager();
+builder.Services.AddCustomJwtAuthentication();
+
 
 var logger = new LoggerConfiguration()
  .MinimumLevel.Information()

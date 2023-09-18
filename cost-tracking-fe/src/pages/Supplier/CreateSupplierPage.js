@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const CreatePage = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const CreatePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Supplier', {
         Value: formData
-      });
+      }, getConfigHeader());
       
       if (response.status === 200) {
         console.log('POST request successful');

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const style = {
@@ -21,6 +23,8 @@ const style = {
 const InvoicePage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const [totalAmount,setTotalAmount] = useState(0.0);
 
@@ -30,8 +34,9 @@ const InvoicePage = () => {
 
   const fetchInvoiceData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Invoice');
+      const response = await axios.get('http://localhost:8001/api/v/Invoice' , getConfigHeader());
       setData(response.data.data);
+      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -39,7 +44,7 @@ const InvoicePage = () => {
 
   const fetchInvoiceTotalAmountData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Invoice/totalAmount');
+      const response = await axios.get('http://localhost:8001/api/v/Invoice/totalAmount' , getConfigHeader());
       setTotalAmount(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -50,6 +55,7 @@ const InvoicePage = () => {
       }
     }
   };
+
 
   useEffect(() => {
     fetchInvoiceData();
@@ -67,12 +73,12 @@ const InvoicePage = () => {
   };
 
   const handleCreate = () => {
-    navigate('/invoice/create');
+    navigate('/Invoice/create');
   };
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Invoice/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Invoice/${selectedItemId}`, getConfigHeader());
       handleClose();
       fetchInvoiceData(); // Refresh data after successful deletion
     } catch (error) {
@@ -86,11 +92,15 @@ const InvoicePage = () => {
     <StyledPage>
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {isLoading ? (
+          <LoadingCoomponent loading={isLoading}/>
+        ): (
+          <>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
-          Invoices
+          Income data
         </Typography>
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
-          Create new invoice
+          Create new Income
         </Button>
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
@@ -110,28 +120,33 @@ const InvoicePage = () => {
                   <TableCell>{item.id}</TableCell>
                   <TableCell>{item.date}</TableCell>
                   <TableCell>{item.dueDate} </TableCell>
-                  <TableCell>{item.amount} KM</TableCell>
-                  <TableCell>
-                    {/* Conditional rendering */}
-                    {item.constructionSiteId !== 0 && (
+                  <TableCell>{item.amount} KM </TableCell>
+                  <TableCell>                   
+                   {/* Conditional rendering */}
+                   {item.constructionSiteId !== 0 && item.constructionSiteId!==null &&(
                       <div>ConstructionSiteId: {item.constructionSiteId}</div>
                     )}
-                    {item.machineryId !== 0 && (
+                    {item.machineryId !== 0 && item.machineryId!==null &&(
                       <div>MachineryId: {item.machineryId}</div>
                     )}
-                    {item.toolId !== 0 && (
+                    {item.toolId !== 0 && item.toolId!==null &&(
                       <div>ToolId: {item.toolId}</div>
                     )}
-                    {item.maintenanceRecordId !== 0 && (
+                    {item.maintenanceRecordId !== 0 && item.maintenanceRecordId!==null && (
                       <div>MaintenanceRecordId: {item.maintenanceRecordId}</div>
                     )}
-                       {item.articleId !== 0 && (
+                       {item.articleId !== 0 && item.articleId!==null &&(
                       <div>ArticleId: {item.articleId}</div>
+                    )}
+                    {item.orderId !== 0 && item.orderId!==null && (
+                      <div>OrderId: {item.orderId}</div>
                     )}
                   </TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
-                      
+                    <Button variant="outlined" color="primary" size="small">
+                        <Link to={`/Invoice/${item.id}/details`}>Details</Link>
+                      </Button>
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete
                       </Button>
@@ -141,13 +156,12 @@ const InvoicePage = () => {
                 </TableRow>
               ))}
 
-              <TableRow >
-              <TableCell colSpan={3} /> {/* Empty cells to align with amount column */}
-              <TableCell>{totalAmount.toFixed(2)} KM</TableCell>
-                </TableRow>
-            </TableBody>
+              </TableBody>
+            
           </Table>
         </TableContainer>
+        </>
+        )}
       </Container>
       <Modal
         open={open}

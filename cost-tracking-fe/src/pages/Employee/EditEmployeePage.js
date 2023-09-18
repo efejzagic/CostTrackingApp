@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const EditEmployeePage = () => {
     const { id } = useParams();
@@ -29,7 +30,7 @@ const EditEmployeePage = () => {
   useEffect(() => {
     const fetchEmployeeData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8001/api/v/Employee/${id}`);
+            const response = await axios.get(`http://localhost:8001/api/v/Employee/${id}`, getConfigHeader());
             const apiEmployeeData = response.data.data; 
             const mapperEmployeeData = {
                 Name: apiEmployeeData.name,
@@ -71,7 +72,7 @@ const EditEmployeePage = () => {
     try {
       const response = await axios.put('http://localhost:8001/api/v/Employee', {
         Value: formData
-      });
+      } , getConfigHeader());
       
       if (response.status === 200) {
         console.log('PUT request successful');

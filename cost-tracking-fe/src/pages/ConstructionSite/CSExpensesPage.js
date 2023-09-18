@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { toast } from 'react-toastify';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const style = {
@@ -23,17 +26,22 @@ const CSExpensesPage = () => {
   const navigate = useNavigate();
 
   const [totalAmount,setTotalAmount] = useState(0.0);
-
+  const [isLoading, setIsLoading] = useState(true);
 
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const fetchExpenseData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/ConstructionSiteExpense/cs/expenses');
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSiteExpense/cs/expenses' , getConfigHeader());
       setData(response.data);
+      setIsLoading(false);
+
     } catch (error) {
       console.error('Error fetching data:', error);
+      toast.error("Data fetch error");
+      setIsLoading(false);
+
     }
   };
 
@@ -72,7 +80,7 @@ const CSExpensesPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`, getConfigHeader());
       handleClose();
       fetchExpenseData(); // Refresh data after successful deletion
     } catch (error) {
@@ -92,6 +100,11 @@ const CSExpensesPage = () => {
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
           Create new Expense
         </Button>
+        {isLoading ? (
+            <LoadingCoomponent loading={isLoading} />
+        ): (
+
+       
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -132,6 +145,7 @@ const CSExpensesPage = () => {
                       </TableBody>
           </Table>
         </TableContainer>
+         )}
       </Container>
       <Modal
         open={open}

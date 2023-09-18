@@ -14,16 +14,19 @@ import {
 } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const ExpenseDetailsPage = () => {
   const { id } = useParams();
   const [expense, setExpense] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchExpenseDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8001/api/v/Expense/${id}`);
+        const response = await axios.get(`http://localhost:8001/api/v/Expense/${id}` , getConfigHeader());
         setExpense(response.data.data); // Assuming the response data matches your Expense model
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching expense details:', error);
       }
@@ -98,9 +101,7 @@ const ExpenseDetailsPage = () => {
           </Paper>
         </>
       ) : (
-        <Typography variant="body1" gutterBottom>
-          Loading...
-        </Typography>
+       <LoadingCoomponent loading={isLoading} />
       )}
       <Button component={Link} to="/expense" variant="outlined" color="primary" style={{ marginTop: '1rem' }}>
         Back to Expenses

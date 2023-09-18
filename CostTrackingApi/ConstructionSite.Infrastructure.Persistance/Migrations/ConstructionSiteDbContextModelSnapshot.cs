@@ -57,20 +57,29 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "Address 1",
-                            City = "City 1",
-                            Country = "Country 1",
-                            Description = "Description 1",
-                            Title = "Construction Site 1"
+                            Address = "Južni logor",
+                            City = "Mostar",
+                            Country = "Bosnia and Herzegovina",
+                            Description = "",
+                            Title = "Olympic swimming pool"
                         },
                         new
                         {
                             Id = 2,
-                            Address = "Address 2",
-                            City = "City 2",
-                            Country = "Country 2",
-                            Description = "Description 2",
-                            Title = "Construction Site 2"
+                            Address = "Socijalno",
+                            City = "Sarajevo",
+                            Country = "Bosnia and Herzegovina",
+                            Description = "",
+                            Title = "Tram line"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Maršala Tita",
+                            City = "Konjic",
+                            Country = "Bosnia and Herzegovina",
+                            Description = "",
+                            Title = "Road paving"
                         });
                 });
 

@@ -4,6 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { toast } from 'react-toastify';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -21,7 +24,7 @@ const CSExpensePageId = () => {
   const { id }= useParams();
   const [data, setData] = useState({ cs: {}, expense: [] }); // Initialize with an empty object and array
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [totalAmount, setTotalAmount] = useState(0.0);
 
   const [open, setOpen] = useState(false);
@@ -29,9 +32,12 @@ const CSExpensePageId = () => {
 
   const fetchExpenseData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8001/api/v/ConstructionSiteExpense/cs/expenses/${id}`);
+      const response = await axios.get(`http://localhost:8001/api/v/ConstructionSiteExpense/cs/expenses/${id}` , getConfigHeader());
       setData(response.data); // Update with the response data
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
+      toast.error("Data fetch error");
       console.error('Error fetching data:', error);
     }
   };
@@ -74,6 +80,9 @@ const CSExpensePageId = () => {
           <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
             Create new Expense
           </Button>
+          {isLoading ? (
+            <LoadingCoomponent loading={isLoading} /> 
+          ) : (
           <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
             <Table style={{ minWidth: 800 }}>
               <TableHead>
@@ -134,6 +143,7 @@ const CSExpensePageId = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        )}
       </Container>
       <Modal
         open={open}

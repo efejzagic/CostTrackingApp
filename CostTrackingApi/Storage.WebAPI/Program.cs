@@ -20,6 +20,7 @@ using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
 using CorrelationIdLibrary.Services;
+using Storage.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,7 +109,7 @@ builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new ArticleProfile(provider.GetService<ISupplierRepository>()));
     cfg.AddProfile(new SupplierProfile(provider.GetService<IArticleRepository>()));
-    cfg.AddProfile(new OrderProfile(provider.GetService<IOrderRepository>()));
+    cfg.AddProfile(new OrderProfile(provider.GetService<IOrderRepository>(), provider.GetService<IGenericRepositoryAsync<Article>>()));
 
 }).CreateMapper());
 

@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const EditArticlePage = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ const EditArticlePage = () => {
   useEffect(() => {
     const fetchArticleData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8001/api/v/Article/${id}`);
+            const response = await axios.get(`http://localhost:8001/api/v/Article/${id}`, getConfigHeader());
             const apiArticleData = response.data.data; 
             console.log("article data: " , response.data.data);
             const mapperArticleData = {
@@ -64,7 +65,7 @@ const EditArticlePage = () => {
     try {
       const response = await axios.put('http://localhost:8001/api/v/Article', {
         Value: formData
-      });
+      }, getConfigHeader());
       
       if (response.status === 200) {
         console.log('PUT request successful');
@@ -87,7 +88,7 @@ const EditArticlePage = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Supplier');
+      const response = await axios.get('http://localhost:8001/api/v/Supplier', getConfigHeader());
       console.log("Suppliers: " , response.data.data );
       setSuppliers(response.data.data);
     } catch (error) {

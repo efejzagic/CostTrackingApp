@@ -13,6 +13,7 @@ namespace Finance.WebAPI.Controllers
 
 
     //[ApiVersion("1.0")]
+    [Authorize(Roles = "Finance")]
     public class InvoiceController : BaseApiController
     {
 

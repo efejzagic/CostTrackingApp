@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { toast } from 'react-toastify';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -23,17 +26,37 @@ const CSPage = () => {
 
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   const fetchCSData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
-      setData(response.data.data);
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite', getConfigHeader());
+      console.log(response);
+      if(response.status === 200) {
+        setData(response.data.data);
+      }
+      else if(response.status === 401) {
+        navigate('/unauthorized');
+      }
+      else if(response.status === 403) {
+        navigate('/forbidden');
+      }
+      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
+      setIsLoading(false);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
         // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
+      }
+      if (error.response.status === 403) {
+        console.log("Unauthorized access");
+        // Redirect to unauthorized page or handle the unauthorized access scenario
+        navigate('/forbidden');
+      }
+      else {
+        toast.error("Data fetch error");
       }
     }
   };
@@ -58,7 +81,7 @@ const CSPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/ConstructionSite/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/ConstructionSite/${selectedItemId}` , getConfigHeader());
       handleClose();
       fetchCSData(); // Refresh data after successful deletion
     } catch (error) {
@@ -71,6 +94,10 @@ const CSPage = () => {
     <>
       <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {isLoading ? (
+          <LoadingCoomponent loading={isLoading} />
+        ) : (
+          <>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Construction Site Data
         </Typography>
@@ -133,6 +160,8 @@ const CSPage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        </>
+        )}
       </Container>
       <Modal
         open={open}

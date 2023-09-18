@@ -28,6 +28,10 @@ namespace Finance.Application.Features.Expense.Commands
 
         public async Task<ResponseInfo.Entities.Response<string>> Handle(CreateExpenseCommand request, CancellationToken cancellationToken)
         {
+            foreach (var item in request.Value.Items)
+            {
+                request.Value.Amount += item.Amount;
+            }
             var enviroment = _mapper.Map<Domain.Entities.Expense>(request.Value);
             await _Repository.AddAsync(enviroment);
             return new ResponseInfo.Entities.Response<string>(enviroment.Id.ToString());

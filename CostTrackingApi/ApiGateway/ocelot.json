@@ -294,6 +294,18 @@
       "DownstreamPathTemplate": "/api/v/Article/name/{name}"
     },
     {
+      "UpstreamPathTemplate": "/api/v/Article/updateQuantity",
+      "UpstreamHttpMethod": [ "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Article/updateQuantity"
+    },
+    {
       "UpstreamPathTemplate": "/api/v/Supplier",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamScheme": "http",
@@ -328,6 +340,30 @@
         }
       ],
       "DownstreamPathTemplate": "/api/v/Supplier/name/{name}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Order",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Order"
+    },
+    {
+      "UpstreamPathTemplate": "/api/v/Order/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "storage.webapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/Order/{id}"
     },
     {
       "UpstreamPathTemplate": "/api/v/ConstructionSite/test",
@@ -416,7 +452,18 @@
 
     },
 
-
+    {
+      "UpstreamPathTemplate": "/api/v/OrderExpense",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "apigateway.combine",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/v/OrderExpense"
+    },
     {
       "UpstreamPathTemplate": "/api/v/Test/combined",
       "UpstreamHttpMethod": [ "Get" ],
@@ -454,7 +501,7 @@
       "DownstreamPathTemplate": "/api/v/ConstructionSiteExpense/cs/expenses/{csId}"
     }
 
-    
+
 
 
   ],

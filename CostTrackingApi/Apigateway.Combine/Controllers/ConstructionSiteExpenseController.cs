@@ -22,14 +22,26 @@ namespace Apigateway.Combine.Controllers
         [HttpGet("cs/expenses")]
         public async Task<IActionResult> GetCombinedData()
         {
-            var response = await _constructionSiteExpenseService.GetConstructionSiteExpenses();
-
-            if (response != null)
+            try
             {
-                return Ok(response);
+                var response = await _constructionSiteExpenseService.GetConstructionSiteExpenses();
+
+                if (response != null)
+                {
+                    return Ok(response);
+                }
+                return StatusCode(500, "Unknown error");
             }
 
-            return StatusCode(500, new { Message = "An error occurred" });
+            catch (UnauthorizedAccessException unex) 
+            {
+                return StatusCode(401, "Unaothorized access");
+            }
+
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(401, "Forbidden access");
+            }
         }
 
 

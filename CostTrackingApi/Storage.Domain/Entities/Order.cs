@@ -17,7 +17,17 @@ namespace Storage.Domain.Entities
         [Required]
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 
+        public DateTime ShippingDate {get; set; }
+
+        public bool OrderComplete { get; set; } = false;
+
+
+        public double TotalAmount { get; set; }
+
         public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+
+
+
     }
 
     public class OrderItem
@@ -27,6 +37,8 @@ namespace Storage.Domain.Entities
 
         [Required]
         public int ArticleId { get; set; }
+
+        public string ArticleName { get; set; }
 
         [Required]
         public int Quantity { get; set; }
@@ -41,4 +53,5 @@ namespace Storage.Domain.Entities
         public Order Order { get; set; }
     }
 
+    
 }

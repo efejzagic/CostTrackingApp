@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Finance.Infrastructure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class ExpenseItem : Migration
+    public partial class newseeddata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,7 +28,8 @@ namespace Finance.Infrastructure.Persistance.Migrations
                     MachineryId = table.Column<int>(type: "integer", nullable: true),
                     ToolId = table.Column<int>(type: "integer", nullable: true),
                     MaintenanceRecordId = table.Column<int>(type: "integer", nullable: true),
-                    ArticleId = table.Column<int>(type: "integer", nullable: true)
+                    ArticleId = table.Column<int>(type: "integer", nullable: true),
+                    OrderId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,7 +49,8 @@ namespace Finance.Infrastructure.Persistance.Migrations
                     MachineryId = table.Column<int>(type: "integer", nullable: false),
                     ToolId = table.Column<int>(type: "integer", nullable: false),
                     MaintenanceRecordId = table.Column<int>(type: "integer", nullable: false),
-                    ArticleId = table.Column<int>(type: "integer", nullable: false)
+                    ArticleId = table.Column<int>(type: "integer", nullable: false),
+                    OrderId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,34 +101,32 @@ namespace Finance.Infrastructure.Persistance.Migrations
 
             migrationBuilder.InsertData(
                 table: "Expense",
-                columns: new[] { "Id", "Amount", "ArticleId", "ConstructionSiteId", "Date", "Description", "MachineryId", "MaintenanceRecordId", "ReferenceId", "ToolId" },
+                columns: new[] { "Id", "Amount", "ArticleId", "ConstructionSiteId", "Date", "Description", "MachineryId", "MaintenanceRecordId", "OrderId", "ReferenceId", "ToolId" },
                 values: new object[,]
                 {
-                    { 1, 1298.92m, null, 1, new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5460), "Description 1", null, null, 1112, null },
-                    { 2, 498.92m, null, null, new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5471), "Description 2", null, null, 132, 2 }
+                    { 1, 1059.12m, null, 1, new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3710), "Mostar Olymic pool expenses", null, null, null, 1112, null },
+                    { 2, 87.8m, null, null, new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3716), "Tool purchase", null, null, null, 132, 2 },
+                    { 3, 188.07m, null, null, new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3719), "Circular saw service", null, 4, null, 132, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Invoice",
-                columns: new[] { "Id", "Amount", "ArticleId", "ConstructionSiteId", "Date", "DueDate", "MachineryId", "MaintenanceRecordId", "ToolId" },
-                values: new object[,]
-                {
-                    { 1, 1298.92m, 1, 0, new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5038), new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5043), 0, 0, 0 },
-                    { 2, 498.92m, 0, 0, new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5051), new DateTime(2023, 9, 10, 23, 31, 16, 608, DateTimeKind.Utc).AddTicks(5052), 0, 12, 0 }
-                });
+                columns: new[] { "Id", "Amount", "ArticleId", "ConstructionSiteId", "Date", "DueDate", "MachineryId", "MaintenanceRecordId", "OrderId", "ToolId" },
+                values: new object[] { 1, 1298.92m, 0, 0, new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3564), new DateTime(2023, 9, 17, 15, 28, 57, 39, DateTimeKind.Utc).AddTicks(3568), 0, 0, 1, 0 });
 
             migrationBuilder.InsertData(
                 table: "ExpenseItems",
                 columns: new[] { "Id", "Amount", "Description", "ExpenseId" },
                 values: new object[,]
                 {
-                    { 1, 112m, "Expense item 1", 1 },
-                    { 2, 212.8m, "Expense item 2", 1 },
-                    { 3, 723.2m, "Expense item 3", 1 },
-                    { 4, 10.5m, "Expense item 4", 1 },
-                    { 5, 11.12m, "Expense item 5", 1 },
-                    { 6, 87.8m, "Expense item 6", 2 },
-                    { 7, 24.3m, "Expense item 7", 2 }
+                    { 1, 112m, "Fuel for Komatsu PC200 excavator", 1 },
+                    { 2, 212.8m, "Fuel for Caterpillar 320d excavator", 1 },
+                    { 3, 723.2m, "Food", 1 },
+                    { 4, 10.5m, "Hydraulic fluid for Komatsu PC200 excavator", 1 },
+                    { 5, 11.12m, "Renting dump truck", 1 },
+                    { 6, 87.8m, "Mallet purchase", 2 },
+                    { 7, 87.15m, "Circular Saw", 3 },
+                    { 8, 100.92m, "Oil", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -134,11 +134,9 @@ namespace Finance.Infrastructure.Persistance.Migrations
                 columns: new[] { "Id", "Amount", "Description", "InvoiceId" },
                 values: new object[,]
                 {
-                    { 1, 500m, "Item 1", 1 },
-                    { 2, 350m, "Item 2", 1 },
-                    { 3, 448.92m, "Item 3", 1 },
-                    { 4, 200m, "Item 2.1", 2 },
-                    { 5, 298.92m, "Item 2.2", 2 }
+                    { 1, 500m, "Cement", 1 },
+                    { 2, 350m, "Parquet floor", 1 },
+                    { 3, 448.92m, "Bricks", 1 }
                 });
 
             migrationBuilder.CreateIndex(

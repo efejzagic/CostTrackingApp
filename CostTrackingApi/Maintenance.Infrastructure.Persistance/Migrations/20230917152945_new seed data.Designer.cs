@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Maintenance.Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(MaintenanceDbContext))]
-    [Migration("20230910235202_MR EId")]
-    partial class MREId
+    [Migration("20230917152945_new seed data")]
+    partial class newseeddata
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,24 +69,57 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Record for machine SN2023",
+                            Description = "Service record for Komatsu excavator KPC200",
                             MachineryId = 1,
-                            Name = "MR 1",
-                            Price = 120.40000000000001,
+                            Name = "Komatsu PC200 maintenance",
+                            Price = 340.0,
                             Status = "Completed",
-                            Technician = "User 1",
-                            Timestamp = new DateTime(2023, 9, 10, 23, 52, 2, 390, DateTimeKind.Utc).AddTicks(9078)
+                            Technician = "Emil Fejzagić",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8509)
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Record for tool SN2021",
-                            Name = "MR 2",
+                            Description = "Service record for BOMAG roller compactor BAC200",
+                            MachineryId = 8,
+                            Name = "BOMAG roller compactor",
+                            Price = 120.40000000000001,
+                            Status = "Pending",
+                            Technician = "Emil Fejzagić",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8515)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Service record for Caterpillar AP SN: CAP300",
+                            MachineryId = 6,
+                            Name = "Caterpillar AP maintenance",
+                            Price = 280.89999999999998,
+                            Status = "Completed",
+                            Technician = "Emil Fejzagić",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8517)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Service record for circular saw",
+                            Name = "Circular Saw",
                             Price = 87.150000000000006,
                             Status = "Pending",
-                            Technician = "User 2",
-                            Timestamp = new DateTime(2023, 9, 10, 23, 52, 2, 390, DateTimeKind.Utc).AddTicks(9098),
+                            Technician = "Mirza Zukanović",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8519),
                             ToolId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Service record for cordless Dril",
+                            Name = "Cordless Dril",
+                            Price = 12.35,
+                            Status = "Completed",
+                            Technician = "Mirza Zukanović",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8521),
+                            ToolId = 6
                         });
                 });
 #pragma warning restore 612, 618

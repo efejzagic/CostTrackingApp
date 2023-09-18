@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import StyledPage from '../../components/Styled/StyledPage';
+import { toast } from 'react-toastify';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -22,6 +25,8 @@ const ArticlePage = () => {
 
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
   const navigate = useNavigate ();
   const fetchArticleData = async () => {
     try {
@@ -39,7 +44,7 @@ const ArticlePage = () => {
         };
   
       const response = await axios.get('http://localhost:8001/api/v/Article', config);
-
+        setIsLoading(false);
       if (response.status === 401) {
         console.log("Unauthorized access");
         // Redirect to unauthorized page or handle the unauthorized access scenario
@@ -48,11 +53,15 @@ const ArticlePage = () => {
         setData(response.data.data);
       }
     } catch (error) {
+      setIsLoading(false);
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
         // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
+      }
+      else {
+        toast.error("Data fetch error");
       }
     }
   };
@@ -77,7 +86,7 @@ const ArticlePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}`, getConfigHeader());
       handleClose();
       fetchArticleData(); // Refresh data after successful deletion
     } catch (error) {
@@ -96,10 +105,27 @@ const ArticlePage = () => {
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Articles
         </Typography>
-        <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
-          Create New
-        </Button>
-        <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <div>
+              <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
+                Create New
+              </Button>
+            </div>
+            <div>
+
+              <Button variant="contained" onClick={() => navigate('/order')} color="primary" style={{ marginBottom: '1rem', marginLeft: '1rem' }}>
+                Order
+              </Button>
+              <Button variant="contained" onClick={() => navigate('/order/history')} color="primary" style={{ marginBottom: '1rem', marginLeft: '1rem' }}>
+                Order History
+              </Button>
+            </div>
+          </div>
+          {isLoading ? (
+            <LoadingCoomponent loading={isLoading} />
+          ) : (
+
+          <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
               <TableRow>
@@ -138,6 +164,8 @@ const ArticlePage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        
+        )}
       </Container>
       <Modal
         open={open}

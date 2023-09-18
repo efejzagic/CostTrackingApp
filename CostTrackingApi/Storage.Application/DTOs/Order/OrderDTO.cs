@@ -14,6 +14,13 @@ namespace Storage.Application.DTOs.Order
 
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
 
+        public DateTime ShippingDate { get; set; }
+
+        public bool OrderComplete { get; set; }
+
+
+        public double TotalAmount { get; set; }
+
         public List<Domain.Entities.OrderItem> OrderItems { get; set; }
 
     }

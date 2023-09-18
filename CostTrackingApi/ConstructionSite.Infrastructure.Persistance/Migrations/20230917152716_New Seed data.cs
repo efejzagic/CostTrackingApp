@@ -3,10 +3,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ConstructionSite.Infrastructure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class cs_init : Migration
+    public partial class NewSeeddata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,6 +55,25 @@ namespace ConstructionSite.Infrastructure.Persistance.Migrations
                         principalTable: "ConstructionSite",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ConstructionSite",
+                columns: new[] { "Id", "Address", "City", "Country", "Description", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Južni logor", "Mostar", "Bosnia and Herzegovina", "", "Olympic swimming pool" },
+                    { 2, "Socijalno", "Sarajevo", "Bosnia and Herzegovina", "", "Tram line" },
+                    { 3, "Maršala Tita", "Konjic", "Bosnia and Herzegovina", "", "Road paving" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Employee",
+                columns: new[] { "Id", "Address", "City", "ConstructionSiteId", "Country", "HourlyRate", "HoursOfWork", "Name", "Salary", "Surname" },
+                values: new object[,]
+                {
+                    { 1, "Address 1", "City 1", 1, "Country 1", 15.5, 8, "User", 2700.0, "One" },
+                    { 2, "Address 2", "City 2", 2, "Country 2", 12.5, 7, "Test", 1920.5, "Two" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -19,9 +19,12 @@ namespace Storage.Application.Mappings
     public class OrderProfile : Profile
     {
         private readonly IOrderRepository _OrderRepo;
-        public OrderProfile(IOrderRepository OrderRepo)
+        private readonly IGenericRepositoryAsync<Article> _ArticleRepo;
+
+        public OrderProfile(IOrderRepository OrderRepo, IGenericRepositoryAsync<Article> articleRepo)
         {
             _OrderRepo = OrderRepo;
+            _ArticleRepo = articleRepo;
 
             CreateMap<GetAllOrderQuery, OrderDTO>();
             CreateMap<GetOrderByIdQuery, OrderDTO>();
@@ -29,6 +32,8 @@ namespace Storage.Application.Mappings
             CreateMap<EditOrderDTO, Order>();
             CreateMap<DeleteOrderCommand, Order>();
             CreateMap<CreateOrderDTO, Order>();
+            CreateMap<OrderItemDTO, OrderItem>()
+                .ForMember(d => d.Article, opt => opt.MapFrom(src => _ArticleRepo.GetByIdAsync(src.ArticleId).Result));
             CreateMap<EditOrderDTO, Order>();
             CreateMap<Order, OrderDTO>()
               .PreserveReferences()
@@ -42,10 +47,13 @@ namespace Storage.Application.Mappings
      .ForMember(dest => dest.Order, opt => opt.Ignore());
             CreateMap<EditOrderItemDTO, OrderItem>()
                  .ForMember(dest => dest.Order, opt => opt.Ignore());
-            CreateMap<DeleteOrderItemCommand,OrderItem>();
+            CreateMap<DeleteOrderItemCommand, OrderItem>();
+            CreateMap<SetOrderCompleteCommand, OrderItem>();
             CreateMap<OrderItem, OrderItemDTO>();
             CreateMap<CreateOrderItemDTO, OrderItem>();
 
+            
+            
         }
     }
 }

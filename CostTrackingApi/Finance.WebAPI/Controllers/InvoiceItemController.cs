@@ -4,10 +4,12 @@ using Finance.Application.Features.InvoiceItem.Commands;
 using Finance.Application.Parameters.InvoiceItem;
 using Microsoft.AspNetCore.Mvc;
 using Finance.Application.Features.InvoiceItem.Queries;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Finance.WebAPI.Controllers
 {
     //[ApiVersion("1.0")]
+    [Authorize(Roles = "Finance")]
     public class InvoiceItemController : BaseApiController
     {
         [HttpGet]

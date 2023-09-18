@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -31,7 +32,7 @@ const SupplierArticles = () => {
     try {
         const baseURL = 'http://localhost:8001/api/v/Supplier/';
         const url = `${baseURL}${id}`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, getConfigHeader());
         console.log("data 1", response.data.data);
         setArticles(response.data.data.articles);
         setData(response.data.data);
@@ -60,7 +61,7 @@ const SupplierArticles = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}` , getConfigHeader());
       handleClose();
       fetchArticleData(); // Refresh data after successful deletion
     } catch (error) {
