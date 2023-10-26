@@ -18,18 +18,17 @@ using JwtAuthenticationManager;
 using Serilog;
 using Serilog.Events;
 using CorrelationIdLibrary.Services;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+Env.Load();
 
-// Add services to the container.
 
 builder.Services.AddControllers()
                 .AddFluentValidation(options =>
                 {
-                    // Validate child properties and root collection elements
                     options.ImplicitlyValidateChildProperties = true;
                     options.ImplicitlyValidateRootCollectionElements = true;
-                    // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
 
@@ -44,7 +43,7 @@ var logger = new LoggerConfiguration()
             .WriteTo.PostgreSQL(
                 connectionString: "Host=finance-db;Port=5432;Database=fndb;Username=postgres;Password=password;",
                 tableName: "Logs",
-                needAutoCreateTable: true) // Create the table if it doesn't exist
+                needAutoCreateTable: true) 
             .CreateLogger();
 
 
@@ -71,7 +70,6 @@ builder.Services.AddPersistence(builder.Configuration);
 
 builder.Services.AddCorrelationIdManager();
 
-//builder.Services.AddApplication();
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>
 //{
@@ -89,7 +87,7 @@ builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 
-builder.Services.AddAutoMapper(typeof(Finance.Application.MediatorClass)); // Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Finance.Application.MediatorClass)); 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
     cfg.AddProfile(new InvoiceProfile(provider.GetService<IInvoiceRepository>()));
@@ -112,23 +110,17 @@ RetryHelper.RetryConnection(() =>
 });
 #endregion
 #region Swagger
-// Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
-// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-// specifying the Swagger JSON endpoint.
 app.UseSwaggerUI(c =>
 {
-    //c.SwaggerEndpoint("/swagger/v1/swagger.yaml", "CostTrackingApi");
-    //c.RoutePrefix = string.Empty;
+
 });
 #endregion
 
-// Configure the HTTP request pipeline.
 app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 
 app.MapControllers();
-//app.ApplyMigrations(builder.Configuration.)
 app.UseHealthChecks("/health");
 app.Run();

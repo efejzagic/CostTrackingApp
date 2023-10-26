@@ -37,9 +37,6 @@ namespace Finance.Infrastructure.Persistance.Context
 
         public static void Seed(ModelBuilder builder)
         {
-
-            //Seed Invoices
-
             var invoices = new List<Invoice>()
             {
                 new Invoice() {Id = 1 , Date = DateTime.UtcNow , DueDate = DateTime.UtcNow, Amount = 1298.92M, OrderId = 1},

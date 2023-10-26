@@ -18,14 +18,10 @@ namespace Auth.WebAPI.Controllers
 
     public class AccountController : BaseApiController
     {
-        private readonly JwtTokenHandler _jwtTokenHandler;
-        private readonly IHttpClientFactory _httpClientFactory;
 
-        public AccountController(JwtTokenHandler jwtTokenHandler, IHttpClientFactory httpClientFactory)
-        {
-            _jwtTokenHandler = jwtTokenHandler;
-            _httpClientFactory = httpClientFactory;
-        }
+
+        public AccountController(){ }
+
         [Authorize]
         [HttpGet("test")]
         public async Task<IActionResult> Test()
@@ -36,21 +32,7 @@ namespace Auth.WebAPI.Controllers
         [HttpGet("all-users")]
         public async Task<IActionResult> GetAllUsers([FromQuery] GetAuthParameter filter)
         {
-
             return Ok(await Mediator.Send(new GetAllUsersQuery() { PageSize = filter.PageSize, PageNumber = filter.PageNumber }));
-
-            //try
-            //{
-
-
-            //    //var response = await _jwtTokenHandler.GetAllUsers();
-            //    if (response == null) return Unauthorized();
-            //    return Ok(response);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Unauthorized();
-        
         }
         [HttpGet("roles")]
         [AllowAnonymous]

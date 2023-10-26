@@ -18,18 +18,17 @@ using Serilog.Events;
 using Serilog;
 using CorrelationIdLibrary.Services;
 using JwtAuthenticationManager;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+Env.Load();
 
-// Add services to the container.
 
 builder.Services.AddControllers()
                 .AddFluentValidation(options =>
                 {
-                    // Validate child properties and root collection elements
                     options.ImplicitlyValidateChildProperties = true;
                     options.ImplicitlyValidateRootCollectionElements = true;
-                    // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
 
@@ -42,7 +41,7 @@ var logger = new LoggerConfiguration()
             .WriteTo.PostgreSQL(
                 connectionString: "Host=maintenance-db;Port=5432;Database=mndb;Username=postgres;Password=password;",
                 tableName: "Logs",
-                needAutoCreateTable: true) // Create the table if it doesn't exist
+                needAutoCreateTable: true) 
             .CreateLogger();
 
 
@@ -72,7 +71,6 @@ builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddCustomJwtAuthentication();
 
-//builder.Services.AddApplication();
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>
 //{
@@ -90,7 +88,7 @@ builder.Services.AddCustomJwtAuthentication();
 builder.Services.AddCorrelationIdManager();
 
 
-builder.Services.AddAutoMapper(typeof(MediatorClass)); // Register AutoMapper
+builder.Services.AddAutoMapper(typeof(MediatorClass)); 
 
 builder.Services.AddMediatR(typeof(MediatorClass).Assembly);
 
@@ -109,23 +107,16 @@ RetryHelper.RetryConnection(() =>
 });
 #endregion
 #region Swagger
-// Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
-// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-// specifying the Swagger JSON endpoint.
 app.UseSwaggerUI(c =>
 {
-    //c.SwaggerEndpoint("/swagger/v1/swagger.yaml", "CostTrackingApi");
-    //c.RoutePrefix = string.Empty;
 });
 #endregion
 
-// Configure the HTTP request pipeline.
 app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 
 app.MapControllers();
-//app.ApplyMigrations(builder.Configuration.)
 app.UseHealthChecks("/health");
 app.Run();

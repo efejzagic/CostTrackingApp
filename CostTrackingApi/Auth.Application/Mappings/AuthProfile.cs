@@ -18,8 +18,6 @@ namespace Auth.Application.Mappings
         {
 
             CreateMap<GetAllUsersQuery, KeycloakUser>();
-      
-
             CreateMap<KeycloakUser, GetAuthParameter>();
             CreateMap < GetAllUsersQuery, GetAuthParameter > ();
             CreateMap<GetAllRolesQuery, GetAuthParameter>();

@@ -53,3 +53,5 @@ D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.A
 D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Domain.dll
 D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Application.pdb
 D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Finance.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\DotNetEnv.dll
+D:\CostTrackingApp\CostTrackingApi\Apigateway.Combine\bin\Debug\net7.0\Sprache.dll

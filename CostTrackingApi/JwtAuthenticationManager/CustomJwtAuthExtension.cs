@@ -10,43 +10,30 @@ using System.Threading.Tasks;
 using JwtAuthenticationManager;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using DotNetEnv;
+using Microsoft.IdentityModel.Logging;
+
 namespace JwtAuthenticationManager
 {
-    public static  class CustomJwtAuthExtension
+    public static class CustomJwtAuthExtension
     {
 
         public static void AddCustomJwtAuthentication(this IServiceCollection services)
-        {
-            //services.AddAuthentication(/*o =>
-            //{
-            //    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        { 
 
-            //}*/
-            //    JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
-            //{
-            //    o.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app";
-            //    o.Audience = "cost-tracking-client";
-            //    //o.RequireHttpsMetadata = false;
-            //    //o.SaveToken = true;
-            //    o.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-            //    {
-            //        ValidateIssuer = false, //inace true
-            //        ValidateAudience = false,
-            //        ValidateLifetime = true,
-            //        ValidateIssuerSigningKey = true,
-            //        ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
-            //        ValidAudience = "cost-tracking-client",
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
-            //    };
-            //});
-
+            var realm = Environment.GetEnvironmentVariable("realm");
+            var clientId = Environment.GetEnvironmentVariable("clientId");
+            var clientSecret = Environment.GetEnvironmentVariable("clientSecret");
+            var keycloakUrl = Environment.GetEnvironmentVariable("keycloakUrl");
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       .AddJwtBearer(options =>
       {
-          options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app";
-          options.Audience = "cost-tracking-client"; // The audience to validate against
+          IdentityModelEventSource.ShowPII = true; //Add this line
+          options.Authority = $"{keycloakUrl}/realms/{realm}";
+          //options.Authority = "https://lemur-10.cloud-iam.com/auth/realms/df-app";
+          options.Audience = clientId; // The audience to validate against
+
 
           // Add the token validation parameters
           options.TokenValidationParameters = new TokenValidationParameters
@@ -55,13 +42,12 @@ namespace JwtAuthenticationManager
               ValidateAudience = false,
               ValidateLifetime = true,
               ValidateIssuerSigningKey = true,
-              ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
-              ValidAudience = "cost-tracking-client",
-              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN")),
+              ValidIssuer = $"{keycloakUrl}/realms/{realm}",
+                ValidAudience = clientId,
+              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(clientSecret)),
               SaveSigninToken = true,
           };
       });
-
 
         }
     }

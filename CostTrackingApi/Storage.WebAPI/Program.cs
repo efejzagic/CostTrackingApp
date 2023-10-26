@@ -21,18 +21,17 @@ using Serilog;
 using Serilog.Events;
 using CorrelationIdLibrary.Services;
 using Storage.Domain.Entities;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+Env.Load();
 
-// Add services to the container.
 
 builder.Services.AddControllers()
                 .AddFluentValidation(options =>
                 {
-                    // Validate child properties and root collection elements
                     options.ImplicitlyValidateChildProperties = true;
                     options.ImplicitlyValidateRootCollectionElements = true;
-                    // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
 
@@ -45,7 +44,7 @@ var logger = new LoggerConfiguration()
             .WriteTo.PostgreSQL(
                 connectionString: "Host=storage-db;Port=5432;Database=stgdb;Username=postgres;Password=password;",
                 tableName: "Logs",
-                needAutoCreateTable: true) // Create the table if it doesn't exist
+                needAutoCreateTable: true) 
             .CreateLogger();
 
 
@@ -77,14 +76,12 @@ builder.Services.AddCors(options =>
 
     options.AddDefaultPolicy(builder =>
     {
-        // builder.WithOrigins(frontendURL!).AllowAnyMethod().AllowAnyHeader();
         builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     });
 });
 
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
-//builder.Services.AddApplication();
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>
 //{
@@ -103,7 +100,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 
 
-builder.Services.AddAutoMapper(typeof(Storage.Application.MediatorClass)); // Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Storage.Application.MediatorClass));
 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
@@ -128,25 +125,19 @@ RetryHelper.RetryConnection(() =>
 });
 #endregion
 #region Swagger
-// Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
-// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-// specifying the Swagger JSON endpoint.
 app.UseSwaggerUI(c =>
 {
-    //c.SwaggerEndpoint("/swagger/v1/swagger.yaml", "CostTrackingApi");
-    //c.RoutePrefix = string.Empty;
+
 });
 #endregion
 
-// Configure the HTTP request pipeline.
-//correlationId
+
 app.AddCorrelationIdMiddleware();
 
 app.UseAuthorization();
 app.UseCors();
 
 app.MapControllers();
-//app.ApplyMigrations(builder.Configuration.)
 app.UseHealthChecks("/health");
 app.Run();

@@ -29,16 +29,12 @@ namespace Auth.WebAPI.Controllers
     {
 
         
-        private readonly HttpClient _httpClient;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+
         private readonly JwtTokenHandler _tokenHandler;
 
-        public AuthController(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, 
+        public AuthController(
             JwtTokenHandler tokenHandler)
         {
-            
-            _httpClient = httpClient;
-            _httpContextAccessor = httpContextAccessor;
             _tokenHandler = tokenHandler;
         }
 
@@ -55,8 +51,6 @@ namespace Auth.WebAPI.Controllers
         [Route("Id")]
         public async Task<ResponseInfo.Entities.Response<AuthenticationResponse>> GetUserId()
         {
-         
-
             var userId = await Mediator.Send(new GetCurrentUserIdQuery());
             return userId;
         }
@@ -65,7 +59,6 @@ namespace Auth.WebAPI.Controllers
         [Route("UserData")]
         public async Task<IActionResult> GetUserDataFromKeycloak()
         {
-            //return Ok(_loginService.GetUserData());
             return Ok(await Mediator.Send(new GetUserDataQuery()));
         }
 
@@ -77,7 +70,6 @@ namespace Auth.WebAPI.Controllers
         {
             var response = await _tokenHandler.LoginToken(request);
             return response;
-
         }
 
 
@@ -87,7 +79,6 @@ namespace Auth.WebAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> CreateUser(CreateUserCommand command)
         {
-            //return await _userService.CreateUser(model);
             var response = await Mediator.Send(command);
             return Ok(response);
         }
@@ -98,7 +89,6 @@ namespace Auth.WebAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> EditUser(EditUserCommand command)
         {
-            //return await _userService.EditUser(model);
             var response = await Mediator.Send(command);
             return Ok(response);
         }

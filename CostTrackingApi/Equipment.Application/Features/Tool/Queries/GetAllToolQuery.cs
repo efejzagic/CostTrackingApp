@@ -19,8 +19,6 @@ namespace Equipment.Application.Features.Tool.Queries
         public int PageSize { get; set; }
         public IKey Key { get; set; }
 
-        //public List<MachineryServiceMDTO> ServicingHistory { get; set; }
-
     }
     public class GetAllToolQueryHandler : IRequestHandler<GetAllToolQuery, PagedResponse<IEnumerable<ToolDTO>>>
     {

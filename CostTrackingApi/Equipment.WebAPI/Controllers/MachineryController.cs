@@ -50,7 +50,6 @@ namespace Equipment.WebAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ModelState);
             }
-            //var enviroment = await Mediator.Send(command);
             var enviroment = await Mediator.Send(command);
             return Ok(enviroment);
         }

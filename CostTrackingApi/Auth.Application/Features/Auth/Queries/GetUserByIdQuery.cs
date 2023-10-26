@@ -35,9 +35,6 @@ namespace Auth.Application.Features.Auth.Queries
 
         public async Task<ResponseInfo.Entities.Response<KeycloakUser>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //return new ResponseInfo.Entities.Response<AuthenticationResponse>(userId);
-
             var httpClient = new HttpClient();
             var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
@@ -47,7 +44,6 @@ namespace Auth.Application.Features.Auth.Queries
                 throw new ArgumentNullException();
             }
 
-            // Define the endpoint to get a user by ID
             var endpoint = $"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users/{request.Id}";
 
             try
@@ -58,19 +54,15 @@ namespace Auth.Application.Features.Auth.Queries
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
                     KeycloakUser user = JsonConvert.DeserializeObject<KeycloakUser>(responseString);
-
-                    //var responseJson = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(responseString);
                     return new ResponseInfo.Entities.Response<KeycloakUser>(user);
                 }
                 else
                 {
-                    // Handle error cases
                     throw new Exception($"Failed to get user by ID. Status code: {response.StatusCode}");
                 }
             }
             catch (Exception ex)
             {
-                // Handle exceptions
                 throw ex;
             }
         }

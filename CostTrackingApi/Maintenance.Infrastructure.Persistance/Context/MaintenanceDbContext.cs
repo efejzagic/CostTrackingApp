@@ -23,7 +23,6 @@ namespace Maintenance.Infrastructure.Persistance.Context
         public static void Seed(ModelBuilder builder)
         {
 
-            // Seed Articles
 
             var maintenanceRecord = new List<MaintenanceRecord>()
                 {

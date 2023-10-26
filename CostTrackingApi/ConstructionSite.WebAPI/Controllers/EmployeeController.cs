@@ -33,12 +33,6 @@ namespace ConstructionSite.WebAPI.Controllers
             return Ok(await Mediator.Send(new GetEmployeeByNameQuery { Name= name, Surname = surname}));
         }
 
-        ////[HttpGet("{id}/history")]
-        ////public async Task<IActionResult> GetHistory(string id)
-        ////{
-        ////    return Ok(await Mediator.Send(new GetEnviromentByIdWithHistoryQuery { Id = id }));
-        ////}
-
         [HttpPost]
         public async Task<IActionResult> Post(CreateEmployeeCommand command)
         {

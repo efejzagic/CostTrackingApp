@@ -26,11 +26,6 @@ namespace Finance.WebAPI.Controllers
             return Ok(await Mediator.Send(new GetExpenseByIdQuery { Id = id }));
         }
 
-        //[HttpGet("name/{name}")]
-        //public async Task<IActionResult> Get(string name)
-        //{
-        //    return Ok(await Mediator.Send(new GetMachineryByNameQuery { Name = name }));
-        //}
 
      
         [HttpPost]
@@ -41,7 +36,6 @@ namespace Finance.WebAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ModelState);
             }
-            //var enviroment = await Mediator.Send(command);
             var enviroment = await Mediator.Send(command);
             return Ok(enviroment);
         }

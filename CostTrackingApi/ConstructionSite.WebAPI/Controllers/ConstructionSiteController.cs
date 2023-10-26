@@ -43,12 +43,6 @@ namespace ConstructionSite.WebAPI.Controllers
             return Ok(await Mediator.Send(new GetConstructionByNameQuery { Title = title}));
         }
 
-        ////[HttpGet("{id}/history")]
-        ////public async Task<IActionResult> GetHistory(string id)
-        ////{
-        ////    return Ok(await Mediator.Send(new GetEnviromentByIdWithHistoryQuery { Id = id }));
-        ////}
-
         [HttpPost]
         [Authorize(Roles = "ConstructionSite Manager")]
         public async Task<IActionResult> Post(CreateConstructionSiteCommand command)

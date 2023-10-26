@@ -73,7 +73,6 @@ namespace Auth.Application.Features.Auth.Queries
             if (context != null)
             {
                 var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-                // Your logic here
                 return token;
             }
             return null;

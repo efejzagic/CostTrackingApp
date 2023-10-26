@@ -78,11 +78,8 @@ namespace Auth.Application.Features.Auth.Commands
                 responseResult.EnsureSuccessStatusCode();
 
                 var responseContent = await responseResult.Content.ReadAsStringAsync();
-
-                // Deserialize the response content into the desired type
                 response.Data = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(responseContent);
                 var userId = await GetUserIdByUsername(request.Model.Username);
-                //AssignRolesToUser(userId, request.Model.MultipleRoles);
             }
             catch (Exception ex)
             {
@@ -92,9 +89,7 @@ namespace Auth.Application.Features.Auth.Commands
             }
 
 
-            //return response;
             return response;
-            //return new Response<string>(enviroment.Id.ToString());
         }
 
         private async Task<bool> AssignRolesToUser(string userId, List<Role> MultipleRoles)
@@ -151,7 +146,7 @@ namespace Auth.Application.Features.Auth.Commands
         {
 
 
-            string usernameToSearch = username; // Replace with the Username you want to search
+            string usernameToSearch = username; 
 
             var httpClient = new HttpClient();
             var endpoint = $"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users";
@@ -170,22 +165,18 @@ namespace Auth.Application.Features.Auth.Commands
 
                 if (users.Count > 0)
                 {
-                    string userId = users[0].id; // Assuming UserModel has a property named "Id"
+                    string userId = users[0].id; 
                     return userId;
-                    Console.WriteLine($"User ID for Username '{usernameToSearch}': {userId}");
                 }
                 else
                 {
-                    Console.WriteLine($"No user found with Username '{usernameToSearch}'.");
                     return null;
                 }
             }
             else
             {
-                Console.WriteLine($"Error searching for user. StatusCode: {response.StatusCode}");
                 return null;
             }
-            return null;
 
         }
     }

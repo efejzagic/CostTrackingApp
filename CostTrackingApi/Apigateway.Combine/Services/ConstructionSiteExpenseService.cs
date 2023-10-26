@@ -40,7 +40,6 @@ namespace Apigateway.Combine.Services
 
                     var lista = new List<ExpenseDTO>();
 
-                    // Now you can access the data from the expenseResponse object.
                     foreach (var expense in expenseResponse.Data)
                     {
                         if (expense.ConstructionSiteId != 0 && expense.ConstructionSiteId == csResponse.Data.Id)
@@ -65,7 +64,7 @@ namespace Apigateway.Combine.Services
                 else if (responseA.StatusCode == System.Net.HttpStatusCode.Forbidden
                    || responseB.StatusCode == System.Net.HttpStatusCode.Forbidden)
                 {
-                    throw new HttpRequestException("Forbidden"); // You can provide a more descriptive message
+                    throw new HttpRequestException("Forbidden"); 
                 }
 
                 else

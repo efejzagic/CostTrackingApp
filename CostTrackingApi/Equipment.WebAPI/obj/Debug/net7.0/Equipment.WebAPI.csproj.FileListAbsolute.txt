@@ -119,3 +119,5 @@ D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Auth.Domain
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Auth.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\DotNetEnv.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Sprache.dll

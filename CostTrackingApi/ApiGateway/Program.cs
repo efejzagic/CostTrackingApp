@@ -36,11 +36,9 @@ await app.UseOcelot();
 
 app.UseRouting();
 
-// Other middleware configurations here.
-
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapControllers(); // Ensure that this line is present.
+    endpoints.MapControllers(); 
 });
 
 app.Run();

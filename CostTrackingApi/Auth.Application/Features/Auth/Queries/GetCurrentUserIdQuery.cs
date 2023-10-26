@@ -24,19 +24,12 @@ namespace Auth.Application.Features.Auth.Queries
         public GetCurrentUserIdQueryHandler(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
-           
         }
 
         public async Task<ResponseInfo.Entities.Response<AuthenticationResponse>> Handle(GetCurrentUserIdQuery request, CancellationToken cancellationToken)
         {
             var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return new ResponseInfo.Entities.Response<AuthenticationResponse>(userId);
-
-
         }
-
-
     }
-
-
 }

@@ -81,7 +81,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CorrelationIdLibrary", "Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrelationIdLibrary", "CorrelationIdLibrary\CorrelationIdLibrary.csproj", "{32031DC7-416C-4A8C-8E4D-777CF7FADB21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.UnitTest", "Storage.UnitTest\Storage.UnitTest.csproj", "{16D5AB28-C17C-48A1-AD1C-EC34D79590A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.UnitTest", "Storage.UnitTest\Storage.UnitTest.csproj", "{16D5AB28-C17C-48A1-AD1C-EC34D79590A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{913217F1-4F99-4845-96A5-D41654C88C8A}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -53,10 +53,8 @@ namespace Auth.Application.Features.Auth.Queries
             var response = await httpClient.GetAsync($"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users");
             var responseBody = await response.Content.ReadAsStringAsync();
 
-            // Process the responseBody to extract user data
             try
             {
-                // Deserialize the response JSON into a list of user objects
                 var users = JsonConvert.DeserializeObject<List<KeycloakUser>>(responseBody);
                 var validFilter = _mapper.Map<GetAuthParameter>(request);
 
@@ -75,7 +73,6 @@ namespace Auth.Application.Features.Auth.Queries
             if (context != null)
             {
                 var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-                // Your logic here
                 return token;
             }
             return null;

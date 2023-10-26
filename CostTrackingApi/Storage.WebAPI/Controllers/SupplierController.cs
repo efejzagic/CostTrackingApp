@@ -47,11 +47,7 @@ namespace Storage.WebAPI.Controllers
             return Ok(await Mediator.Send(new GetSupplierByNameQuery { Name = name }));
         }
 
-        //[HttpGet("{id}/history")]
-        //public async Task<IActionResult> GetHistory(string id)
-        //{
-        //    return Ok(await Mediator.Send(new GetEnviromentByIdWithHistoryQuery { Id = id }));
-        //}
+     
 
         
         [HttpPost]
@@ -62,7 +58,6 @@ namespace Storage.WebAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status400BadRequest, ModelState);
             }
-            //var enviroment = await Mediator.Send(command);
             var enviroment = await Mediator.Send(command);
             return Ok(enviroment);
         }
