@@ -18,18 +18,21 @@ namespace Auth.Application.Features.Auth.Commands
     }
     public class LoginRequestCommandHandler : IRequestHandler<LoginTokenCommand, ResponseInfo.Entities.Response<TokenResponse>>
     {
+        private KeycloakConfig keycloakConfig;
         public LoginRequestCommandHandler()
         {
+            keycloakConfig = new KeycloakConfig()
+            {
+                Realm = Environment.GetEnvironmentVariable("realm"),
+                ClientId = Environment.GetEnvironmentVariable("clientId"),
+                ClientSecret = Environment.GetEnvironmentVariable("clientSecret"),
+                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl")
+            };
         }
 
         public async Task<ResponseInfo.Entities.Response<TokenResponse>> Handle(LoginTokenCommand request, CancellationToken cancellationToken)
         {
-            string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
-            string realm = "cost-tracking-app";
-
-            // Configure client credentials
-            string clientId = "cost-tracking-client";
-            string clientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN";
+           
 
             try
             {
@@ -37,14 +40,14 @@ namespace Auth.Application.Features.Auth.Commands
                 using (var client = new HttpClient())
                 {
                     // Prepare the token endpoint URL
-                    var tokenEndpointUrl = $"{keycloakUrl}/realms/{realm}/protocol/openid-connect/token";
+                    var tokenEndpointUrl = $"{keycloakConfig.BaseUrl}/realms/{keycloakConfig.Realm}/protocol/openid-connect/token";
 
                     // Prepare the request body parameters
                     var parameters = new Dictionary<string, string>
                 {
                     { "grant_type", "password" },
-                    { "client_id", clientId },
-                    { "client_secret", clientSecret },
+                    { "client_id", keycloakConfig.ClientId },
+                    { "client_secret", keycloakConfig.ClientSecret },
                     { "username", request.Model.Username },
                     { "password", request.Model.Password }
                 };

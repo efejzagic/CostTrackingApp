@@ -54,3 +54,7 @@ D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\JwtAuthenticatio
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\ResponseInfo.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\ResponseInfo.pdb
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\AutoMapper.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\DotNetEnv.dll
+D:\CostTrackingApp\CostTrackingApi\Auth.WebAPI\bin\Debug\net7.0\Sprache.dll

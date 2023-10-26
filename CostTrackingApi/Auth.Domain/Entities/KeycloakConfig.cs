@@ -1,4 +1,4 @@
-﻿namespace Auth.Domain.Entities
+﻿ namespace Auth.Domain.Entities
 {
     public class KeycloakConfig
     {
@@ -6,5 +6,7 @@
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
         public string BaseUrl { get; set; }
+
+        public string ClientNumber { get; set; }
     }
 }

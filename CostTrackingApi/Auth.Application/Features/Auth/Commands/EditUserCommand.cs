@@ -18,21 +18,23 @@ namespace Auth.Application.Features.Auth.Commands
     public class EditUserCommandHandler : IRequestHandler<EditUserCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private KeycloakConfig keycloakConfig;
         public EditUserCommandHandler(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
+            keycloakConfig = new KeycloakConfig()
+            {
+                Realm = Environment.GetEnvironmentVariable("realm"),
+                ClientId = Environment.GetEnvironmentVariable("clientId"),
+                ClientSecret = Environment.GetEnvironmentVariable("clientSecret"),
+                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl")
+            };
         }
 
         public async Task<ResponseInfo.Entities.Response<string>> Handle(EditUserCommand request, CancellationToken cancellationToken)
         {
             var httpClient = new HttpClient();
-            var keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = "https://lemur-5.cloud-iam.com",
-                Realm = "cost-tracking-app",
-                ClientId = "cost-tracking-client",
-                ClientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"
-            };
+           
 
             var user = new Dictionary<string, object>
             {

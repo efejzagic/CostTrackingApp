@@ -1,7 +1,9 @@
 using Auth.Application;
-using Auth.WebAPI.Services;
+using Auth.Application.Mappings;
+using AutoMapper;
 using JwtAuthenticationManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -14,28 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<LoginService>();
-builder.Services.AddScoped<UserService>();
 
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-      .AddJwtBearer(options =>
-      {
-          options.Authority = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app";
-          options.Audience = "cost-tracking-client"; // The audience to validate against
 
-          // Add the token validation parameters
-          options.TokenValidationParameters = new TokenValidationParameters
-          {
-              ValidateIssuer = true,
-              ValidateAudience = false,
-              ValidateLifetime = true,
-              ValidateIssuerSigningKey = true,
-              ValidIssuer = "https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app",
-              ValidAudience = "cost-tracking-client",
-              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"))
-          };
-      });
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -67,28 +50,23 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddMemoryCache();
 
-builder.Services.AddTransient<ITokenBlacklistService, TokenBlacklistService>();
 builder.Services.AddHttpClient();
 
-//builder.Services.AddCustomJwtAuthentication();
+builder.Services.AddCustomJwtAuthentication();
 
-//builder.Services.AddSwaggerGen(c =>
-//{
-//    c.SwaggerDoc("v1", new OpenApiInfo
-//    {
-//        Contact = new OpenApiContact
-//        {
-//            Name = "Emil Fejzagic",
-//            Email = "efejzagic2@etf.unsa.ba",
-//        },
-//        Version = "v1",
-//        Title = "Cost Tracking API"
-//    });
-//});
+
 
 builder.Services.AddSingleton<JwtTokenHandler>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(MediatorClass).GetTypeInfo().Assembly));
+
+builder.Services.AddAutoMapper(typeof(Auth.Application.MediatorClass)); // Register AutoMapper
+
+builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AuthProfile());
+
+}).CreateMapper());
 
 var app = builder.Build();
 

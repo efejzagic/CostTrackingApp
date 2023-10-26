@@ -86,3 +86,5 @@ D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\Seri
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PostgreSQL.dll
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.dll
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.pdb
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\DotNetEnv.dll
+D:\CostTrackingApp\CostTrackingApi\ConstructionSite.WebAPI\bin\Debug\net7.0\Sprache.dll
