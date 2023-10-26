@@ -29,10 +29,9 @@ namespace JwtAuthenticationManager
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       .AddJwtBearer(options =>
       {
-          IdentityModelEventSource.ShowPII = true; //Add this line
+          IdentityModelEventSource.ShowPII = true; 
           options.Authority = $"{keycloakUrl}/realms/{realm}";
-          //options.Authority = "https://lemur-10.cloud-iam.com/auth/realms/df-app";
-          options.Audience = clientId; // The audience to validate against
+          options.Audience = clientId; 
 
 
           // Add the token validation parameters
