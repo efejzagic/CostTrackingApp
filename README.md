@@ -54,7 +54,7 @@ The application services will start, and you can access the frontend interface i
 
 ## Notes
 
-- **Ensure that ports 3000 and 5000 are not occupied by other services on your local machine to avoid conflicts.**
+- **Ensure that port 3000 is not occupied by other services on your local machine to avoid conflicts.**
 
 Feel free to explore the codebase, make enhancements, and adapt the application to meet your specific requirements.
 "For testing purposes, please reach out to [efejzagic2@etf.unsa.ba](mailto:efejzagic2@etf.unsa.ba)."
