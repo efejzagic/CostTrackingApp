@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Finance.Application.Interfaces;
 using Finance.Application.DTOs.InvoiceItem;
 using ResponseInfo.Entities;
+using Finance.Application.DTOs.ExpenseItem;
 
 namespace Finance.Application.Features.InvoiceItem.Queries
 {

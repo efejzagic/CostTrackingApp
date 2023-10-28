@@ -9,16 +9,15 @@
   <ItemGroup>
     <Compile Remove="DTOs\**" />
     <Compile Remove="Interfaces\**" />
-    <Compile Remove="Mappings\**" />
     <EmbeddedResource Remove="DTOs\**" />
     <EmbeddedResource Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Mappings\**" />
     <None Remove="DTOs\**" />
     <None Remove="Interfaces\**" />
-    <None Remove="Mappings\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="DotNetEnv" Version="2.5.0" />
     <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
@@ -26,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ResponseInfo\ResponseInfo.csproj" />
     <ProjectReference Include="..\Auth.Domain\Auth.Domain.csproj" />
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
     <ProjectReference Include="..\ResponseInfo\ResponseInfo.csproj" />

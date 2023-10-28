@@ -18,9 +18,6 @@ namespace ConstructionSite.Application.Features.ConstructionSite.Queries
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
         public IKey Key { get; set; }
-
-        //public List<MachineryServiceMDTO> ServicingHistory { get; set; }
-
     }
     public class GetAllConstructionSiteQueryHandler : IRequestHandler<GetAllConstructionSiteQuery, PagedResponse<IEnumerable<ConstructionSiteDTO>>>
     {

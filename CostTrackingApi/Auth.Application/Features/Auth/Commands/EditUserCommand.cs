@@ -18,21 +18,23 @@ namespace Auth.Application.Features.Auth.Commands
     public class EditUserCommandHandler : IRequestHandler<EditUserCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private KeycloakConfig keycloakConfig;
         public EditUserCommandHandler(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
+            keycloakConfig = new KeycloakConfig()
+            {
+                Realm = Environment.GetEnvironmentVariable("realm"),
+                ClientId = Environment.GetEnvironmentVariable("clientId"),
+                ClientSecret = Environment.GetEnvironmentVariable("clientSecret"),
+                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl")
+            };
         }
 
         public async Task<ResponseInfo.Entities.Response<string>> Handle(EditUserCommand request, CancellationToken cancellationToken)
         {
             var httpClient = new HttpClient();
-            var keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = "https://lemur-5.cloud-iam.com",
-                Realm = "cost-tracking-app",
-                ClientId = "cost-tracking-client",
-                ClientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"
-            };
+           
 
             var user = new Dictionary<string, object>
             {
@@ -56,7 +58,6 @@ namespace Auth.Application.Features.Auth.Commands
             var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
             var endpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users";
-            //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", request.Model.accessToken);
             var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
 
@@ -70,7 +71,6 @@ namespace Auth.Application.Features.Auth.Commands
 
                 var responseContent = await responseResult.Content.ReadAsStringAsync();
 
-                // Deserialize the response content into the desired type
                 response.Data = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(responseContent);
             }
             catch (Exception ex)

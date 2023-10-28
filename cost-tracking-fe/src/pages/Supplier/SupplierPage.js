@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
-import Nav from '../../components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import StyledPage from '../../components/Styled/StyledPage';
+import { toast } from 'react-toastify';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -11,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -20,27 +23,31 @@ const style = {
 const SupplierPage = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
   const fetchSupplierData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Supplier');
+      const response = await axios.get('http://localhost:8001/api/v/Supplier', getConfigHeader());
       setData(response.data.data);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
+      }
+      else {
+        toast.error("Data fetch error");
       }
     }
   };
 
   useEffect(() => {
     fetchSupplierData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -58,19 +65,17 @@ const SupplierPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Supplier/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Supplier/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchSupplierData(); // Refresh data after successful deletion
+      fetchSupplierData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
   return (
     <>
-      
-      <Nav/>
+      <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Supplier Data
@@ -78,6 +83,9 @@ const SupplierPage = () => {
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
           Create New
         </Button>
+        {isLoading ? (
+          <LoadingCoomponent loading={isLoading} />
+        ) : (
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -120,6 +128,7 @@ const SupplierPage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        )}
       </Container>
       <Modal
         open={open}
@@ -142,6 +151,7 @@ const SupplierPage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

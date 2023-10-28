@@ -3,12 +3,13 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Chip from '@mui/material/Chip';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -127,11 +128,7 @@ const CreateUserPage = () => {
   const fetchRoles = async () => {
     try {
         var token = localStorage.getItem('accessToken');
-      const response = await axios.get('http://localhost:8001/api/Auth/roles' , {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get('http://localhost:8001/api/Auth/roles' , getConfigHeader());
       console.log("Roles " , response.data );
       setRoles(response.data);
     } catch (error) {
@@ -165,13 +162,7 @@ const CreateUserPage = () => {
         'http://localhost:8001/api/Auth/CreateUser',
         {
           Model: formData
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json' // Set the Content-Type header
-          }
-        }
+        }, getConfigHeader()
       );
 
       if (response.data.statusCode === 200 ) {
@@ -194,7 +185,7 @@ const CreateUserPage = () => {
   return (
 
     <>
-  
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         New User
@@ -324,7 +315,7 @@ const CreateUserPage = () => {
       </Paper>
       <Button>   <Link to={`/users`}>Back to Users</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

@@ -1,13 +1,15 @@
 import React from 'react';
 import UserTable from '../../components/User/UsersTable';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
 
 function UsersPage() {
   return (
 
     <>
-    
+    <StyledPage>
       <UserTable />
+      
+      </StyledPage>
       </>
   );
 }

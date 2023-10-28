@@ -3,7 +3,8 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const EditUserPage = () => {
@@ -28,11 +29,7 @@ const EditUserPage = () => {
       const token = localStorage.getItem('accessToken');
       const response = await axios.get(
         `http://localhost:8001/api/Auth/GetUserById/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+       getConfigHeader()
       );
 
       console.log("user response: " , response);
@@ -76,12 +73,7 @@ const EditUserPage = () => {
         {
           Model: formData,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
+        getConfigHeader()
       );
 
       if (response.data.statusCode === 200) {
@@ -100,6 +92,9 @@ const EditUserPage = () => {
   };
 
   return (
+
+    <>
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         Edit User
@@ -153,6 +148,8 @@ const EditUserPage = () => {
         </form>
       </Paper>
     </Container>
+    </StyledPage>
+    </>
   );
 };
 

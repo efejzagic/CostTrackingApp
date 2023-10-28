@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { Container, Paper, Typography } from '@mui/material';
-import { useNavigate  } from 'react-router-dom'; // Import useHistory from React Router
+import { useNavigate  } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
-
-
+import StyledPageNoNav from '../components/Styled/StyledPageNoNav';
+import { css } from "@emotion/react";
+import { RingLoader } from "react-spinners";
+import LoadingCoomponent from '../components/Loading/LoadingComponent';
 
 const styles = {
   container: {
@@ -41,17 +42,12 @@ function Login() {
 
 
   const navigate = useNavigate ();
-
+  
   const handleLogin = async () => {
-    try {
 
-      // const response = await fetch('http://localhost:8001/api/Auth/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ username, password }),
-      // });
+  
+    try {
+      setIsLoading(true); 
 
       const response = await axios.post('http://localhost:8001/api/Auth/login', 
         {
@@ -66,33 +62,37 @@ function Login() {
 
 
       if (response.status === 200) {
-        
+        setIsLoading(false);
         console.log("Response: ", response)
         const data = response.data;
-        // console.log("Data: " , data.data);
         localStorage.setItem('accessToken', data.accessToken);
         localStorage.setItem('username', data.username)
-        setIsLoading(true);
+        setIsLoading(false);
         toast.success('Login succesfull');
 
-        navigate('/'); // Save token in local storage
+        navigate('/'); 
       } else {
         console.error('Login failed');
-        toast.error(' - Login failed'); // Display the toast alert
-
+        toast.error(' - Login failed'); 
+        setIsLoading(false);
       }
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Error - Login failed'); // Display the toast alert
+      setIsLoading(false);
+      toast.error('Error - Login failed');
 
     }
   };
 
   return (
 
-    
+    <>
+   
+    <StyledPageNoNav>
     <Container style={styles.container}>
-
+    {isLoading ? ( 
+         <LoadingCoomponent loading={isLoading}/>
+        ) : (
     <Paper elevation={3} style={styles.paper}>
       
       <Typography variant="h4">Login</Typography>
@@ -126,8 +126,11 @@ function Login() {
         </Button >
       </form>
     </Paper>
+        )}
   </Container>
-
+  </StyledPageNoNav>
+        
+  </>
   );
 }
 

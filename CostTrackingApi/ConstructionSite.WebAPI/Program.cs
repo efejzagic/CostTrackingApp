@@ -18,18 +18,19 @@ using ConstructionSite.Domain.Entities;
 using ConstructionSite.WebAPI.Settings;
 using Serilog.Events;
 using Serilog;
+using CorrelationIdLibrary.Services;
+using JwtAuthenticationManager;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+Env.Load();
 
-// Add services to the container.
 
 builder.Services.AddControllers()
                 .AddFluentValidation(options =>
                 {
-                    // Validate child properties and root collection elements
                     options.ImplicitlyValidateChildProperties = true;
                     options.ImplicitlyValidateRootCollectionElements = true;
-                    // Automatic registration of validators in assembly
                     options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 });
 #region Swagger
@@ -56,16 +57,18 @@ var logger = new LoggerConfiguration()
             .WriteTo.PostgreSQL(
                 connectionString: "Host=constructionsite-db;Port=5432;Database=csdb;Username=postgres;Password=password;",
                 tableName: "Logs",
-                needAutoCreateTable: true) // Create the table if it doesn't exist
+                needAutoCreateTable: true) 
             .CreateLogger();
 
 
 builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
+builder.Services.AddCorrelationIdManager();
 
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistence(builder.Configuration);
-//builder.Services.AddApplication();
+builder.Services.AddCustomJwtAuthentication();
+
 #region API Versioning
 //builder.Services.AddApiVersioning(o =>
 //{
@@ -78,24 +81,19 @@ builder.Services.AddPersistence(builder.Configuration);
 //        new MediaTypeApiVersionReader("ver"));
 //});
 
-//builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
-//builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 builder.Services.AddScoped<IGenericRepositoryAsync<Employee>, GenericRepositoryAsync<Employee>>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 
-builder.Services.AddAutoMapper(typeof(ConstructionSite.Application.MediatorClass)); // Register AutoMapper
+builder.Services.AddAutoMapper(typeof(ConstructionSite.Application.MediatorClass)); 
 
 builder.Services.AddScoped(provider => new MapperConfiguration(cfg =>
 {
-    //cfg.AddProfile(new ArticleProfile(provider.GetService<ISupplierRepository>()));
 
-    
     cfg.AddProfile(new ConstructionSiteProfile(provider.GetService<IEmployeeRepository>()));
     var constructionRepo = provider.GetService<IGenericRepositoryAsync<ConstructionSite.Domain.Entities.ConstructionSite>>();
 
     cfg.AddProfile(new EmployeeProfile(constructionRepo));
-    //cfg.AddProfile(new SupplierProfile(provider.GetService<IArticleRepository>()));
 }).CreateMapper());
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(MediatorClass).GetTypeInfo().Assembly));
@@ -113,22 +111,17 @@ RetryHelper.RetryConnection(() =>
 });
 #endregion
 #region Swagger
-// Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
-// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-// specifying the Swagger JSON endpoint.
 app.UseSwaggerUI(c =>
 {
-    //c.SwaggerEndpoint("/swagger/v1/swagger.yaml", "CostTrackingApi");
-    //c.RoutePrefix = string.Empty;
+
 });
 #endregion
 
-// Configure the HTTP request pipeline.
 
 app.UseAuthorization();
+app.AddCorrelationIdMiddleware();
 
 app.MapControllers();
-//app.ApplyMigrations(builder.Configuration.)
 app.UseHealthChecks("/health");
 app.Run();

@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 
 const validateToken = (token) => {
-  const publicKey = 'YOUR_KEYCLOAK_PUBLIC_KEY'; // Replace with your Keycloak public key
+  const publicKey = 'YOUR_KEYCLOAK_PUBLIC_KEY'; 
   const options = {
-    algorithms: ['RS256'], // Algorithm used by Keycloak for signing tokens
+    algorithms: ['RS256'], 
   };
 
   try {
@@ -14,7 +14,7 @@ const validateToken = (token) => {
   }
 };
 
-const accessToken = localStorage.getItem('accessToken'); // Replace with the access token to validate
+const accessToken = localStorage.getItem('accessToken');
 try {
   const decodedToken = validateToken(accessToken);
   console.log('Valid token:', decodedToken);

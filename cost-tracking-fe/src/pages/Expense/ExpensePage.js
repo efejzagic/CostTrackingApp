@@ -3,7 +3,9 @@ import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, 
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 
 const style = {
@@ -12,15 +14,16 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
 };
 
 const ExpensePage = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); 
   const navigate = useNavigate();
+  const[isLoading, setIsLoading] = useState(true);
 
   const [totalAmount,setTotalAmount] = useState(0.0);
 
@@ -30,7 +33,8 @@ const ExpensePage = () => {
 
   const fetchExpenseData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Expense');
+      const response = await axios.get('http://localhost:8001/api/v/Expense' , getConfigHeader());
+      setIsLoading(false);
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -39,22 +43,22 @@ const ExpensePage = () => {
 
   const fetchExpenseTotalAmountData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Expense/totalAmount');
+      const response = await axios.get('http://localhost:8001/api/v/Expense/totalAmount' , getConfigHeader());
       setTotalAmount(1);
     } catch (error) {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
     }
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchExpenseData();
     fetchExpenseTotalAmountData();
-  }, []); // Fetch data when component mounts
+  }, []);
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -72,18 +76,17 @@ const ExpensePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchExpenseData(); // Refresh data after successful deletion
+      fetchExpenseData();
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
   return (
     <>
-      <Nav/>
+    <StyledPage>
 
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
@@ -92,6 +95,9 @@ const ExpensePage = () => {
         <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
           Create new Expense
         </Button>
+
+        {!isLoading ? (
+          <>
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -113,30 +119,34 @@ const ExpensePage = () => {
                   <TableCell>{item.id}</TableCell>
                   <TableCell>{item.date}</TableCell>
                   <TableCell>{item.description} </TableCell>
-                  <TableCell>{item.amount} KM</TableCell>
+                  <TableCell>{item.amount}KM</TableCell>
                   <TableCell>{item.type}</TableCell>
                   <TableCell>{item.referenceId}</TableCell>
                   <TableCell>
-                    {/* Conditional rendering */}
-                    {item.constructionSiteId !== 0 && (
+                    {item.constructionSiteId !== 0 && item.constructionSiteId!==null &&(
                       <div>ConstructionSiteId: {item.constructionSiteId}</div>
                     )}
-                    {item.machineryId !== 0 && (
+                    {item.machineryId !== 0 && item.machineryId!==null &&(
                       <div>MachineryId: {item.machineryId}</div>
                     )}
-                    {item.toolId !== 0 && (
+                    {item.toolId !== 0 && item.toolId!==null &&(
                       <div>ToolId: {item.toolId}</div>
                     )}
-                    {item.maintenanceRecordId !== 0 && (
+                    {item.maintenanceRecordId !== 0 && item.maintenanceRecordId!==null && (
                       <div>MaintenanceRecordId: {item.maintenanceRecordId}</div>
                     )}
-                       {item.articleId !== 0 && (
+                       {item.articleId !== 0 && item.articleId!==null &&(
                       <div>ArticleId: {item.articleId}</div>
+                    )}
+                    {item.orderId !== 0 && item.orderId!==null && (
+                      <div>OrderId: {item.orderId}</div>
                     )}
                   </TableCell>
                   <TableCell>
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
-                      
+                    <Button variant="outlined" color="primary" size="small">
+                        <Link to={`/expense/${item.id}`}>Details</Link>
+                      </Button>
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete
                       </Button>
@@ -147,12 +157,16 @@ const ExpensePage = () => {
               ))}
 
               <TableRow >
-              <TableCell colSpan={3} /> {/* Empty cells to align with amount column */}
+              <TableCell colSpan={3} /> 
               <TableCell>{totalAmount.toFixed(2)} KM</TableCell>
                 </TableRow>
             </TableBody>
           </Table>
         </TableContainer>
+        </>
+        ) : (
+          <LoadingCoomponent loading={isLoading} />
+        )}
       </Container>
       <Modal
         open={open}
@@ -165,7 +179,7 @@ const ExpensePage = () => {
             Delete Expense
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Are you sure you want to delete {data.find((item) => item.id === selectedItemId)?.name}?
+            Are you sure you want to delete expense with id {data.find((item) => item.id === selectedItemId)?.id}?
           </Typography>
           <Button onClick={handleDelete} variant="outlined" color="secondary" sx={{ mt: 2, mr: 2 }}>
             Delete
@@ -175,6 +189,7 @@ const ExpensePage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

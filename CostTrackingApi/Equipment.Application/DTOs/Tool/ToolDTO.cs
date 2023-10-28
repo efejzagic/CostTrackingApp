@@ -13,6 +13,7 @@ namespace Equipment.Application.DTOs.Tool
 
         public string Location { get; set; }
 
+        public int? ConstructionSiteId { get; set; }
 
         public bool retired { get; set; }
     }

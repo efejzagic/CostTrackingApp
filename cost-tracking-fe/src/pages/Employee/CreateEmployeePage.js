@@ -3,10 +3,10 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
 import { /* ... */ FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const CreateEmployeePage = () => {
   const [formData, setFormData] = useState({
@@ -21,11 +21,11 @@ const CreateEmployeePage = () => {
     Salary: '',
   });
 
-  const [constructionSites, setConstructionSites] = useState([]); // To store fetched Construction Site data
+  const [constructionSites, setConstructionSites] = useState([]); 
 
   const fetchConstructionSites = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite' , getConfigHeader());
       console.log("Construction Sites: " , response.data.data );
       setConstructionSites(response.data.data);
     } catch (error) {
@@ -52,29 +52,26 @@ const CreateEmployeePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Employee', {
         Value: formData
-      });
+      } , getConfigHeader());
       
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
-      // Handle the error scenario
     }
   };
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
@@ -128,15 +125,7 @@ const CreateEmployeePage = () => {
             style={{ marginBottom: '1rem' }}
           />
 
-        {/* <TextField
-            label="ConstructionSiteId"
-            name="ConstructionSiteId"
-            fullWidth
-            required
-            value={formData.ConstructionSiteId}
-            onChange={handleInputChange}
-            style={{ marginBottom: '1rem' }}
-          /> */}
+       
    <FormControl fullWidth style={{ marginBottom: '1rem' }}>
   <InputLabel id="construction-site-label">Construction Site</InputLabel>
   <Select
@@ -147,7 +136,7 @@ const CreateEmployeePage = () => {
     onChange={handleInputChange}
     required
     MenuProps={{
-      style: { maxHeight: '400px' } // Adjust the maxHeight as needed
+      style: { maxHeight: '400px' } 
     }}
   >
     {constructionSites.map(site => (
@@ -194,7 +183,7 @@ const CreateEmployeePage = () => {
       </Paper>
       <Button>   <Link to={`/employee`}>Back to Employee Data</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

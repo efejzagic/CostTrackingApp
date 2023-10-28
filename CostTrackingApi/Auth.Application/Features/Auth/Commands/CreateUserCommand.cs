@@ -13,6 +13,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using ResponseInfo.Entities;
+using DotNetEnv;
 
 namespace Auth.Application.Features.Auth.Commands
 {
@@ -23,22 +24,25 @@ namespace Auth.Application.Features.Auth.Commands
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, ResponseInfo.Entities.Response<string>>
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private KeycloakConfig keycloakConfig;
         public CreateUserCommandHandler(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
+            Env.Load();
+            keycloakConfig = new KeycloakConfig()
+            {
+                Realm = Environment.GetEnvironmentVariable("realm"),
+                ClientId = Environment.GetEnvironmentVariable("clientId"),
+                ClientSecret = Environment.GetEnvironmentVariable("clientSecret"),
+                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl")
+            };
         }
 
         public async Task<ResponseInfo.Entities.Response<string>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var httpClient = new HttpClient();
-            var keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = "https://lemur-5.cloud-iam.com",
-                Realm = "cost-tracking-app",
-                ClientId = "cost-tracking-client",
-                ClientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"
-            };
 
+            var test = keycloakConfig;
             var user = new Dictionary<string, object>
             {
                 { "username", request.Model.Username },
@@ -46,27 +50,24 @@ namespace Auth.Application.Features.Auth.Commands
                 { "firstName", request.Model.Name},
                 { "lastName", request.Model.Surname},
                 { "enabled", true },
-                { "emailVerified", false }, 
+                { "emailVerified", true }, 
                 { "credentials", new List<object>
                     {
                         new Dictionary<string, object>
                         {
                             { "type", "password" },
                             { "value", request.Model.Password },
-                            { "temporary", true }
+                            { "temporary", false}
                         }
                     }
                 },
-                { "requiredActions", new string[] { "UPDATE_PASSWORD" } }
             };
 
             var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
-            var endpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users";
-            //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", request.Model.accessToken);
+            var endpoint = $"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users";
             var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-            //var responseResult = await httpClient.PostAsync(endpoint, content);
 
             var response = new ResponseInfo.Entities.Response<string>();
             try
@@ -77,11 +78,8 @@ namespace Auth.Application.Features.Auth.Commands
                 responseResult.EnsureSuccessStatusCode();
 
                 var responseContent = await responseResult.Content.ReadAsStringAsync();
-
-                // Deserialize the response content into the desired type
                 response.Data = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(responseContent);
                 var userId = await GetUserIdByUsername(request.Model.Username);
-                AssignRolesToUser(userId, request.Model.MultipleRoles);
             }
             catch (Exception ex)
             {
@@ -91,39 +89,12 @@ namespace Auth.Application.Features.Auth.Commands
             }
 
 
-            //return response;
             return response;
-            //return new Response<string>(enviroment.Id.ToString());
         }
 
         private async Task<bool> AssignRolesToUser(string userId, List<Role> MultipleRoles)
         {
-            //var httpClient = new HttpClient();
-
-            var keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = "https://lemur-5.cloud-iam.com",
-                Realm = "cost-tracking-app",
-                ClientId = "cost-tracking-client",
-                ClientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"
-            };
-
-            //var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-            //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-
-
-            //var assignRolesEndpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users/{UserId}/role-mappings/clients/17199bf4-657f-458d-92f5-ceb815451556";
-
-            //var rolesToAssign = MultipleRoles.Select(role => role.Id);
-
-            //var rolesJson = JsonConvert.SerializeObject(rolesToAssign);
-            //var content = new StringContent(rolesJson, Encoding.UTF8, "application/json");
-
-            //var response = await httpClient.PostAsync(assignRolesEndpoint, content);
-
-            //return response.IsSuccessStatusCode;
-
-
+            
             try
             {
                 string userIdEncoded = Uri.EscapeDataString(userId);
@@ -149,7 +120,7 @@ namespace Auth.Application.Features.Auth.Commands
                 var jsonPayload = JsonConvert.SerializeObject(rolePayloads);
                 var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-                var response = await httpClient.PostAsync($"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users/{userIdEncoded}/role-mappings/clients/17199bf4-657f-458d-92f5-ceb815451556", content);
+                var response = await httpClient.PostAsync($"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users/{userIdEncoded}/role-mappings/clients/17199bf4-657f-458d-92f5-ceb815451556", content);
 
                     if (!response.IsSuccessStatusCode)
                     {
@@ -174,25 +145,15 @@ namespace Auth.Application.Features.Auth.Commands
         public async Task<string> GetUserIdByUsername (string username)
         {
 
-            var keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = "https://lemur-5.cloud-iam.com",
-                Realm = "cost-tracking-app",
-                ClientId = "cost-tracking-client",
-                ClientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN"
-            };
 
-            string usernameToSearch = username; // Replace with the Username you want to search
+            string usernameToSearch = username; 
 
             var httpClient = new HttpClient();
-            var endpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users";
-            //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", request.Model.accessToken);
+            var endpoint = $"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users";
             var accessToken = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-            //var responseResult = await httpClient.PostAsync(endpoint, content);
-            //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-            string searchEndpoint = $"{keycloakConfig.BaseUrl}/auth/admin/realms/{keycloakConfig.Realm}/users";
+            
+            string searchEndpoint = $"{keycloakConfig.BaseUrl}/admin/realms/{keycloakConfig.Realm}/users";
             string query = $"?username={usernameToSearch}";
 
             var response = await httpClient.GetAsync(searchEndpoint + query);
@@ -204,22 +165,18 @@ namespace Auth.Application.Features.Auth.Commands
 
                 if (users.Count > 0)
                 {
-                    string userId = users[0].id; // Assuming UserModel has a property named "Id"
+                    string userId = users[0].id; 
                     return userId;
-                    Console.WriteLine($"User ID for Username '{usernameToSearch}': {userId}");
                 }
                 else
                 {
-                    Console.WriteLine($"No user found with Username '{usernameToSearch}'.");
                     return null;
                 }
             }
             else
             {
-                Console.WriteLine($"Error searching for user. StatusCode: {response.StatusCode}");
                 return null;
             }
-            return null;
 
         }
     }

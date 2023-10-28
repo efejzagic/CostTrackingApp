@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -31,7 +32,7 @@ const SupplierArticles = () => {
     try {
         const baseURL = 'http://localhost:8001/api/v/Supplier/';
         const url = `${baseURL}${id}`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, getConfigHeader());
         console.log("data 1", response.data.data);
         setArticles(response.data.data.articles);
         setData(response.data.data);
@@ -42,7 +43,7 @@ const SupplierArticles = () => {
 
   useEffect(() => {
     fetchArticleData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -60,12 +61,11 @@ const SupplierArticles = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchArticleData(); // Refresh data after successful deletion
+      fetchArticleData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
@@ -73,7 +73,7 @@ const SupplierArticles = () => {
  
   return (
     <>
-    <Nav/>
+    <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Articles for {data.name}
@@ -140,6 +140,7 @@ const SupplierArticles = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

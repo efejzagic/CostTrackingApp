@@ -7,34 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ConstructionSite.Infrastructure.Persistance.IoC
 {
-    //public static class DependencyContainer
-    //{
-    //    public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
-    //    {
-    //        services.AddDbContext<EquipmentDbContext>(options =>
-    //            options.UseSqlServer(
-    //                configuration.GetConnectionString("DbConnection"), o => o.UseNetTopologySuite()));
-    //        #region Repositories
-    //        services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-    //        //services.AddTransient<IEnviromentRepositoryAsync, EnviromentRepositoryAsync>();
-    //        #endregion
-    //    }
-    //    public static void ApplyMigrations(EquipmentDbContext context)
-    //    {
-    //        try
-    //        {
-    //            if (context.Database.GetPendingMigrations().Any())
-    //            {
-    //                context.Database.Migrate();
-    //            }
-
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //        }
-    //    }
-
-    //}
     public static class DependencyContainer
     {
         public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
@@ -48,7 +20,6 @@ namespace ConstructionSite.Infrastructure.Persistance.IoC
 
             #region Repositories
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-            //services.AddTransient<IEnviromentRepositoryAsync, EnviromentRepositoryAsync>();
             #endregion
         }
 
@@ -63,7 +34,6 @@ namespace ConstructionSite.Infrastructure.Persistance.IoC
             }
             catch (Exception ex)
             {
-                // Handle the exception here if necessary
             }
         }
     }

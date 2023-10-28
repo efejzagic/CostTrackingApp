@@ -13,7 +13,8 @@ import 'dayjs/plugin/utc';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 var utc = require('dayjs/plugin/utc')
 
@@ -24,10 +25,9 @@ dayjs.extend(weekOfYear);
 const CreateExpensePage = () => {
   const [formData, setFormData] = useState({
     Date:  null,
-    Description: '',
     Amount: 0,
-    ReferenceId: 0,
-    Type: '',
+    items: [],
+    ExpenseDescription: '',
     ConstructionSiteId: 0,
     MachineryId: 0,
     ToolId: 0,
@@ -46,7 +46,7 @@ const CreateExpensePage = () => {
     Email: false,
     Phone: false,
   });
-  const [subCategories, setSubCategories] = useState([]); // Added subCategories state
+  const [subCategories, setSubCategories] = useState([]); 
 
   const handleDateChange = (dateField, dateValue) => {
     setFormData((prevData) => ({
@@ -63,7 +63,15 @@ const CreateExpensePage = () => {
     }));
   };
 
-  
+
+
+  const handleNewItemChange = (event) => {
+    const { name, value } = event.target;
+    setNewItem({
+      ...newItem,
+      [name]: value,
+    });
+  };
 
   const handleAddItem = () => {
     if (newItem.description || newItem.amount > 0) {
@@ -71,6 +79,11 @@ const CreateExpensePage = () => {
         ...prevFormData,
         items: [...prevFormData.items, newItem],
       }));
+      setNewItem({
+        description: '',
+        amount: 0,
+        expenseId: 0,
+      });
     }
   };
   const handleSubCategoryChange = (event) => {
@@ -80,7 +93,7 @@ const CreateExpensePage = () => {
   setFormData((prevFormData) => ({
     ...prevFormData,
     SubCategory: subCategoryId,
-    [`${Category}Id`]: subCategoryId, // Set corresponding Id field based on Category
+    [`${Category}Id`]: subCategoryId, 
     ConstructionSiteId: Category === 'ConstructionSite' ? subCategoryId : 0,
     MachineryId: Category === 'Machinery' ? subCategoryId : 0,
     ToolId: Category === 'Tool' ? subCategoryId : 0,
@@ -95,10 +108,6 @@ const CreateExpensePage = () => {
     console.log(`value: MR`, formData.MaintenanceRecordId);
   };
 
-
-
-
-  
   const handleDeleteItem = (index) => {
     setFormData((prevFormData) => {
       const updatedItems = [...prevFormData.items];
@@ -116,21 +125,12 @@ const CreateExpensePage = () => {
     }));
   };
 
-  const handleTypeChange = (event) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      Type: event.target.value,
-    }));
-  };
-
   useEffect(() => {
-    // Fetch sub-categories based on selected category
-
     if (formData.Category) {
       console.log("form data category" , formData.Category);
     
       axios
-        .get(`http://localhost:8001/api/v/${formData.Category}`)
+        .get(`http://localhost:8001/api/v/${formData.Category}` , getConfigHeader())
         .then((response) => {
           console.log(response.data.data);
           setSubCategories(response.data.data);
@@ -150,10 +150,9 @@ const CreateExpensePage = () => {
     const formattedDate = formData.Date.toISOString();
     const data = {
       Date: formattedDate,
-      Description: formData.Description,
       Amount: formData.Amount,
-      ReferenceId: formData.ReferenceId,
-      Type: parseInt(formData.Type, 10),
+      Description: formData.ExpenseDescription,
+      Items: formData.items,
       ConstructionSiteId: formData.ConstructionSiteId,
       MachineryId: formData.MachineryId,
       ToolId: formData.ToolId,
@@ -164,22 +163,18 @@ const CreateExpensePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Expense', 
       {Value: data}
-      );
+      , getConfigHeader());
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
-      // Handle success (e.g., show success message, redirect, etc.)
-      console.log('expense created successfully', response.data);
+      console.log('Expense created successfully', response.data);
     } catch (error) {
-      // Handle error (e.g., show error message)
       console.error('Error creating expense', error);
       toast.error("Fail");
     }
@@ -187,7 +182,7 @@ const CreateExpensePage = () => {
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
@@ -204,50 +199,56 @@ const CreateExpensePage = () => {
           renderInput={(params) => <TextField {...params} />}
         />
 
+
             </LocalizationProvider>
+            
 
             <div style={{ display: 'flex', alignItems: 'center' }}>
+
           <TextField
            style={{ marginTop: '20px' }}
             label="Description"
-            name="Description"
-            value={formData.Description}
-            onChange={handleInputChange}
+            name="description"
+            value={newItem.description}
+            onChange={handleNewItemChange}
           />
           <TextField
            style={{ marginTop: '20px' }}
             label="Amount"
             type="number"
-            name="Amount"
-            value={formData.Amount}
-            onChange={handleInputChange}
+            name="amount"
+            value={newItem.amount}
+            onChange={handleNewItemChange}
           />
-           <TextField
-           style={{ marginTop: '20px' }}
-            label="Reference Id"
-            type="number"
-            name="ReferenceId"
-            value={formData.ReferenceId}
-            onChange={handleInputChange}
-          />
-
-          </div>
-          <div>
-
-          <Select
-            label="Type"
-            name="Type"
-            value={formData.Type}
-            onChange={handleTypeChange}
-          >
-            <MenuItem value="0">Salary</MenuItem>
-            <MenuItem value="1">Maintenance</MenuItem>
-            <MenuItem value="2">Material</MenuItem>
-
-          </Select>
-
-
-          </div>
+          <Button   variant="outlined" color="primary" onClick={handleAddItem}>+</Button>
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          {formData.items.map((item, index) => (
+            <div key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+              <TextField
+                label={`Description ${index + 1}`}
+                name={`description_${index}`}
+                value={item.description}
+                disabled
+              />
+              <TextField
+                label={`Amount ${index + 1}`}
+                type="number"
+                name={`amount_${index}`}
+                value={item.amount}
+                disabled
+              />
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => handleDeleteItem(index)}
+                style={{ marginLeft: '10px' }}
+              >
+                -
+              </Button>
+            </div>
+          ))}
+        </div>
         <div>
           <Select
             label="Category"
@@ -276,7 +277,16 @@ const CreateExpensePage = () => {
               </MenuItem>
             ))}
           </Select>
+<div>   <TextField
+           style={{ marginTop: '20px' }}
+            label="Expense Description"
+            name="ExpenseDescription"
+            value={formData.ExpenseDescription}
+            onChange={handleInputChange}
+          /></div>
+       
         </div>
+     
           <Button type="submit" variant="contained" color="primary">
             Create
           </Button>
@@ -284,8 +294,9 @@ const CreateExpensePage = () => {
 
        
       </Paper>
-      <Button>   <Link to={`/expense`}>Back to Expenses</Link> </Button>
+      <Button variant="outlined" color="primary">   <Link to={`/expense`}>Back to Expenses</Link> </Button>
     </Container>
+    </StyledPage>
     
     </>
   );

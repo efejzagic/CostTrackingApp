@@ -3,10 +3,11 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const EditSupplierPage = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ const EditSupplierPage = () => {
   useEffect(() => {
     const fetchSupplierData = async () => {
         try {
-            const response = await axios.get(`http://localhost:8001/api/v/Supplier/${id}`);
+            const response = await axios.get(`http://localhost:8001/api/v/Supplier/${id}` , getConfigHeader());
             const apiSupplierData = response.data.data; 
             const mappedSupplierData = {
                 Name: apiSupplierData.name,
@@ -87,31 +88,27 @@ const EditSupplierPage = () => {
     try {
       const response = await axios.put('http://localhost:8001/api/v/Supplier', {
         Value: formData
-      });
+      }, getConfigHeader());
       
       if (response.status === 200) {
         console.log('PUT request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('PUT request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
-      // Handle the error scenario
     }
   };
   
   return (
 
     <>
-    
-    <Nav/>
+    <StyledPage>
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
         Edit Supplier
@@ -185,6 +182,7 @@ const EditSupplierPage = () => {
       <Button>   <Link to={`/supplier`}>Back to Supplier Data</Link> </Button>
 
     </Container>
+    </StyledPage>
     </>
   );
 };

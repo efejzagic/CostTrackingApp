@@ -44,9 +44,5 @@ namespace Auth.Application.Features.Auth.Queries
             return new ResponseInfo.Entities.Response<KeycloakUserData>(userData);
 
         }
-
-
     }
-
-
 }

@@ -111,3 +111,13 @@ D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sin
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sinks.File.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PostgreSQL.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Auth.Domain.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\JwtAuthenticationManager.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Auth.Domain.pdb
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\DotNetEnv.dll
+D:\CostTrackingApp\CostTrackingApi\Equipment.WebAPI\bin\Debug\net7.0\Sprache.dll

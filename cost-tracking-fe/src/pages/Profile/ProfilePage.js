@@ -15,14 +15,15 @@ import {
 import { Edit as EditIcon } from '@mui/icons-material';
 import axios from 'axios';
 import { decodeJwt } from 'jose';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
 
 const ProfilePage = () => {
   const [userDataState, setUserDataState] = useState({});
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
-  
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleEditDialogOpen = () => {
     window.location.href = 'https://lemur-5.cloud-iam.com/auth/realms/cost-tracking-app/account/#/personal-info';
@@ -48,13 +49,17 @@ const ProfilePage = () => {
     setName(data.given_name || '');
     setSurname(data.family_name || '');
     setEmail(data.email || '');
+    setIsLoading(false);
   };
 
   return (
     <>
-      <Nav />
+    <StyledPage>
       <Grid container justifyContent="center" style={{ marginTop: '50px' }}>
       <Grid item xs={12} sm={8} md={6}>
+        {isLoading ? (
+          <LoadingCoomponent loading={isLoading} />
+        ) : (
         <Paper elevation={3} style={{ padding: '20px' }}>
           <Avatar
             alt="User Profile"
@@ -100,10 +105,12 @@ const ProfilePage = () => {
             Nulla ultricies purus eu quam consectetur, eget elementum odio volutpat.
           </Typography>
         </Paper>
+        )}
       </Grid>
 
       
       </Grid>
+      </StyledPage>
     </>
   );
 };

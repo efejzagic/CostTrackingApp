@@ -15,12 +15,12 @@ namespace Storage.Infrastructure.Persistance.IoC
              options.UseNpgsql(
                  configuration.GetConnectionString("StorageConnection")
              ),
-             ServiceLifetime.Transient // Assuming you want to use a new instance of DbContext for each request
+             ServiceLifetime.Transient 
          );
 
             #region Repositories
+
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-            //services.AddTransient<IEnviromentRepositoryAsync, EnviromentRepositoryAsync>();
             #endregion
         }
 
@@ -35,7 +35,6 @@ namespace Storage.Infrastructure.Persistance.IoC
             }
             catch (Exception ex)
             {
-                // Handle the exception here if necessary
             }
         }
     }

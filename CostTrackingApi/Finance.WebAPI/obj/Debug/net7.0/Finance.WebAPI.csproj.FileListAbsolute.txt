@@ -117,3 +117,7 @@ D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Serilog.Sinks
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Serilog.Sinks.File.dll
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PeriodicBatching.dll
 D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Serilog.Sinks.PostgreSQL.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\CorrelationIdLibrary.pdb
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\DotNetEnv.dll
+D:\CostTrackingApp\CostTrackingApi\Finance.WebAPI\bin\Debug\net7.0\Sprache.dll

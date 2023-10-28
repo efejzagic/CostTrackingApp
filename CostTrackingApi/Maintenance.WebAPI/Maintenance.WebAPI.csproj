@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CorrelationIdLibrary\CorrelationIdLibrary.csproj" />
     <ProjectReference Include="..\JwtAuthenticationManager\JwtAuthenticationManager.csproj" />
     <ProjectReference Include="..\Maintenance.Application\Maintenance.Application.csproj" />
     <ProjectReference Include="..\Maintenance.Domain\Maintenance.Domain.csproj" />

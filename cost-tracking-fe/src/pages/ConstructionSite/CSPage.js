@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
-import Nav from '../../components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import StyledPage from '../../components/Styled/StyledPage';
+import LoadingCoomponent from '../../components/Loading/LoadingComponent';
+import { toast } from 'react-toastify';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -23,24 +26,42 @@ const CSPage = () => {
 
   const [open, setOpen] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   const fetchCSData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite');
-      setData(response.data.data);
+      const response = await axios.get('http://localhost:8001/api/v/ConstructionSite', getConfigHeader());
+      console.log(response);
+      if(response.status === 200) {
+        setData(response.data.data);
+      }
+      else if(response.status === 401) {
+        navigate('/unauthorized');
+      }
+      else if(response.status === 403) {
+        navigate('/forbidden');
+      }
+      setIsLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
+      setIsLoading(false);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
+      }
+      if (error.response.status === 403) {
+        console.log("Unauthorized access");
+        navigate('/forbidden');
+      }
+      else {
+        toast.error("Data fetch error");
       }
     }
   };
 
   useEffect(() => {
     fetchCSData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -58,26 +79,43 @@ const CSPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/ConstructionSite/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/ConstructionSite/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchCSData(); // Refresh data after successful deletion
+      fetchCSData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
   return (
     <>
-      
-      <Nav/>
+      <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {isLoading ? (
+          <LoadingCoomponent loading={isLoading} />
+        ) : (
+          <>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
           Construction Site Data
         </Typography>
-        <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
-          Create New
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+            <div>
+              <Button onClick={handleCreate} variant="contained" color="primary" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>
+                Create New
+              </Button>
+            </div>
+            <div>
+              <Button variant="contained" color="primary" style={{ marginBottom: '1rem', marginLeft: '1rem' }}>
+                See Incomes
+              </Button>
+              <Button variant="contained" onClick={() => navigate('/construction/expenses')} color="primary" style={{ marginBottom: '1rem', marginLeft: '1rem' }}>
+                
+                See Expenses
+                
+              </Button>
+            </div>
+          </div>
+
         <TableContainer component={Paper} style={{ overflowX: 'auto', minWidth: 1200, alignSelf: 'center' }}>
           <Table style={{ minWidth: 800 }}>
             <TableHead>
@@ -103,6 +141,9 @@ const CSPage = () => {
                         <Link to={`/construction/${item.id}/employees`}>Employees</Link>
                       </Button>
                       <Button variant="outlined" color="primary" size="small">
+                        <Link to={`/construction/${item.id}/expenses`}>Expenses</Link>
+                      </Button>
+                      <Button variant="outlined" color="primary" size="small">
                         <Link to={`/construction/edit/${item.id}`}>Edit</Link>
                       </Button>
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
@@ -116,6 +157,8 @@ const CSPage = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        </>
+        )}
       </Container>
       <Modal
         open={open}
@@ -138,6 +181,7 @@ const CSPage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

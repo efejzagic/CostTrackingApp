@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -12,7 +13,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -30,10 +31,9 @@ const CSEmployeesPage = () => {
 
   const fetchEmployeeData = async () => {
     try {
-        // const url = `http://localhost:8001/api/v/ConstructionSite/${id}` 
         const baseURL = 'http://localhost:8001/api/v/ConstructionSite/';
         const url = `${baseURL}${id}`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, getConfigHeader());
         console.log("data 1", response.data.data);
         setEmployees(response.data.data.employees);
         setData(response.data.data);
@@ -44,7 +44,7 @@ const CSEmployeesPage = () => {
 
   useEffect(() => {
     fetchEmployeeData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -62,12 +62,11 @@ const CSEmployeesPage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchEmployeeData(); // Refresh data after successful deletion
+      fetchEmployeeData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
@@ -75,7 +74,7 @@ const CSEmployeesPage = () => {
  
   return (
     <>
-    <Nav/>
+    <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Employees for {data.title}
@@ -147,6 +146,7 @@ const CSEmployeesPage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

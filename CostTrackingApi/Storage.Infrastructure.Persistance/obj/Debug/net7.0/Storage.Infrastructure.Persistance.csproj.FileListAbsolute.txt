@@ -17,3 +17,5 @@ D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\
 D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\obj\Debug\net7.0\ref\Storage.Infrastructure.Persistance.dll
 D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\ResponseInfo.dll
 D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\ResponseInfo.pdb
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\CorrelationIdLibrary.dll
+D:\CostTrackingApp\CostTrackingApi\Storage.Infrastructure.Persistance\bin\Debug\net7.0\CorrelationIdLibrary.pdb

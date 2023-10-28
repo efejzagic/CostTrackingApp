@@ -14,6 +14,8 @@ namespace Storage.Application.DTOs.Article
         public double Price { get; set; }
 
         public string Description { get; set; }
+        public int SupplierId { get; set; }
+
         public SupplierArticleDTO Supplier { get; set; }
         public bool retired { get; set; }
         public DateTime DateCreated { get; set; }

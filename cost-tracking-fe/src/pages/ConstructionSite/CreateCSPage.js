@@ -3,9 +3,9 @@ import { Button, Container, Paper, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import Nav from '../../components/Nav/Nav';
 import { Link } from 'react-router-dom';
-
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const CreateCSPage = () => {
   const [formData, setFormData] = useState({
@@ -33,33 +33,30 @@ const CreateCSPage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/ConstructionSite', {
         Value: formData
-      });
+      }, getConfigHeader());
       
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
-      // Handle the error scenario
     }
   };
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
-        New Supplier
+        New Construction Site
       </Typography>
       <Paper elevation={3} style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit}>
@@ -117,7 +114,7 @@ const CreateCSPage = () => {
       </Paper>
       <Button>   <Link to={`/construction`}>Back to Construction Data</Link> </Button>
     </Container>
-    
+    </StyledPage>
     </>
   );
 };

@@ -13,7 +13,8 @@ import 'dayjs/plugin/utc';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
-import Nav from '../../components/Nav/Nav';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 var utc = require('dayjs/plugin/utc')
 
@@ -45,7 +46,7 @@ const CreateInvoicePage = () => {
     Email: false,
     Phone: false,
   });
-  const [subCategories, setSubCategories] = useState([]); // Added subCategories state
+  const [subCategories, setSubCategories] = useState([]); 
 
   const handleDateChange = (dateField, dateValue) => {
     setFormData((prevData) => ({
@@ -92,7 +93,7 @@ const CreateInvoicePage = () => {
   setFormData((prevFormData) => ({
     ...prevFormData,
     SubCategory: subCategoryId,
-    [`${Category}Id`]: subCategoryId, // Set corresponding Id field based on Category
+    [`${Category}Id`]: subCategoryId, 
     ConstructionSiteId: Category === 'ConstructionSite' ? subCategoryId : 0,
     MachineryId: Category === 'Machinery' ? subCategoryId : 0,
     ToolId: Category === 'Tool' ? subCategoryId : 0,
@@ -125,13 +126,11 @@ const CreateInvoicePage = () => {
   };
 
   useEffect(() => {
-    // Fetch sub-categories based on selected category
-
     if (formData.Category) {
       console.log("form data category" , formData.Category);
     
       axios
-        .get(`http://localhost:8001/api/v/${formData.Category}`)
+        .get(`http://localhost:8001/api/v/${formData.Category}` , getConfigHeader())
         .then((response) => {
           console.log(response.data.data);
           setSubCategories(response.data.data);
@@ -165,22 +164,18 @@ const CreateInvoicePage = () => {
     try {
       const response = await axios.post('http://localhost:8001/api/v/Invoice', 
       {Value: data}
-      );
+      , getConfigHeader());
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
-      // Handle success (e.g., show success message, redirect, etc.)
       console.log('Invoice created successfully', response.data);
     } catch (error) {
-      // Handle error (e.g., show error message)
       console.error('Error creating invoice', error);
       toast.error("Fail");
     }
@@ -188,11 +183,11 @@ const CreateInvoicePage = () => {
   return (
 
     <>
-    <Nav/>
+    <StyledPage>
     
     <Container maxWidth="md" style={{ marginTop: '2rem' }}>
       <Typography variant="h5" gutterBottom>
-        New Invoice
+        New Income
       </Typography>
       <Paper elevation={3} style={{ padding: '2rem' }}>
         <form onSubmit={handleSubmit}>
@@ -293,8 +288,9 @@ const CreateInvoicePage = () => {
 
        
       </Paper>
-      <Button>   <Link to={`/invoice`}>Back to Invoices</Link> </Button>
+      <Button>   <Link to={`/invoice`}>Back to income data</Link> </Button>
     </Container>
+    </StyledPage>
     
     </>
   );

@@ -22,6 +22,7 @@ namespace Finance.Domain.Entities
         public int ToolId { get; set; }
         public int MaintenanceRecordId { get; set; }
         public int ArticleId { get; set; }
+        public int OrderId { get; set; }
     }
 
     public class InvoiceItem

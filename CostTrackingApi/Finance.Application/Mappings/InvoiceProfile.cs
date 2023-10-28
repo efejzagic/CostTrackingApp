@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Finance.Application.DTOs.ExpenseItem;
 using Finance.Application.DTOs.Invoice;
 using Finance.Application.DTOs.InvoiceItem;
 using Finance.Application.Features.Invoice.Commands;

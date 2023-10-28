@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Modal, Box } from '@mui/material';
-import Nav from '../../components/Nav/Nav';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import StyledPage from '../../components/Styled/StyledPage';
+import { getConfigHeader } from '../../components/Auth/GetConfigHeader';
 
 const style = {
   position: 'absolute',
@@ -11,7 +12,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -26,7 +27,7 @@ const EmployeePage = () => {
 
   const fetchEmployeeData = async () => {
     try {
-      const response = await axios.get('http://localhost:8001/api/v/Employee');
+      const response = await axios.get('http://localhost:8001/api/v/Employee' , getConfigHeader());
       setData(response.data.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -35,7 +36,7 @@ const EmployeePage = () => {
 
   useEffect(() => {
     fetchEmployeeData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -53,15 +54,13 @@ const EmployeePage = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}`);
+      await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchEmployeeData(); // Refresh data after successful deletion
+      fetchEmployeeData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
     }
@@ -71,8 +70,7 @@ const EmployeePage = () => {
  
   return (
     <>
-      
-      <Nav/>
+      <StyledPage>
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ alignSelf: 'flex-start' }}>
         Employee Data
@@ -146,6 +144,7 @@ const EmployeePage = () => {
           </Button>
         </Box>
       </Modal>
+      </StyledPage>
     </>
   );
 };

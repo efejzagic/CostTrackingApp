@@ -34,7 +34,7 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("EquipmentId")
+                    b.Property<int?>("MachineryId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -55,6 +55,9 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int?>("ToolId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.ToTable("MaintenanceRecord");
@@ -63,24 +66,57 @@ namespace Maintenance.Infrastructure.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Record for machine SN2023",
-                            EquipmentId = 1,
-                            Name = "MR 1",
-                            Price = 120.40000000000001,
+                            Description = "Service record for Komatsu excavator KPC200",
+                            MachineryId = 1,
+                            Name = "Komatsu PC200 maintenance",
+                            Price = 340.0,
                             Status = "Completed",
-                            Technician = "User 1",
-                            Timestamp = new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1716)
+                            Technician = "Emil Fejzagić",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8509)
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Record for tool SN2021",
-                            EquipmentId = 2,
-                            Name = "MR 2",
+                            Description = "Service record for BOMAG roller compactor BAC200",
+                            MachineryId = 8,
+                            Name = "BOMAG roller compactor",
+                            Price = 120.40000000000001,
+                            Status = "Pending",
+                            Technician = "Emil Fejzagić",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8515)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Service record for Caterpillar AP SN: CAP300",
+                            MachineryId = 6,
+                            Name = "Caterpillar AP maintenance",
+                            Price = 280.89999999999998,
+                            Status = "Completed",
+                            Technician = "Emil Fejzagić",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8517)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Service record for circular saw",
+                            Name = "Circular Saw",
                             Price = 87.150000000000006,
                             Status = "Pending",
-                            Technician = "User 2",
-                            Timestamp = new DateTime(2023, 8, 25, 11, 14, 1, 657, DateTimeKind.Utc).AddTicks(1772)
+                            Technician = "Mirza Zukanović",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8519),
+                            ToolId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Service record for cordless Dril",
+                            Name = "Cordless Dril",
+                            Price = 12.35,
+                            Status = "Completed",
+                            Technician = "Mirza Zukanović",
+                            Timestamp = new DateTime(2023, 9, 17, 15, 29, 45, 133, DateTimeKind.Utc).AddTicks(8521),
+                            ToolId = 6
                         });
                 });
 #pragma warning restore 612, 618

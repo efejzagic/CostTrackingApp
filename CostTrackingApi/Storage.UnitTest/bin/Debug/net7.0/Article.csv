@@ -1,0 +1,2 @@
+﻿id,name,quantity,price,description,supplierId,orderRequired,inStock,retired
+2,Article1,5,5.2,Description 1,1,true,true,false
