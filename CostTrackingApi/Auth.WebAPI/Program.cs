@@ -11,7 +11,6 @@ using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-Env.Load();
 
 
 builder.Services.AddControllers();

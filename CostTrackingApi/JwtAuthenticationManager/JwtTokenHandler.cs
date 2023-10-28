@@ -27,10 +27,10 @@ namespace JwtAuthenticationManager
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        private string keycloakUrl = "";
-        private string clientId = "";
-        private string realm = "";
-        private string clientSecret = "";
+        private string keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
+        private string clientId = "cost-tracking-client";
+        private string realm = "cost-tracking-app";
+        private string clientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN";
 
         public JwtTokenHandler(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
         {
@@ -43,24 +43,15 @@ namespace JwtAuthenticationManager
         private static HttpClient _httpClient = new HttpClient();
 
         public async Task<Auth.Domain.Entities.TokenResponse?> LoginToken(AuthenticationRequest model)
-        {
+        { 
 
-
-            Env.Load();
-            realm = Env.GetString("realm");
-            clientId = Environment.GetEnvironmentVariable("clientId");
-            clientSecret = Environment.GetEnvironmentVariable("clientSecret");
-            keycloakUrl = Environment.GetEnvironmentVariable("keycloakUrl");
 
             try
             {
-                // Create the HTTP client
                 using (var client = new HttpClient())
                 {
-                    // Prepare the token endpoint URL
                     var tokenEndpointUrl = $"{keycloakUrl}/realms/{realm}/protocol/openid-connect/token";
 
-                    // Prepare the request body parameters
                     var parameters = new Dictionary<string, string>
                 {
                     { "grant_type", "password" },
@@ -70,35 +61,27 @@ namespace JwtAuthenticationManager
                     { "password", model.Password }
                 };
 
-                    // Send the request to Keycloak token endpoint
                     var response = await client.PostAsync(tokenEndpointUrl, new FormUrlEncodedContent(parameters));
                     var responseContent = await response.Content.ReadAsStringAsync();
 
-                    // Check if the response is successful
                     if (response.IsSuccessStatusCode)
                     {
-                        // Deserialize the response to a token response model
                         var tokenResponse = JsonConvert.DeserializeObject<Auth.Domain.Entities.TokenResponse>(responseContent);
 
-                        // Create the JWT token handler
                         var tokenHandler = new JwtSecurityTokenHandler();
                         var jwtToken = tokenHandler.ReadJwtToken(tokenResponse.AccessToken);
 
-                        // Optionally, you can perform additional checks or validations on the JWT token
-
-                        // Return the JWT token as a response
+                     
                         return tokenResponse;
                     }
                     else
                     {
-                        // Return the error response from Keycloak
                         throw new Exception($"Keycloak response: {responseContent}");
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Handle any exceptions that occurred during the login process
                 throw new Exception($"An error occurred during login: {ex.Message}");
             }
 
@@ -118,7 +101,7 @@ namespace JwtAuthenticationManager
     { "client_secret", clientSecret },
     { "Username", request.Username },
     { "Password", request.Password },
-    { "scope", "openid" } // Add the openid scope here
+    { "scope", "openid" } 
 }));
 
             if (tokenResponse.IsSuccessStatusCode)
@@ -144,16 +127,15 @@ namespace JwtAuthenticationManager
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, request.Username),
-                        new Claim(ClaimTypes.Role, "realmRole") // Add realm role
+                        new Claim(ClaimTypes.Role, "realmRole") 
                     };
 
-                    // Add additional roles from userinfo endpoint
                     claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(claims),
-                        Expires = DateTime.UtcNow.AddHours(1), // Set token expiration
+                        Expires = DateTime.UtcNow.AddHours(1), 
                         SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature)
                     };
 
@@ -190,7 +172,6 @@ namespace JwtAuthenticationManager
             if (context != null)
             {
                 var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-                // Your logic here
                 return token;
             }
             return null;
@@ -208,13 +189,10 @@ namespace JwtAuthenticationManager
             var response = await httpClient.GetAsync("https://lemur-10.cloud-iam.com/auth/admin/realms/df-app/users");
             var responseBody = await response.Content.ReadAsStringAsync();
 
-            // Process the responseBody to extract user data
             try
             {
-                // Deserialize the response JSON into a list of user objects
                 var users = JsonConvert.DeserializeObject<List<KeycloakUser>>(responseBody);
 
-                // Do something with the list of users
                 return users;
             }
             catch (Exception ex)
@@ -232,29 +210,24 @@ namespace JwtAuthenticationManager
             {
                 try
                 {
-                    // Construct the logout URL
                     string logoutUrl = $"{keycloakUrl}/realms/{realm}/protocol/openid-connect/logout?id_token_hint={accessToken}";
 
-                    // Make the request to the Keycloak logout endpoint
                     HttpResponseMessage response = await client.PostAsync(logoutUrl, null);
 
                     if (response.IsSuccessStatusCode)
                     {
                         Console.WriteLine("Token invalidated successfully.");
-                        // Clear the locally stored token(s)
                         return true;
                     }
                     else
                     {
                         Console.WriteLine("Token invalidation failed.");
-                        // Handle the failure scenario
                         return false;
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"An error occurred: {ex.Message}");
-                    // Handle the exception
                 }
             }
             return false;

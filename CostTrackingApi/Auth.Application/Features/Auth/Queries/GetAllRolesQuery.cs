@@ -15,7 +15,6 @@ using Auth.Application.Parameters.Auth;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using AutoMapper;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using DotNetEnv;
 
 namespace Auth.Application.Features.Auth.Queries
 {
@@ -37,14 +36,8 @@ namespace Auth.Application.Features.Auth.Queries
             _httpClient = httpClient;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
-            Env.Load();
-            keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl"),
-                Realm = Environment.GetEnvironmentVariable("realm"),
-                ClientNumber = Environment.GetEnvironmentVariable("clientNumber")
-                
-            };
+            keycloakConfig = new KeycloakConfig();
+
         }
 
         public async Task<PagedResponse<List<Role>>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
