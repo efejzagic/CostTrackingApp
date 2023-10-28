@@ -20,10 +20,8 @@ using Serilog.Events;
 using Serilog;
 using CorrelationIdLibrary.Services;
 using JwtAuthenticationManager;
-using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
-Env.Load();
 
 
 builder.Services.AddControllers()

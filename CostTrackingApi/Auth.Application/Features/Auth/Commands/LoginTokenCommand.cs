@@ -21,13 +21,8 @@ namespace Auth.Application.Features.Auth.Commands
         private KeycloakConfig keycloakConfig;
         public LoginRequestCommandHandler()
         {
-            keycloakConfig = new KeycloakConfig()
-            {
-                Realm = Environment.GetEnvironmentVariable("realm"),
-                ClientId = Environment.GetEnvironmentVariable("clientId"),
-                ClientSecret = Environment.GetEnvironmentVariable("clientSecret"),
-                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl")
-            };
+            keycloakConfig = new KeycloakConfig();
+
         }
 
         public async Task<ResponseInfo.Entities.Response<TokenResponse>> Handle(LoginTokenCommand request, CancellationToken cancellationToken)

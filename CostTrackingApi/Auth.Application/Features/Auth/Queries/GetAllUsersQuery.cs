@@ -35,11 +35,8 @@ namespace Auth.Application.Features.Auth.Queries
             _httpClientFactory = httpClientFactory;
             _httpContextAccessor = httpContextAccessor;
             _mapper = mapper;
-            keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl"),
-                Realm = Environment.GetEnvironmentVariable("realm"),
-            };
+            keycloakConfig = new KeycloakConfig();
+
         }
 
         public async Task<PagedResponse<List<KeycloakUser>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)

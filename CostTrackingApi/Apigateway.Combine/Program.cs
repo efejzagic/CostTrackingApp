@@ -5,10 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Apigateway.Combine.Interfaces;
 using Apigateway.Combine.Services;
-using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
-Env.Load();
 
 // Add services to the container.
 

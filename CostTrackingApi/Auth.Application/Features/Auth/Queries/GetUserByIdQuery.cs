@@ -25,12 +25,8 @@ namespace Auth.Application.Features.Auth.Queries
         public GetUserByIdQueryHandler(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
-            Env.Load();
-            keycloakConfig = new KeycloakConfig()
-            {
-                BaseUrl = Environment.GetEnvironmentVariable("keycloakUrl"),
-                Realm = Environment.GetEnvironmentVariable("realm")
-            };
+            keycloakConfig = new KeycloakConfig();
+
         }
 
         public async Task<ResponseInfo.Entities.Response<KeycloakUser>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)

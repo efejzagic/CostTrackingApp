@@ -21,10 +21,8 @@ using Serilog;
 using Serilog.Events;
 using CorrelationIdLibrary.Services;
 using Storage.Domain.Entities;
-using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
-Env.Load();
 
 
 builder.Services.AddControllers()
