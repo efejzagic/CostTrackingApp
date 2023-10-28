@@ -20,6 +20,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+    restart: always
+
 
 
   
@@ -51,6 +53,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+    restart: always
+
 
   equipment-db:
     image: postgres:latest
@@ -81,6 +85,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+    restart: always
+
 
   constructionsite-db:
     image: postgres:latest
@@ -110,6 +116,8 @@ services:
     networks:
       - backend
       - frontend
+    restart: always
+
 
 
   maintenance.webapi:
@@ -125,6 +133,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+    restart: always
+
       
   maintenance-db:
     image: postgres:latest
@@ -155,6 +165,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+    restart: always
+
       
   finance-db:
     image: postgres:latest
@@ -182,6 +194,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks: 
       - backend
+    restart: always
+
 
   react-app:
     container_name: react-frontend
@@ -197,10 +211,7 @@ services:
       - NODE_ENV=development
     networks: 
       - frontend
-
-
-
-
+    restart: always
 
 
   apigateway.combine:
@@ -212,6 +223,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
     networks:
       - backend
+    restart: always
+
 
 volumes:
   app_data:
