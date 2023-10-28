@@ -24,7 +24,6 @@ const CreateMachineryPage = () => {
   const getConfigHeader = () => {
     const accessToken = localStorage.getItem('accessToken');
     if (!accessToken) {
-        // Handle the case where the access token is not found in local storage
         console.error('Access token not found in local storage');
         return false;
     }
@@ -77,7 +76,6 @@ const CreateMachineryPage = () => {
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       }
       
@@ -85,13 +83,11 @@ const CreateMachineryPage = () => {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
       navigate('/login');
-      // Handle the error scenario
     }
   };
   return (
@@ -128,11 +124,11 @@ const CreateMachineryPage = () => {
   label="Production Year"
   variant="outlined"
   fullWidth
-  type="datetime-local" // Use the datetime-local input type
+  type="datetime-local" 
   name="ProductionYear"
   value={formData.ProductionYear}
   onChange={handleInputChange}
-  inputProps={{ step: 1 }} // Show seconds
+  inputProps={{ step: 1 }} 
   style={{ marginBottom: '1rem' }}
 />
       <TextField
@@ -154,7 +150,7 @@ const CreateMachineryPage = () => {
     onChange={handleInputChange}
     required
     MenuProps={{
-      style: { maxHeight: '400px' } // Adjust the maxHeight as needed
+      style: { maxHeight: '400px' } 
     }}
   >
     {constructionSite.map(constructionSite => (

@@ -8,10 +8,10 @@ const LoadingCoomponent = ({ loading }) => {
  
   const loadingSpinnerContainerStyles = css`
   display: flex;
-  justify-content: center; /* Horizontally center */
-  align-items: center; /* Vertically center */
-  width: 100%; /* Set the container width to 100% */
-  height: 100vh; /* Set the container height to fill the viewport */
+  justify-content: center; 
+  align-items: center; 
+  width: 100%;
+  height: 100vh; 
 `;
 
 const override = css`

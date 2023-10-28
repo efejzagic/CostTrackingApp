@@ -110,7 +110,7 @@ function BalancePage() {
     fetchBalanceData();
     fetchInvoiceData();
     fetchExpenseData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
 
   const handleOpen = (id) => {
@@ -142,10 +142,9 @@ function BalancePage() {
     try {
       await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchExpenseData(); // Refresh data after successful deletion
+      fetchExpenseData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
   return (
@@ -265,7 +264,6 @@ function BalancePage() {
                   <TableCell>{item.dueDate} </TableCell>
                   <TableCell>{item.amount} KM</TableCell>
                   <TableCell>
-                    {/* Conditional rendering */}
                     {item.constructionSiteId !== 0 && item.constructionSiteId!==null && (
                       <div>ConstructionSiteId: {item.constructionSiteId}</div>
                     )}

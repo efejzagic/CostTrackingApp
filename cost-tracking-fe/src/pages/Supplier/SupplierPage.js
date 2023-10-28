@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -37,7 +37,6 @@ const SupplierPage = () => {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
       else {
@@ -48,7 +47,7 @@ const SupplierPage = () => {
 
   useEffect(() => {
     fetchSupplierData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -68,10 +67,9 @@ const SupplierPage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Supplier/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchSupplierData(); // Refresh data after successful deletion
+      fetchSupplierData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

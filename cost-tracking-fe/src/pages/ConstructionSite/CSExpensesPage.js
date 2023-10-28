@@ -45,24 +45,10 @@ const CSExpensesPage = () => {
     }
   };
 
-  // const fetchExpenseTotalAmountData = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:8001/api/v/Expense/totalAmount');
-  //     setTotalAmount(1);
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //     if (error.response.status === 401) {
-  //       console.log("Unauthorized access");
-  //       // Redirect to unauthorized page or handle the unauthorized access scenario
-  //       navigate('/unauthorized');
-  //     }
-  //   }
-  // };
 
   useEffect(() => {
     fetchExpenseData();
-    // fetchExpenseTotalAmountData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -82,10 +68,9 @@ const CSExpensesPage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchExpenseData(); // Refresh data after successful deletion
+      fetchExpenseData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -22,7 +22,7 @@ const style = {
 
 const CSExpensePageId = () => {
   const { id }= useParams();
-  const [data, setData] = useState({ cs: {}, expense: [] }); // Initialize with an empty object and array
+  const [data, setData] = useState({ cs: {}, expense: [] }); 
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [totalAmount, setTotalAmount] = useState(0.0);
@@ -33,7 +33,7 @@ const CSExpensePageId = () => {
   const fetchExpenseData = async () => {
     try {
       const response = await axios.get(`http://localhost:8001/api/v/ConstructionSiteExpense/cs/expenses/${id}` , getConfigHeader());
-      setData(response.data); // Update with the response data
+      setData(response.data); 
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -107,7 +107,6 @@ const CSExpensePageId = () => {
                     <TableCell>{item.type}</TableCell>
                     <TableCell>{item.referenceId}</TableCell>
                     <TableCell>
-                      {/* Conditional rendering */}
                       {item.constructionSiteId !== 0 && (
                         <div>ConstructionSiteId: {item.constructionSiteId}</div>
                       )}
@@ -137,7 +136,7 @@ const CSExpensePageId = () => {
                 </TableRow>
               ))}
               <TableRow>
-                <TableCell colSpan={3} /> {/* Empty cells to align with the amount column */}
+                <TableCell colSpan={3} />
                 <TableCell>{totalAmount.toFixed(2)} KM</TableCell>
               </TableRow>
             </TableBody>

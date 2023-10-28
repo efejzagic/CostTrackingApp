@@ -43,7 +43,6 @@ const InvoiceDetailsPage = () => {
     };
 
     fetchInvoiceDetails();
-    // getInvoiceData();
   }, [id]);
 
 

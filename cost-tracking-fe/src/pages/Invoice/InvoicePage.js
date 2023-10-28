@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -50,7 +50,6 @@ const InvoicePage = () => {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
     }
@@ -60,7 +59,7 @@ const InvoicePage = () => {
   useEffect(() => {
     fetchInvoiceData();
     fetchInvoiceTotalAmountData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -80,10 +79,9 @@ const InvoicePage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Invoice/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchInvoiceData(); // Refresh data after successful deletion
+      fetchInvoiceData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
@@ -122,7 +120,6 @@ const InvoicePage = () => {
                   <TableCell>{item.dueDate} </TableCell>
                   <TableCell>{item.amount} KM </TableCell>
                   <TableCell>                   
-                   {/* Conditional rendering */}
                    {item.constructionSiteId !== 0 && item.constructionSiteId!==null &&(
                       <div>ConstructionSiteId: {item.constructionSiteId}</div>
                     )}

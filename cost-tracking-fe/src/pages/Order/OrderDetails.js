@@ -22,13 +22,12 @@ const OrderDetailsPage = () => {
     const [isLoading, setIsLoading] = useState(true);
   
     useEffect(() => {
-      // Fetch order details from the API using the provided order ID
       axios
         .get(`http://localhost:8001/api/v/Order/${id}` , getConfigHeader())
         .then((response) => {
             console.log(response.data.data);
           setOrder(response.data.data);
-          setIsLoading(false); // Update the order state with the fetched data
+          setIsLoading(false); 
         })
         .catch((error) => {
           setIsLoading(false);

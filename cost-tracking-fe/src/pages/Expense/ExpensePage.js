@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -49,7 +49,6 @@ const ExpensePage = () => {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
     }
@@ -59,7 +58,7 @@ const ExpensePage = () => {
     setIsLoading(true);
     fetchExpenseData();
     fetchExpenseTotalAmountData();
-  }, []); // Fetch data when component mounts
+  }, []);
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -79,10 +78,9 @@ const ExpensePage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Expense/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchExpenseData(); // Refresh data after successful deletion
+      fetchExpenseData();
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 
@@ -125,7 +123,6 @@ const ExpensePage = () => {
                   <TableCell>{item.type}</TableCell>
                   <TableCell>{item.referenceId}</TableCell>
                   <TableCell>
-                    {/* Conditional rendering */}
                     {item.constructionSiteId !== 0 && item.constructionSiteId!==null &&(
                       <div>ConstructionSiteId: {item.constructionSiteId}</div>
                     )}
@@ -160,7 +157,7 @@ const ExpensePage = () => {
               ))}
 
               <TableRow >
-              <TableCell colSpan={3} /> {/* Empty cells to align with amount column */}
+              <TableCell colSpan={3} /> 
               <TableCell>{totalAmount.toFixed(2)} KM</TableCell>
                 </TableRow>
             </TableBody>

@@ -14,7 +14,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -32,7 +32,6 @@ const ArticlePage = () => {
     try {
       const accessToken = localStorage.getItem('accessToken');
       if (!accessToken) {
-          // Handle the case where the access token is not found in local storage
           console.error('Access token not found in local storage');
           return false;
       }
@@ -47,7 +46,6 @@ const ArticlePage = () => {
         setIsLoading(false);
       if (response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
          window.location.href = '/unauthorized';
       } else {
         setData(response.data.data);
@@ -57,7 +55,6 @@ const ArticlePage = () => {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
       else {
@@ -68,7 +65,7 @@ const ArticlePage = () => {
 
   useEffect(() => {
     fetchArticleData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -88,10 +85,9 @@ const ArticlePage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}`, getConfigHeader());
       handleClose();
-      fetchArticleData(); // Refresh data after successful deletion
+      fetchArticleData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

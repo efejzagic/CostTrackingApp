@@ -21,7 +21,7 @@ const CreateEmployeePage = () => {
     Salary: '',
   });
 
-  const [constructionSites, setConstructionSites] = useState([]); // To store fetched Construction Site data
+  const [constructionSites, setConstructionSites] = useState([]); 
 
   const fetchConstructionSites = async () => {
     try {
@@ -57,18 +57,15 @@ const CreateEmployeePage = () => {
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
-      // Handle the error scenario
     }
   };
   return (
@@ -128,15 +125,7 @@ const CreateEmployeePage = () => {
             style={{ marginBottom: '1rem' }}
           />
 
-        {/* <TextField
-            label="ConstructionSiteId"
-            name="ConstructionSiteId"
-            fullWidth
-            required
-            value={formData.ConstructionSiteId}
-            onChange={handleInputChange}
-            style={{ marginBottom: '1rem' }}
-          /> */}
+       
    <FormControl fullWidth style={{ marginBottom: '1rem' }}>
   <InputLabel id="construction-site-label">Construction Site</InputLabel>
   <Select
@@ -147,7 +136,7 @@ const CreateEmployeePage = () => {
     onChange={handleInputChange}
     required
     MenuProps={{
-      style: { maxHeight: '400px' } // Adjust the maxHeight as needed
+      style: { maxHeight: '400px' } 
     }}
   >
     {constructionSites.map(site => (

@@ -32,7 +32,7 @@ function Homepage() {
   useEffect(() => {
 
     async function fetchRolesData() {
-      const userRoles = await fetchUserRoles(); // Replace with your role-fetching logic
+      const userRoles = await fetchUserRoles(); 
       setRoles(userRoles);
     }
     fetchRolesData();

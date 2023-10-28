@@ -19,15 +19,12 @@ const navigate = useNavigate();
   };
 
   const handleLogin = () => {
-    // Simulate a successful login by setting a fake access token
     navigate('/login');
   };
 
   const handleLogout = () => {
-    // Simulate a logout by removing the access token
     localStorage.removeItem("accessToken");
-    // setIsLoggedIn(false);
-    navigate("/login"); // Redirect to the login page after logout
+    navigate("/login"); 
   };
   return (
     <div>

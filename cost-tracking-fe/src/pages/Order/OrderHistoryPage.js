@@ -13,7 +13,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -36,7 +36,6 @@ const OrderHistoryPage = () => {
         setIsLoading(false);
       if (response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
          window.location.href = '/unauthorized';
       } else {
         setData(response.data.data);
@@ -45,7 +44,6 @@ const OrderHistoryPage = () => {
       console.error('Error fetching data:', error);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
     }
@@ -53,7 +51,7 @@ const OrderHistoryPage = () => {
 
   useEffect(() => {
     fetchOrderData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -70,10 +68,9 @@ const OrderHistoryPage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Order/${selectedItemId}`, getConfigHeader);
       handleClose();
-      fetchOrderData(); // Refresh data after successful deletion
+      fetchOrderData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

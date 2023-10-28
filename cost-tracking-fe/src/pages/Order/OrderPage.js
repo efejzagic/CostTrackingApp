@@ -29,11 +29,10 @@ const OrderPage = () => {
     const [selectedArticle, setSelectedArticle] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { addToCart } = useCart(); // Use addToCart function from the context
+    const { addToCart } = useCart(); 
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
     useEffect(() => {
-      // Fetch articles from the API
       axios
         .get('http://localhost:8001/api/v/Article' , getConfigHeader())
         .then((response) => {
@@ -60,7 +59,7 @@ const OrderPage = () => {
 
     const handleAddToCart = () => {
         addToCart({ id: selectedArticle.id, name: selectedArticle.name,quantity: quantity, price: selectedArticle.price }); // Replace with actual item data
-        console.log('Item added to cart'); // Add this for debugging
+        console.log('Item added to cart'); 
         closeModal();
         setQuantity(1);
       };
@@ -124,7 +123,7 @@ const OrderPage = () => {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 300,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,

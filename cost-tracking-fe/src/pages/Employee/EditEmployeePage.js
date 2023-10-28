@@ -77,21 +77,18 @@ const EditEmployeePage = () => {
       if (response.status === 200) {
         console.log('PUT request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('PUT request failed');
         console.log('Response data:', response.data);
         toast.error("Fail t");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
-      // Handle the error scenario
     }
   };
-  const [constructionSites, setConstructionSites] = useState([]); // To store fetched Construction Site data
+  const [constructionSites, setConstructionSites] = useState([]); 
 
   const fetchConstructionSites = async () => {
     try {
@@ -105,7 +102,7 @@ const EditEmployeePage = () => {
 
   useEffect(() => {
     fetchConstructionSites();
-  }, []); // Fetch
+  }, []); 
 
   return (
 
@@ -173,7 +170,7 @@ const EditEmployeePage = () => {
     onChange={handleInputChange}
     required
     MenuProps={{
-      style: { maxHeight: '400px' } // Adjust the maxHeight as needed
+      style: { maxHeight: '400px' } 
     }}
   >
     {constructionSites.map(site => (

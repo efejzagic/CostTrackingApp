@@ -7,7 +7,6 @@ const GetSuppliers = () => {
 
     const [data, setData] = useState([]);
     useEffect(() => {
-    // Fetch data using Axios when the component mounts
     axios.get('http://localhost:8001/api/v/Supplier')
         .then(response => {
         setData(response.data.data);

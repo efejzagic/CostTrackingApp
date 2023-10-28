@@ -47,12 +47,10 @@ const CSPage = () => {
       setIsLoading(false);
       if (error.response.status === 401) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/unauthorized');
       }
       if (error.response.status === 403) {
         console.log("Unauthorized access");
-        // Redirect to unauthorized page or handle the unauthorized access scenario
         navigate('/forbidden');
       }
       else {
@@ -63,7 +61,7 @@ const CSPage = () => {
 
   useEffect(() => {
     fetchCSData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -83,10 +81,9 @@ const CSPage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/ConstructionSite/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchCSData(); // Refresh data after successful deletion
+      fetchCSData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

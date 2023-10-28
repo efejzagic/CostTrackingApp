@@ -30,7 +30,6 @@ const ExpenseDetailsPage = () => {
       try {
         const response = await axios.get(`http://localhost:8001/api/v/Expense/${id}` , getConfigHeader());
         setExpense(response.data.data);
-         // Assuming the response data matches your Expense model
       } catch (error) {
         toast.error("Data fetch error");
         console.error('Error fetching expense details:', error);
@@ -50,7 +49,6 @@ const ExpenseDetailsPage = () => {
       </Typography>
       {expense ? (
         <>
-          {/* Expense Details Table */}
           <Paper elevation={3} style={{ padding: '1rem', marginBottom: '1rem' }}>
             <Typography variant="h6" gutterBottom>
               Data for expense: 
@@ -76,8 +74,6 @@ const ExpenseDetailsPage = () => {
               </Table>
             </TableContainer>
           </Paper>
-
-          {/* Expense Items Table */}
           <Paper elevation={3} style={{ padding: '1rem' }}>
             <Typography variant="h6" gutterBottom>
               Expense Items

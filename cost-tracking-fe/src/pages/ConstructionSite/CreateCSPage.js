@@ -38,18 +38,15 @@ const CreateCSPage = () => {
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
     } catch (error) {
       console.error('Error:', error);
       toast.error("Fail");
-      // Handle the error scenario
     }
   };
   return (

@@ -70,9 +70,7 @@ function App() {
         <Routes>
         <Route path="/" element={<PrivateRoute><WelcomePage /> </PrivateRoute>} />
 
-        {/* <Route path="/" element={<PrivateRoute element={<WelcomePage />} />} /> */}
 
-           {/* <Route path="/" element={<WelcomePage />} /> */}
            <Route exact path="/login" element={<LoginPage />} />  
            <Route exact path="/users" element={<PrivateRoute><UsersPage /></PrivateRoute>} />
            <Route exact path="/users/create" element={<PrivateRoute><CreateUserPage /></PrivateRoute>} />

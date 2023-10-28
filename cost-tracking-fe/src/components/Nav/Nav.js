@@ -51,7 +51,7 @@ const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(localStorage.getItem("accessToken")));
   const navigate = useNavigate();
   const [cartOpen, setCartOpen] = useState(false);
-  const { cart, clearCart } = useCart(); // Use cart from the context
+  const { cart, clearCart } = useCart(); 
   const [hasRole, setHasRole] = useState(false);
   const [showMediaCard, setShowMediaCard] = useState(false);
   const[roles, setRoles] = useState([]);
@@ -62,7 +62,7 @@ const Nav = () => {
     if (accessToken) {
       setIsLoggedIn(true);
       async function fetchRolesData() {
-        const userRoles = await fetchUserRoles(); // Replace with your role-fetching logic
+        const userRoles = await fetchUserRoles(); 
         setRoles(userRoles);
       }
       fetchRolesData();
@@ -77,13 +77,12 @@ const Nav = () => {
   };
 
   const calculateTotal = () => {
-    // Calculate the total amount from the cart items
     const totalAmount = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
-    return totalAmount.toFixed(2); // Format the total amount
+    return totalAmount.toFixed(2); 
   };
 
   console.log("cart length: ",cart.length)
-  const drawerHeight = cart.length > 0 ? `${cart.length * 250}px` : "200px"; // Adjust 64px as needed
+  const drawerHeight = cart.length > 0 ? `${cart.length * 250}px` : "200px"; 
 
   const orderItemsData = JSON.parse(localStorage.getItem('cart'));
 
@@ -104,7 +103,7 @@ const Nav = () => {
     value: {
         orderDate: new Date().toISOString(),
         shippingDate: shippingDate.toISOString(),
-        orderComplete: true, // Set the order complete status as needed
+        orderComplete: true,
         totalAmount: orderItems.reduce((total, item) => total + item.quantity * item.pricePerItem, 0),
         orderItems: orderItems,
     }
@@ -118,18 +117,15 @@ console.log("isEmpty" , isEmpty);
     toast.warning("Cart cannot be empty");
   }
   else {
-  // Send a POST request to create the order in the backend
   axios
       .post('http://localhost:8001/api/v/OrderExpense', createOrderDTO, getConfigHeader())
       .then((response) => {
           console.log('Order created successfully');
           var id = parseInt(response.data.message);
-          // Optionally, you can clear the cart or take any other actions here
           localStorage.setItem('cart', JSON.stringify([]));
           toast.success('Order succesfull');
           clearCart();
           navigate(`/order/${id}/details`)
-          // closeModal();
       })
       .catch((error) => {
           console.error('Error creating the order:', error);
@@ -245,7 +241,7 @@ console.log("isEmpty" , isEmpty);
           sx: {
             width: "400px",
             padding: "20px",
-            height: drawerHeight, // Set the height dynamically
+            height: drawerHeight, 
             overflowY: "auto",
           },
         }}
@@ -264,7 +260,7 @@ console.log("isEmpty" , isEmpty);
                           <br />
                           Price: {item.price} BAM
                           <br />
-                          {/* Add your third element here */}
+                         {}
                         </>
                       }
                     />
@@ -273,7 +269,7 @@ console.log("isEmpty" , isEmpty);
                 </div>
               ))}
           </List>
-          <Box mt={2} px={2}> {/* Add margin and padding */}
+          <Box mt={2} px={2}> 
             <Typography variant="h6" gutterBottom>
               Total:  {calculateTotal()}  BAM
             </Typography>

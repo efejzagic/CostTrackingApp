@@ -49,7 +49,6 @@ const UserTable = () => {
         console.error('Error fetching users:', error);
         if (error.response.status === 401) {
           console.log("Unauthorized access");
-          // Redirect to unauthorized page or handle the unauthorized access scenario
           navigate('/unauthorized');
         }
         else {

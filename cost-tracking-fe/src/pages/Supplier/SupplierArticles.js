@@ -43,7 +43,7 @@ const SupplierArticles = () => {
 
   useEffect(() => {
     fetchArticleData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -63,10 +63,9 @@ const SupplierArticles = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Article/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchArticleData(); // Refresh data after successful deletion
+      fetchArticleData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

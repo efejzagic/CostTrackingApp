@@ -13,7 +13,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  backgroundColor: 'white', // Change to your preferred background color
+  backgroundColor: 'white', 
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -31,7 +31,6 @@ const CSEmployeesPage = () => {
 
   const fetchEmployeeData = async () => {
     try {
-        // const url = `http://localhost:8001/api/v/ConstructionSite/${id}` 
         const baseURL = 'http://localhost:8001/api/v/ConstructionSite/';
         const url = `${baseURL}${id}`;
       const response = await axios.get(url, getConfigHeader());
@@ -45,7 +44,7 @@ const CSEmployeesPage = () => {
 
   useEffect(() => {
     fetchEmployeeData();
-  }, []); // Fetch data when component mounts
+  }, []); 
 
   const handleOpen = (id) => {
     setSelectedItemId(id);
@@ -65,10 +64,9 @@ const CSEmployeesPage = () => {
     try {
       await axios.delete(`http://localhost:8001/api/v/Employee/${selectedItemId}` , getConfigHeader());
       handleClose();
-      fetchEmployeeData(); // Refresh data after successful deletion
+      fetchEmployeeData(); 
     } catch (error) {
       console.error('Error deleting data:', error);
-      // Handle error scenario
     }
   };
 

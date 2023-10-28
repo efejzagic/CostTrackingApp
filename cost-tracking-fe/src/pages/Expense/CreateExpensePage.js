@@ -46,7 +46,7 @@ const CreateExpensePage = () => {
     Email: false,
     Phone: false,
   });
-  const [subCategories, setSubCategories] = useState([]); // Added subCategories state
+  const [subCategories, setSubCategories] = useState([]); 
 
   const handleDateChange = (dateField, dateValue) => {
     setFormData((prevData) => ({
@@ -93,7 +93,7 @@ const CreateExpensePage = () => {
   setFormData((prevFormData) => ({
     ...prevFormData,
     SubCategory: subCategoryId,
-    [`${Category}Id`]: subCategoryId, // Set corresponding Id field based on Category
+    [`${Category}Id`]: subCategoryId, 
     ConstructionSiteId: Category === 'ConstructionSite' ? subCategoryId : 0,
     MachineryId: Category === 'Machinery' ? subCategoryId : 0,
     ToolId: Category === 'Tool' ? subCategoryId : 0,
@@ -126,8 +126,6 @@ const CreateExpensePage = () => {
   };
 
   useEffect(() => {
-    // Fetch sub-categories based on selected category
-
     if (formData.Category) {
       console.log("form data category" , formData.Category);
     
@@ -169,18 +167,14 @@ const CreateExpensePage = () => {
       if (response.status === 200) {
         console.log('POST request successful');
         console.log('Response data:', response.data);
-        // Reset the form data or navigate to another page if needed
         toast.success("Success");
       } else {
         console.log('POST request failed');
         console.log('Response data:', response.data);
         toast.error("Fail");
-        // Handle the failure scenario
       }
-      // Handle success (e.g., show success message, redirect, etc.)
       console.log('Expense created successfully', response.data);
     } catch (error) {
-      // Handle error (e.g., show error message)
       console.error('Error creating expense', error);
       toast.error("Fail");
     }
