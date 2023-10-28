@@ -19,12 +19,11 @@ namespace JwtAuthenticationManager
     {
 
         public static void AddCustomJwtAuthentication(this IServiceCollection services)
-        { 
-
-            var realm = Environment.GetEnvironmentVariable("realm");
-            var clientId = Environment.GetEnvironmentVariable("clientId");
-            var clientSecret = Environment.GetEnvironmentVariable("clientSecret");
-            var keycloakUrl = Environment.GetEnvironmentVariable("keycloakUrl");
+        {
+            var realm = "cost-tracking-app";
+            var keycloakUrl = "https://lemur-5.cloud-iam.com/auth";
+            var clientId = "cost-tracking-client";
+            var clientSecret = "O6qyJVLColeu3KnncWrk7NpTyDSvNJZN";
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       .AddJwtBearer(options =>
