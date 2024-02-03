@@ -8,10 +8,10 @@ Managing expenses efficiently is crucial for the success of any construction com
 
 ## Technologies Used
 
-- ![.NET](https://fontawesome.com/v5.15/icons/dotnet?style=brands) .NET Core for backend services
-- ![Docker](https://fontawesome.com/v5.15/icons/docker?style=brands) Docker Compose for containerization
-- ![React.js](https://fontawesome.com/v5.15/icons/react?style=brands) React.js for the frontend
-- ![Keycloak](https://fontawesome.com/v5.15/icons/key?style=brands) Keycloak for authentication management
+- .NET Core for backend services
+- Docker Compose for containerization
+- React.js for the frontend
+- Keycloak for authentication management
 
 
 ## Features
