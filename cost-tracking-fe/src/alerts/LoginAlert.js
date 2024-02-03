@@ -7,15 +7,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 const InstantMessage = ({message}) =>  {
-    
-        const [open, setOpen] = useState(true); 
-        //Leave this true since we are not using a button
-    
+
+        const [open, setOpen] = useState(true);
         const handleClose = (event, reason) => {
             if (reason === 'clickaway') {
               return;
             }
-        
+
             setOpen(false);
           };
 

@@ -34,7 +34,7 @@ const EditUserPage = () => {
 
       console.log("user response: " , response);
       if (response.status === 200) {
-        const userData = response.data;
+        const userData = response.data.data;
         setFormData({
           ...formData,
           Username: userData.username,

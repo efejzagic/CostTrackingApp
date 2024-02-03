@@ -32,7 +32,7 @@ const UserTable = () => {
         setIsLoading(false);
         console.log("Response", response);
         if (response.status === 200) {
-            setUsers(response.data);
+            setUsers(response.data.data);
         }
         else if(response.status === 401) {
           navigate('/unauthorized');
@@ -45,7 +45,7 @@ const UserTable = () => {
             navigate('/login');
         }
       } catch (error) {
-        
+
         console.error('Error fetching users:', error);
         if (error.response.status === 401) {
           console.log("Unauthorized access");
@@ -61,7 +61,7 @@ const UserTable = () => {
   }, []);
 
   return (
-   
+
       <Container maxWidth="md" style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {isLoading ? (
             <LoadingCoomponent loading={isLoading} />
@@ -80,7 +80,7 @@ const UserTable = () => {
                 <TableCell width={100}>Id</TableCell>
                 <TableCell width={200}>Username</TableCell>
                 <TableCell width={200}>First Name</TableCell>
-                <TableCell width={200}>Last Name</TableCell>                
+                <TableCell width={200}>Last Name</TableCell>
                 <TableCell width={200}>Email</TableCell>
                 </TableRow>
             </TableHead>
@@ -100,7 +100,7 @@ const UserTable = () => {
                       <Button onClick={() => handleOpen(item.id)} variant="outlined" color="secondary" size="small">
                         Delete
                       </Button>
-                      
+
                     </div>
                   </TableCell>
                 </TableRow>
@@ -111,7 +111,7 @@ const UserTable = () => {
         </>
         )}
       </Container>
-      
+
   );
 };
 
