@@ -52,6 +52,13 @@ The application services will start, and you can access the frontend interface i
 - **/cost-tracking-fe: Includes the React.js frontend codebase for the user interface.**
 - **docker-compose.yml: Defines the services, networks, postgresql db, and volumes configuration for Docker Compose.**
 
+##User credentials
+You can use these credentials for login to the app: 
+- **Username: admin, Password: AdminPassword**
+- **Username: finance, Password: FinancePassword**
+- **Username: equipment, Password: EquipmentPassword**
+
+
 ## Notes
 
 - **Ensure that port 3000 is not occupied by other services on your local machine to avoid conflicts.**
