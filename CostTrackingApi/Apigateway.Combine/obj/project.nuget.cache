@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MEZSzg2JZD1ppuU/v4lI4wvabvs1EgsPnrPXyu+R12UKPVWXiuNIc1NOTPyYtu2ozOwLKM7skA/6Z9LFkhwcMA==",
+  "dgSpecHash": "JBDQNUaN+Qh+8VS1g0Lo1O7h2/Uqj8dNj7IP+gv12CjiqeHBbF4s0wDYgLTVY1kZqopuW0Err42yxpd/NMmtqw==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Apigateway.Combine\\Apigateway.Combine.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Apigateway.Combine\\Apigateway.Combine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",

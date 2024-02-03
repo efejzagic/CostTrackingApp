@@ -841,11 +841,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj",
+      "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj",
       "projectName": "Storage.Application",
-      "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj",
+      "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\Storage.Application.csproj",
       "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-      "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\obj\\",
+      "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Storage.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -866,14 +866,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj": {
-              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj"
+            "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj": {
+              "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\CorrelationIdLibrary\\CorrelationIdLibrary.csproj"
             },
-            "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
-              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
+            "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+              "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
             },
-            "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj": {
-              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj"
+            "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj": {
+              "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Storage.Domain\\Storage.Domain.csproj"
             }
           }
         }
@@ -917,7 +917,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,3 +10,16 @@ D:\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\refint\Auth.Domain.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\ref\Auth.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\bin\Debug\net7.0\Auth.Domain.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\bin\Debug\net7.0\Auth.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\bin\Debug\net7.0\Auth.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.csproj.AssemblyReference.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\refint\Auth.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\Auth.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Domain\obj\Debug\net7.0\ref\Auth.Domain.dll

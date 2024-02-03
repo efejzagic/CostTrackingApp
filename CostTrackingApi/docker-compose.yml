@@ -201,7 +201,7 @@ services:
     container_name: react-frontend
     image: ${DOCKER_REGISTRY-}reactservice
     build:
-      context: D:\CostTrackingApp\cost-tracking-fe
+      context: ../cost-tracking-fe
       dockerfile: Dockerfile
     ports:
       - "3000:3000"

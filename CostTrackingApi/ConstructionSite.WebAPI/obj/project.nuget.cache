@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5omWI1C33bb0nwSXfMM+jJ/1tKy2dyr9FXvKzy55xDFNGHfEgRXWRacEKbDBN08vTLP7n9syVLiEr9sQz/LIAA==",
+  "dgSpecHash": "4ZF90hhqFGYmvxbA5BRZ6z2Zu5N47FpwGHUhvDmS75OnnNuQ2xwx063l8KAPqMsBWsqzJxlgwLGOyJin1j2SIw==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.WebAPI\\ConstructionSite.WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.WebAPI\\ConstructionSite.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

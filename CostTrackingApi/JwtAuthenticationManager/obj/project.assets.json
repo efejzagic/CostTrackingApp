@@ -5839,11 +5839,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
+      "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
       "projectName": "JwtAuthenticationManager",
-      "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
+      "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
       "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-      "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\obj\\",
+      "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5864,8 +5864,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
-              "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
+            "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
+              "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
             }
           }
         }
@@ -5933,8 +5933,30 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.IdentityModel.Tokens.Jwt' 6.32.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-59j7-ghrg-fj52",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.IdentityModel.Tokens.Jwt' 6.32.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-8g9c-28fc-mcx2",
+      "libraryId": "System.IdentityModel.Tokens.Jwt",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

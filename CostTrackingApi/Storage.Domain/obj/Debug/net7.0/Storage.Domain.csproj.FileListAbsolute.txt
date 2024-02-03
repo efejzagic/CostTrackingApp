@@ -10,3 +10,15 @@ D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domai
 D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\refint\Storage.Domain.dll
 D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\ref\Storage.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\bin\Debug\net7.0\Storage.Domain.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\bin\Debug\net7.0\Storage.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\bin\Debug\net7.0\Storage.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\refint\Storage.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\Storage.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Storage.Domain\obj\Debug\net7.0\ref\Storage.Domain.dll

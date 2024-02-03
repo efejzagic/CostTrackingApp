@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jLBMD+CQQ6knuu48xCbOmlwmF4q4Onxy+Q8DscqU7AgVr/PZ8lO2aeZKRy/t9s8OkqCi/64so8gwbvyOBAMgfA==",
+  "dgSpecHash": "6RIdPNQzViYDVblXWPEnU6tPm0IOaJgm0EiDQ5AxsBXRP+/kGJbIGWF61SQyBGsIGXKNRCGiBwKjZIP/7XanCA==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Infrastructure.Persistance\\ConstructionSite.Infrastructure.Persistance.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ConstructionSite.Infrastructure.Persistance\\ConstructionSite.Infrastructure.Persistance.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",

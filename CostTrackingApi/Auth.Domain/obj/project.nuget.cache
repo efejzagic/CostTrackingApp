@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "n4yqKB02gGzixvtgigPKhGSg3TlKKYiMAzz88gEhTcQ6WYNBupHdQcveUoGWKjimWrbdeyxPhOZGD50NwFVsSQ==",
+  "dgSpecHash": "Xs02X/Da+hK8KJe3KUtl6kxy5yMST6fb+v6xHrS3LPJL9uHh1o6j7s4Jvn7C/GPyZE4VQ0pm2eG5m/nAa/PXNg==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

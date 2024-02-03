@@ -10,3 +10,15 @@ D:\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net
 D:\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\refint\Auth.Infrastructure.Persistance.dll
 D:\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.pdb
 D:\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\ref\Auth.Infrastructure.Persistance.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\bin\Debug\net7.0\Auth.Infrastructure.Persistance.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\bin\Debug\net7.0\Auth.Infrastructure.Persistance.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\bin\Debug\net7.0\Auth.Infrastructure.Persistance.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\refint\Auth.Infrastructure.Persistance.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\Auth.Infrastructure.Persistance.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Auth.Infrastructure.Persistance\obj\Debug\net7.0\ref\Auth.Infrastructure.Persistance.dll

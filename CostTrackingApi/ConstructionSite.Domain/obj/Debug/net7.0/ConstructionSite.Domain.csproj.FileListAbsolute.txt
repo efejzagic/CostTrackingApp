@@ -10,3 +10,15 @@ D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\Cons
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\refint\ConstructionSite.Domain.dll
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ref\ConstructionSite.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\bin\Debug\net7.0\ConstructionSite.Domain.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\bin\Debug\net7.0\ConstructionSite.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\bin\Debug\net7.0\ConstructionSite.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\refint\ConstructionSite.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ConstructionSite.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ConstructionSite.Domain\obj\Debug\net7.0\ref\ConstructionSite.Domain.dll

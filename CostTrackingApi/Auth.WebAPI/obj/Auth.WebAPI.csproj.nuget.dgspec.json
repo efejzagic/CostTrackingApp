@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj": {}
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj",
         "projectName": "Auth.Application",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,14 +32,14 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
               }
             }
           }
@@ -91,18 +91,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj",
         "projectName": "Auth.Domain",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -156,18 +156,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj",
         "projectName": "Auth.Infrastructure.Persistance",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -215,18 +215,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj",
         "projectName": "Auth.WebAPI",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\Auth.WebAPI.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -247,20 +247,20 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Application\\Auth.Application.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Infrastructure.Persistance\\Auth.Infrastructure.Persistance.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
               }
             }
           }
@@ -327,18 +327,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
         "projectName": "JwtAuthenticationManager",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\JwtAuthenticationManager.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\JwtAuthenticationManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -359,8 +359,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Auth.Domain\\Auth.Domain.csproj"
               }
             }
           }
@@ -428,18 +428,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
         "projectName": "ResponseInfo",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -493,7 +493,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

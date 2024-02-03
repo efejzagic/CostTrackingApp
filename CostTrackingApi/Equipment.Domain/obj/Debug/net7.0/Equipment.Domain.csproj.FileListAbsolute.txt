@@ -10,3 +10,15 @@ D:\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.D
 D:\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\refint\Equipment.Domain.dll
 D:\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.pdb
 D:\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\ref\Equipment.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\bin\Debug\net7.0\Equipment.Domain.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\bin\Debug\net7.0\Equipment.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\bin\Debug\net7.0\Equipment.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\refint\Equipment.Domain.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\Equipment.Domain.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\Equipment.Domain\obj\Debug\net7.0\ref\Equipment.Domain.dll

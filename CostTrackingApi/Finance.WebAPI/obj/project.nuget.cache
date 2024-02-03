@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C3BKACYWzNd0DyJT1Ve7WRs/fXCcBAHFE9QHBW/IOFvNtTQ7ZtxTCOwdZ/AHOwbUPq+d1+OBiKYVGXRI2etRFQ==",
+  "dgSpecHash": "fh8D3hnIvaj+tWHnBprBoNueiQXACTMZ8cyz/y4v0ysVjDL7MqaMCHQN9vjpfHDOrnKv2wEPR7lkSIcgqHgbkQ==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.WebAPI\\Finance.WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.WebAPI\\Finance.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

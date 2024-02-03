@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qp++cmtt6Tp03EEd/xXL6wurUT7CWH4fh8qK5bIfDM6flYkl7y+vZYIB8jFi3v1dahtmeQiqZhBRBZfA6Ff1tg==",
+  "dgSpecHash": "ubcRrPhHwSJMTjdRPAFFDVoja15UN64d5s0UpapDuBODU8lIyyIPcdwyHxumZIFOH2y2UVLYjhZtup2duPNIFg==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",

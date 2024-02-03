@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6ATHTEZ+FL4I1Y+O8kfN73xUiNaUE4DSRO/DMIJFquojn4FPmYRnBxFte6hT9C78OUr741Kz7Z5jlwTqOYkaoQ==",
+  "dgSpecHash": "zvPJBseBAjrlM6Kehy0ZpAmCLiDdzX1mxKIgztk+3HSITsjzFBHngOcA8tOhwhWi3V6M5hySlEmZz0ZdF0PQKA==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Maintenance.Domain\\Maintenance.Domain.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Maintenance.Domain\\Maintenance.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

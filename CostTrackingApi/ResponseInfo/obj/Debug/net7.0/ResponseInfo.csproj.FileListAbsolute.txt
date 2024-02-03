@@ -22,3 +22,16 @@ D:\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.dl
 D:\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\refint\ResponseInfo.dll
 D:\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.pdb
 D:\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ref\ResponseInfo.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\bin\Debug\net7.0\ResponseInfo.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\bin\Debug\net7.0\ResponseInfo.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\bin\Debug\net7.0\ResponseInfo.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.csproj.AssemblyReference.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\refint\ResponseInfo.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ResponseInfo.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\ResponseInfo\obj\Debug\net7.0\ref\ResponseInfo.dll

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj": {}
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj": {}
   },
   "projects": {
-    "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj",
         "projectName": "Finance.Application",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\Finance.Application.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj"
               },
-              "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
-                "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
+              "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+                "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj"
               }
             }
           }
@@ -80,18 +80,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj",
         "projectName": "Finance.Domain",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\Finance.Domain.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Finance.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -139,18 +139,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
+    "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
+        "projectUniqueName": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
         "projectName": "ResponseInfo",
-        "projectPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
+        "projectPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\ResponseInfo.csproj",
         "packagesPath": "C:\\Users\\efejz\\.nuget\\packages\\",
-        "outputPath": "D:\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\obj\\",
+        "outputPath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\ResponseInfo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -204,7 +204,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

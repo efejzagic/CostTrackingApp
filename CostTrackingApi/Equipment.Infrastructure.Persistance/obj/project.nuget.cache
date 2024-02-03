@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pADuKSMDQmj+cIVuMer2z4FlKK3mLPnmxkiozxAFqvqU7U0FrazNTPvsQ9OUf9BsvHYDTuTwlUE4xlI0pQwfRg==",
+  "dgSpecHash": "70hPNsUw/9quM2W782ori4JXSyH5xhCDYJIoBMxSiOqmRVahbDEEIwKoDhzA8nWQc3FBjtLXhJrgSchjj9pRxQ==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Equipment.Infrastructure.Persistance\\Equipment.Infrastructure.Persistance.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Equipment.Infrastructure.Persistance\\Equipment.Infrastructure.Persistance.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\efejz\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\efejz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

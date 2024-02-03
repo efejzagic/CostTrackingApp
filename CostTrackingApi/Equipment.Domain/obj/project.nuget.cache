@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uwcTYsbDVxrwIPWzFWQsiqXVIz2G8yuO4fauYiYB9TCUjtd2KV7SKPIty+fbE/FDto+MrGhtF5+ufccZyhVEDQ==",
+  "dgSpecHash": "y/b2/VZvM6zEneneBD2zeffuKkaC0ggAyCg69akBRl9MIC7G7gPO8czeAYGizWg1X4bvEpOpCTRsDQhthrmHlQ==",
   "success": true,
-  "projectFilePath": "D:\\CostTrackingApp\\CostTrackingApi\\Equipment.Domain\\Equipment.Domain.csproj",
+  "projectFilePath": "C:\\Users\\efejz\\codeyard\\CostTrackingApp\\CostTrackingApi\\Equipment.Domain\\Equipment.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

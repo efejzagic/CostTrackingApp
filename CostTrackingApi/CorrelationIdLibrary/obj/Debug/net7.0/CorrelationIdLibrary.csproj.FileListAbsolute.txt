@@ -10,3 +10,16 @@ D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\Correla
 D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\refint\CorrelationIdLibrary.dll
 D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.pdb
 D:\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\ref\CorrelationIdLibrary.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\bin\Debug\net7.0\CorrelationIdLibrary.deps.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\bin\Debug\net7.0\CorrelationIdLibrary.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\bin\Debug\net7.0\CorrelationIdLibrary.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.csproj.AssemblyReference.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.AssemblyInfoInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.AssemblyInfo.cs
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.csproj.CoreCompileInputs.cache
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.sourcelink.json
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\refint\CorrelationIdLibrary.dll
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\CorrelationIdLibrary.pdb
+C:\Users\efejz\codeyard\CostTrackingApp\CostTrackingApi\CorrelationIdLibrary\obj\Debug\net7.0\ref\CorrelationIdLibrary.dll
