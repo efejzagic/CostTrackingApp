@@ -15,10 +15,14 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StyledPage from '../components/Styled/StyledPage';
 import {fetchUserRoles} from '../components/UserData/GetUserRoles';
+import { useDispatch, useSelector } from "react-redux";
+import { loadBugs, getUnresolvedBugs, resolveBug, } from "../state/bugs";
+import { loadsuppliers, selectSuppliers } from '../state/suppliers';
 
 function Homepage() {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const suppliers = useSelector(selectSuppliers);
   const [name, setName] = useState('');
   const [roles, setRoles] = useState([]);
   const [showMediaCard, setShowMediaCard] = useState(false);
@@ -27,8 +31,14 @@ function Homepage() {
     console.log(roleName, await checkRoleInUserData(roleName));
     return await checkRoleInUserData(roleName);
   }
+  useEffect(() => {
+    dispatch(loadsuppliers());
+  }, []);
 
+  useEffect(() => {
+    console.log({suppliers});
 
+  }, [suppliers]);
   useEffect(() => {
 
     async function fetchRolesData() {
@@ -39,7 +49,6 @@ function Homepage() {
     
     setName(localStorage.getItem('name'));
   }, []);
-
 
   return (
     <>
