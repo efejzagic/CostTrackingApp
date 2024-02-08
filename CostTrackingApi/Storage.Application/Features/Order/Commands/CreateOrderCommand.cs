@@ -12,12 +12,12 @@ using Storage.Application.DTOs.Order;
 
 namespace Storage.Application.Features.Order.Commands
 {
-    public partial class CreateOrderCommand : IRequest<Response<string>>
+    public partial class CreateOrderCommand : IRequest<Response<OrderDTO>>
     {
         public CreateOrderDTO Value { get; set; }
 
     }
-    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Response<string>>
+    public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Response<OrderDTO>>
     {
 
         private readonly IGenericRepositoryAsync<Storage.Domain.Entities.Order> _Repository;
@@ -28,11 +28,12 @@ namespace Storage.Application.Features.Order.Commands
             _mapper = mapper;
         }
 
-        public async Task<Response<string>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+        public async Task<Response<OrderDTO>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {
             var enviroment = _mapper.Map<Storage.Domain.Entities.Order>(request.Value);
             await _Repository.AddAsync(enviroment);
-            return new Response<string>(enviroment.Id.ToString());
+            var response = _mapper.Map<OrderDTO>(enviroment);
+            return new Response<OrderDTO>(response);
         }
     }
 }

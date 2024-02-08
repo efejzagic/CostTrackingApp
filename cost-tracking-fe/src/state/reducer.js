@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import entitiesReducer from "./entities";
-import bugsReducer from "./bugs";
 import suppliersReducer from "./suppliers";
+import articlesReducer from "./articles";
+import ordersReducer from "./orders";
 
 export default combineReducers({
-//   entities: entitiesReducer
-  bugs: bugsReducer,
-  suppliers: suppliersReducer
+  //   entities: entitiesReducer
+  suppliers: suppliersReducer,
+  articles: articlesReducer,
+  orders: ordersReducer
 });

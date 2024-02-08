@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Storage.Application.Features.Article.Commands
 {
-    public class UpdateArticleCommand : IRequest<Response<string>>
+    public class UpdateArticleCommand : IRequest<Response<ArticleDTO>>
     {
         //public int Id { get; set; }
         public ArticleEditDTO Value { get; set; }
-        public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommand, Response<string>>
+        public class UpdateArticleCommandHandler : IRequestHandler<UpdateArticleCommand, Response<ArticleDTO>>
         {
             private readonly IGenericRepositoryAsync<Domain.Entities.Article> _Repository;
             private readonly IMapper _mapper;
@@ -25,11 +25,12 @@ namespace Storage.Application.Features.Article.Commands
                 _mapper = mapper;
             }
 
-            public async Task<Response<string>> Handle(UpdateArticleCommand request, CancellationToken cancellationToken)
+            public async Task<Response<ArticleDTO>> Handle(UpdateArticleCommand request, CancellationToken cancellationToken)
             {
                 var enviroment = _mapper.Map<Domain.Entities.Article>(request.Value);
                 await _Repository.UpdateAsync(enviroment);
-                return new Response<string>(enviroment.Id.ToString());
+                var response = _mapper.Map< ArticleDTO > (enviroment);
+                return new Response<ArticleDTO>(response);
             }
         }
     }

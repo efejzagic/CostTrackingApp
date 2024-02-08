@@ -1,6 +1,7 @@
 import { toast as toastMessage } from "react-toastify";
 
 const toast = (store) => (next) => (action) => {
+  console.log("toast middleware", action);
   console.log("action type toast", action.type);
   if (action.type === "suppliers/suppliersRequestFailed") {
     console.log("Toastify", action.payload.message);

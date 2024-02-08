@@ -41,7 +41,7 @@ namespace JwtAuthenticationManager
               ValidateLifetime = true,
               ValidateIssuerSigningKey = true,
               ValidIssuer = $"{keycloakUrl}/realms/{realm}",
-                ValidAudience = clientId,
+              ValidAudience = clientId,
               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(clientSecret)),
               SaveSigninToken = true,
           };

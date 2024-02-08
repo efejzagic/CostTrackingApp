@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import bugsReducer from "./bugs";
+// import { combineReducers } from "redux";
+// import bugsReducer from "./bugs";
 
-export default combineReducers({
-    bugs: bugsReducer,
-});
+// export default combineReducers({
+//     bugs: bugsReducer,
+// });
