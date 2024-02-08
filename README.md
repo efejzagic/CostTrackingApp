@@ -13,13 +13,9 @@ Managing expenses efficiently is crucial for the success of any construction com
 - React.js for the frontend
 - Keycloak for authentication management
 
-
-## Features
-
-- **Microservices Architecture**: Utilizes microservices to enhance modularity, scalability, and maintainability of the application.
-- **.NET Core Backend**: Employs .NET Core for building robust and efficient backend services to handle business logic and data processing.
-- **Docker Compose**: Uses Docker Compose for container orchestration, simplifying deployment and ensuring consistency across different environments.
-- **React.js Frontend**: Implements a dynamic and user-friendly frontend using React.js, enabling seamless interaction and data visualization for end-users.
+## Currently implementing
+ - Redux
+ - RabbitMQ
 
 ## Prerequisites
 
@@ -52,19 +48,21 @@ The application services will start, and you can access the frontend interface i
 - **/cost-tracking-fe: Includes the React.js frontend codebase for the user interface.**
 - **docker-compose.yml: Defines the services, networks, postgresql db, and volumes configuration for Docker Compose.**
 
-##User credentials
+## User credentials
 You can use these credentials for login to the app: 
 - **Username: admin, Password: AdminPassword**
 - **Username: finance, Password: FinancePassword**
 - **Username: equipment, Password: EquipmentPassword**
 
+## Postman collection
+Link for postman collection: [postman collection](https://www.postman.com/lunar-module-specialist-38372248/workspace/costtrackingapp).
 
 ## Notes
 
 - **Ensure that port 3000 is not occupied by other services on your local machine to avoid conflicts.**
 
 Feel free to explore the codebase, make enhancements, and adapt the application to meet your specific requirements.
-"For testing purposes, please reach out to [efejzagic2@etf.unsa.ba](mailto:efejzagic2@etf.unsa.ba)."
+For testing purposes, please reach out to [efejzagic2@etf.unsa.ba](mailto:efejzagic2@etf.unsa.ba).
 
 
 
