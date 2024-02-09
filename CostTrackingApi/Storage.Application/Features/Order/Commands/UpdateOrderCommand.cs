@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Storage.Application.Features.Order.Commands
 {
-    public class UpdateOrderCommand : IRequest<Response<string>>
+    public class UpdateOrderCommand : IRequest<Response<OrderDTO>>
     {
         //public int Id { get; set; }
         public EditOrderDTO Value { get; set; }
-        public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, Response<string>>
+        public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand, Response<OrderDTO>>
         {
             private readonly IGenericRepositoryAsync<Domain.Entities.Order> _Repository;
             private readonly IMapper _mapper;
@@ -25,11 +25,12 @@ namespace Storage.Application.Features.Order.Commands
                 _mapper = mapper;
             }
 
-            public async Task<Response<string>> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
+            public async Task<Response<OrderDTO>> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
             {
                 var enviroment = _mapper.Map<Domain.Entities.Order>(request.Value);
                 await _Repository.UpdateAsync(enviroment);
-                return new Response<string>(enviroment.Id.ToString());
+                var response = _mapper.Map<OrderDTO>(enviroment);
+                return new Response<OrderDTO>(response);
             }
         }
     }

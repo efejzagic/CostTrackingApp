@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Storage.Application.Features.Supplier.Commands
 {
-    public class UpdateSupplierCommand : IRequest<Response<string>>
+    public class UpdateSupplierCommand : IRequest<Response<Domain.Entities.Supplier>>
     {
         //public int Id { get; set; }
         public SupplierEditDTO Value { get; set; }
-        public class UpdateSupplierCommandHandler : IRequestHandler<UpdateSupplierCommand, Response<string>>
+        public class UpdateSupplierCommandHandler : IRequestHandler<UpdateSupplierCommand, Response<Domain.Entities.Supplier>>
         {
             private readonly IGenericRepositoryAsync<Domain.Entities.Supplier> _Repository;
             private readonly IMapper _mapper;
@@ -25,11 +25,11 @@ namespace Storage.Application.Features.Supplier.Commands
                 _mapper = mapper;
             }
 
-            public async Task<Response<string>> Handle(UpdateSupplierCommand request, CancellationToken cancellationToken)
+            public async Task<Response<Domain.Entities.Supplier>> Handle(UpdateSupplierCommand request, CancellationToken cancellationToken)
             {
                 var enviroment = _mapper.Map<Domain.Entities.Supplier>(request.Value);
                 await _Repository.UpdateAsync(enviroment);
-                return new Response<string>(enviroment.Id.ToString());
+                return new Response<Domain.Entities.Supplier>(enviroment);
             }
         }
     }
